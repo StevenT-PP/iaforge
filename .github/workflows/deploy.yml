@@ -23,12 +23,12 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy via SFTP
+      - name: Push dist to deploy branch
         run: |
-          sudo apt-get install -y lftp
-          lftp -u "${{ secrets.FTP_USER }}","${{ secrets.FTP_PASSWORD }}" sftp://${{ secrets.FTP_HOST }} << 'EOF'
-          set sftp:auto-confirm yes
-          set net:timeout 30
-          mirror --reverse --delete --verbose ./dist/ /public_html/
-          quit
-          EOF
+          cd dist
+          git init
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add -A
+          git commit -m "deploy"
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/StevenT-PP/iaforge.git HEAD:deploy
