@@ -1,0 +1,227 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour devis artisan : automatiser de la demande à la signature",
+  description: "Comment un artisan ou une entreprise BTP peut automatiser ses devis avec un agent IA : collecte des infos chantier, génération, relances automatiques. +34% de taux de signature.",
+  date: "2026-06-28",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#fb923c",
+  slug: "agent-ia-devis-artisan",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un artisan perd en moyenne 6 à 8 heures par semaine sur ses devis : répondre au téléphone pour collecter les infos, rédiger le devis, l'envoyer, relancer. Un agent IA peut prendre en charge 80% de ce processus — de la première demande jusqu'à la relance de signature. Voici comment.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème : le devis artisan est chronophage par défaut</h2>
+
+  <p>Dans le BTP, chaque devis est différent. Surface, matériaux, accès chantier, délai client, contraintes techniques — il faut poser les bonnes questions avant de pouvoir chiffrer. Sans processus structuré, ça donne ça :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-2">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Étape</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Temps moyen</div>
+      {[
+        ["Décrocher + écouter la demande", "8-12 min"],
+        ["Rappeler pour les infos manquantes", "5-15 min"],
+        ["Rédiger le devis", "20-45 min"],
+        ["Envoyer + relancer (si silence)", "10-20 min"],
+        ["Total par devis", "45 min à 1h30"],
+      ].map(([e, t], i) => (
+        <>
+          <div class={`p-4 border-b border-white/5 text-xs text-white ${i === 4 ? 'font-bold' : ''}`}>{e}</div>
+          <div class={`p-4 border-b border-white/5 text-xs ${i === 4 ? 'text-[#fb923c] font-bold' : 'text-[#8888aa]'}`}>{t}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p>Pour un artisan qui reçoit 8 à 15 demandes de devis par semaine, ça représente 6 à 22 heures — soit presque une journée entière consacrée aux devis plutôt qu'au chantier.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA fait à votre place</h2>
+
+  <p>L'agent intercepte chaque demande — que ce soit depuis votre site, WhatsApp, ou Google Business — et conduit une conversation structurée pour collecter toutes les informations nécessaires au chiffrage.</p>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        step: "1",
+        title: "Qualification de la demande",
+        color: "#fb923c",
+        desc: "L'agent pose les questions dans l'ordre logique : type de travaux, surface approximative, situation géographique, délai souhaité, contraintes particulières. Il adapte ses questions selon le corps de métier (plombier, électricien, carreleur, maçon...).",
+        example: "\"Bonjour, je suis l'assistant de l'entreprise Dupont Bâtiment. Pour vous préparer un devis précis, j'ai besoin de quelques informations. Quel type de travaux souhaitez-vous réaliser ?\""
+      },
+      {
+        step: "2",
+        title: "Envoi au bon moment",
+        color: "#34d399",
+        desc: "Une fois la fiche complétée, l'artisan reçoit un récapitulatif structuré. Il n'a plus qu'à chiffrer — les informations manquantes habituelles sont déjà là. Le temps de rédaction passe de 45 min à 15 min.",
+        example: "Fiche reçue : \"Salle de bain 8m², 2ème étage, Paris 15e, dépose + pose carrelage mur et sol, démarrage souhaité mi-juillet, budget client ~3 000€.\""
+      },
+      {
+        step: "3",
+        title: "Relances automatiques",
+        color: "#a78bfa",
+        desc: "Devis envoyé mais pas de réponse ? L'agent relance à J+2, J+5 et J+10 avec des messages différents — sans jamais sembler insistant. Le taux de signature moyen augmente de 34% avec ce seul automatisme.",
+        example: "\"Bonjour Sophie, je me permets de revenir vers vous. Avez-vous eu l'occasion de consulter notre proposition ? N'hésitez pas si vous avez des questions ou souhaitez une visite de repérage.\""
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.step}</span>
+          <h3 class="text-white font-bold text-base">{item.title}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-4">{item.desc}</p>
+        <div class="rounded-xl p-4 text-xs text-[#9090b0] italic leading-relaxed" style={`background: ${item.color}08; border: 1px solid ${item.color}20;`}>
+          {item.example}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par métier : les questions clés à automatiser</h2>
+
+  <p>Chaque corps de métier a ses propres variables de chiffrage. L'agent est configuré pour poser les bonnes questions selon l'activité :</p>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      {
+        metier: "Plombier",
+        color: "#38bdf8",
+        questions: ["Urgence ou planifié ?", "Type de logement (maison, appartement, étage)", "Accès compteur / vanne principale", "Marque et âge de la chaudière (si remplacement)"],
+      },
+      {
+        metier: "Électricien",
+        color: "#fbbf24",
+        questions: ["Mise aux normes ou installation neuve ?", "Surface et nombre de pièces", "Tableau électrique actuel (à remplacer ou conserver)", "Câblage réseau/domotique inclus ?"],
+      },
+      {
+        metier: "Peintre",
+        color: "#a78bfa",
+        questions: ["Intérieur ou extérieur ?", "Surface à peindre (m²)", "État des murs (à reprendre, fissures ?)", "Couleurs imposées par copropriété ou au choix ?"],
+      },
+      {
+        metier: "Maçon / Carreleur",
+        color: "#fb923c",
+        questions: ["Démolition incluse ?", "Type de support (béton, chape, ancien carrelage)", "Format et pose spéciale (chevrons, opus incertum) ?", "Accès chantier (escalier, monte-charge, parking)"],
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="font-bold text-sm mb-3" style={`color: ${item.color};`}>{item.metier}</p>
+        <ul class="space-y-1">
+          {item.questions.map(q => (
+            <li class="flex items-start gap-2 text-sm text-[#8888aa]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {q}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les chiffres réels chez nos clients artisans</h2>
+
+  <div class="not-prose my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+    {[
+      { val: "-6h", label: "par semaine sur la gestion des demandes de devis", color: "#fb923c" },
+      { val: "+34%", label: "de devis signés grâce aux relances automatiques à J+2, J+5, J+10", color: "#34d399" },
+      { val: "0 appel", label: "manqué hors horaires — chaque demande reçoit une réponse dans la minute", color: "#a78bfa" },
+    ].map(s => (
+      <div class="glass rounded-2xl p-5 text-center">
+        <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Intégration avec les outils existants</h2>
+
+  <p>L'agent IA ne remplace pas votre logiciel de devis — il l'alimente. Les intégrations courantes pour les artisans :</p>
+
+  <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+    {[
+      { outil: "Batigest / EBP Bâtiment", action: "Création automatique de la fiche client + import des infos chantier" },
+      { outil: "Sellsy / Pennylane", action: "Création du contact + envoi du devis directement depuis le CRM" },
+      { outil: "Google Agenda", action: "Proposition de créneaux de visite de repérage + confirmation automatique" },
+      { outil: "WhatsApp Business", action: "Réception des demandes et suivi des relances via WhatsApp" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <div>
+          <p class="text-white text-xs font-semibold mb-1">{item.outil}</p>
+          <p class="text-[#8888aa] text-xs">{item.action}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Quel ROI pour un artisan ?</h2>
+
+  <p>Prenons un exemple concret : un électricien indépendant qui reçoit 10 demandes de devis par semaine, avec un panier moyen de 1 200€ et un taux de signature actuel de 35%.</p>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-4">
+      {[
+        { label: "Devis signés par mois (avant)", val: "14 × 1 200€ = 16 800€ CA" },
+        { label: "Avec relances auto (+34%)", val: "18,8 × 1 200€ = 22 560€ CA" },
+        { label: "CA supplémentaire", val: "+5 760€/mois" },
+        { label: "Coût agent IA", val: "149€ à 349€/mois" },
+        { label: "ROI mensuel net", val: "+5 400 à 5 600€" },
+      ].map(item => (
+        <>
+          <p class="text-[#8888aa] text-sm">{item.label}</p>
+          <p class="text-white text-sm font-semibold">{item.val}</p>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p>Ce calcul ne tient pas compte du temps récupéré (6h/semaine = ~600€/mois au tarif horaire artisan), ni des demandes hors horaires converties en RDV. <a href="/calculateur-roi" class="text-[#fb923c] hover:underline font-semibold">Calculez votre ROI personnalisé</a> avec nos hypothèses ajustables.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 erreurs à éviter</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        n: "1",
+        title: "Configurer l'agent pour qu'il chiffre lui-même",
+        desc: "L'agent collecte et structure. Le chiffrage reste votre expertise. Un agent qui invente des prix crée de la méfiance et des réclamations — même si la technologie le permettrait.",
+      },
+      {
+        n: "2",
+        title: "Relancer trop vite ou trop souvent",
+        desc: "J+2, J+5, J+10 est le rythme optimal. Au-delà de 3 relances sans réponse, le prospect a décidé. Insister nuit à votre image. L'agent doit s'arrêter automatiquement.",
+      },
+      {
+        n: "3",
+        title: "Ne pas personnaliser par corps de métier",
+        desc: "Un plombier urgentiste et un cuisiniste haut de gamme n'ont pas les mêmes questions ni le même timing de devis. Une configuration générique donne des résultats médiocres.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 flex items-start gap-4">
+        <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0 bg-red-500/20 text-red-400 border border-red-500/30">{item.n}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par où commencer ?</h2>
+
+  <p>La plupart de nos clients artisans démarrent avec le <a href="/offres" class="text-[#fb923c] hover:underline font-semibold">pack Solo à 149€/mois</a> — un agent configuré sur votre site et WhatsApp, opérationnel en 7 jours. Pour les entreprises BTP de 3 à 15 personnes avec un volume de devis plus important, le <a href="/offres" class="text-[#fb923c] hover:underline font-semibold">pack Essentiel à 349€/mois</a> inclut aussi le SEO local pour capter plus de demandes depuis Google.</p>
+
+  <p>Avant tout engagement : <a href="/contact" class="text-[#fb923c] hover:underline font-semibold">audit gratuit de 30 minutes</a> où on analyse vos flux actuels et on vous montre exactement combien de devis non signés vous pouvez récupérer.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/artisans" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour artisans &rarr;</a>
+    <a href="/calculateur-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Guide complet des relances IA &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -1,0 +1,183 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Automatiser la facturation en PME avec l'IA : guide pratique 2026",
+  description: "Comment une PME peut automatiser sa facturation avec l'IA : extraction de données, génération de factures, relances de paiement. Outils, coûts et ROI réels.",
+  date: "2026-06-26",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "automatiser-facturation-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La facturation est l'une des tâches les plus chronophages et les moins valorisantes de la gestion d'entreprise. En moyenne, une PME de 5 à 20 salariés y consacre 8 à 15 heures par mois — et les retards de paiement coûtent encore plus cher. L'IA ne remplace pas votre comptable, mais elle peut automatiser 70% du processus de facturation.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA peut automatiser dans votre facturation</h2>
+
+  <p>Il faut distinguer deux niveaux d'automatisation :</p>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        niveau: "Niveau 1 — Automatisation des flux",
+        color: "#f59e0b",
+        tasks: [
+          "Génération automatique des factures depuis les devis signés ou les bons de commande",
+          "Envoi automatique au client au bon format (PDF email, portail fournisseur, EDI)",
+          "Relances de paiement à J+0, J+15, J+30 avec escalade progressive",
+          "Rapprochement bancaire : matching automatique factures / paiements reçus",
+        ],
+        note: "Atteignable avec des outils existants + un peu d'automatisation. ROI immédiat.",
+      },
+      {
+        niveau: "Niveau 2 — IA sur les données entrantes",
+        color: "#7c5cfc",
+        tasks: [
+          "Extraction des données depuis les factures fournisseurs (PDF, images scannées)",
+          "Vérification automatique des montants vs bons de commande",
+          "Détection des anomalies : doublon, montant incohérent, TVA incorrecte",
+          "Imputation comptable automatique selon les règles de votre plan de comptes",
+        ],
+        note: "Nécessite un agent IA avec accès à votre ERP / outil comptable. Plus puissant, légèrement plus complexe à déployer.",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="font-bold text-base mb-4" style={`color: ${item.color};`}>{item.niveau}</p>
+        <ul class="space-y-2 mb-4">
+          {item.tasks.map(task => (
+            <li class="flex items-start gap-2 text-sm text-[#8888aa]">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              {task}
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs text-[#9090b0] italic">{item.note}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les relances de paiement : le gain le plus rapide</h2>
+
+  <p>Les retards de paiement représentent en moyenne <strong class="text-white">11 jours de délai supplémentaire</strong> pour les PME françaises. L'automatisation des relances est le levier le plus simple et le plus immédiatement rentable.</p>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      {
+        etape: "Rappel préventif J-3",
+        message: "\"Bonjour, votre facture n°2026-042 de 3 200€ arrive à échéance dans 3 jours. Aucune action requise si paiement déjà initié.\"",
+        effet: "Réduit les oublis de 40%",
+        color: "#34d399",
+      },
+      {
+        etape: "Relance J+1",
+        message: "\"Bonjour, nous n'avons pas encore reçu votre règlement de 3 200€ (échéance hier). S'agit-il d'un oubli ? Un lien de paiement en ligne est disponible ici.\"",
+        effet: "60% des retards résolus à cette étape",
+        color: "#f59e0b",
+      },
+      {
+        etape: "Relance J+8",
+        message: "\"Malgré notre précédent rappel, la facture n°2026-042 reste impayée. Merci de régulariser avant le [date] ou de nous contacter pour convenir d'un arrangement.\"",
+        effet: "Ton plus ferme, escalade signalée",
+        color: "#fb923c",
+      },
+      {
+        etape: "Escalade J+15",
+        message: "Transmission automatique au responsable comptable ou au service recouvrement, avec historique complet des relances envoyées.",
+        effet: "Dossier prêt pour mise en demeure",
+        color: "#f87171",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex items-center justify-between mb-3">
+          <p class="font-bold text-sm" style={`color: ${item.color};`}>{item.etape}</p>
+          <span class="text-xs px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.effet}</span>
+        </div>
+        <p class="text-[#9090b0] text-xs italic leading-relaxed">{item.message}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comparatif des outils en 2026</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Outil", "Automatisation", "IA OCR", "Prix/mois"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Pennylane", "Relances auto", "Oui", "À partir de 49€"],
+        ["Sage 100cloud", "Relances + EDI", "Partiel", "Sur devis"],
+        ["Sellsy", "Relances + CRM", "Non natif", "À partir de 59€"],
+        ["Zapier + agent IA", "Tout (niveau 1+2)", "Oui", "149€ à 349€"],
+        ["N8n + agent IA", "Tout (niveau 1+2)", "Oui", "Auto-hébergeable"],
+      ].map(([outil, auto, ocr, prix], i) => (
+        <>
+          <div class={`p-3 border-b border-white/5 text-xs ${i === 3 ? 'text-[#f59e0b] font-semibold' : 'text-white'}`}>{outil}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{auto}</div>
+          <div class={`p-3 border-b border-white/5 text-xs ${ocr === 'Oui' ? 'text-[#34d399]' : 'text-[#8888aa]'}`}>{ocr}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{prix}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p class="text-sm text-[#8888aa]">La combinaison agent IA + Zapier ou n8n donne le plus de flexibilité et couvre les deux niveaux d'automatisation — mais nécessite une configuration initiale. C'est ce que nous déployons chez nos clients PME.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que ça donne chez nos clients</h2>
+
+  <div class="not-prose my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+    {[
+      { val: "-12h", label: "par mois sur la saisie et l'envoi des factures", color: "#f59e0b" },
+      { val: "-11j", label: "de délai de paiement moyen grâce aux relances automatiques", color: "#34d399" },
+      { val: "0 oubli", label: "de relance — chaque facture est suivie jusqu'au paiement", color: "#a78bfa" },
+    ].map(s => (
+      <div class="glass rounded-2xl p-5 text-center">
+        <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les limites à connaître</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        limite: "L'IA ne remplace pas le comptable",
+        detail: "La génération et la vérification automatiques réduisent le temps de saisie, mais la validation finale, la déclaration TVA et la clôture comptable restent des tâches humaines. Ne vendez pas la mise à la retraite de votre expert-comptable.",
+      },
+      {
+        limite: "Les cas exceptionnels nécessitent une règle",
+        detail: "Avoir commercial accordé, note de crédit partielle, facture annulée et recréée — chaque exception doit être anticipée et configurée. Un agent IA gère bien les flux standards ; les cas marginaux doivent être escaladés.",
+      },
+      {
+        limite: "La qualité des données source",
+        detail: "L'OCR sur factures fournisseurs atteint 95 à 98% de précision sur des documents de bonne qualité. Sur des scans de mauvaise qualité ou des formats non standards, la relecture humaine reste nécessaire.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.limite}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par où commencer</h2>
+
+  <p>Pour la majorité de nos clients PME, on commence par le niveau 1 — automatiser les relances de paiement — qui se déploie en 3 à 5 jours et génère un ROI immédiat. Ensuite on ajoute la génération de factures depuis les devis, puis l'OCR sur les factures entrantes.</p>
+
+  <p>Ça ne nécessite pas de changer de logiciel de facturation. L'agent IA s'intègre à votre outil existant via API ou webhook.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Guide complet relances clients &rarr;</a>
+    <a href="/calculateur-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+  </div>
+
+</BlogLayout>
