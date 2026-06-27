@@ -1,100 +1,73 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
 const meta = {
   title: "Site web en 2026 : pourquoi Astro bat WordPress pour le SEO",
   description: "On a mesuré. Lighthouse 98 vs 62 en moyenne. Core Web Vitals parfaits vs laborieux. Le choix technique de votre site web impacte directement votre position Google.",
   date: "2026-05-10",
   category: "Web & SEO",
+  categoryColor: "#f87171",
   readTime: "7 min",
+  slug: "site-web-2026-seo",
 };
 ---
 
-<Layout title={`${meta.title} | IAForge Blog`} description={meta.description}>
-  <Nav />
-  <article class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
+<BlogLayout article={meta}>
 
-      <div class="flex items-center gap-3 mb-6">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold text-[#f87171]" style="background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3);">{meta.category}</span>
-        <span class="text-xs text-[#8888aa]">{meta.readTime} de lecture</span>
-        <time class="text-xs text-[#8888aa]">{new Date(meta.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-      </div>
+  <p>Google utilise les Core Web Vitals comme facteur de classement depuis 2021. LCP, INP, CLS — ces trois métriques mesurent l'expérience réelle de vos visiteurs. Un site lent est pénalisé. Un site rapide est récompensé. Et le choix du framework décide à 80% si votre site sera rapide ou lent. Pour aller plus loin sur la stratégie de contenu, lisez notre comparaison <a href="/blog/seo-ia-vs-seo-traditionnel" class="text-[#f87171] hover:text-white transition-colors">SEO IA vs SEO traditionnel</a>.</p>
 
-      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">{meta.title}</h1>
-      <p class="text-lg text-[#8888aa] leading-relaxed mb-12">{meta.description}</p>
-
-      <div class="space-y-8 text-[#8888aa] leading-relaxed">
-
-        <p>Google utilise les Core Web Vitals comme facteur de classement depuis 2021. LCP, INP, CLS — ces trois métriques mesurent l'expérience réelle de vos visiteurs. Un site lent est pénalisé. Un site rapide est récompensé. Et le choix du framework décide à 80% si votre site sera rapide ou lent.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Les données : Astro vs WordPress en 2026</h2>
-        <div class="glass rounded-2xl p-6 not-prose">
-          <div class="grid grid-cols-3 gap-4 mb-6 text-center">
-            <div class="text-[#8888aa] text-sm font-semibold">Métrique</div>
-            <div class="text-red-400 text-sm font-semibold">WordPress + Elementor</div>
-            <div class="text-[#7c5cfc] text-sm font-semibold">Astro (IAForge)</div>
-          </div>
-          {[
-            ["LCP moyen (mobile)", "3.8s ❌", "0.6s ✅"],
-            ["CLS moyen", "0.18 ❌", "0.02 ✅"],
-            ["INP moyen", "280ms ❌", "45ms ✅"],
-            ["Score Lighthouse", "52-68/100", "96-100/100"],
-            ["% sites passant CWV", "44%", "95%+"],
-            ["Bundle JS initial", "450-800KB", "< 30KB"],
-            ["Temps de mise en ligne", "4-8 semaines", "2-3 semaines"],
-            ["Coût hébergement/mois", "10-30 €", "2-10 €"],
-          ].map(([metric, wp, astro]) => (
-            <div class="grid grid-cols-3 gap-4 py-3 border-t border-white/5 text-sm">
-              <div class="text-[#8888aa]">{metric}</div>
-              <div class="text-center text-red-400">{wp}</div>
-              <div class="text-center text-[#7c5cfc] font-semibold">{astro}</div>
-            </div>
-          ))}
-        </div>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi WordPress souffre sur les CWV</h2>
-        <p>WordPress charge plusieurs centaines de Ko de CSS et JavaScript par défaut — avant même d'activer un thème ou un plugin. Elementor seul ajoute 300 à 500 KB. La plupart des sites WordPress arrivent à 1 à 2 MB de ressources à charger avant d'afficher quoi que ce soit.</p>
-        <p>Ce n'est pas un problème de WordPress en soi — c'est un problème d'architecture. WordPress est conçu pour la flexibilité, pas pour la performance. Il existe des sites WordPress rapides, mais ils nécessitent une expertise poussée et un investissement continu pour maintenir les performances.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi Astro performe naturellement</h2>
-        <p>Astro génère des fichiers HTML statiques purs. Pas de JavaScript côté client par défaut. Le navigateur reçoit du HTML brut, l'affiche immédiatement, et ne charge du JavaScript que pour les composants interactifs spécifiques. C'est ce qu'on appelle l'architecture "Islands".</p>
-        <p>Résultat : le LCP (chargement du premier élément visible) est naturellement sous 1 seconde. Les Core Web Vitals sont verts sans optimisation particulière.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que ça change concrètement pour votre référencement</h2>
-        <ul class="space-y-2 not-prose text-sm">
-          {[
-            "Un site rapide obtient un meilleur classement sur les mêmes mots-clés qu'un site lent (toutes choses égales par ailleurs)",
-            "Un LCP < 2,5s réduit le taux de rebond de 32% en moyenne (source : Google)",
-            "Un score Lighthouse 90+ est un signal de confiance visible dans la Search Console",
-            "Les crawlers Google indexent les pages statiques plus rapidement et plus souvent",
-          ].map(item => (
-            <li class="flex items-start gap-2">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>{item}</span>
-            </li>
-          ))}
-        </ul>
-
-        <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
-          <h3 class="text-xl font-black text-white mb-3">Votre site freine-t-il votre SEO ?</h3>
-          <p class="text-[#8888aa] text-sm mb-6">On audite votre site gratuitement : score PageSpeed, Core Web Vitals, points bloquants. Vous repartez avec un rapport d'action concret.</p>
-          <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #f87171, #dc2626);">Audit technique gratuit →</a>
-        </div>
-      </div>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Les données : Astro vs WordPress en 2026</h2>
+  <div class="glass rounded-2xl p-6 not-prose">
+    <div class="grid grid-cols-3 gap-4 mb-6 text-center">
+      <div class="text-[#8888aa] text-sm font-semibold">Métrique</div>
+      <div class="text-red-400 text-sm font-semibold">WordPress + Elementor</div>
+      <div class="text-[#7c5cfc] text-sm font-semibold">Astro (IAForge)</div>
     </div>
-  </article>
-  <Footer />
-</Layout>
+    {[
+      ["LCP moyen (mobile)", "3.8s ❌", "0.6s ✅"],
+      ["CLS moyen", "0.18 ❌", "0.02 ✅"],
+      ["INP moyen", "280ms ❌", "45ms ✅"],
+      ["Score Lighthouse", "52-68/100", "96-100/100"],
+      ["% sites passant CWV", "44%", "95%+"],
+      ["Bundle JS initial", "450-800KB", "< 30KB"],
+      ["Temps de mise en ligne", "4-8 semaines", "2-3 semaines"],
+      ["Coût hébergement/mois", "10-30 €", "2-10 €"],
+    ].map(([metric, wp, astro]) => (
+      <div class="grid grid-cols-3 gap-4 py-3 border-t border-white/5 text-sm">
+        <div class="text-[#8888aa]">{metric}</div>
+        <div class="text-center text-red-400">{wp}</div>
+        <div class="text-center text-[#7c5cfc] font-semibold">{astro}</div>
+      </div>
+    ))}
+  </div>
 
-<script type="application/ld+json">{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Site web en 2026 : pourquoi Astro bat WordPress pour le SEO",
-  "datePublished": "2026-05-10",
-  "author": { "@type": "Organization", "name": "IAForge" },
-  "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://iaforge.fr/blog/site-web-2026-seo" }
-})}</script>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi WordPress souffre sur les CWV</h2>
+  <p>WordPress charge plusieurs centaines de Ko de CSS et JavaScript par défaut — avant même d'activer un thème ou un plugin. Elementor seul ajoute 300 à 500 KB. La plupart des sites WordPress arrivent à 1 à 2 MB de ressources à charger avant d'afficher quoi que ce soit.</p>
+  <p>Ce n'est pas un problème de WordPress en soi — c'est un problème d'architecture. WordPress est conçu pour la flexibilité, pas pour la performance. Il existe des sites WordPress rapides, mais ils nécessitent une expertise poussée et un investissement continu pour maintenir les performances.</p>
+
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi Astro performe naturellement</h2>
+  <p>Astro génère des fichiers HTML statiques purs. Pas de JavaScript côté client par défaut. Le navigateur reçoit du HTML brut, l'affiche immédiatement, et ne charge du JavaScript que pour les composants interactifs spécifiques. C'est ce qu'on appelle l'architecture "Islands".</p>
+  <p>Résultat : le LCP (chargement du premier élément visible) est naturellement sous 1 seconde. Les Core Web Vitals sont verts sans optimisation particulière.</p>
+
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que ça change concrètement pour votre référencement</h2>
+  <ul class="space-y-2 not-prose text-sm">
+    {[
+      "Un site rapide obtient un meilleur classement sur les mêmes mots-clés qu'un site lent (toutes choses égales par ailleurs)",
+      "Un LCP < 2,5s réduit le taux de rebond de 32% en moyenne (source : Google)",
+      "Un score Lighthouse 90+ est un signal de confiance visible dans la Search Console",
+      "Les crawlers Google indexent les pages statiques plus rapidement et plus souvent",
+    ].map(item => (
+      <li class="flex items-start gap-2">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <span>{item}</span>
+      </li>
+    ))}
+  </ul>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Votre site freine-t-il votre SEO ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">On audite votre site gratuitement : score PageSpeed, Core Web Vitals, points bloquants. Vous repartez avec un rapport d'action concret.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #f87171, #dc2626);">Audit technique gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

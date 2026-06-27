@@ -1,95 +1,68 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
 const meta = {
   title: "Google Business Profile : l'IA triple vos avis et votre visibilité locale",
   description: "Google Business est le canal SEO local le plus sous-exploité des PME. Comment l'IA automatise publications, réponses aux avis et fiches produits pour dominer la recherche locale.",
   date: "2026-05-25",
   category: "SEO Local",
+  categoryColor: "#34d399",
   readTime: "7 min",
+  slug: "google-business-ia",
 };
 ---
 
-<Layout title={`${meta.title} | IAForge Blog`} description={meta.description}>
-  <Nav />
-  <article class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
+<BlogLayout article={meta}>
 
-      <div class="flex items-center gap-3 mb-6">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold text-[#34d399]" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">{meta.category}</span>
-        <span class="text-xs text-[#8888aa]">{meta.readTime} de lecture</span>
-        <time class="text-xs text-[#8888aa]">{new Date(meta.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-      </div>
+  <p>Quand un patient cherche "dentiste disponible Lyon", quand un client cherche "artisan électricien Paris 15", quand un acheteur cherche "boutique chaussures Bordeaux" — Google Business Profile (GBP) est ce qui apparaît en premier. Avant votre site. Avant vos concurrents. C'est le terrain de jeu SEO local le plus puissant qui existe, et 80% des PME le gèrent mal ou pas du tout.</p>
 
-      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">{meta.title}</h1>
-      <p class="text-lg text-[#8888aa] leading-relaxed mb-12">{meta.description}</p>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi votre GBP est probablement sous-optimisé</h2>
+  <p>Un GBP bien géré nécessite en théorie : 2 à 4 posts par semaine, une réponse à chaque avis sous 48h, des photos actualisées chaque mois, des horaires à jour pour chaque période (fêtes, vacances), des produits/services détaillés avec mots-clés. En pratique, qui fait ça manuellement ?</p>
 
-      <div class="space-y-8 text-[#8888aa] leading-relaxed">
-
-        <p>Quand un patient cherche "dentiste disponible Lyon", quand un client cherche "artisan électricien Paris 15", quand un acheteur cherche "boutique chaussures Bordeaux" — Google Business Profile (GBP) est ce qui apparaît en premier. Avant votre site. Avant vos concurrents. C'est le terrain de jeu SEO local le plus puissant qui existe, et 80% des PME le gèrent mal ou pas du tout.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Pourquoi votre GBP est probablement sous-optimisé</h2>
-        <p>Un GBP bien géré nécessite en théorie : 2 à 4 posts par semaine, une réponse à chaque avis sous 48h, des photos actualisées chaque mois, des horaires à jour pour chaque période (fêtes, vacances), des produits/services détaillés avec mots-clés. En pratique, qui fait ça manuellement ?</p>
-
-        <div class="glass rounded-2xl p-6 not-prose">
-          <h3 class="text-white font-bold mb-4 text-sm">Impact d'un GBP optimisé vs négligé (mêmes secteurs, France)</h3>
-          <div class="space-y-3">
-            {[
-              { label: "Clics vers le site web", value: "+340%", color: "#34d399" },
-              { label: "Appels téléphoniques entrants", value: "+210%", color: "#38bdf8" },
-              { label: "Demandes d'itinéraire", value: "+180%", color: "#7c5cfc" },
-              { label: "Avis reçus par mois", value: "+85%", color: "#a78bfa" },
-            ].map(item => (
-              <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
-                <span class="text-[#8888aa] text-sm">{item.label}</span>
-                <span class="text-sm font-black" style={`color: ${item.color};`}>{item.value}</span>
-              </div>
-            ))}
-          </div>
+  <div class="glass rounded-2xl p-6 not-prose">
+    <h3 class="text-white font-bold mb-4 text-sm">Impact d'un GBP optimisé vs négligé (mêmes secteurs, France)</h3>
+    <div class="space-y-3">
+      {[
+        { label: "Clics vers le site web", value: "+340%", color: "#34d399" },
+        { label: "Appels téléphoniques entrants", value: "+210%", color: "#38bdf8" },
+        { label: "Demandes d'itinéraire", value: "+180%", color: "#7c5cfc" },
+        { label: "Avis reçus par mois", value: "+85%", color: "#a78bfa" },
+      ].map(item => (
+        <div class="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
+          <span class="text-[#8888aa] text-sm">{item.label}</span>
+          <span class="text-sm font-black" style={`color: ${item.color};`}>{item.value}</span>
         </div>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que l'IA automatise sur votre GBP</h2>
-        <ul class="space-y-4 not-prose">
-          {[
-            { title: "Posts hebdomadaires", desc: "L'IA rédige et programme 2 posts par semaine adaptés à votre secteur (actualités, conseils, promotions, événements). À votre voix, avec les bons mots-clés locaux." },
-            { title: "Réponses aux avis", desc: "Chaque avis reçoit une réponse personnalisée sous 4 heures. L'IA varie les formulations pour éviter la répétition et remercie en intégrant des mots-clés naturellement." },
-            { title: "Mise à jour des fiches", desc: "Horaires, description, services, photos — tout est mis à jour automatiquement selon vos informations et les évolutions de l'algorithme GBP." },
-            { title: "Détection de questions", desc: "L'IA surveille les questions posées sur votre fiche et répond sous 2 heures avec des réponses optimisées." },
-          ].map(item => (
-            <li class="glass rounded-xl p-5">
-              <p class="text-white font-semibold text-sm mb-2">{item.title}</p>
-              <p class="text-[#8888aa] text-sm">{item.desc}</p>
-            </li>
-          ))}
-        </ul>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Les 3 actions immédiates pour votre GBP</h2>
-        <p>Si vous ne faites rien d'autre aujourd'hui, faites ces trois choses :</p>
-        <ol class="list-decimal list-inside space-y-2 text-sm">
-          <li>Vérifiez que vos horaires sont exacts et incluent les jours fériés</li>
-          <li>Ajoutez au moins 10 photos récentes (intérieur, équipe, produits/services)</li>
-          <li>Répondez à tous vos avis non répondus — Google pénalise l'absence de réponse</li>
-        </ol>
-
-        <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
-          <h3 class="text-xl font-black text-white mb-3">Votre GBP travaille-t-il pour vous ?</h3>
-          <p class="text-[#8888aa] text-sm mb-6">On audite votre fiche Google Business gratuitement et on vous dit exactement ce qui freine votre visibilité locale.</p>
-          <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">Audit GBP gratuit →</a>
-        </div>
-      </div>
+      ))}
     </div>
-  </article>
-  <Footer />
-</Layout>
+  </div>
 
-<script type="application/ld+json">{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Google Business Profile : l'IA triple vos avis et votre visibilité locale",
-  "datePublished": "2026-05-25",
-  "author": { "@type": "Organization", "name": "IAForge" },
-  "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://iaforge.fr/blog/google-business-ia" }
-})}</script>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que l'IA automatise sur votre GBP</h2>
+  <ul class="space-y-4 not-prose">
+    {[
+      { title: "Posts hebdomadaires", desc: "L'IA rédige et programme 2 posts par semaine adaptés à votre secteur (actualités, conseils, promotions, événements). À votre voix, avec les bons mots-clés locaux." },
+      { title: "Réponses aux avis", desc: "Chaque avis reçoit une réponse personnalisée sous 4 heures. L'IA varie les formulations pour éviter la répétition et remercie en intégrant des mots-clés naturellement." },
+      { title: "Mise à jour des fiches", desc: "Horaires, description, services, photos — tout est mis à jour automatiquement selon vos informations et les évolutions de l'algorithme GBP." },
+      { title: "Détection de questions", desc: "L'IA surveille les questions posées sur votre fiche et répond sous 2 heures avec des réponses optimisées." },
+    ].map(item => (
+      <li class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.title}</p>
+        <p class="text-[#8888aa] text-sm">{item.desc}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Les 3 actions immédiates pour votre GBP</h2>
+  <p>Si vous ne faites rien d'autre aujourd'hui, faites ces trois choses :</p>
+  <ol class="list-decimal list-inside space-y-2 text-sm">
+    <li>Vérifiez que vos horaires sont exacts et incluent les jours fériés</li>
+    <li>Ajoutez au moins 10 photos récentes (intérieur, équipe, produits/services)</li>
+    <li>Répondez à tous vos avis non répondus — Google pénalise l'absence de réponse</li>
+  </ol>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Votre GBP travaille-t-il pour vous ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">On audite votre fiche Google Business gratuitement et on vous dit exactement ce qui freine votre visibilité locale.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">Audit GBP gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

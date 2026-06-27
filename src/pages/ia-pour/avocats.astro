@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const tasks = [
+  "Répond aux premières demandes de contact 24h/24 via site ou email",
+  "Qualifie le dossier : type de litige, urgence, juridiction, montant estimé",
+  "Collecte automatiquement les pièces justificatives avant le RDV",
+  "Envoie le questionnaire préalable personnalisé selon le type d'affaire",
+  "Programme le rendez-vous de consultation et envoie la confirmation",
+  "Répond aux questions procédurales fréquentes (délais, recours, coûts)",
+  "Relance les prospects qui n'ont pas finalisé leur prise de RDV",
+  "Classe et archive les documents reçus par client et par dossier",
+];
+
+const faqItems = [
+  {
+    q: "Les échanges client-agent sont-ils soumis au secret professionnel ?",
+    a: "L'agent opère avant la relation contractuelle avocat-client : il prend contact, collecte les premières informations, programme le RDV. Les données collectées sont hébergées en France (Mistral AI, Paris), chiffrées, et accessibles uniquement à votre cabinet. L'agent ne remplace pas la consultation — il la prépare.",
+  },
+  {
+    q: "L'agent peut-il donner des conseils juridiques ?",
+    a: "Non, et c'est configuré intentionnellement. L'agent reconnaît les questions de fond (\"Ai-je droit à ceci ?\") et répond systématiquement que seul l'avocat peut y répondre lors de la consultation. Il se limite à la qualification du dossier, la logistique et les informations procédurales générales.",
+  },
+  {
+    q: "Pour quels types de cabinets est-ce adapté ?",
+    a: "Cabinets en droit de la famille (divorce, succession), droit du travail, droit immobilier, droit des affaires, droit pénal, contentieux locatif. L'agent est configuré pour chaque spécialité : les questions de qualification et les pièces demandées varient selon votre domaine.",
+  },
+  {
+    q: "Est-ce que ça s'intègre à mon logiciel de gestion de cabinet ?",
+    a: "On s'intègre avec Secib, Clio, Jarvis Legal, ou tout logiciel avec API. Pour les cabinets sans logiciel métier, l'agent crée automatiquement une fiche prospect dans une base structurée que vous consultez via le dashboard.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours pour un cabinet mono-spécialité. 2 semaines pour un cabinet multi-pôles. On configure l'agent sur votre spécialité, vos questions de qualification, vos pièces habituelles, votre tarif de consultation.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour avocats et cabinets juridiques — Qualification automatique | IAForge"
+  description="Agent IA pour avocats : qualification des dossiers, collecte des pièces, prise de RDV. Hébergé en France, conforme RGPD. 22h d'administration économisées par semaine. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div style="position:absolute;width:600px;height:500px;top:-5%;right:-5%;background:radial-gradient(circle,rgba(124,92,252,0.12),transparent 70%);filter:blur(80px);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto relative">
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-white">Agent IA pour avocats</span>
+      </nav>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="color: #7c5cfc; background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.2);">Juridique & Comptabilité</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos dossiers sont triés<br/><span style="color: #7c5cfc;">avant que vous<br/>arriviez au bureau.</span>
+          </h1>
+          <p class="text-[#8888aa] leading-relaxed mb-8">
+            Un agent IA qui qualifie les demandes entrantes, collecte les pièces et programme les consultations — hébergé en France, configuré pour votre spécialité.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { v: "22h", l: "admin. économisées/sem." },
+              { v: "-30min", l: "par consultation" },
+              { v: "24h/24", l: "premier contact" },
+            ].map(s => (
+              <div class="glass rounded-xl px-4 py-3 text-center">
+                <p class="text-2xl font-black text-white">{s.v}</p>
+                <p class="text-xs text-[#8888aa]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+            Audit gratuit pour mon cabinet &rarr;
+          </a>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-4">Exemple : litige locatif à 23h</p>
+          <div class="space-y-3">
+            {[
+              { c: true, t: "Bonsoir, mon propriétaire refuse de me rendre ma caution depuis 3 mois. C'est 1 200€." },
+              { c: false, t: "Bonsoir. C'est un litige locatif fréquent. Avez-vous un état des lieux de sortie signé et des preuves de paiement de vos loyers ?" },
+              { c: true, t: "Oui, j'ai tout ça en PDF" },
+              { c: false, t: "Parfait. Pouvez-vous me les envoyer ici ? Je prépare votre dossier et un avocat vous rappelle demain entre 9h et 12h pour une consultation de 30 minutes." },
+              { c: true, t: "[fichiers envoyés]" },
+              { c: false, t: "Documents reçus. Dossier transmis. Confirmation de rappel envoyée par SMS. Bonne soirée." },
+            ].map(msg => (
+              <div class={`flex ${msg.c ? 'justify-end' : 'justify-start'}`}>
+                <div class={`max-w-[80%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${msg.c ? 'text-white' : 'text-[#ccccdd]'}`} style={msg.c ? 'background: rgba(124,92,252,0.2); border: 1px solid rgba(124,92,252,0.3);' : 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);'}>
+                  {msg.t}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÂCHES -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-4">Ce que l'agent fait pour votre cabinet</h2>
+      <p class="text-[#8888aa] text-center mb-12">Configuré pour votre spécialité — pas un outil générique.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <p class="text-[#8888aa] text-sm">{task}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Cabinet de 3 avocats : avant et après</h2>
+      <div class="glass rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs font-black">×</span>
+              Sans agent IA
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 1 secrétaire à temps plein : 2 200 €/mois</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 20 min perdues par consultation à recollecte des infos</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Demandes hors-horaires non traitées</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Dossiers incomplets à l'arrivée</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style="background: rgba(124,92,252,0.2); color: #7c5cfc;">✓</span>
+              Avec agent IA IAForge
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span style="color: #7c5cfc;">·</span> Pack Croissance : 790 €/mois</li>
+              <li class="flex items-start gap-2"><span style="color: #7c5cfc;">·</span> Dossier pré-constitué avant chaque RDV</li>
+              <li class="flex items-start gap-2"><span style="color: #7c5cfc;">·</span> 100% des demandes hors-horaires traitées</li>
+              <li class="flex items-start gap-2"><span style="color: #7c5cfc;">·</span> Secrétaire libérée sur l'accueil et la facturation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-[#8888aa] text-sm">Économie mensuelle nette + CA additionnel (consultations hors-horaires)</p>
+          <span class="text-3xl font-black text-[#7c5cfc]">+ 1 900 €/mois</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RGPD -->
+  <section class="py-12 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+        <div class="text-4xl">🔒</div>
+        <div>
+          <h3 class="text-white font-black text-lg mb-2">Hébergé en France. Aucune donnée hors-frontières.</h3>
+          <p class="text-[#8888aa] text-sm leading-relaxed">Pour les cabinets juridiques, on utilise exclusivement Mistral AI — hébergé à Paris. Les données de vos clients et de leurs dossiers restent sur territoire français. L'infrastructure est conforme RGPD. Aucune donnée partagée avec des tiers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {faqItems.map(f => (
+          <details class="glass rounded-xl group">
+            <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+              {f.q}
+              <span class="text-[#7c5cfc] ml-4 flex-shrink-0 transition-transform group-open:rotate-45 text-lg">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[#8888aa] text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Libérez du temps de conseil, pas d'administration</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On vous montre comment l'agent serait configuré pour votre spécialité.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+        Audit gratuit pour mon cabinet &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">Réponse sous 24h · Hébergé France · RGPD conforme</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>

@@ -1,99 +1,71 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
 const meta = {
   title: "SEO par l'IA vs SEO traditionnel : comparaison objective 2026",
   description: "Peut-on faire du SEO de qualité avec l'IA ? Comparaison sur 12 mois : coûts, délais, qualité, performances réelles. Les chiffres sans embellissement.",
   date: "2026-06-08",
   category: "SEO",
+  categoryColor: "#38bdf8",
   readTime: "8 min",
+  slug: "seo-ia-vs-seo-traditionnel",
 };
 ---
 
-<Layout title={`${meta.title} | IAForge Blog`} description={meta.description}>
-  <Nav />
-  <article class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
+<BlogLayout article={meta}>
 
-      <div class="flex items-center gap-3 mb-6">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold text-[#38bdf8]" style="background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.3);">{meta.category}</span>
-        <span class="text-xs text-[#8888aa]">{meta.readTime} de lecture</span>
-        <time class="text-xs text-[#8888aa]">{new Date(meta.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-      </div>
+  <p>En 2026, la question n'est plus "l'IA peut-elle écrire du contenu SEO ?" — elle le peut. La question est : ce contenu performe-t-il aussi bien qu'un contenu rédigé par un humain expert ? Voici ce que nos données sur 12 mois montrent. Si vous cherchez aussi l'impact des performances techniques sur le SEO, lisez notre article sur <a href="/blog/site-web-2026-seo" class="text-[#38bdf8] hover:text-white transition-colors">pourquoi Astro bat WordPress pour le référencement</a>.</p>
 
-      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">{meta.title}</h1>
-      <p class="text-lg text-[#8888aa] leading-relaxed mb-12">{meta.description}</p>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que le SEO traditionnel fait bien (et coûte cher)</h2>
+  <p>Un rédacteur SEO expérimenté produit du contenu nuancé, ancré dans l'expérience terrain, avec des sources primaires. Le résultat est qualitatif. Le problème : un article optimisé coûte entre 150 et 400 € HT, prend 3 à 7 jours, et ne permet pas de publier à l'échelle.</p>
+  <p>Pour un site qui veut couvrir 50 mots-clés, c'est 7 500 à 20 000 € et plusieurs mois de travail. Hors de portée pour une PME.</p>
 
-      <div class="space-y-8 text-[#8888aa] leading-relaxed">
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que le SEO IA fait différemment</h2>
 
-        <p>En 2026, la question n'est plus "l'IA peut-elle écrire du contenu SEO ?" — elle le peut. La question est : ce contenu performe-t-il aussi bien qu'un contenu rédigé par un humain expert ? Voici ce que nos données sur 12 mois montrent.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que le SEO traditionnel fait bien (et coûte cher)</h2>
-        <p>Un rédacteur SEO expérimenté produit du contenu nuancé, ancré dans l'expérience terrain, avec des sources primaires. Le résultat est qualitatif. Le problème : un article optimisé coûte entre 150 et 400 € HT, prend 3 à 7 jours, et ne permet pas de publier à l'échelle.</p>
-        <p>Pour un site qui veut couvrir 50 mots-clés, c'est 7 500 à 20 000 € et plusieurs mois de travail. Hors de portée pour une PME.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Ce que le SEO IA fait différemment</h2>
-
-        <div class="glass rounded-2xl p-6 not-prose">
-          <h3 class="text-white font-bold mb-4 text-sm">Comparaison directe sur 12 mois (mêmes mots-clés, même secteur)</h3>
-          <div class="overflow-x-auto">
-            <table class="w-full text-sm">
-              <thead>
-                <tr class="border-b border-white/10">
-                  <th class="text-left py-3 pr-6 text-[#8888aa] font-semibold">Critère</th>
-                  <th class="text-left py-3 pr-6 text-white font-semibold">SEO traditionnel</th>
-                  <th class="text-left py-3 text-[#38bdf8] font-semibold">SEO IA (IAForge)</th>
-                </tr>
-              </thead>
-              <tbody class="space-y-2">
-                {[
-                  ['Coût/article', '150-400 €', '15-40 €'],
-                  ['Délai/article', '3-7 jours', '< 4 heures'],
-                  ['Articles/mois (PME)', '2-4', '8-30'],
-                  ['Score sémantique moyen', '72/100', '84/100'],
-                  ['Trafic organique à M+6', '+35%', '+180%'],
-                  ['Positions page 1 à M+9', '8 mots-clés', '23 mots-clés'],
-                  ['Nécessite supervision', 'Oui', 'Légère'],
-                ].map(([crit, trad, ia]) => (
-                  <tr class="border-b border-white/5">
-                    <td class="py-3 pr-6 text-[#8888aa]">{crit}</td>
-                    <td class="py-3 pr-6 text-white">{trad}</td>
-                    <td class="py-3 text-[#38bdf8] font-semibold">{ia}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p class="text-xs text-[#8888aa] mt-4">*Données issues de nos clients Pack Growth, secteur services B2B, France. Résultats variables selon secteur et concurrence.</p>
-        </div>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Où l'IA reste inférieure</h2>
-        <p>Soyons honnêtes : sur des sujets très techniques ou réglementés (médical, juridique pointu, finance), l'IA produit du contenu qui nécessite une validation experte. Elle ne remplace pas un avocat fiscaliste ou un médecin spécialisé. Elle réduit le temps de production de 80%, mais la validation humaine reste indispensable.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">La bonne stratégie en 2026</h2>
-        <p>Les meilleurs résultats viennent d'une approche hybride : l'IA produit la structure, la première rédaction et l'optimisation sémantique — l'expert humain valide, enrichit de son expérience terrain, et ajoute les données propriétaires que l'IA ne peut pas inventer.</p>
-        <p>C'est exactement le workflow qu'on applique chez IAForge : l'IA fait 80% du travail, votre connaissance métier fait les 20% qui font la différence.</p>
-
-        <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
-          <h3 class="text-xl font-black text-white mb-3">Votre SEO est-il optimisé ?</h3>
-          <p class="text-[#8888aa] text-sm mb-6">Audit SEO gratuit en 30 minutes. On vous dit exactement où vous en êtes et ce qui peut changer.</p>
-          <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">Audit SEO gratuit →</a>
-        </div>
-      </div>
+  <div class="glass rounded-2xl p-6 not-prose">
+    <h3 class="text-white font-bold mb-4 text-sm">Comparaison directe sur 12 mois (mêmes mots-clés, même secteur)</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-white/10">
+            <th class="text-left py-3 pr-6 text-[#8888aa] font-semibold">Critère</th>
+            <th class="text-left py-3 pr-6 text-white font-semibold">SEO traditionnel</th>
+            <th class="text-left py-3 text-[#38bdf8] font-semibold">SEO IA (IAForge)</th>
+          </tr>
+        </thead>
+        <tbody class="space-y-2">
+          {[
+            ['Coût/article', '150-400 €', '15-40 €'],
+            ['Délai/article', '3-7 jours', '< 4 heures'],
+            ['Articles/mois (PME)', '2-4', '8-30'],
+            ['Score sémantique moyen', '72/100', '84/100'],
+            ['Trafic organique à M+6', '+35%', '+180%'],
+            ['Positions page 1 à M+9', '8 mots-clés', '23 mots-clés'],
+            ['Nécessite supervision', 'Oui', 'Légère'],
+          ].map(([crit, trad, ia]) => (
+            <tr class="border-b border-white/5">
+              <td class="py-3 pr-6 text-[#8888aa]">{crit}</td>
+              <td class="py-3 pr-6 text-white">{trad}</td>
+              <td class="py-3 text-[#38bdf8] font-semibold">{ia}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
-  </article>
-  <Footer />
-</Layout>
+    <p class="text-xs text-[#8888aa] mt-4">*Données issues de nos clients Pack Growth, secteur services B2B, France. Résultats variables selon secteur et concurrence.</p>
+  </div>
 
-<script type="application/ld+json">{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "SEO par l'IA vs SEO traditionnel : comparaison objective 2026",
-  "datePublished": "2026-06-08",
-  "author": { "@type": "Organization", "name": "IAForge" },
-  "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
-  "description": "Comparaison objective SEO IA vs SEO traditionnel sur 12 mois avec données réelles.",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://iaforge.fr/blog/seo-ia-vs-seo-traditionnel" }
-})}</script>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Où l'IA reste inférieure</h2>
+  <p>Soyons honnêtes : sur des sujets très techniques ou réglementés (médical, juridique pointu, finance), l'IA produit du contenu qui nécessite une validation experte. Elle ne remplace pas un avocat fiscaliste ou un médecin spécialisé. Elle réduit le temps de production de 80%, mais la validation humaine reste indispensable.</p>
+
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">La bonne stratégie en 2026</h2>
+  <p>Les meilleurs résultats viennent d'une approche hybride : l'IA produit la structure, la première rédaction et l'optimisation sémantique — l'expert humain valide, enrichit de son expérience terrain, et ajoute les données propriétaires que l'IA ne peut pas inventer.</p>
+  <p>C'est exactement le workflow qu'on applique chez IAForge : l'IA fait 80% du travail, votre connaissance métier fait les 20% qui font la différence.</p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Votre SEO est-il optimisé ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">Audit SEO gratuit en 30 minutes. On vous dit exactement où vous en êtes et ce qui peut changer.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">Audit SEO gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

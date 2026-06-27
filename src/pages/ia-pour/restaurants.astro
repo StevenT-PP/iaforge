@@ -1,0 +1,206 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const tasks = [
+  "Gère les réservations de table 24h/24, 7j/7 — même pendant le service",
+  "Répond aux questions sur le menu, les allergènes, les horaires",
+  "Envoie des confirmations de réservation par SMS",
+  "Rappel automatique J-1 pour réduire les no-shows",
+  "Gère les groupes et les demandes spéciales (anniversaires, menus végétariens…)",
+  "Répond aux avis Google en moins de 2 heures",
+  "Envoie des promotions ciblées aux clients réguliers",
+  "Collecte les préférences et allergènes avant l'arrivée",
+];
+
+const faqItems = [
+  {
+    q: "Est-ce que l'agent peut gérer les réservations en temps réel ?",
+    a: "Oui. L'agent est connecté à votre système de réservation (TheFork, Zenchef, Google Reserve ou tableur partagé). Il voit les tables disponibles en temps réel et ne propose jamais un créneau déjà complet.",
+  },
+  {
+    q: "Que se passe-t-il si quelqu'un annule ?",
+    a: "L'agent détecte l'annulation, libère la table dans le système, et peut envoyer un message à la liste d'attente si vous en avez une. Tout automatiquement.",
+  },
+  {
+    q: "Peut-il répondre aux avis Google négatifs ?",
+    a: "Oui, et c'est souvent l'une des fonctions les plus précieuses. L'agent répond à tous vos avis (positifs et négatifs) avec des réponses personnalisées, variées, et en intégrant vos mots-clés locaux — en moins de 2 heures.",
+  },
+  {
+    q: "Est-il en français uniquement ?",
+    a: "Par défaut en français, mais il peut être configuré pour répondre en anglais ou espagnol si vous avez une clientèle touristique. Le changement de langue se fait automatiquement selon la langue du message reçu.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours. On configure votre menu, vos horaires, vos règles de réservation (taille max de groupe, durée de créneau, politique d'annulation). Vous validez, on met en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour restaurants et hôtels — Réservations automatiques 24h/24 | IAForge"
+  description="Automatisez vos réservations, réponses aux avis et questions clients. Agent IA pour restaurant : no-shows -60%, réservations +40%, disponible pendant le service. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div style="position:absolute;width:600px;height:500px;top:-5%;right:-5%;background:radial-gradient(circle,rgba(251,191,36,0.1),transparent 70%);filter:blur(80px);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto relative">
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-white">Agent IA pour restaurants</span>
+      </nav>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="color: #f59e0b; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2);">Restauration & Hôtellerie</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos tables se remplissent.<br/><span style="color: #f59e0b;">Même pendant le service.</span>
+          </h1>
+          <p class="text-[#8888aa] leading-relaxed mb-8">
+            Un agent IA qui gère vos réservations, répond aux questions clients et répond à vos avis Google — pendant que vous êtes en cuisine ou en salle.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { v: "+40%", l: "de réservations" },
+              { v: "-60%", l: "de no-shows" },
+              { v: "2h", l: "réponse aux avis" },
+            ].map(s => (
+              <div class="glass rounded-xl px-4 py-3 text-center">
+                <p class="text-2xl font-black text-white">{s.v}</p>
+                <p class="text-xs text-[#8888aa]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+            Audit gratuit pour mon restaurant &rarr;
+          </a>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-4">Exemple de réservation</p>
+          <div class="space-y-3">
+            {[
+              { c: true, t: "Bonsoir, est-ce que vous avez une table pour 4 vendredi soir ?" },
+              { c: false, t: "Bonsoir ! Oui, on a une table disponible vendredi 4 juillet à 19h30 ou 21h. Quelle heure vous préférez ?" },
+              { c: true, t: "21h parfait. C'est pour un anniversaire" },
+              { c: false, t: "Super ! Vous souhaitez un dessert surprise ou décoration de table ? On peut prévoir ça avec plaisir 🎂" },
+              { c: true, t: "Oui un gâteau d'anniversaire !" },
+              { c: false, t: "Noté ! Réservation confirmée pour 4 personnes vendredi 4 juillet à 21h. Vous recevrez un SMS de rappel jeudi. À vendredi !" },
+            ].map(msg => (
+              <div class={`flex ${msg.c ? 'justify-end' : 'justify-start'}`}>
+                <div class={`max-w-[80%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${msg.c ? 'text-white' : 'text-[#ccccdd]'}`} style={msg.c ? 'background: rgba(245,158,11,0.2); border: 1px solid rgba(245,158,11,0.3);' : 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);'}>
+                  {msg.t}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE FAIT L'AGENT -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-4">Ce que l'agent fait pour votre établissement</h2>
+      <p class="text-[#8888aa] text-center mb-12">Pendant que vous gérez la salle, il gère les demandes.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <p class="text-[#8888aa] text-sm">{task}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Restaurant 40 couverts : avant et après</h2>
+      <div class="glass rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs font-black">×</span>
+              Sans agent IA
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Téléphone qui sonne pendant le service</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> No-shows : 20% des réservations en moyenne</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Avis Google sans réponse = signal négatif</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 0 réservation reçue après 22h</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style="background: rgba(245,158,11,0.2); color: #f59e0b;">✓</span>
+              Avec agent IA IAForge
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span style="color: #f59e0b;">·</span> Réservations gérées sans interrompre le service</li>
+              <li class="flex items-start gap-2"><span style="color: #f59e0b;">·</span> No-shows : 8% (-60% grâce aux rappels SMS)</li>
+              <li class="flex items-start gap-2"><span style="color: #f59e0b;">·</span> Tous les avis répondus sous 2h</li>
+              <li class="flex items-start gap-2"><span style="color: #f59e0b;">·</span> +40% de réservations via site et réseaux</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-[#8888aa] text-sm mb-2">Gain estimé sur 40 couverts à 35€/ticket moyen</p>
+          <span class="text-3xl font-black" style="color: #f59e0b;">+5 600 €/mois de CA additionnel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {faqItems.map(f => (
+          <details class="glass rounded-xl group">
+            <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+              {f.q}
+              <span class="ml-4 flex-shrink-0 transition-transform group-open:rotate-45 text-lg" style="color: #f59e0b;">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[#8888aa] text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Remplissez vos tables sans décrocher le téléphone</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On vous montre comment l'agent fonctionnerait dans votre établissement.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+        Audit gratuit pour mon restaurant &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">Réponse sous 24h · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>

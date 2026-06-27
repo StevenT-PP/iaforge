@@ -1,155 +1,111 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
-const article = {
-  title: "Agent IA pour PME : quel ROI realiste en 2026 ?",
-  description: "Les agents IA ne sont plus reserves aux grandes entreprises. Voici les chiffres reels : ce que ca coute, ce que ca rapporte, et par ou commencer.",
+const meta = {
+  title: "Agent IA pour PME : quel ROI réaliste en 2026 ?",
+  description: "Les agents IA ne sont plus réservés aux grandes entreprises. Voici les chiffres réels : ce que ça coûte, ce que ça rapporte, et par où commencer.",
   date: "2026-06-15",
   readTime: "6 min",
   category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-pme-roi",
 };
 ---
 
-<Layout title={`${article.title} | IAForge Blog`} description={article.description}>
-  <Nav />
+<BlogLayout article={meta}>
 
-  <article class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
+  <p>
+    En 2026, la question n'est plus "est-ce que l'IA peut m'aider ?" mais "combien ça va me rapporter, et en combien de temps ?" C'est la bonne question. Et on va y répondre avec des chiffres concrets, pas avec des slides marketing.
+  </p>
 
-      <!-- Header -->
-      <div class="mb-12">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="px-3 py-1 rounded-full text-xs font-semibold text-[#7c5cfc]" style="background: rgba(124,92,252,0.1); border: 1px solid rgba(124,92,252,0.3);">
-            {article.category}
-          </span>
-          <span class="text-xs text-[#8888aa]">{article.readTime} de lecture</span>
-          <time class="text-xs text-[#8888aa]">
-            {new Date(article.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}
-          </time>
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA peut faire pour votre PME</h2>
+
+  <p>
+    Un agent IA, c'est un employé numérique. Il peut répondre à des emails, qualifier des leads, prendre des rendez-vous, générer des devis, répondre aux questions clients, faire du support de niveau 1 — le tout 24h/24, en quelques secondes, sans erreur et sans congé.
+  </p>
+
+  <div class="glass rounded-2xl p-6 not-prose">
+    <h3 class="text-white font-bold mb-4">Cas d'usage les plus rentables par secteur</h3>
+    <div class="space-y-3">
+      {[
+        { sector: 'Cabinet médical / dentiste', useCase: 'Prise de RDV + rappels automatiques', roi: 'x8 en 6 mois', link: '/ia-pour/medecins' },
+        { sector: 'Agence immobilière', useCase: 'Qualification leads + visite scheduling', roi: 'x6 en 4 mois', link: '/ia-pour/immobilier' },
+        { sector: 'E-commerce', useCase: 'Support client + recommandations produits', roi: 'x5 en 3 mois', link: '/ia-pour/ecommerce' },
+        { sector: "Cabinet d'avocats", useCase: 'Premier contact + collecte de dossier', roi: 'x7 en 6 mois', link: '/ia-pour/avocats' },
+      ].map(row => (
+        <div class="flex flex-col md:flex-row md:items-center gap-2 py-3 border-b border-white/5 last:border-0">
+          <a href={row.link} class="text-white font-semibold text-sm md:w-48 flex-shrink-0 hover:text-[#7c5cfc] transition-colors">{row.sector}</a>
+          <span class="text-[#8888aa] text-sm flex-1">{row.useCase}</span>
+          <span class="text-green-400 text-sm font-semibold flex-shrink-0">{row.roi}</span>
         </div>
+      ))}
+    </div>
+  </div>
 
-        <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
-          {article.title}
-        </h1>
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les chiffres réels : combien ça coûte ?</h2>
 
-        <p class="text-lg text-[#8888aa] leading-relaxed">
-          {article.description}
-        </p>
+  <p>
+    Soyons directs. Un agent IA bien conçu pour une PME, ça coûte entre 3 000 et 12 000 € en setup selon la complexité, puis 300 à 800 €/mois pour les appels API (GPT-4o ou Claude) et la maintenance.
+  </p>
+
+  <p>
+    Chez IAForge, nos packs intègrent tout ça : on ne vous facture pas en plus les coûts d'API pour un volume standard. Le Pack Growth à 1 490 €/mois inclut un agent IA métier avec jusqu'à 2 000 interactions/mois.
+  </p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Calcul ROI concret : exemple d'un cabinet comptable</h2>
+
+  <div class="glass rounded-2xl p-6 not-prose">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <h3 class="text-white font-bold mb-3 text-sm">Situation avant</h3>
+        <ul class="space-y-2 text-sm text-[#8888aa]">
+          <li>• 2 assistantes @ 2 200 €/mois = 4 400 €</li>
+          <li>• 60% du temps = tâches répétitives</li>
+          <li>• 2 640 € de "temps perdu"/mois</li>
+          <li>• Temps de réponse : 24-48h</li>
+        </ul>
       </div>
-
-      <!-- Content -->
-      <div class="prose prose-invert max-w-none space-y-8 text-[#8888aa] leading-relaxed">
-
-        <p>
-          En 2026, la question n'est plus "est-ce que l'IA peut m'aider ?" mais "combien ca va me rapporter, et en combien de temps ?" C'est la bonne question. Et on va y repondre avec des chiffres concrets, pas avec des slides marketing.
-        </p>
-
-        <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA peut faire pour votre PME</h2>
-
-        <p>
-          Un agent IA, c'est un employe numerique. Il peut repondre a des emails, qualifier des leads, prendre des rendez-vous, generer des devis, repondre aux questions clients, faire du support de niveau 1 - le tout 24h/24, en quelques secondes, sans erreur et sans conge.
-        </p>
-
-        <div class="glass rounded-2xl p-6 not-prose">
-          <h3 class="text-white font-bold mb-4">Cas d'usage les plus rentables par secteur</h3>
-          <div class="space-y-3">
-            {[
-              { sector: 'Cabinet medical / dentiste', useCase: 'Prise de RDV + rappels automatiques', saving: '15h/semaine', roi: 'x8 en 6 mois' },
-              { sector: 'Agence immobiliere', useCase: 'Qualification leads + visite scheduling', saving: '12h/semaine', roi: 'x6 en 4 mois' },
-              { sector: 'E-commerce', useCase: 'Support client + recommandations produits', saving: '20h/semaine', roi: 'x5 en 3 mois' },
-              { sector: 'Cabinet d\'avocats', useCase: 'Premier contact + collecte de dossier', saving: '8h/semaine', roi: 'x7 en 6 mois' },
-            ].map(row => (
-              <div class="flex flex-col md:flex-row md:items-center gap-2 py-3 border-b border-white/5 last:border-0">
-                <span class="text-white font-semibold text-sm md:w-48 flex-shrink-0">{row.sector}</span>
-                <span class="text-[#8888aa] text-sm flex-1">{row.useCase}</span>
-                <span class="text-green-400 text-sm font-semibold flex-shrink-0">{row.roi}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <h2 class="text-2xl font-black text-white mt-12 mb-4">Les chiffres reels : combien ca coute ?</h2>
-
-        <p>
-          Soyons directs. Un agent IA bien concu pour une PME, ca coute entre 3 000 et 12 000 € en setup selon la complexite, puis 300 a 800 €/mois pour les appels API (GPT-4o ou Claude) et la maintenance.
-        </p>
-
-        <p>
-          Chez IAForge, nos packs integrent tout ca : on ne vous facture pas en plus les couts d'API pour un volume standard. Le Pack Growth a 1 490 €/mois inclut un agent IA metier avec jusqu'a 2 000 interactions/mois.
-        </p>
-
-        <h2 class="text-2xl font-black text-white mt-12 mb-4">Calcul ROI concret : exemple d'un cabinet comptable</h2>
-
-        <div class="glass rounded-2xl p-6 not-prose">
-          <div class="grid grid-cols-2 gap-6">
-            <div>
-              <h3 class="text-white font-bold mb-3 text-sm">Situation avant</h3>
-              <ul class="space-y-2 text-sm text-[#8888aa]">
-                <li>• 2 assistantes @ 2 200 €/mois = 4 400 €</li>
-                <li>• 60% du temps = taches repetitives</li>
-                <li>• 2 640 € de "temps perdu"/mois</li>
-                <li>• Temps de reponse : 24-48h</li>
-              </ul>
-            </div>
-            <div>
-              <h3 class="text-white font-bold mb-3 text-sm">Avec agent IAForge</h3>
-              <ul class="space-y-2 text-sm text-[#8888aa]">
-                <li>• Pack Growth : 1 490 €/mois</li>
-                <li>• 80% des taches repetitives automatisees</li>
-                <li>• Temps de reponse : 3 secondes</li>
-                <li>• Assistantes librees sur le conseil</li>
-              </ul>
-            </div>
-          </div>
-          <div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
-            <span class="text-[#8888aa] text-sm">Economie mensuelle nette</span>
-            <span class="text-2xl font-black text-green-400">+ 1 150 €/mois</span>
-          </div>
-          <div class="mt-2 flex items-center justify-between">
-            <span class="text-[#8888aa] text-sm">ROI a 12 mois</span>
-            <span class="text-2xl font-black text-white">+92%</span>
-          </div>
-        </div>
-
-        <p>
-          Et ca, c'est sans compter les leads supplementaires generees par la disponibilite 24h/24, ni la satisfaction client amelioree qui genere des recommandations.
-        </p>
-
-        <h2 class="text-2xl font-black text-white mt-12 mb-4">Par ou commencer ?</h2>
-
-        <p>
-          Notre recommandation : commencez par identifier <strong class="text-white">une seule tache repetitive</strong> qui vous prend plus de 3 heures par semaine. Un agent IA sur ce point unique vous rapportera un ROI visible en moins d'un mois.
-        </p>
-
-        <p>
-          Ensuite, on etend. Les meilleurs clients qu'on accompagne ont commence avec un chatbot de prise de RDV, et six mois plus tard ont des agents qui grent 80% de leurs interactions clients.
-        </p>
-
-        <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
-          <h3 class="text-xl font-black text-white mb-3">Calculez votre ROI potentiel</h3>
-          <p class="text-[#8888aa] text-sm mb-6">30 minutes d'audit gratuit. On vous sort un ROI estime avant de signer quoi que ce soit.</p>
-          <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
-            Audit gratuit &rarr;
-          </a>
-        </div>
+      <div>
+        <h3 class="text-white font-bold mb-3 text-sm">Avec agent IAForge</h3>
+        <ul class="space-y-2 text-sm text-[#8888aa]">
+          <li>• Pack Growth : 1 490 €/mois</li>
+          <li>• 80% des tâches répétitives automatisées</li>
+          <li>• Temps de réponse : 3 secondes</li>
+          <li>• Assistantes libérées sur le conseil</li>
+        </ul>
       </div>
     </div>
-  </article>
+    <div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+      <span class="text-[#8888aa] text-sm">Économie mensuelle nette</span>
+      <span class="text-2xl font-black text-green-400">+ 1 150 €/mois</span>
+    </div>
+    <div class="mt-2 flex items-center justify-between">
+      <span class="text-[#8888aa] text-sm">ROI à 12 mois</span>
+      <span class="text-2xl font-black text-white">+92%</span>
+    </div>
+  </div>
 
-  <Footer />
-</Layout>
+  <p>
+    Et ça, c'est sans compter les leads supplémentaires générés par la disponibilité 24h/24, ni la satisfaction client améliorée qui génère des recommandations.
+  </p>
 
-<script type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Agent IA pour PME : quel ROI realiste en 2026 ?",
-  "datePublished": "2026-06-15",
-  "author": { "@type": "Organization", "name": "IAForge" },
-  "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
-  "description": "Les agents IA ne sont plus reserves aux grandes entreprises. Voici les chiffres reels : ce que ca coute, ce que ca rapporte, et par ou commencer.",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://iaforge.fr/blog/agent-ia-pme-roi" }
-})}
-</script>
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par où commencer ?</h2>
+
+  <p>
+    Notre recommandation : commencez par identifier <strong class="text-white">une seule tâche répétitive</strong> qui vous prend plus de 3 heures par semaine. Un agent IA sur ce point unique vous rapportera un ROI visible en moins d'un mois.
+  </p>
+
+  <p>
+    Ensuite, on étend. Les meilleurs clients qu'on accompagne ont commencé avec un chatbot de prise de RDV, et six mois plus tard ont des agents qui gèrent 80% de leurs interactions clients.
+  </p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Calculez votre ROI en 2 minutes</h3>
+    <p class="text-[#8888aa] text-sm mb-6">Entrez vos chiffres dans notre calculateur gratuit : temps passé, demandes/semaine, valeur client — et obtenez une estimation personnalisée immédiate.</p>
+    <a href="/calculateur-roi" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90 mb-3" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Calculateur ROI gratuit &rarr;
+    </a>
+    <p class="text-xs text-[#8888aa] mt-3">Ou <a href="/contact" class="text-[#7c5cfc] hover:text-white transition-colors">prenez un audit gratuit</a> pour des projections personnalisées.</p>
+  </div>
+
+</BlogLayout>

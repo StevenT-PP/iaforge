@@ -1,0 +1,111 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  article: {
+    title: string;
+    description: string;
+    date: string;
+    readTime: string;
+    category: string;
+    categoryColor: string;
+    slug: string;
+  };
+}
+
+const { article } = Astro.props;
+
+const formattedDate = new Date(article.date).toLocaleDateString('fr-FR', {
+  day: 'numeric', month: 'long', year: 'numeric'
+});
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": article.title,
+  "description": article.description,
+  "datePublished": article.date,
+  "author": {
+    "@type": "Person",
+    "name": "Steven Texier",
+    "jobTitle": "Fondateur IAForge"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "IAForge",
+    "url": "https://iaforge.fr",
+    "logo": { "@type": "ImageObject", "url": "https://iaforge.fr/favicon.svg" }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://iaforge.fr/blog/${article.slug}`
+  },
+  "url": `https://iaforge.fr/blog/${article.slug}`
+};
+
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://iaforge.fr/blog" },
+    { "@type": "ListItem", "position": 3, "name": article.title, "item": `https://iaforge.fr/blog/${article.slug}` }
+  ]
+};
+---
+
+<Layout title={`${article.title} | IAForge Blog`} description={article.description}>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(jsonLd)} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(breadcrumb)} />
+
+  <Nav />
+
+  <article class="pt-32 pb-24 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <a href="/blog" class="hover:text-white transition-colors">Blog</a>
+        <span>/</span>
+        <span class="text-[#ccccdd] truncate max-w-[200px]">{article.title}</span>
+      </nav>
+
+      <div class="flex items-center gap-3 mb-6">
+        <span class="px-3 py-1 rounded-full text-xs font-semibold" style={`color: ${article.categoryColor}; background: ${article.categoryColor}1a; border: 1px solid ${article.categoryColor}4d;`}>{article.category}</span>
+        <span class="text-xs text-[#8888aa]">{article.readTime} de lecture</span>
+        <time class="text-xs text-[#8888aa]" datetime={article.date}>{formattedDate}</time>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">{article.title}</h1>
+      <p class="text-lg text-[#8888aa] leading-relaxed mb-8">{article.description}</p>
+
+      <div class="flex items-center gap-3 mb-12 pb-8 border-b border-white/10">
+        <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-white text-xs font-black" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">ST</div>
+        <div>
+          <p class="text-white text-xs font-semibold">Steven Texier</p>
+          <p class="text-[#8888aa] text-xs">Fondateur · IAForge</p>
+        </div>
+      </div>
+
+      <div class="space-y-8 text-[#8888aa] leading-relaxed">
+        <slot />
+      </div>
+
+      <div class="mt-16 glass rounded-2xl p-6 flex items-start gap-5">
+        <div class="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-white text-sm font-black" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">ST</div>
+        <div>
+          <p class="text-white font-bold text-sm mb-1">Steven Texier</p>
+          <p class="text-[#8888aa] text-xs mb-3">Fondateur d'IAForge. Spécialiste en automatisation IA, SEO et acquisition pour PME françaises. Accompagne les dirigeants qui veulent des résultats mesurables, pas des projets pilotes.</p>
+          <a href="/a-propos" class="text-xs text-[#8888aa] hover:text-white transition-colors mr-4">En savoir plus</a>
+          <a href="/contact" class="text-xs font-semibold text-[#7c5cfc] hover:text-white transition-colors">Travailler avec Steven &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+  </article>
+
+  <Footer />
+</Layout>

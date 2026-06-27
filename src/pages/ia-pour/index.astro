@@ -1,0 +1,163 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const sectors = [
+  {
+    name: "Médecins & Dentistes",
+    slug: "medecins",
+    emoji: "🏥",
+    color: "#34d399",
+    headline: "Prise de RDV automatique 24h/24",
+    gain: "14h récupérées/semaine",
+    desc: "L'agent gère les rendez-vous, rappels automatiques et FAQ patients — hébergé en France, conforme RGPD.",
+  },
+  {
+    name: "Restaurants & Hôtels",
+    slug: "restaurants",
+    emoji: "🍽️",
+    color: "#f59e0b",
+    headline: "Réservations sans décrocher le téléphone",
+    gain: "+40% de réservations",
+    desc: "Réservations 24h/24, réponses aux avis Google, rappels SMS — pendant que vous gérez la salle.",
+  },
+  {
+    name: "Artisans & BTP",
+    slug: "artisans",
+    emoji: "🔧",
+    color: "#fb923c",
+    headline: "Devis et urgences gérés sur chantier",
+    gain: "-60% de temps au téléphone",
+    desc: "Collecte les infos devis, détecte les urgences, relance les prospects non signés automatiquement.",
+  },
+  {
+    name: "Avocats & Comptables",
+    slug: "avocats",
+    emoji: "⚖️",
+    color: "#7c5cfc",
+    headline: "Dossiers qualifiés avant le premier RDV",
+    gain: "22h d'admin économisées/sem.",
+    desc: "Qualification des dossiers, collecte de pièces, prise de rendez-vous — hébergé en France, conforme RGPD.",
+  },
+  {
+    name: "E-commerce",
+    slug: "ecommerce",
+    emoji: "🛒",
+    color: "#38bdf8",
+    headline: "SAV automatique et relance paniers",
+    gain: "+31% de conversion",
+    desc: "Support 24h/24, relance paniers abandonnés, suivi commandes — compatible Shopify, WooCommerce.",
+  },
+  {
+    name: "Immobilier",
+    slug: "immobilier",
+    emoji: "🏠",
+    color: "#a78bfa",
+    headline: "Leads qualifiés et visites programmées",
+    gain: "+40% de leads convertis",
+    desc: "Qualification acheteurs, envoi de biens, programmation de visites — compatible Apimo, Hektor.",
+  },
+  {
+    name: "Coachs & Formateurs",
+    slug: "coachs",
+    emoji: "📚",
+    color: "#fbbf24",
+    headline: "Inscriptions automatiques 24h/24",
+    gain: "+3 000€/mois de CA",
+    desc: "Qualification prospects, gestion inscriptions, relances pendant les lancements — Kajabi, Teachable.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA par secteur — Guide complet pour votre métier | IAForge"
+  description="Guides complets sur l'agent IA pour chaque secteur : médecins, restaurants, artisans, avocats, e-commerce, immobilier, coachs. Cas d'usage, ROI et déploiement en 7 jours."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" }
+    ]
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc] mb-4">Guides sectoriels</p>
+      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+        Agent IA pour<br/><span class="gradient-text">votre métier, pas tous les métiers</span>
+      </h1>
+      <p class="text-[#8888aa] text-lg max-w-2xl mx-auto leading-relaxed">
+        Chaque secteur a ses propres défis. Voici comment un agent IA est configuré spécifiquement pour chaque activité — avec des exemples réels, des chiffres de ROI et un déploiement en 7 jours.
+      </p>
+    </div>
+  </section>
+
+  <!-- GRILLE SECTEURS -->
+  <section class="py-16 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sectors.map(s => (
+        <a href={`/ia-pour/${s.slug}`} class="glass rounded-2xl p-7 hover:bg-white/[0.07] transition-all duration-300 group flex flex-col">
+          <div class="flex items-start justify-between mb-5">
+            <div class="text-4xl">{s.emoji}</div>
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full" style={`color: ${s.color}; background: ${s.color}15; border: 1px solid ${s.color}30;`}>
+              {s.gain}
+            </span>
+          </div>
+          <h2 class="text-white font-black text-lg mb-2 group-hover:text-[#a78bfa] transition-colors">{s.name}</h2>
+          <p class="text-[#7c5cfc] text-xs font-semibold mb-3">{s.headline}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed flex-1">{s.desc}</p>
+          <div class="mt-5 flex items-center gap-1.5 text-xs font-bold" style={`color: ${s.color};`}>
+            Guide complet
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- VOTRE SECTEUR N'EST PAS LÀ ? -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-2xl font-black text-white mb-4">Votre secteur n'est pas dans la liste ?</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">
+        IAForge déploie des agents pour tous les secteurs : pharmacies, garages, agences de voyage, cliniques vétérinaires, cabinets d'expertise-comptable, studios de sport… Si vous avez des clients qui posent des questions répétitives, il y a un agent IA adapté.
+      </p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+        Voir si mon secteur est éligible &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- COMMUN À TOUS -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que tous les agents IAForge ont en commun</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { icon: "⚡", title: "Opérationnel en 7 jours", desc: "Pas de projet de plusieurs mois. Configuration, tests, mise en ligne en une semaine." },
+          { icon: "🔒", title: "RGPD et hébergement France", desc: "Pour les secteurs sensibles, Mistral AI hébergé à Paris. Vos données restent en France." },
+          { icon: "📊", title: "Dashboard de supervision", desc: "Toutes les conversations consultables. Vous savez ce que fait votre agent à tout moment." },
+          { icon: "🎯", title: "Garantie résultat 90 jours", desc: "Si les métriques définies ensemble ne sont pas atteintes, on continue gratuitement." },
+          { icon: "🔗", title: "Connecté à vos outils", desc: "Agenda, CRM, logiciel métier, email, WhatsApp — l'agent agit là où vous travaillez." },
+          { icon: "💬", title: "Sans engagement", desc: "Résiliable chaque mois. 0€ de frais d'installation sur tous les packs." },
+        ].map(item => (
+          <div class="glass rounded-xl p-5 flex items-start gap-4">
+            <div class="text-2xl flex-shrink-0">{item.icon}</div>
+            <div>
+              <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

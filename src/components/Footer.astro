@@ -15,7 +15,7 @@ const year = new Date().getFullYear();
           <span class="font-black text-xl tracking-tight text-white">IA<span style="color: #a78bfa; font-weight: 300; letter-spacing: 0.03em">Forge</span></span>
         </a>
         <p class="text-[#8888aa] text-sm leading-relaxed max-w-xs">
-          L'agence IA qui forge votre avantage concurrentiel. Agents intelligents, SEO automatise et sites haute performance.
+          L'agence IA qui forge votre avantage concurrentiel. Agents intelligents, SEO automatisé et sites haute performance.
         </p>
         <div class="flex items-center gap-4 mt-6">
           <a href="https://linkedin.com/company/iaforge" class="text-[#8888aa] hover:text-white transition-colors" aria-label="LinkedIn">
@@ -27,16 +27,17 @@ const year = new Date().getFullYear();
         </div>
       </div>
 
-      <!-- Services -->
+      <!-- Solutions -->
       <div>
-        <h3 class="text-white font-semibold text-sm mb-4">Services</h3>
+        <h3 class="text-white font-semibold text-sm mb-4">Solutions</h3>
         <ul class="space-y-3">
           {[
-            ['Agents IA sur-mesure', '/services#agents'],
-            ['Automatisation métier', '/services#automatisation'],
-            ['SEO & Contenu IA', '/services#seo'],
-            ['Sites web premium', '/services#sites'],
-            ['Audit IA gratuit', '/contact'],
+            ['Agent IA sur-mesure', '/agent-ia'],
+            ['Comparatif IA 2026', '/comparatif-ia'],
+            ['IA pour médecins', '/ia-pour/medecins'],
+            ['IA pour restaurants', '/ia-pour/restaurants'],
+            ['IA pour artisans', '/ia-pour/artisans'],
+            ['Glossaire IA', '/glossaire-ia'],
           ].map(([label, href]) => (
             <li>
               <a href={href} class="text-[#8888aa] hover:text-white text-sm transition-colors">{label}</a>
@@ -45,15 +46,16 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Company -->
+      <!-- Agence -->
       <div>
         <h3 class="text-white font-semibold text-sm mb-4">Agence</h3>
         <ul class="space-y-3">
           {[
-            ['Notre méthode', '/processus'],
             ['Offres & Tarifs', '/offres'],
+            ['Calculateur ROI', '/calculateur-roi'],
             ['Blog IA & SEO', '/blog'],
-            ['Contact', '/contact'],
+            ['À propos', '/a-propos'],
+            ['Audit IA gratuit', '/contact'],
             ['Mentions légales', '/mentions-legales'],
           ].map(([label, href]) => (
             <li>

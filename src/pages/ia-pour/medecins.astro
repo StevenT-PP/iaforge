@@ -1,0 +1,233 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const tasks = [
+  "Répond aux demandes de rendez-vous 24h/24, 7j/7 — même à 23h",
+  "Qualifie la demande : médecin généraliste, spécialiste, urgence ?",
+  "Consulte votre agenda (Doctolib, Google Calendar) et propose des créneaux disponibles",
+  "Envoie la confirmation par SMS et rappel automatique J-1",
+  "Réduit les no-shows : relance automatique si absence de confirmation",
+  "Répond aux questions fréquentes (tarifs, secteur, remboursement, documents à apporter)",
+  "Gère les annulations et replanifications sans secrétaire",
+  "Escalade vers vous uniquement les cas urgents ou hors périmètre",
+];
+
+const faqItems = [
+  {
+    q: "Les données patients sont-elles conformes RGPD ?",
+    a: "Absolument. Pour les cabinets médicaux, on utilise exclusivement Mistral AI hébergé à Paris. Aucune donnée patient ne quitte le territoire français. Le système est conçu pour respecter le secret médical : l'agent ne stocke pas les informations de santé, uniquement les informations de contact et d'agenda.",
+  },
+  {
+    q: "Compatible avec Doctolib ?",
+    a: "Oui. L'agent peut se connecter à votre Doctolib via API pour vérifier les disponibilités en temps réel. Si vous n'avez pas Doctolib, on s'intègre à Google Calendar, Calendly ou votre logiciel de cabinet.",
+  },
+  {
+    q: "L'agent remplace-t-il ma secrétaire médicale ?",
+    a: "Non, il la libère. L'agent traite les demandes répétitives (60 à 80% des appels d'un cabinet moyen). Votre secrétaire se concentre sur les patients en cabinet, les urgences et les cas complexes — et travaille sans interruption téléphonique constante.",
+  },
+  {
+    q: "Que se passe-t-il pour les urgences médicales ?",
+    a: "L'agent est configuré pour détecter les mots-clés d'urgence (douleur thoracique, détresse respiratoire, etc.) et bascule immédiatement vers un message d'urgence avec le 15 et votre numéro direct. Il ne minimise jamais une urgence.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec vos horaires, vos types de consultations, vos praticiens, vos questions fréquentes. Vous validez les réponses sur 50 scénarios tests, puis on met en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour médecins et cabinets médicaux — Prise de RDV automatique | IAForge"
+  description="Automatisez la prise de rendez-vous de votre cabinet médical. Agent IA RGPD-conforme, hébergé en France. Doctolib, rappels automatiques, no-shows -66%. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Médecins", "item": "https://iaforge.fr/ia-pour/medecins" }
+    ]
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div style="position:absolute;width:600px;height:500px;top:-5%;left:-5%;background:radial-gradient(circle,rgba(52,211,153,0.1),transparent 70%);filter:blur(80px);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto relative">
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-white">Agent IA pour médecins</span>
+      </nav>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest text-[#34d399] mb-4 px-3 py-1 rounded-full" style="background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.2);">Secteur médical</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre cabinet répond<br/><span style="color: #34d399;">à 22h.</span><br/>Sans secrétaire.
+          </h1>
+          <p class="text-[#8888aa] leading-relaxed mb-8">
+            Un agent IA configuré pour votre cabinet : prise de rendez-vous automatique, rappels J-1, FAQ patients — hébergé en France, conforme RGPD.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { v: "-66%", l: "de no-shows" },
+              { v: "14h", l: "récupérées/semaine" },
+              { v: "24h/24", l: "disponibilité" },
+            ].map(s => (
+              <div class="glass rounded-xl px-4 py-3 text-center">
+                <p class="text-2xl font-black text-white">{s.v}</p>
+                <p class="text-xs text-[#8888aa]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">
+            Audit gratuit pour mon cabinet &rarr;
+          </a>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-4">Exemple de conversation patient</p>
+          <div class="space-y-3">
+            {[
+              { c: true, t: "Bonsoir, je voudrais prendre un rendez-vous avec le Dr Martin" },
+              { c: false, t: "Bonsoir ! Je suis l'assistant du cabinet. Est-ce pour une consultation générale ou avez-vous un motif particulier ?" },
+              { c: true, t: "Renouvellement d'ordonnance pour hypertension" },
+              { c: false, t: "Parfait. Le Dr Martin est disponible jeudi 3 juillet à 10h30 ou vendredi 4 juillet à 16h. Quelle heure vous convient ?" },
+              { c: true, t: "Jeudi 10h30" },
+              { c: false, t: "Réservé ! Vous recevrez une confirmation par SMS. Pensez à apporter votre carte vitale et votre dernière ordonnance. À jeudi !" },
+            ].map(msg => (
+              <div class={`flex ${msg.c ? 'justify-end' : 'justify-start'}`}>
+                <div class={`max-w-[80%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${msg.c ? 'text-white' : 'text-[#ccccdd]'}`} style={msg.c ? 'background: rgba(52,211,153,0.2); border: 1px solid rgba(52,211,153,0.3);' : 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);'}>
+                  {msg.t}
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="text-[#8888aa] text-xs mt-4 text-center">Configuré pour votre cabinet, vos praticiens, vos horaires.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CE QUE FAIT L'AGENT -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-4">Ce que l'agent fait pour votre cabinet</h2>
+      <p class="text-[#8888aa] text-center mb-12">Configuré pour le secteur médical, pas générique.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <p class="text-[#8888aa] text-sm">{task}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Cabinet de 2 praticiens : avant et après</h2>
+      <div class="glass rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs font-black">×</span>
+              Avant agent IA
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">·</span> 1 secrétaire à mi-temps : 1 100 €/mois</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">·</span> 60 appels/jour traités manuellement</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">·</span> RDV non honorés : 18% en moyenne</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">·</span> Disponible lun-ven 9h-18h uniquement</li>
+              <li class="flex items-start gap-2"><span class="text-red-400 mt-0.5">·</span> Médecins interrompus pour les questions FAQ</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style="background: rgba(52,211,153,0.2); color: #34d399;">✓</span>
+              Avec agent IA IAForge
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span style="color: #34d399;" class="mt-0.5">·</span> Pack Solo : 149 €/mois</li>
+              <li class="flex items-start gap-2"><span style="color: #34d399;" class="mt-0.5">·</span> 100% des demandes traitées en &lt;5 secondes</li>
+              <li class="flex items-start gap-2"><span style="color: #34d399;" class="mt-0.5">·</span> RDV non honorés : 6% (-66%)</li>
+              <li class="flex items-start gap-2"><span style="color: #34d399;" class="mt-0.5">·</span> Disponible 24h/24, 7j/7</li>
+              <li class="flex items-start gap-2"><span style="color: #34d399;" class="mt-0.5">·</span> Secrétaire libérée pour l'accueil en cabinet</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div>
+            <p class="text-[#8888aa] text-sm">Économie mensuelle nette (secrétaire mi-temps supprimée)</p>
+          </div>
+          <span class="text-3xl font-black text-green-400">+ 951 €/mois</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RGPD -->
+  <section class="py-12 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass rounded-2xl p-8 flex flex-col md:flex-row items-center gap-6">
+        <div class="text-4xl">🔒</div>
+        <div>
+          <h3 class="text-white font-black text-lg mb-2">Hébergé en France. Conforme RGPD.</h3>
+          <p class="text-[#8888aa] text-sm leading-relaxed">Pour les cabinets médicaux, on utilise exclusivement Mistral AI — hébergé à Paris. Vos données patients ne quittent pas le territoire français. L'agent ne stocke pas de données de santé : uniquement les informations nécessaires à la prise de rendez-vous (nom, contact, motif).</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {faqItems.map(f => (
+          <details class="glass rounded-xl group">
+            <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+              {f.q}
+              <span class="text-[#34d399] ml-4 flex-shrink-0 transition-transform group-open:rotate-45 text-lg">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[#8888aa] text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre cabinet mérite un assistant disponible 24h/24</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On vous montre comment l'agent fonctionnerait dans votre cabinet — sans engagement.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90" style="background: linear-gradient(135deg, #34d399, #059669);">
+        Audit gratuit pour mon cabinet &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">Réponse sous 24h · Sans engagement · RGPD conforme</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>

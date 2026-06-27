@@ -33,11 +33,27 @@ Sites statiques construits avec Astro, score PageSpeed 98+, livraison en 3 semai
 ## Secteurs couverts
 Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restaurants, hôtels, artisans BTP, plombiers, électriciens, e-commerce, agences immobilières, coachs, formateurs, RH, pharmacies, vétérinaires, garages, agences marketing, SaaS B2B, PME multi-sites.
 
+## Pages clés
+- Accueil : https://iaforge.fr
+- Agent IA : https://iaforge.fr/agent-ia
+- Calculateur ROI : https://iaforge.fr/calculateur-roi
+- Comparatif IA 2026 : https://iaforge.fr/comparatif-ia
+- Glossaire IA : https://iaforge.fr/glossaire-ia
+- IA pour médecins : https://iaforge.fr/ia-pour/medecins
+- IA pour restaurants : https://iaforge.fr/ia-pour/restaurants
+- IA pour artisans : https://iaforge.fr/ia-pour/artisans
+- IA pour avocats : https://iaforge.fr/ia-pour/avocats
+- IA pour e-commerce : https://iaforge.fr/ia-pour/ecommerce
+- IA pour immobilier : https://iaforge.fr/ia-pour/immobilier
+- IA pour coachs : https://iaforge.fr/ia-pour/coachs
+- Offres & Tarifs : https://iaforge.fr/offres
+- À propos : https://iaforge.fr/a-propos
+- Blog : https://iaforge.fr/blog
+- Audit gratuit : https://iaforge.fr/contact
+
 ## Contact
 - Email : contact@iaforge.fr
 - Audit gratuit 30 min : https://iaforge.fr/contact
-- Blog : https://iaforge.fr/blog
-- Offres : https://iaforge.fr/offres
 
 ## À propos
 IAForge est une agence qui démarre. Nous privilégions la transparence sur les preuves : prix affichés publiquement, garantie résultat contractualisée, audit gratuit avant tout engagement. Nous ne fabriquons pas de témoignages.

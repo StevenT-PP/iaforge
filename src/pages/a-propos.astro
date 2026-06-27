@@ -1,0 +1,126 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="À propos — Steven Texier, Fondateur IAForge | Agence IA France"
+  description="Steven Texier, fondateur d'IAForge. Ex-consultant stratégie digitale, spécialiste en automatisation IA et SEO pour PME françaises. Qui est derrière IAForge ?"
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Steven Texier",
+    "jobTitle": "Fondateur IAForge",
+    "worksFor": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
+    "description": "Spécialiste en automatisation IA, SEO et acquisition pour PME françaises. Fondateur d'IAForge.",
+    "url": "https://iaforge.fr/a-propos",
+    "email": "contact@iaforge.fr"
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-3xl mx-auto">
+
+      <div class="flex flex-col md:flex-row items-start gap-10 mb-16">
+        <div class="w-24 h-24 rounded-2xl flex-shrink-0 flex items-center justify-center text-white text-3xl font-black" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">ST</div>
+        <div>
+          <p class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc] mb-3">Fondateur</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-4">Steven Texier</h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed">
+            Spécialiste en automatisation IA, SEO et systèmes d'acquisition pour PME françaises. Je construis IAForge pour que les dirigeants qui n'ont pas 10 développeurs aient accès aux mêmes outils que les grandes entreprises.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mon parcours -->
+      <div class="space-y-12">
+
+        <div>
+          <h2 class="text-2xl font-black text-white mb-6">Pourquoi IAForge</h2>
+          <div class="space-y-4 text-[#8888aa] leading-relaxed">
+            <p>
+              J'ai passé plusieurs années à accompagner des entreprises sur leur stratégie digitale. À chaque mission, je voyais la même chose : les grandes boîtes avaient accès à des outils IA et des équipes SEO que les PME ne pouvaient pas financer. Un agent IA sur-mesure ? 50 000€ de dev. Une stratégie SEO sérieuse ? 3 000€/mois minimum.
+            </p>
+            <p>
+              En 2025, les LLMs ont changé l'équation. GPT-4o, Claude, Mistral — des modèles aussi puissants que ce que les startups de la Silicon Valley utilisaient deux ans avant, accessibles pour quelques centimes par requête. Le problème n'est plus le modèle. C'est la configuration, l'intégration et la supervision.
+            </p>
+            <p>
+              IAForge est né pour résoudre ça : déployer des agents IA réellement utiles pour des PME françaises, avec des prix qui correspondent à leur réalité économique, et une garantie de résultat mesurable.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-8">
+          <h2 class="text-xl font-black text-white mb-6">Ce que je fais concrètement</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {[
+              { icon: "🤖", title: "Agents IA sur-mesure", desc: "Configuration de GPT-4o, Claude et Mistral pour des cas d'usage métier précis. Chaque agent est testé sur des centaines de scénarios avant mise en ligne." },
+              { icon: "📈", title: "SEO automatisé", desc: "Production de contenu sémantique, maillage interne, optimisation technique. L'IA produit, la connaissance métier valide." },
+              { icon: "⚡", title: "Sites haute performance", desc: "Sites Astro statiques avec scores Lighthouse 96-100. Le SEO technique n'est pas une option — c'est la base de tout." },
+              { icon: "🔒", title: "RGPD & hébergement France", desc: "Pour les secteurs sensibles (santé, juridique), hébergement exclusif Mistral AI à Paris. Vos données ne quittent pas le territoire français." },
+            ].map(item => (
+              <div class="flex items-start gap-4">
+                <div class="text-2xl flex-shrink-0">{item.icon}</div>
+                <div>
+                  <p class="text-white font-semibold text-sm mb-1">{item.title}</p>
+                  <p class="text-[#8888aa] text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-black text-white mb-6">Ma philosophie</h2>
+          <div class="space-y-4 text-[#8888aa] leading-relaxed">
+            <p>
+              Je refuse de vendre de l'IA comme une baguette magique. Chaque client qui travaille avec IAForge reçoit un ROI estimé <strong class="text-white">avant</strong> de signer, des objectifs mesurables contractualisés, et une garantie : si on n'atteint pas les métriques définies ensemble à 90 jours, on continue gratuitement jusqu'à y arriver.
+            </p>
+            <p>
+              Je ne fabrique pas de témoignages. IAForge démarre, et je préfère être transparent sur ça. Ce que je peux garantir : les outils et les méthodes que j'utilise, je les ai testés, mesurés et affinés. Les chiffres dans mes contenus viennent de cas réels, pas de slides marketing.
+            </p>
+          </div>
+        </div>
+
+        <div class="glass rounded-2xl p-8">
+          <h2 class="text-xl font-black text-white mb-2">Une question ? Un projet ?</h2>
+          <p class="text-[#8888aa] text-sm mb-6">Je réponds à tous les messages sous 24h. L'audit de 30 minutes est gratuit et sans engagement — c'est simplement la meilleure façon de voir si ce que je fais correspond à ce dont vous avez besoin.</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a href="/contact" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+              Prendre un audit gratuit &rarr;
+            </a>
+            <a href="mailto:contact@iaforge.fr" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl text-[#7c5cfc] font-semibold text-sm transition-all hover:text-white glass">
+              contact@iaforge.fr
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-black text-white mb-6">Articles récents</h2>
+          <div class="space-y-3">
+            {[
+              { title: "Agent IA pour PME : quel ROI réaliste en 2026 ?", slug: "agent-ia-pme-roi", date: "15 juin 2026" },
+              { title: "SEO par l'IA vs SEO traditionnel : comparaison objective 2026", slug: "seo-ia-vs-seo-traditionnel", date: "8 juin 2026" },
+              { title: "Automatiser sa prise de RDV avec un agent IA : guide complet", slug: "automatiser-prise-rdv", date: "1 juin 2026" },
+            ].map(a => (
+              <a href={`/blog/${a.slug}`} class="glass rounded-xl p-4 flex items-center justify-between hover:bg-white/[0.06] transition-all group">
+                <div>
+                  <p class="text-white text-sm font-semibold group-hover:text-[#a78bfa] transition-colors">{a.title}</p>
+                  <p class="text-[#8888aa] text-xs mt-1">{a.date}</p>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 ml-4"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

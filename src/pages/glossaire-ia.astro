@@ -1,0 +1,224 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+const terms = [
+  {
+    letter: "A",
+    entries: [
+      { term: "Agent IA", definition: "Programme autonome capable de comprendre des instructions en langage naturel, de prendre des décisions et d'agir sur des systèmes externes (agenda, email, CRM) sans intervention humaine à chaque étape. Différent d'un chatbot simple qui suit des règles fixes." },
+      { term: "API (Interface de Programmation)", definition: "Protocole permettant à deux logiciels de communiquer. Un agent IA utilise des APIs pour accéder à votre agenda, envoyer des emails ou lire votre base clients. L'intégration API est ce qui transforme un modèle IA en outil métier utile." },
+      { term: "Automatisation IA", definition: "Exécution automatique de tâches répétitives par un système IA sans intervention humaine. Exemples : réponse aux emails, prise de RDV, envoi de devis, relance clients. Différente de l'automatisation classique (règles) : elle comprend le contexte." },
+      { term: "AI Overview (Google)", definition: "Encadré généré par l'IA de Google qui apparaît en haut des résultats de recherche. Pour y figurer, votre contenu doit être structuré, factuel, et répondre directement à la question posée. Correspond à l'enjeu GEO (Generative Engine Optimization)." },
+    ],
+  },
+  {
+    letter: "C",
+    entries: [
+      { term: "ChatGPT", definition: "Modèle de langage d'OpenAI accessible au grand public. Puissant pour des usages génériques (rédaction, résumé, code). Non configuré pour votre activité sans personnalisation. La version \"Team\" ou les GPT Custom permettent un début de configuration métier." },
+      { term: "Claude (Anthropic)", definition: "Modèle de langage d'Anthropic, concurrent de GPT-4o. Reconnu pour la qualité de sa rédaction et son respect des instructions complexes. Hébergé aux États-Unis, ce qui impose des précautions RGPD pour les données sensibles." },
+      { term: "CLS (Cumulative Layout Shift)", definition: "Métrique Core Web Vitals mesurant la stabilité visuelle d'une page. Un score CLS élevé signifie que les éléments de la page bougent pendant le chargement, dégradant l'expérience utilisateur. Score idéal : < 0,1. Facteur de classement Google depuis 2021." },
+      { term: "Contexte (fenêtre de contexte)", definition: "Quantité de texte que le modèle IA peut \"voir\" et comprendre en une seule interaction. GPT-4o : 128 000 tokens (~100 000 mots). Plus le contexte est grand, plus l'IA peut analyser des documents longs ou maintenir une conversation longue sans oublier le début." },
+      { term: "Core Web Vitals (CWV)", definition: "Les trois métriques de performance web retenues par Google comme facteurs de classement SEO : LCP (chargement), INP (interactivité) et CLS (stabilité visuelle). Un site passant les seuils Google est récompensé dans les résultats de recherche." },
+      { term: "CRM (Customer Relationship Management)", definition: "Logiciel de gestion de la relation client (HubSpot, Salesforce, Pipedrive…). Un agent IA peut alimenter votre CRM automatiquement : créer une fiche prospect, noter les échanges, mettre à jour le statut d'un deal après chaque interaction." },
+    ],
+  },
+  {
+    letter: "D",
+    entries: [
+      { term: "Données d'entraînement", definition: "Corpus de texte sur lequel un modèle IA a été entraîné. GPT-4o a été entraîné sur des milliards de pages web jusqu'à une certaine date. Ces données déterminent les connaissances \"natives\" du modèle, indépendamment de la configuration métier ajoutée ensuite." },
+    ],
+  },
+  {
+    letter: "E",
+    entries: [
+      { term: "E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness)", definition: "Cadre d'évaluation de la qualité de contenu utilisé par les évaluateurs humains de Google. En 2026, l'Experience (expérience terrain de l'auteur) est le critère le plus discriminant. Un contenu signé par un expert identifiable avec preuves d'expérience est mieux classé." },
+      { term: "Embedding", definition: "Représentation numérique d'un texte sous forme de vecteur de nombres. Permet à l'IA de mesurer la similarité sémantique entre deux textes. Utilisé dans les systèmes RAG pour retrouver les passages pertinents dans une base de données." },
+      { term: "Escalade (agent IA)", definition: "Mécanisme par lequel un agent IA transfère une demande à un humain quand elle dépasse son périmètre ou sa confiance. Une bonne configuration d'escalade est critique : l'agent doit savoir quand il ne sait pas." },
+    ],
+  },
+  {
+    letter: "F",
+    entries: [
+      { term: "Fine-tuning", definition: "Entraînement supplémentaire d'un modèle IA sur des données spécifiques pour améliorer ses performances sur un domaine précis. Coûteux en temps et données. Alternative plus légère et souvent suffisante : le prompt engineering ou le RAG." },
+      { term: "Foundation Model", definition: "Modèle IA de grande taille entraîné sur des volumes massifs de données générales (GPT-4o, Claude, Mistral Large). Sert de base à des applications spécialisées via configuration, fine-tuning ou RAG. Distingué des modèles spécialisés plus petits." },
+    ],
+  },
+  {
+    letter: "G",
+    entries: [
+      { term: "GEO (Generative Engine Optimization)", definition: "Optimisation de votre contenu pour apparaître dans les réponses des moteurs de recherche génératifs (Google AI Overviews, ChatGPT Search, Perplexity, Bing Copilot). Différent du SEO classique : l'objectif est d'être cité, pas seulement d'être indexé." },
+      { term: "GPT-4o", definition: "Modèle d'OpenAI (\"o\" pour omnimodal) capable de traiter du texte, des images et de l'audio. Standard de fait pour les agents IA polyvalents en 2026. Hébergé aux États-Unis. Coût par token plus élevé que Mistral pour les volumes importants." },
+      { term: "Guardrails (garde-fous)", definition: "Contraintes ajoutées à un agent IA pour limiter ses comportements indésirables : ne pas inventer de prix, ne pas promettre des délais non confirmés, ne pas répondre hors du périmètre métier. La qualité des guardrails détermine la fiabilité de l'agent en production." },
+    ],
+  },
+  {
+    letter: "H",
+    entries: [
+      { term: "Hallucination", definition: "Phénomène où un modèle IA génère une information fausse mais présentée avec confiance. Les hallucinations diminuent avec les meilleurs modèles mais ne disparaissent pas. Solution : RAG (ancrage sur des données vérifiées) et validation humaine pour les informations critiques." },
+      { term: "Hébergement souverain", definition: "Stockage des données sur des serveurs situés en France ou en Europe, sous juridiction française. Requis pour les données de santé (RGPD, HDS). Mistral AI (Paris) est l'option principale pour un hébergement IA souverain en France." },
+    ],
+  },
+  {
+    letter: "I",
+    entries: [
+      { term: "INP (Interaction to Next Paint)", definition: "Métrique Core Web Vitals mesurant la réactivité d'une page aux interactions utilisateur (clic, toucher, clavier). Remplace le FID depuis 2024. Seuil \"bon\" : < 200ms. Un score élevé signale un site avec trop de JavaScript bloquant." },
+      { term: "Instruction System (System Prompt)", definition: "Instructions données en amont à un agent IA pour définir son comportement, son identité, son périmètre et ses limites. C'est la \"carte d'identité\" de l'agent. La qualité du system prompt est déterminante pour la pertinence des réponses." },
+    ],
+  },
+  {
+    letter: "J",
+    entries: [
+      { term: "JSON-LD", definition: "Format de données structurées recommandé par Google pour les balises Schema.org. Intégré dans le HTML via une balise `<script type=\"application/ld+json\">`. Permet aux moteurs de recherche de comprendre le type de contenu (FAQ, Article, Produit, Service) et d'afficher des résultats enrichis." },
+    ],
+  },
+  {
+    letter: "L",
+    entries: [
+      { term: "LCP (Largest Contentful Paint)", definition: "Métrique Core Web Vitals mesurant le temps de chargement du plus grand élément visible à l'écran. Seuil \"bon\" : < 2,5 secondes. Principal signal de performance perçue par l'utilisateur. Un LCP > 4s entraîne un taux de rebond significativement plus élevé." },
+      { term: "LLM (Large Language Model)", definition: "Modèle de traitement du langage naturel entraîné sur des milliards de textes. GPT-4o, Claude, Mistral sont des LLMs. Ils comprennent et génèrent du texte humain de manière convaincante. La base technique de tous les agents IA actuels." },
+      { term: "llms.txt", definition: "Fichier texte placé à la racine d'un site (comme robots.txt) destiné aux crawlers des moteurs IA. Il décrit le site, ses services et ses données clés dans un format que les LLMs peuvent lire facilement. Recommandé pour le GEO." },
+    ],
+  },
+  {
+    letter: "M",
+    entries: [
+      { term: "Mistral Large", definition: "Modèle de langage de Mistral AI, entreprise française (Paris). Principal concurrent européen de GPT-4o et Claude. Avantage clé : peut être hébergé en France, conforme RGPD natif. Idéal pour les données sensibles (santé, juridique, RH)." },
+      { term: "Multimodal", definition: "Capacité d'un modèle IA à traiter plusieurs types de données : texte, images, audio, vidéo. GPT-4o est multimodal (analyse d'images, transcription audio). Mistral Large a des capacités multimodales limitées en comparaison." },
+    ],
+  },
+  {
+    letter: "N",
+    entries: [
+      { term: "No-show", definition: "Client qui ne se présente pas à un rendez-vous sans prévenir. Coût moyen en cabinet médical : 15 à 40 € par no-show. Les agents IA réduisent le taux de no-show de 50 à 70% grâce aux rappels automatiques SMS/email à J-1 et J-2." },
+      { term: "NLP (Natural Language Processing)", definition: "Traitement automatique du langage naturel. Discipline de l'IA qui permet aux machines de comprendre, analyser et générer du texte humain. Les LLMs sont la forme la plus avancée de NLP à ce jour." },
+    ],
+  },
+  {
+    letter: "O",
+    entries: [
+      { term: "Orchestration (agent IA)", definition: "Mécanisme qui permet à un agent IA de coordonner plusieurs outils ou sous-agents pour accomplir une tâche complexe. Exemple : l'agent reçoit une demande de devis, interroge la base produits, calcule un prix, génère un PDF et l'envoie par email — en chaîne automatique." },
+    ],
+  },
+  {
+    letter: "P",
+    entries: [
+      { term: "Perplexity", definition: "Moteur de recherche IA qui génère des réponses synthétiques avec citations. Croissance rapide en 2025-2026, particulièrement chez les professionnels. Optimiser pour Perplexity fait partie de la stratégie GEO : contenu factuel, bien sourcé, avec données chiffrées." },
+      { term: "Prompt Engineering", definition: "Art et science de rédiger des instructions (prompts) pour obtenir les meilleurs résultats d'un modèle IA. Compétence clé pour la configuration d'agents IA. Un bon prompt engineering peut remplacer un fine-tuning coûteux dans la majorité des cas." },
+    ],
+  },
+  {
+    letter: "R",
+    entries: [
+      { term: "RAG (Retrieval-Augmented Generation)", definition: "Architecture où l'agent IA récupère des informations pertinentes dans une base de données avant de générer sa réponse. Permet d'ancrer les réponses sur des faits vérifiés (vos tarifs, vos produits, vos FAQ) et réduit drastiquement les hallucinations." },
+      { term: "RGPD (Règlement Général sur la Protection des Données)", definition: "Réglementation européenne sur la protection des données personnelles. Oblige les entreprises à informer leurs clients sur l'utilisation de leurs données, à obtenir leur consentement et à garantir leur sécurité. Les agents IA qui traitent des données clients doivent être conformes RGPD." },
+      { term: "ROI (Retour sur Investissement)", definition: "Ratio entre le gain généré par un investissement et son coût. Pour un agent IA : (économies de temps + CA additionnel) / coût mensuel. Les agents IAForge ciblent un ROI positif en moins de 3 mois pour le Pack Solo." },
+    ],
+  },
+  {
+    letter: "S",
+    entries: [
+      { term: "Schema.org", definition: "Vocabulaire standardisé de données structurées pour le web. Les balises Schema (FAQPage, Article, Product, Service…) aident Google à comprendre le contenu et peuvent déclencher des résultats enrichis (rich snippets) dans les SERP." },
+      { term: "SEO Sémantique", definition: "Optimisation basée sur la couverture complète d'un sujet (champ sémantique) plutôt que sur la répétition d'un mot-clé. Google privilégie les contenus qui répondent à l'intention de recherche dans sa globalité. Les agents IA permettent de produire ce type de contenu à grande échelle." },
+      { term: "SERP (Search Engine Results Page)", definition: "Page de résultats d'un moteur de recherche. En 2026, une SERP Google peut inclure : AI Overview, résultats organiques classiques, Local Pack, Shopping, People Also Ask, vidéos. L'objectif SEO est d'être présent sur plusieurs de ces surfaces simultanément." },
+      { term: "Sitemap XML", definition: "Fichier listant toutes les URLs de votre site à destination des robots d'indexation. Un sitemap à jour avec les dates de modification accélère l'indexation de vos nouvelles pages par Google. Indispensable pour les sites de plus de 10 pages." },
+    ],
+  },
+  {
+    letter: "T",
+    entries: [
+      { term: "Token", definition: "Unité de base utilisée par les LLMs pour traiter le texte. Un token correspond environ à 3-4 caractères en français. Le coût d'utilisation d'un LLM est calculé en tokens (entrée + sortie). Un agent traitant 2 000 interactions/mois consomme typiquement 2 à 8 millions de tokens." },
+      { term: "Tool Use (appel d'outil)", definition: "Capacité d'un agent IA à décider d'utiliser un outil externe (recherche web, calculatrice, API calendrier) pour répondre à une demande. La combinaison LLM + tool use est au cœur des agents IA modernes." },
+    ],
+  },
+  {
+    letter: "W",
+    entries: [
+      { term: "Webhook", definition: "Mécanisme d'envoi automatique de données d'un logiciel vers un autre lors d'un événement (nouvelle réservation, nouveau lead, paiement reçu). Les agents IA utilisent les webhooks pour communiquer avec votre CRM, votre logiciel de facturation ou votre agenda." },
+      { term: "Widget Chat", definition: "Interface de conversation intégrée directement sur votre site web. C'est le canal principal de déploiement d'un agent IA. Apparaît généralement en bas à droite du site, disponible sur toutes les pages." },
+    ],
+  },
+];
+
+const alphabet = terms.map(t => t.letter);
+---
+
+<Layout
+  title="Glossaire IA 2026 : 40+ termes expliqués pour les entreprises | IAForge"
+  description="Définitions claires de tous les termes IA pour les PME : agent IA, LLM, RAG, GEO, Core Web Vitals, RGPD, token, prompt… Glossaire mis à jour en 2026."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "name": "Glossaire IA pour entreprises — IAForge",
+    "description": "Définitions des principaux termes de l'intelligence artificielle pour les dirigeants de PME.",
+    "url": "https://iaforge.fr/glossaire-ia",
+    "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" }
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-[#7c5cfc] mb-4">Référence IA 2026</p>
+      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+        Glossaire IA pour<br/><span class="gradient-text">dirigeants de PME</span>
+      </h1>
+      <p class="text-[#8888aa] text-lg leading-relaxed">
+        40+ termes expliqués sans jargon. De "agent IA" à "webhook" — tout ce qu'il faut savoir pour prendre des décisions éclairées sur vos projets IA.
+      </p>
+    </div>
+  </section>
+
+  <!-- NAVIGATION ALPHABÉTIQUE -->
+  <section class="py-6 px-6 sticky top-16 z-40" style="background: rgba(8,8,16,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-3xl mx-auto flex flex-wrap justify-center gap-2">
+      {alphabet.map(letter => (
+        <a href={`#letter-${letter}`} class="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-[#8888aa] hover:text-white transition-colors" style="background: rgba(255,255,255,0.05);">
+          {letter}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- GLOSSAIRE -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto space-y-16">
+      {terms.map(group => (
+        <div id={`letter-${group.letter}`}>
+          <div class="flex items-center gap-4 mb-8">
+            <span class="text-4xl font-black gradient-text">{group.letter}</span>
+            <div class="flex-1 h-px bg-white/10"></div>
+          </div>
+          <div class="space-y-6">
+            {group.entries.map(entry => (
+              <div class="glass rounded-xl p-6">
+                <h2 class="text-white font-black text-base mb-3">{entry.term}</h2>
+                <p class="text-[#8888aa] text-sm leading-relaxed">{entry.definition}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Un projet IA en tête ?</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On traduit ces concepts en actions concrètes pour votre activité — et on vous donne un ROI estimé avant de commencer.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90 hover:scale-[1.02]" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb); box-shadow: 0 0 40px rgba(124,92,252,0.3);">
+        Audit IA gratuit &rarr;
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  :target { scroll-margin-top: 120px; }
+</style>

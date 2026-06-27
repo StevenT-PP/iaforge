@@ -1,0 +1,206 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const tasks = [
+  "Qualifie chaque acheteur ou vendeur en moins de 5 minutes (budget, délai, critères)",
+  "Envoie automatiquement les biens correspondant aux critères du prospect",
+  "Programme les visites selon la disponibilité des agents et du bien",
+  "Répond aux questions sur les biens (surface, DPE, diagnostics, quartier, charges)",
+  "Relance les prospects qui n'ont pas donné suite à une visite",
+  "Collecte les documents nécessaires pour les mandats et compromis",
+  "Répond aux vendeurs sur l'avancement de la commercialisation",
+  "Gère la prise de mandat : infos propriétaire, estimation initiale, RDV expertise",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il faire des estimations de biens ?",
+    a: "L'agent peut communiquer une fourchette de prix basée sur les données de marché que vous lui fournissez. Il ne remplace pas l'expertise de l'agent immobilier pour l'estimation finale, mais il peut qualifier le vendeur en amont et éviter les rendez-vous d'expertise sur des mandats non-réalistes.",
+  },
+  {
+    q: "Peut-il être connecté à mon logiciel de transaction ?",
+    a: "On s'intègre avec Immofacile, Apimo, AC3, Hektor, Périclès, ou tout logiciel avec export de catalogue. L'agent lit votre stock en temps réel et ne propose jamais un bien déjà vendu ou sous compromis.",
+  },
+  {
+    q: "Fonctionne-t-il pour les réseaux de mandataires ?",
+    a: "Oui, et c'est un cas d'usage particulièrement fort : chaque mandataire peut avoir son propre accès à un agent configuré avec ses biens. Le réseau central garde la supervision via dashboard. Prix adaptés aux volumes.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les prospects froids qui ne rappellent pas ?",
+    a: "L'agent envoie des relances automatiques à J+3 et J+10 après une visite ou un contact sans suite. Les messages sont personnalisés (biens visités, nouvelles propriétés correspondant aux critères). Vous voyez dans le dashboard qui est réengagé et qui est à archiver.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours pour un agent individuel ou une agence. 2 à 3 semaines pour un réseau multi-agences. On configure votre stock, vos zones, vos types de biens, vos questions de qualification.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour agences immobilières — Qualification leads et visites automatiques | IAForge"
+  description="Agent IA pour l'immobilier : qualifiez vos acheteurs, programmez les visites, relancez les prospects. Compatible Apimo, Hektor. +40% de leads convertis en visites. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div style="position:absolute;width:600px;height:500px;top:-5%;right:-5%;background:radial-gradient(circle,rgba(167,139,250,0.12),transparent 70%);filter:blur(80px);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto relative">
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-white">Agent IA pour l'immobilier</span>
+      </nav>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="color: #a78bfa; background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.2);">Immobilier</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos leads qualifiés.<br/><span style="color: #a78bfa;">Vos visites programmées.<br/>Votre agenda rempli.</span>
+          </h1>
+          <p class="text-[#8888aa] leading-relaxed mb-8">
+            Un agent IA qui qualifie chaque prospect, envoie les biens correspondants et programme les visites — sans décrocher le téléphone à chaque portail.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { v: "+40%", l: "leads → visites" },
+              { v: "12h", l: "économisées/semaine" },
+              { v: "0", l: "lead non relancé" },
+            ].map(s => (
+              <div class="glass rounded-xl px-4 py-3 text-center">
+                <p class="text-2xl font-black text-white">{s.v}</p>
+                <p class="text-xs text-[#8888aa]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #a78bfa, #7c5cfc);">
+            Audit gratuit pour mon agence &rarr;
+          </a>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-4">Exemple : recherche acheteur à 21h</p>
+          <div class="space-y-3">
+            {[
+              { c: true, t: "Bonjour, je cherche un T3 à Lyon, budget 280 000€ max, proche des transports." },
+              { c: false, t: "Bonjour ! J'ai 3 biens correspondant à vos critères. Puis-je vous envoyer les fiches ?" },
+              { c: true, t: "Oui s'il vous plaît" },
+              { c: false, t: "Voici les 3 biens : [fiche 1 — 68m², Lyon 7e, 275k€] [fiche 2 — 71m², Lyon 8e, 268k€] [fiche 3 — 65m², Lyon 3e, 272k€]. Lequel vous intéresse ?" },
+              { c: true, t: "Le 1 et le 3 m'intéressent" },
+              { c: false, t: "Parfait ! Je vous propose des visites jeudi ou vendredi. Quel créneau vous convient ?" },
+            ].map(msg => (
+              <div class={`flex ${msg.c ? 'justify-end' : 'justify-start'}`}>
+                <div class={`max-w-[80%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${msg.c ? 'text-white' : 'text-[#ccccdd]'}`} style={msg.c ? 'background: rgba(167,139,250,0.2); border: 1px solid rgba(167,139,250,0.3);' : 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);'}>
+                  {msg.t}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÂCHES -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-4">Ce que l'agent fait pour votre agence</h2>
+      <p class="text-[#8888aa] text-center mb-12">Connecté à votre stock. Actif sur tous vos portails.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <p class="text-[#8888aa] text-sm">{task}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Agence de 3 agents : avant et après</h2>
+      <div class="glass rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs font-black">×</span>
+              Sans agent IA
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 30+ appels/jour de qualification répétitive</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Leads des portails rappelés sous 24-48h</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 60% des prospects ne reçoivent aucune relance</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Vendeurs sans nouvelles sur leur bien</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style="background: rgba(167,139,250,0.2); color: #a78bfa;">✓</span>
+              Avec agent IA IAForge
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span style="color: #a78bfa;">·</span> 100% des leads qualifiés en moins de 5 min</li>
+              <li class="flex items-start gap-2"><span style="color: #a78bfa;">·</span> Réponse aux portails en moins de 2 minutes</li>
+              <li class="flex items-start gap-2"><span style="color: #a78bfa;">·</span> Relances automatiques à J+3 et J+10</li>
+              <li class="flex items-start gap-2"><span style="color: #a78bfa;">·</span> Rapport vendeur automatique chaque semaine</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-[#8888aa] text-sm mb-2">Visites supplémentaires générées × commission moyenne</p>
+          <span class="text-3xl font-black" style="color: #a78bfa;">+2 à 4 mandats/mois</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {faqItems.map(f => (
+          <details class="glass rounded-xl group">
+            <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+              {f.q}
+              <span class="ml-4 flex-shrink-0 transition-transform group-open:rotate-45 text-lg" style="color: #a78bfa;">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[#8888aa] text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Ne laissez plus refroidir un seul lead</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On analyse votre flux de leads et on vous estime le nombre de mandats récupérables chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90" style="background: linear-gradient(135deg, #a78bfa, #7c5cfc);">
+        Audit gratuit pour mon agence &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">Réponse sous 24h · Compatible Apimo, Hektor, AC3 · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>

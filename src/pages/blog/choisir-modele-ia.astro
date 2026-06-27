@@ -1,135 +1,108 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Nav from '../../components/Nav.astro';
-import Footer from '../../components/Footer.astro';
+import BlogLayout from '../../layouts/BlogLayout.astro';
 
 const meta = {
   title: "GPT-4o vs Claude vs Mistral : quel modèle IA pour votre entreprise en 2026 ?",
   description: "Comparaison technique et pratique des trois grands modèles IA. Prix, performance, confidentialité des données, cas d'usage — le guide objectif sans langue de bois.",
   date: "2026-05-18",
   category: "Technique",
+  categoryColor: "#fbbf24",
   readTime: "9 min",
+  slug: "choisir-modele-ia",
 };
 ---
 
-<Layout title={`${meta.title} | IAForge Blog`} description={meta.description}>
-  <Nav />
-  <article class="pt-32 pb-24 px-6">
-    <div class="max-w-3xl mx-auto">
+<BlogLayout article={meta}>
 
-      <div class="flex items-center gap-3 mb-6">
-        <span class="px-3 py-1 rounded-full text-xs font-semibold text-[#fbbf24]" style="background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3);">{meta.category}</span>
-        <span class="text-xs text-[#8888aa]">{meta.readTime} de lecture</span>
-        <time class="text-xs text-[#8888aa]">{new Date(meta.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
-      </div>
+  <p>Chez IAForge, on ne travaille pas avec "un modèle IA". On travaille avec le bon modèle pour chaque tâche. GPT-4o, Claude 3.5 Sonnet, Mistral Large — chacun a ses forces, ses faiblesses et son prix. Voici notre analyse après 18 mois d'utilisation en production pour des PME françaises. Pour une comparaison orientée usage business, voir aussi notre <a href="/comparatif-ia" class="text-[#fbbf24] hover:text-white transition-colors">comparatif IA 2026</a>.</p>
 
-      <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">{meta.title}</h1>
-      <p class="text-lg text-[#8888aa] leading-relaxed mb-12">{meta.description}</p>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Vue d'ensemble rapide</h2>
+  <div class="glass rounded-2xl p-6 not-prose overflow-x-auto">
+    <table class="w-full text-sm min-w-[600px]">
+      <thead>
+        <tr class="border-b border-white/10">
+          <th class="text-left py-3 pr-4 text-[#8888aa] font-semibold">Critère</th>
+          <th class="text-center py-3 pr-4 text-white font-semibold">GPT-4o</th>
+          <th class="text-center py-3 pr-4 text-[#7c5cfc] font-semibold">Claude 3.5</th>
+          <th class="text-center py-3 text-[#38bdf8] font-semibold">Mistral Large</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[
+          ["Qualité rédaction", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐", "⭐⭐⭐⭐"],
+          ["Raisonnement complexe", "⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐", "⭐⭐⭐"],
+          ["Vitesse de réponse", "⭐⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
+          ["Coût (per token)", "Moyen", "Moyen", "Faible"],
+          ["Hébergement FR possible", "Non", "Non", "Oui (Mistral AI)"],
+          ["Confidentialité données", "Modérée", "Bonne", "Excellente"],
+          ["Multimodal (images)", "Oui", "Oui", "Limité"],
+        ].map(([crit, gpt, claude, mistral]) => (
+          <tr class="border-b border-white/5">
+            <td class="py-3 pr-4 text-[#8888aa]">{crit}</td>
+            <td class="py-3 pr-4 text-center text-white">{gpt}</td>
+            <td class="py-3 pr-4 text-center text-[#7c5cfc]">{claude}</td>
+            <td class="py-3 text-center text-[#38bdf8]">{mistral}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
 
-      <div class="space-y-8 text-[#8888aa] leading-relaxed">
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Quand utiliser chaque modèle</h2>
 
-        <p>Chez IAForge, on ne travaille pas avec "un modèle IA". On travaille avec le bon modèle pour chaque tâche. GPT-4o, Claude 3.5 Sonnet, Mistral Large — chacun a ses forces, ses faiblesses et son prix. Voici notre analyse après 18 mois d'utilisation en production pour des PME françaises.</p>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Vue d'ensemble rapide</h2>
-        <div class="glass rounded-2xl p-6 not-prose overflow-x-auto">
-          <table class="w-full text-sm min-w-[600px]">
-            <thead>
-              <tr class="border-b border-white/10">
-                <th class="text-left py-3 pr-4 text-[#8888aa] font-semibold">Critère</th>
-                <th class="text-center py-3 pr-4 text-white font-semibold">GPT-4o</th>
-                <th class="text-center py-3 pr-4 text-[#7c5cfc] font-semibold">Claude 3.5</th>
-                <th class="text-center py-3 text-[#38bdf8] font-semibold">Mistral Large</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                ["Qualité rédaction", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐", "⭐⭐⭐⭐"],
-                ["Raisonnement complexe", "⭐⭐⭐⭐⭐", "⭐⭐⭐⭐⭐", "⭐⭐⭐"],
-                ["Vitesse de réponse", "⭐⭐⭐⭐", "⭐⭐⭐⭐", "⭐⭐⭐⭐⭐"],
-                ["Coût (per token)", "Moyen", "Moyen", "Faible"],
-                ["Hébergement FR possible", "Non", "Non", "Oui (Mistral AI)"],
-                ["Confidentialité données", "Modérée", "Bonne", "Excellente"],
-                ["Multimodal (images)", "Oui", "Oui", "Limité"],
-              ].map(([crit, gpt, claude, mistral]) => (
-                <tr class="border-b border-white/5">
-                  <td class="py-3 pr-4 text-[#8888aa]">{crit}</td>
-                  <td class="py-3 pr-4 text-center text-white">{gpt}</td>
-                  <td class="py-3 pr-4 text-center text-[#7c5cfc]">{claude}</td>
-                  <td class="py-3 text-center text-[#38bdf8]">{mistral}</td>
-                </tr>
+  <div class="space-y-4 not-prose">
+    {[
+      {
+        model: "GPT-4o", color: "#10b981",
+        best: ["Agents multi-tâches complexes", "Analyse de documents longs", "Vision et traitement d'images", "Tâches nécessitant des outils externes (web search)"],
+        avoid: ["Données très sensibles (stockage aux USA)", "Budget serré (coût le plus élevé par token)"],
+      },
+      {
+        model: "Claude 3.5 Sonnet", color: "#7c5cfc",
+        best: ["Rédaction de contenu premium", "Analyse nuancée et critique", "Conversations longues et contextuelles", "Respect des instructions complexes"],
+        avoid: ["Déploiement on-premise (pas disponible)", "Contexte ultra-sensible (données hébergées hors France)"],
+      },
+      {
+        model: "Mistral Large", color: "#38bdf8",
+        best: ["Données confidentielles (santé, juridique, RH)", "Hébergement en France (Mistral AI, Paris)", "Budget optimisé à volume élevé", "Applications temps-réel (latence faible)"],
+        avoid: ["Tâches nécessitant le raisonnement le plus avancé", "Multimodal (images/vidéos)"],
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-6">
+        <h3 class="text-lg font-black mb-4" style={`color: ${item.color};`}>{item.model}</h3>
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-2">Idéal pour</p>
+            <ul class="space-y-1">
+              {item.best.map(b => (
+                <li class="flex items-start gap-2 text-xs text-white">
+                  <span style={`color: ${item.color};`}>✓</span> {b}
+                </li>
               ))}
-            </tbody>
-          </table>
-        </div>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Quand utiliser chaque modèle</h2>
-
-        <div class="space-y-4 not-prose">
-          {[
-            {
-              model: "GPT-4o", color: "#10b981",
-              best: ["Agents multi-tâches complexes", "Analyse de documents longs", "Vision et traitement d'images", "Tâches nécessitant des outils externes (web search)"],
-              avoid: ["Données très sensibles (stockage aux USA)", "Budget serré (coût le plus élevé par token)"],
-            },
-            {
-              model: "Claude 3.5 Sonnet", color: "#7c5cfc",
-              best: ["Rédaction de contenu premium", "Analyse nuancée et critique", "Conversations longues et contextuelles", "Respect des instructions complexes"],
-              avoid: ["Déploiement on-premise (pas disponible)", "Contexte ultra-sensible (données hébergées hors France)"],
-            },
-            {
-              model: "Mistral Large", color: "#38bdf8",
-              best: ["Données confidentielles (santé, juridique, RH)", "Hébergement en France (Mistral AI, Paris)", "Budget optimisé à volume élevé", "Applications temps-réel (latence faible)"],
-              avoid: ["Tâches nécessitant le raisonnement le plus avancé", "Multimodal (images/vidéos)"],
-            },
-          ].map(item => (
-            <div class="glass rounded-xl p-6">
-              <h3 class="text-lg font-black mb-4" style={`color: ${item.color};`}>{item.model}</h3>
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-2">Idéal pour</p>
-                  <ul class="space-y-1">
-                    {item.best.map(b => (
-                      <li class="flex items-start gap-2 text-xs text-white">
-                        <span style={`color: ${item.color};`}>✓</span> {b}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-2">À éviter si</p>
-                  <ul class="space-y-1">
-                    {item.avoid.map(a => (
-                      <li class="flex items-start gap-2 text-xs text-[#8888aa]">
-                        <span class="text-red-400">✗</span> {a}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <h2 class="text-2xl font-black text-white mt-10 mb-4">Notre approche chez IAForge</h2>
-        <p>On ne s'enferme pas dans un modèle. Pour un cabinet médical ou juridique, on privilégie Mistral pour la confidentialité des données. Pour un agent de contenu SEO premium, on utilise Claude. Pour un agent multi-canal avec vision, GPT-4o. Le choix est technique, pas commercial.</p>
-
-        <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
-          <h3 class="text-xl font-black text-white mb-3">Quel modèle pour votre cas d'usage ?</h3>
-          <p class="text-[#8888aa] text-sm mb-6">On analyse votre contexte (données, volume, sensibilité) et on vous recommande la combinaison optimale.</p>
-          <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">Audit IA gratuit →</a>
+            </ul>
+          </div>
+          <div>
+            <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-2">À éviter si</p>
+            <ul class="space-y-1">
+              {item.avoid.map(a => (
+                <li class="flex items-start gap-2 text-xs text-[#8888aa]">
+                  <span class="text-red-400">✗</span> {a}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  </article>
-  <Footer />
-</Layout>
+    ))}
+  </div>
 
-<script type="application/ld+json">{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "GPT-4o vs Claude vs Mistral : quel modèle IA pour votre entreprise en 2026 ?",
-  "datePublished": "2026-05-18",
-  "author": { "@type": "Organization", "name": "IAForge" },
-  "publisher": { "@type": "Organization", "name": "IAForge", "url": "https://iaforge.fr" },
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://iaforge.fr/blog/choisir-modele-ia" }
-})}</script>
+  <h2 class="text-2xl font-black text-white mt-10 mb-4">Notre approche chez IAForge</h2>
+  <p>On ne s'enferme pas dans un modèle. Pour un <a href="/ia-pour/medecins" class="text-[#34d399] hover:text-white transition-colors">cabinet médical</a> ou <a href="/ia-pour/avocats" class="text-[#7c5cfc] hover:text-white transition-colors">juridique</a>, on privilégie Mistral pour la confidentialité des données. Pour un agent de contenu SEO premium, on utilise Claude. Pour un agent multi-canal avec vision, GPT-4o. Le choix est technique, pas commercial.</p>
+
+  <div class="not-prose mt-12 glass rounded-2xl p-8 text-center">
+    <h3 class="text-xl font-black text-white mb-3">Quel modèle pour votre cas d'usage ?</h3>
+    <p class="text-[#8888aa] text-sm mb-6">On analyse votre contexte (données, volume, sensibilité) et on vous recommande la combinaison optimale.</p>
+    <a href="/contact" class="inline-block px-8 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">Audit IA gratuit &rarr;</a>
+  </div>
+
+</BlogLayout>

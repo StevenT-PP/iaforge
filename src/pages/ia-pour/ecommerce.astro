@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const tasks = [
+  "Répond instantanément aux questions produits, délais, tailles, retours",
+  "Suit les commandes en temps réel et communique les mises à jour de livraison",
+  "Relance les paniers abandonnés avec un message personnalisé (J+1, J+3)",
+  "Recommande des produits complémentaires selon le profil du client",
+  "Gère les réclamations et initie les remboursements ou échanges",
+  "Collecte les avis clients après livraison et les redirige vers Trustpilot/Google",
+  "Répond aux questions SAV sans intervention humaine pour 80% des cas",
+  "Génère des réponses aux avis négatifs qui désamorcent et fidélisent",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il accéder à mes données commandes en temps réel ?",
+    a: "Oui. On connecte l'agent à votre plateforme e-commerce (Shopify, WooCommerce, PrestaShop, Magento) via API. L'agent voit le statut des commandes, les stocks disponibles, l'historique client — et répond avec des données exactes et à jour.",
+  },
+  {
+    q: "Comment fonctionne la relance des paniers abandonnés ?",
+    a: "Quand un visiteur identifié abandonne un panier, l'agent envoie un message personnalisé (email ou WhatsApp) à J+1 et J+3. Le message mentionne les produits oubliés, peut inclure un code promo, et propose une assistance directe si le client a une question qui l'a empêché de finaliser.",
+  },
+  {
+    q: "L'agent peut-il gérer des catalogues de plusieurs milliers de produits ?",
+    a: "Oui via RAG (Retrieval-Augmented Generation) : l'agent cherche dans votre catalogue en temps réel, compare les caractéristiques, et recommande le produit le plus adapté à la demande du client. Pas de mémorisation fixe — il cherche à chaque demande.",
+  },
+  {
+    q: "Peut-il gérer les retours et remboursements tout seul ?",
+    a: "Pour les cas standard (délai de retour respecté, motif éligible, commande identifiable), oui — l'agent initie le processus dans votre back-office. Pour les cas complexes (litige, dommage, fraude potentielle), il escalade vers votre équipe avec un résumé complet.",
+  },
+  {
+    q: "Est-ce compatible avec Klaviyo, Zendesk ou mon CRM e-commerce ?",
+    a: "On s'intègre avec Klaviyo, Gorgias, Zendesk, HubSpot, Freshdesk et la plupart des outils e-commerce. L'agent alimente votre CRM en données comportementales et peut être déclenché par vos scénarios Klaviyo existants.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour e-commerce — Support client 24h/24 et relance paniers abandonnés | IAForge"
+  description="Agent IA pour boutique en ligne : support client automatique, relance paniers abandonnés, recommandations produits. Compatible Shopify, WooCommerce. +31% de conversion. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+
+  <Nav />
+
+  <!-- HERO -->
+  <section class="pt-32 pb-20 px-6 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+      <div style="position:absolute;width:600px;height:500px;top:-5%;left:-5%;background:radial-gradient(circle,rgba(56,189,248,0.1),transparent 70%);filter:blur(80px);"></div>
+    </div>
+    <div class="max-w-4xl mx-auto relative">
+      <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-8">
+        <a href="/" class="hover:text-white transition-colors">Accueil</a>
+        <span>/</span>
+        <span class="text-white">Agent IA pour e-commerce</span>
+      </nav>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full" style="color: #38bdf8; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.2);">E-commerce</span>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre SAV tourne seul.<br/><span style="color: #38bdf8;">Vos ventes grimpent.</span><br/>La nuit aussi.
+          </h1>
+          <p class="text-[#8888aa] leading-relaxed mb-8">
+            Un agent IA connecté à votre plateforme e-commerce : il répond aux clients, relance les paniers, suit les commandes et récupère les avis — sans intervention humaine.
+          </p>
+          <div class="flex flex-wrap gap-3 mb-8">
+            {[
+              { v: "+31%", l: "de conversion" },
+              { v: "-70%", l: "tickets SAV" },
+              { v: "24h/24", l: "support actif" },
+            ].map(s => (
+              <div class="glass rounded-xl px-4 py-3 text-center">
+                <p class="text-2xl font-black text-white">{s.v}</p>
+                <p class="text-xs text-[#8888aa]">{s.l}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-white font-bold transition-all hover:opacity-90" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">
+            Audit gratuit pour ma boutique &rarr;
+          </a>
+        </div>
+        <div class="glass rounded-2xl p-6">
+          <p class="text-xs font-semibold text-[#8888aa] uppercase tracking-wider mb-4">Exemple : suivi commande à 2h du matin</p>
+          <div class="space-y-3">
+            {[
+              { c: true, t: "Bonjour, j'ai commandé il y a 5 jours et je n'ai rien reçu. Commande #8472." },
+              { c: false, t: "Bonjour ! Je consulte votre commande… La commande #8472 a été expédiée le 23 juin, livraison prévue demain avant 18h." },
+              { c: true, t: "C'est long quand même, j'aurais besoin avant demain soir" },
+              { c: false, t: "Je comprends. Pour compenser ce délai, voici un bon de réduction de 10% sur votre prochaine commande, valable 30 jours : MERCI10." },
+              { c: true, t: "Ok merci c'est sympa" },
+              { c: false, t: "Avec plaisir ! Vous serez alerté par SMS dès que le colis est en livraison. Bonne soirée !" },
+            ].map(msg => (
+              <div class={`flex ${msg.c ? 'justify-end' : 'justify-start'}`}>
+                <div class={`max-w-[80%] px-4 py-2.5 rounded-2xl text-xs leading-relaxed ${msg.c ? 'text-white' : 'text-[#ccccdd]'}`} style={msg.c ? 'background: rgba(56,189,248,0.2); border: 1px solid rgba(56,189,248,0.3);' : 'background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);'}>
+                  {msg.t}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÂCHES -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-4">Ce que l'agent fait pour votre boutique</h2>
+      <p class="text-[#8888aa] text-center mb-12">Connecté à votre plateforme. Actif 24h/24.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <p class="text-[#8888aa] text-sm">{task}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- AVANT / APRÈS -->
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Boutique 500 commandes/mois : avant et après</h2>
+      <div class="glass rounded-2xl p-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-xs font-black">×</span>
+              Sans agent IA
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 80+ tickets SAV/mois traités manuellement</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 23% des paniers abandonnés sans relance</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> 0 support après 18h → clients frustrés</li>
+              <li class="flex items-start gap-2"><span class="text-red-400">·</span> Avis négatifs sans réponse → image dégradée</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-bold mb-5 flex items-center gap-2">
+              <span class="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black" style="background: rgba(56,189,248,0.2); color: #38bdf8;">✓</span>
+              Avec agent IA IAForge
+            </h3>
+            <ul class="space-y-3 text-sm text-[#8888aa]">
+              <li class="flex items-start gap-2"><span style="color: #38bdf8;">·</span> 70% des tickets résolus automatiquement</li>
+              <li class="flex items-start gap-2"><span style="color: #38bdf8;">·</span> +18% de paniers récupérés via relance J+1/J+3</li>
+              <li class="flex items-start gap-2"><span style="color: #38bdf8;">·</span> Support 24h/24 → satisfaction +28%</li>
+              <li class="flex items-start gap-2"><span style="color: #38bdf8;">·</span> 100% des avis avec réponse sous 2h</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10 text-center">
+          <p class="text-[#8888aa] text-sm mb-2">CA additionnel estimé (paniers récupérés + conversion améliorée)</p>
+          <span class="text-3xl font-black" style="color: #38bdf8;">+ 3 200 €/mois</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATEFORMES -->
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto text-center">
+      <h3 class="text-white font-black text-lg mb-8">Compatible avec vos outils actuels</h3>
+      <div class="flex flex-wrap justify-center gap-3">
+        {["Shopify", "WooCommerce", "PrestaShop", "Magento", "Klaviyo", "Gorgias", "Zendesk", "HubSpot"].map(tool => (
+          <span class="glass px-4 py-2 rounded-xl text-sm text-[#8888aa] font-medium">{tool}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-black text-white text-center mb-12">Questions fréquentes</h2>
+      <div class="space-y-4">
+        {faqItems.map(f => (
+          <details class="glass rounded-xl group">
+            <summary class="p-5 cursor-pointer flex items-center justify-between text-white font-semibold text-sm list-none">
+              {f.q}
+              <span class="ml-4 flex-shrink-0 transition-transform group-open:rotate-45 text-lg" style="color: #38bdf8;">+</span>
+            </summary>
+            <p class="px-5 pb-5 text-[#8888aa] text-sm leading-relaxed">{f.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vos clients méritent une réponse à 2h du matin</h2>
+      <p class="text-[#8888aa] mb-8">Audit gratuit de 30 minutes. On analyse votre boutique et on vous estime le CA récupérable dès le premier mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold text-base transition-all hover:opacity-90" style="background: linear-gradient(135deg, #38bdf8, #0ea5e9);">
+        Audit gratuit pour ma boutique &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">Réponse sous 24h · Compatible Shopify / WooCommerce · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  details summary::-webkit-details-marker { display: none; }
+</style>
