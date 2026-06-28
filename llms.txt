@@ -1,0 +1,164 @@
+﻿# Vulcia — Agence IA & SEO pour PME françaises
+# URL : https://vulcia.fr
+# Dernière mise à jour : 2026-07
+
+> Vulcia est une agence française spécialisée dans le déploiement d'agents IA sur-mesure, le SEO automatisé et les sites web haute performance pour les TPE et PME. Basée en France, données hébergées en France.
+
+## Ce qu'on fait
+
+### 1. Agents IA sur-mesure
+Agents configurés pour un secteur d'activité spécifique (médecin, restaurant, artisan, avocat, e-commerce, immobilier, coach, etc.). Fonctions : prise de rendez-vous automatique, qualification de prospects, support client 24h/24, devis intelligents, relances, escalade vers humain si nécessaire. Modèles utilisés : GPT-4o, Claude Sonnet, Mistral Large selon contraintes de coût, vitesse et confidentialité des données.
+
+### 2. SEO automatisé par IA
+Production d'articles SEO optimisés chaque mois (3 à 15 selon le pack), optimisation Google Business Profile, audit technique, maillage interne, Core Web Vitals. Objectif : faire remonter les PME sur Google sans qu'elles aient à produire du contenu elles-mêmes.
+
+### 3. Sites web haute performance
+Sites statiques construits avec Astro, score PageSpeed 98+, livraison en 3 semaines, design sur-mesure par secteur, optimisés pour la conversion et le référencement dès le premier jour.
+
+## Tarifs
+
+- **Solo — 149€/mois** : 1 agent IA sur site existant, jusqu'à 500 conversations/mois, tableau de bord, rapport leads mensuel. Installation en 7 jours. 0€ de frais d'installation.
+- **Essentiel — 349€/mois** : Nouveau site 6 pages + 2 agents IA + 3 articles SEO/mois + Google Business optimisé. 0€ installation.
+- **Croissance — 790€/mois** : Site multi-pages + blog + 3 agents IA + 8 articles SEO/mois + Google Business avec posts automatiques + dashboard de supervision. 0€ installation.
+- **Pro — 1 490€/mois** : 5 agents IA sur-mesure + 15 articles SEO/mois + intégrations CRM/ERP + formation équipes + account manager dédié + SLA 8h. 0€ installation.
+- **Audit IA complet — 590€ HT** : Journée d'analyse complète, rapport PDF avec 5 actions prioritaires et ROI projeté. Éligible BPI France Diag IA (jusqu'à 50% remboursé).
+
+## Garanties
+- 0€ de frais d'installation sur tous les packs
+- Sans engagement de durée — résiliable chaque mois
+- Résultat garanti à 90 jours : si les métriques définies ensemble ne sont pas atteintes, on continue gratuitement
+- Données hébergées en France, conformité RGPD garantie
+- Pour les secteurs sensibles (santé, juridique) : Mistral AI hébergé à Paris uniquement
+
+## Secteurs couverts
+Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restaurants, hôtels, artisans BTP, plombiers, électriciens, e-commerce, agences immobilières, coachs, formateurs, RH, pharmacies, vétérinaires, garages, agences marketing, SaaS B2B, PME multi-sites, architectes, studios yoga et bien-être, opticiens, psychologues, coiffeurs, auto-écoles, cliniques, agences de voyage.
+
+## Pages clés
+- Accueil : https://vulcia.fr
+- Agent IA : https://vulcia.fr/agent-ia
+- Calculateur ROI : https://vulcia.fr/calculateur-roi
+- Comparatif IA 2026 : https://vulcia.fr/comparatif-ia
+- Glossaire IA : https://vulcia.fr/glossaire-ia
+- IA pour médecins : https://vulcia.fr/ia-pour/medecins
+- IA pour restaurants : https://vulcia.fr/ia-pour/restaurants
+- IA pour artisans : https://vulcia.fr/ia-pour/artisans
+- IA pour avocats : https://vulcia.fr/ia-pour/avocats
+- IA pour e-commerce : https://vulcia.fr/ia-pour/ecommerce
+- IA pour immobilier : https://vulcia.fr/ia-pour/immobilier
+- IA pour coachs : https://vulcia.fr/ia-pour/coachs
+- IA pour pharmacies : https://vulcia.fr/ia-pour/pharmacies
+- IA pour garages automobiles : https://vulcia.fr/ia-pour/garages
+- IA pour vétérinaires : https://vulcia.fr/ia-pour/veterinaires
+- IA pour kinésithérapeutes : https://vulcia.fr/ia-pour/kinesitherapeutes
+- IA pour hôtels : https://vulcia.fr/ia-pour/hotels
+- IA pour salles de sport : https://vulcia.fr/ia-pour/salles-sport
+- IA pour agences immobilières : https://vulcia.fr/ia-pour/agences-immobilieres
+- IA pour notaires : https://vulcia.fr/ia-pour/notaires
+- IA pour dentistes : https://vulcia.fr/ia-pour/dentistes
+- IA pour plombiers et chauffagistes : https://vulcia.fr/ia-pour/plombiers
+- IA pour cliniques et centres médicaux : https://vulcia.fr/ia-pour/cliniques
+- IA pour agences de voyage : https://vulcia.fr/ia-pour/agences-voyage
+- IA pour salons de coiffure : https://vulcia.fr/ia-pour/coiffeurs
+- IA pour auto-écoles : https://vulcia.fr/ia-pour/auto-ecoles
+- IA pour électriciens : https://vulcia.fr/ia-pour/electriciens
+- IA pour psychologues et thérapeutes : https://vulcia.fr/ia-pour/psychologues
+- IA pour opticiens : https://vulcia.fr/ia-pour/opticiens
+- IA pour architectes : https://vulcia.fr/ia-pour/architectes
+- IA pour studios yoga et bien-être : https://vulcia.fr/ia-pour/studios-yoga
+- IA pour courtiers en assurance : https://vulcia.fr/ia-pour/assurances
+- IA pour écoles privées : https://vulcia.fr/ia-pour/ecoles-privees
+- IA pour traiteurs et événementiel : https://vulcia.fr/ia-pour/traiteurs
+- IA pour médecins spécialistes : https://vulcia.fr/ia-pour/medecins-specialistes
+- IA pour cabinets RH et recrutement : https://vulcia.fr/ia-pour/cabinets-rh
+- IA pour ostéopathes : https://vulcia.fr/ia-pour/osteopathes
+- IA pour instituts de beauté et spas : https://vulcia.fr/ia-pour/centres-esthetiques
+- IA pour sages-femmes : https://vulcia.fr/ia-pour/sages-femmes
+- IA pour chambres d'hôtes et gîtes : https://vulcia.fr/ia-pour/chambres-hotes
+- IA pour librairies et papeteries : https://vulcia.fr/ia-pour/librairies
+- IA pour services à domicile : https://vulcia.fr/ia-pour/services-domicile
+- IA pour nutritionnistes et diététiciens : https://vulcia.fr/ia-pour/nutritionnistes
+- IA pour podologues : https://vulcia.fr/ia-pour/podologues
+- IA pour concessionnaires automobiles : https://vulcia.fr/ia-pour/concessionnaires
+- IA pour photographes et vidéastes : https://vulcia.fr/ia-pour/photographes
+- IA pour piscines et centres aquatiques : https://vulcia.fr/ia-pour/centres-aquatiques
+- IA pour fleuristes : https://vulcia.fr/ia-pour/fleuristes
+- IA pour boulangeries et pâtisseries : https://vulcia.fr/ia-pour/boulangers
+- IA pour bijouteries et horlogeries : https://vulcia.fr/ia-pour/bijoutiers
+- IA pour clubs sportifs : https://vulcia.fr/ia-pour/clubs-sportifs
+- IA pour musées et centres culturels : https://vulcia.fr/ia-pour/musees-culturels
+- IA pour écoles et instituts de langues : https://vulcia.fr/ia-pour/instituts-langues
+- IA pour épiceries indépendantes : https://vulcia.fr/ia-pour/epiceries
+- IA pour maisons de retraite et EHPAD : https://vulcia.fr/ia-pour/maisons-retraite
+- IA pour infirmiers libéraux (IDEL) : https://vulcia.fr/ia-pour/infirmiers
+- IA pour serruriers et dépanneurs : https://vulcia.fr/ia-pour/serruriers
+- IA pour déménageurs et transporteurs : https://vulcia.fr/ia-pour/demenageurs
+- Offres & Tarifs : https://vulcia.fr/offres
+- À propos : https://vulcia.fr/a-propos
+- Blog : https://vulcia.fr/blog
+- Article : Chatbot IA pour site web 2026 : https://vulcia.fr/blog/chatbot-site-web-2026
+- Article : Automatiser ses relances clients avec l'IA : https://vulcia.fr/blog/automatiser-relances-clients
+- Article : Agent IA sur WhatsApp Business 2026 : https://vulcia.fr/blog/agent-ia-whatsapp
+- Article : Combien coûte un agent IA en 2026 : https://vulcia.fr/blog/prix-agent-ia-2026
+- Article : Agent IA pour devis artisan : https://vulcia.fr/blog/agent-ia-devis-artisan
+- Article : IA pour kinésithérapeute : https://vulcia.fr/blog/ia-pour-kinesitherapeute
+- Article : Automatiser la facturation PME : https://vulcia.fr/blog/automatiser-facturation-pme
+- Article : Agent IA pour hôtel et restaurant : https://vulcia.fr/blog/ia-pour-hotel-restaurant
+- Article : CRM et IA pour PME : https://vulcia.fr/blog/crm-ia-pme
+- Article : Prospection commerciale avec l'IA : https://vulcia.fr/blog/prospection-commerciale-ia
+- Article : IA pour e-commerce Shopify et WooCommerce : https://vulcia.fr/blog/ia-ecommerce-shopify
+- Article : No-code et IA pour automatiser son business : https://vulcia.fr/blog/no-code-automatisation-ia
+- Article : SEO local et IA pour PME : https://vulcia.fr/blog/seo-local-ia-pme
+- Article : Agent IA pour le support client : https://vulcia.fr/blog/agent-ia-support-client
+- Article : Agent IA pour cabinet comptable : https://vulcia.fr/blog/ia-pour-cabinet-comptable
+- Article : IA et RGPD pour les PME : https://vulcia.fr/blog/ia-securite-rgpd-pme
+- Article : Réduire les no-shows avec l'IA : https://vulcia.fr/blog/reduire-no-shows-ia
+- Article : IA pour le recrutement RH : https://vulcia.fr/blog/ia-recrutement-rh
+- Article : Agent IA pour avocat : https://vulcia.fr/blog/ia-pour-avocat
+- Article : Mesurer le ROI d'un agent IA : https://vulcia.fr/blog/mesurer-roi-agent-ia
+- Article : IA pour médecin généraliste : https://vulcia.fr/blog/ia-medecin-generaliste
+- Article : Agent IA pour PME multi-sites : https://vulcia.fr/blog/agent-ia-multisite
+- Article : ChatGPT vs agent IA sur-mesure : https://vulcia.fr/blog/chatgpt-vs-agent-ia
+- Article : Agent IA pour salon de coiffure : https://vulcia.fr/blog/ia-pour-coiffeur
+- Article : IA pour organisme de formation : https://vulcia.fr/blog/ia-pour-formation-professionnelle
+- Article : Automatiser l'onboarding client : https://vulcia.fr/blog/automatiser-onboarding-client
+- Article : IA pour agence marketing : https://vulcia.fr/blog/ia-pour-agence-marketing
+- Article : Agent IA vocal en 2026 : https://vulcia.fr/blog/agent-ia-vocal
+- Article : IA pour commerce de détail : https://vulcia.fr/blog/ia-retail-magasin
+- Article : IA pour startup SaaS : https://vulcia.fr/blog/ia-pour-startup-saas
+- Article : IA pour la gestion locative : https://vulcia.fr/blog/ia-gestion-locative
+- Article : IA et prospection B2B : https://vulcia.fr/blog/ia-b2b-prospection
+- Article : WhatsApp Business API pour PME : https://vulcia.fr/blog/agent-ia-whatsapp-business
+- Article : Agent IA pour expert-comptable : https://vulcia.fr/blog/ia-pour-expert-comptable
+- Article : IA pour agence de communication : https://vulcia.fr/blog/ia-agence-communication
+- Article : IA pour club sportif : https://vulcia.fr/blog/ia-pour-club-sportif
+- Article : IA pour les RH internes : https://vulcia.fr/blog/ia-ressources-humaines-internes
+- Article : IA pour conseiller en gestion de patrimoine : https://vulcia.fr/blog/ia-gestion-patrimoine
+- Article : IA pour boulangerie : https://vulcia.fr/blog/ia-pour-boulangerie
+- Article : IA pour fleuriste : https://vulcia.fr/blog/ia-pour-fleuriste
+- Article : IA pour décorateur d'intérieur et architecte d'intérieur : https://vulcia.fr/blog/ia-pour-decorateur-interieur
+- Article : IA pour photographe : https://vulcia.fr/blog/ia-pour-photographe
+- Article : IA pour concessionnaire automobile : https://vulcia.fr/blog/ia-pour-concessionnaire-auto
+- Article : Agent IA pour le secteur public : https://vulcia.fr/blog/agent-ia-secteur-public
+- Article : IA pour consultant indépendant : https://vulcia.fr/blog/ia-pour-consultant
+- Article : IA pour naturopathe : https://vulcia.fr/blog/ia-pour-naturopathe
+- Article : Intégrer son agent IA avec ses outils existants : https://vulcia.fr/blog/ia-integration-api
+- Article : IA pour serrurier : https://vulcia.fr/blog/ia-pour-serrurier
+- Article : IA pour infirmier libéral : https://vulcia.fr/blog/ia-pour-infirmier
+- Article : IA pour épicerie indépendante : https://vulcia.fr/blog/ia-pour-epicerie
+- Article : IA pour association : https://vulcia.fr/blog/ia-pour-association
+- Article : Avis Google automatiques avec l'IA : https://vulcia.fr/blog/ia-avis-google-automatique
+- Article : Automatiser son SAV avec l'IA : https://vulcia.fr/blog/automatiser-service-apres-vente
+- Article : IA pour médecin spécialiste : https://vulcia.fr/blog/ia-pour-medecin-specialiste
+- Article : EU AI Act et PME françaises : https://vulcia.fr/blog/reglementation-ia-europe
+- Article : Agent IA multicanal email WhatsApp SMS : https://vulcia.fr/blog/agent-ia-multicanal
+- Article : IA et pipeline commercial B2B : https://vulcia.fr/blog/ia-pipeline-commercial
+- Article : Construire une base de connaissance IA : https://vulcia.fr/blog/ia-base-connaissance
+- Article : IA pour réseau de franchise : https://vulcia.fr/blog/ia-pour-franchise
+- Audit gratuit : https://vulcia.fr/contact
+
+## Contact
+- Email : contact@vulcia.fr
+- Audit gratuit 30 min : https://vulcia.fr/contact
+
+## À propos
+Vulcia est une agence qui démarre. Nous privilégions la transparence sur les preuves : prix affichés publiquement, garantie résultat contractualisée, audit gratuit avant tout engagement. Nous ne fabriquons pas de témoignages.

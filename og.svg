@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080810"/>
+      <stop offset="100%" stop-color="#0d0d1a"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#7c5cfc"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="30%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#7c5cfc" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#080810" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <!-- Grid -->
+  <g stroke="rgba(124,92,252,0.06)" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+  <!-- Logo mark (bolt scaled to fit 56x56 box at 80,80) -->
+  <g transform="translate(78.5 81) scale(1.739)">
+    <path d="M20 4L11 18H16L12 27L23 14H17Z" fill="#a78bfa"/>
+  </g>
+  <!-- IAForge wordmark -->
+  <text x="150" y="122" font-family="Arial Black, Arial" font-size="36" font-weight="900" fill="white">IA</text>
+  <text x="196" y="122" font-family="Arial, sans-serif" font-size="36" font-weight="300" fill="#a78bfa" letter-spacing="1">Forge</text>
+  <!-- Accent bar -->
+  <rect x="80" y="180" width="100" height="2" rx="1" fill="#7c5cfc"/>
+  <!-- Main headline -->
+  <text x="80" y="290" font-family="Arial Black, Arial" font-size="68" font-weight="900" fill="white">Agents IA. SEO. Sites web.</text>
+  <text x="80" y="380" font-family="Arial Black, Arial" font-size="68" font-weight="900" fill="url(#acc)">On forge votre avantage.</text>
+  <!-- Sub -->
+  <text x="80" y="450" font-family="Arial, sans-serif" font-size="26" fill="rgba(200,200,230,0.6)">Déploiement en 3 semaines · Résultat garanti à 90 jours · France entière</text>
+  <!-- CTA pill -->
+  <rect x="80" y="510" width="260" height="50" rx="25" fill="#7c5cfc"/>
+  <text x="210" y="541" font-family="Arial Black, Arial" font-size="17" font-weight="700" fill="white" text-anchor="middle">Audit gratuit 30 min →</text>
+  <!-- Right decoration: concentric rings -->
+  <circle cx="960" cy="315" r="220" fill="none" stroke="rgba(124,92,252,0.08)" stroke-width="1"/>
+  <circle cx="960" cy="315" r="155" fill="none" stroke="rgba(167,139,250,0.1)" stroke-width="1"/>
+  <circle cx="960" cy="315" r="90" fill="none" stroke="rgba(124,92,252,0.18)" stroke-width="1.5"/>
+  <circle cx="960" cy="315" r="10" fill="#7c5cfc"/>
+  <!-- Bolt watermark in the ring -->
+  <g transform="translate(898 253) scale(4.35)">
+    <path d="M20 4L11 18H16L12 27L23 14H17Z" fill="rgba(124,92,252,0.12)"/>
+  </g>
+</svg>
