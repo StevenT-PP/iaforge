@@ -1,0 +1,185 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour médecin généraliste : automatiser sans déshumaniser en 2026",
+  description: "Comment un cabinet de médecine générale déploie un agent IA pour gérer les RDV, réduire les no-shows et collecter les motifs de consultation — sans toucher au secret médical. Guide complet.",
+  date: "2026-07-04",
+  readTime: "8 min",
+  category: "Santé",
+  categoryColor: "#34d399",
+  slug: "ia-medecin-generaliste",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La médecine générale est l'un des secteurs où la pression administrative est la plus forte — et l'un où un agent IA peut libérer le plus de temps clinique. Un médecin généraliste perd en moyenne 3 à 4 heures par semaine sur des tâches qui n'ont rien de médical : rappeler les patients, reconfirmer des créneaux, répondre aux questions sur les remboursements, gérer les certificats. Un agent bien configuré récupère tout ça.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA peut faire pour un cabinet de médecine générale</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Prise de RDV 24h/24 avec collecte du motif",
+        color: "#34d399",
+        desc: "L'agent gère les demandes de rendez-vous à toute heure — site web, WhatsApp, Google My Business. Il collecte le motif de consultation (renouvellement ordonnance, certificat, symptôme aigu, suivi chronique) et l'urgence estimée. Le médecin consulte une fiche complète avant chaque RDV.",
+        gain: "30 à 40% des RDV pris hors horaires d'ouverture",
+      },
+      {
+        n: "2",
+        titre: "Rappels anti no-show et gestion de liste d'attente",
+        color: "#38bdf8",
+        desc: "L'agent envoie un rappel SMS à J-2 et un message WhatsApp à J-1 avec lien de confirmation. En cas d'annulation, il contacte automatiquement le premier patient en liste d'attente. Le taux de no-show chute de 60 à 70%.",
+        gain: "-60% de créneaux perdus",
+      },
+      {
+        n: "3",
+        titre: "Renouvellements d'ordonnance planifiés",
+        color: "#a78bfa",
+        desc: "Pour les patients chroniques (HTA, diabète, hypothyroïdie), l'agent envoie un rappel automatique 2 semaines avant la fin de l'ordonnance. Il propose un créneau de suivi et collecte les bilans sanguins récents si disponibles.",
+        gain: "+20% de suivi des patients chroniques",
+      },
+      {
+        n: "4",
+        titre: "FAQ administrative et orientation",
+        color: "#f59e0b",
+        desc: "\"Êtes-vous secteur 1 ?\", \"Acceptez-vous la CMU ?\", \"Quel délai pour un certificat médical ?\", \"Comment obtenir un arrêt de travail en ligne ?\" — des dizaines de questions répétitives auxquelles l'agent répond 24h/24 sans interruption médicale.",
+        gain: "25 à 40 questions/semaine traitées automatiquement",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La frontière absolue : administratif vs médical</h2>
+
+  <p>Voici ce que l'agent ne fait jamais — et pourquoi c'est essentiel :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Situation</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">IA gère</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-red-400 uppercase tracking-wider text-center">Médecin uniquement</div>
+      {[
+        ["Demande de RDV", "Agenda, confirmation, rappels", "Évaluation de l'urgence médicale réelle"],
+        ["Motif de consultation", "Collecte et catégorisation", "Diagnostic ou orientation diagnostique"],
+        ["Renouvellement ordonnance", "Planification du RDV de suivi", "Décision de renouveler ou modifier"],
+        ["Symptômes décrits", "\"Je note et transmets au médecin\"", "Toute interprétation ou conseil"],
+        ["Résultats d'analyses", "Notification de disponibilité", "Lecture, interprétation, action"],
+        ["Urgence perçue", "Détection si urgence vitale → SAMU 15", "Triage médical"],
+      ].map(([sit, ia, medecin]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{sit}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{ia}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400 text-center">{medecin}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">RGPD et HDS : ce que ça signifie concrètement</h2>
+
+  <p>Un cabinet médical traite des données de santé — c'est la catégorie de données la plus sensible du RGPD. Voici l'architecture requise :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Modèle IA exclusivement Mistral AI hébergé à Paris — aucune donnée hors UE",
+      "Hébergeur HDS (Hébergeur de Données de Santé) certifié pour le stockage des données patients",
+      "L'agent collecte uniquement les données nécessaires à la prise de RDV — pas les antécédents médicaux",
+      "DPA (Data Processing Agreement) avec IAForge signé avant tout déploiement",
+      "Durée de conservation des échanges limitée à 30 jours, paramétrable",
+      "Mention RGPD obligatoire sur votre site et dans vos confirmations de RDV",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Compatibilité avec Doctolib</h2>
+
+  <p>Doctolib est utilisé par la majorité des médecins généralistes en France. La complémentarité avec un agent IA fonctionne ainsi :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { cas: "Doctolib ouvert aux nouveaux patients", action: "L'agent répond aux questions sur le cabinet, les modalités, le secteur, et renvoie vers Doctolib pour la prise de RDV en ligne. Résultat : moins de questions répétitives au cabinet, plus de RDV pris en dehors des heures." },
+      { cas: "Doctolib fermé aux nouveaux patients", action: "L'agent collecte les informations des nouveaux patients (nom, motif, médecin traitant actuel) et constitue une liste d'attente. Quand un créneau se libère, il notifie en priorité. -70% de perdus par rapport à une simple page 'complet'." },
+      { cas: "Rappels complémentaires", action: "Doctolib envoie ses propres rappels automatiques. L'agent les complète par un message WhatsApp 2h avant, qui obtient en moyenne 40% de taux de confirmation explicite — réduisant encore les no-shows." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-xs mb-2">{item.cas}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.action}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de 2 médecins généralistes</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <p class="text-[#8888aa] text-xs uppercase font-bold tracking-wider mb-5">Exemple : 2 médecins, 80 consultations/semaine, secteur 1</p>
+    <div class="space-y-4">
+      <div>
+        <p class="text-[#34d399] text-xs font-bold uppercase tracking-wider mb-2">Gains directs</p>
+        <div class="space-y-2">
+          {[
+            ["Créneaux récupérés sur no-shows (-60% de 8/sem.)", "4,8 × 25€ × 4 sem.", "+480€/mois"],
+            ["Consultations hors horaires (via liste d'attente)", "6 nouveaux patients/sem. × 25€ × 4", "+600€/mois"],
+          ].map(([item, calc, gain]) => (
+            <div class="flex justify-between items-start gap-4 text-xs">
+              <p class="text-[#8888aa]">{item}</p>
+              <p class="text-[#8888aa] flex-shrink-0">{calc}</p>
+              <p class="text-white font-semibold flex-shrink-0">{gain}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="text-[#f59e0b] text-xs font-bold uppercase tracking-wider mb-2">Gains indirects</p>
+        <div class="space-y-2">
+          {[
+            ["Temps secrétariat économisé (1h30/jour)", "25 jours × 1,5h × 16€/h", "+600€/mois"],
+            ["Rappels chroniques (5% de patients chroniques supplémentaires)", "Estimation conservatrice", "+300€/mois"],
+          ].map(([item, calc, gain]) => (
+            <div class="flex justify-between items-start gap-4 text-xs">
+              <p class="text-[#8888aa]">{item}</p>
+              <p class="text-[#8888aa] flex-shrink-0">{calc}</p>
+              <p class="text-white font-semibold flex-shrink-0">{gain}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-4 space-y-2">
+        {[
+          ["Total gains mensuels", "", "+1 980€/mois"],
+          ["Coût agent IAForge", "", "-149€/mois"],
+          ["ROI net mensuel", "", "+1 831€/mois"],
+          ["ROI annuel", "", "+21 972€/an"],
+        ].map(([item, _, gain]) => (
+          <div class="flex justify-between items-start gap-4">
+            <p class={`text-sm ${item.startsWith('ROI') ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{item}</p>
+            <p class={`text-sm font-bold flex-shrink-0 ${item.includes('net') || item.includes('annuel') ? 'text-[#34d399]' : item.includes('Coût') ? 'text-red-400' : 'text-white'}`}>{gain}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/medecins" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Page secteur médecins &rarr;</a>
+    <a href="/blog/reduire-no-shows-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Réduire les no-shows &rarr;</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

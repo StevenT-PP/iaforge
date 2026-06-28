@@ -1,0 +1,243 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Gère les demandes de premier RDV 24h/24 sans exposer le contenu des consultations",
+  "Qualifie le motif de consultation : anxiété, dépression, thérapie de couple, enfant/ado",
+  "Envoie les questionnaires d'anamnèse avant le premier rendez-vous",
+  "Rappelle les séances J-2 et J-1 pour réduire les no-shows",
+  "Gère les demandes d'attestations et remboursements mutuelle",
+  "Répond aux questions administratives (tarifs, remboursements, durée de thérapie)",
+  "Relance les patients qui n'ont pas replanifié après une absence",
+  "Gère les listes d'attente et notifie en cas de désistement",
+];
+
+const faqItems = [
+  {
+    q: "Comment l'agent respecte-t-il le secret professionnel du psychologue ?",
+    a: "L'agent est strictement limité aux échanges administratifs : prise de RDV, confirmation, rappels, questionnaires d'anamnèse anonymisés. Il n'a accès à aucune note de session, aucun dossier patient, aucun logiciel de gestion clinique. Les informations collectées servent uniquement à préparer le premier entretien — elles arrivent dans votre boîte mail sécurisée.",
+  },
+  {
+    q: "L'agent peut-il gérer les situations de crise (idées suicidaires, urgence psychiatrique) ?",
+    a: "C'est un point critique. L'agent est configuré pour détecter les signaux de crise dans les messages (mots-clés spécifiques) et déclencher immédiatement le protocole que vous définissez : redirection vers le 3114 (numéro national de prévention du suicide), votre numéro d'urgence, ou un message de mise en sécurité. Il ne traite jamais une crise seul.",
+  },
+  {
+    q: "Compatible avec les logiciels de gestion cabinet (Doctolib, Calendly, Docelia) ?",
+    a: "L'agent se synchronise avec votre agenda Doctolib, Calendly ou Google Calendar. Pour Docelia et les logiciels de dossiers patients, l'agent ne s'y connecte pas — la confidentialité des dossiers est préservée. Il crée uniquement des entrées dans l'agenda.",
+  },
+  {
+    q: "Comment sont gérés les questionnaires d'anamnèse ?",
+    a: "L'agent envoie automatiquement votre questionnaire d'anamnèse (formulaire sécurisé) dès qu'un premier RDV est confirmé. Le patient le remplit avant la séance — vous arrivez avec le contexte de base. Cela économise 15 à 20 minutes de recueil d'informations en première séance.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec vos types de consultation, vos tarifs, votre protocole de crise et vos questionnaires. Hébergement Mistral AI Paris pour la confidentialité maximale. Vous validez tous les scénarios avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour psychologues et thérapeutes — RDV et anamnèse automatisés | IAForge"
+  description="Agent IA pour psychologue : prise de RDV 24h/24, questionnaires d'anamnèse automatiques, rappels anti no-show — sans jamais exposer le contenu des séances. RGPD, hébergé en France."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Psychologues", "item": "https://iaforge.fr/ia-pour/psychologues" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Psychologues & Thérapeutes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour psychologues</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            L'administratif géré.<br/><span class="gradient-text">Vous, sur la thérapie.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            RDV automatiques, anamnèse envoyée avant la séance, rappels anti no-show — sans jamais exposer le contenu des consultations à un système IA.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "de no-shows grâce aux rappels J-2, J-1 et J-2h", color },
+            { val: "+15 min", label: "de temps thérapeutique récupéré par séance (anamnèse pré-remplie)", color: "#34d399" },
+            { val: "0 crise", label: "sans protocole — détection automatique et redirection 3114", color: "#f87171" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à votre pratique", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">La frontière absolue : administratif vs clinique</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">L'agent ne franchit jamais cette ligne.</p>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Tâche</div>
+          <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">IA peut faire</div>
+          <div class="p-4 border-b border-white/5 text-xs font-bold text-red-400 uppercase tracking-wider text-center">IA ne fait jamais</div>
+          {[
+            ["Demande de RDV", "Gérer la prise de RDV, agenda, confirmations", "Orienter vers un type de thérapie spécifique"],
+            ["Premier contact", "Qualifier le motif général, le contexte (couple, enfant, adulte)", "Évaluer la gravité ou poser un diagnostic"],
+            ["Situation de crise", "Détecter les signaux d'alerte et rediriger vers 3114", "Gérer la crise ou donner des conseils cliniques"],
+            ["Questionnaire", "Envoyer et collecter les réponses d'anamnèse", "Interpréter les réponses ou tirer des conclusions"],
+            ["Suivi administratif", "Relancer pour replanifier, gérer les attestations", "Commenter l'évolution thérapeutique"],
+          ].map(([tache, peut, jamais]) => (
+            <>
+              <div class="p-3 border-b border-white/5 text-xs text-white">{tache}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{peut}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-red-400 text-center">{jamais}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Confidentialité et RGPD : architecture dédiée santé mentale</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-8">Les données de santé mentale sont parmi les plus sensibles — notre architecture en tient compte.</p>
+      <div class="space-y-2">
+        {[
+          "Modèle IA exclusivement Mistral AI hébergé à Paris — aucune donnée hors UE",
+          "L'agent ne dispose d'aucun accès aux dossiers patients ni aux notes de séance",
+          "Questionnaires d'anamnèse transmis via formulaire chiffré directement dans votre boîte mail",
+          "Données supprimées automatiquement après 30 jours (configurable selon votre politique)",
+          "DPA (Data Processing Agreement) conforme RGPD et recommandations CNIL secteur santé",
+          "Mention explicite de l'IA dans la politique de confidentialité de votre cabinet",
+        ].map(item => (
+          <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">ROI pour un cabinet de 2 psychologues (40 séances/semaine)</h2>
+      <div class="glass rounded-2xl p-6">
+        <div class="space-y-3">
+          {[
+            { item: "Réduction no-shows (-50% de 6 no-shows/sem.)", gain: "+3 × 70€ × 4 sem. = +840€/mois" },
+            { item: "Anamnèse pré-remplie (15 min économisées × 30 nouveaux/mois)", gain: "+7,5h libérées pour consultations" },
+            { item: "Demandes de RDV traitées hors horaires (30%)", gain: "0 opportunité perdue le soir et le week-end" },
+            { item: "Total gain mensuel estimé", gain: "+840 à 1 400€/mois" },
+            { item: "Coût agent IAForge", gain: "149€/mois (pack Solo)" },
+          ].map((row, i) => (
+            <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+              <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+              <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#a78bfa]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/medecins', title: 'Agent IA pour médecins — RDV et rappels automatiques', cat: 'Secteur' },
+          { href: '/ia-pour/kinesitherapeutes', title: 'Agent IA pour kinésithérapeutes — -55% de no-shows', cat: 'Secteur' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique tous secteurs', cat: 'Automatisation' },
+          { href: '/blog/ia-securite-rgpd-pme', title: 'IA et RGPD pour les PME : ce qu\'il faut vraiment savoir', cat: 'Technique' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Concentrez-vous sur vos patients, pas sur l'agenda</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos flux de demandes, vos no-shows et votre gestion administrative pour vous chiffrer le temps que vous récupéreriez.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

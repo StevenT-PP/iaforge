@@ -1,0 +1,120 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour organisme de formation : automatiser sans perdre Qualiopi en 2026",
+  description: "Comment un organisme de formation professionnelle utilise l'IA pour automatiser les inscriptions, la collecte de documents et le suivi apprenants — sans risquer sa certification Qualiopi.",
+  date: "2026-07-05",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#a78bfa",
+  slug: "ia-pour-formation-professionnelle",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Les organismes de formation sont dans une position paradoxale : ils ont un volume administratif considérable (inscriptions, convocations, feuilles d'émargement, attestations, bilans) et une exigence qualité croissante liée à Qualiopi. L'IA peut absorber l'essentiel de la charge administrative tout en documentant chaque action pour les audits — à condition de savoir ce qu'elle peut et ne peut pas faire.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA automatise sans risque Qualiopi</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        tache: "Qualification des demandes de formation",
+        color: "#a78bfa",
+        desc: "Un prospect intéressé par une formation est qualifié automatiquement : secteur d'activité, poste, niveau actuel, objectif de montée en compétences, mode de financement (OPCO, CPF, auto-financement, plan de développement des compétences). L'équipe pédagogique reçoit une fiche complète avant tout entretien.",
+        gain: "15 à 20 min économisées par demande",
+        qualiopi: "Compatible — la qualification est documentée et traçable",
+      },
+      {
+        tache: "Convocations et documents pré-formation",
+        color: "#34d399",
+        desc: "Envoi automatique de la convocation J-7, du programme détaillé J-5, et de la liste des prérequis J-3. Relance si le stagiaire n'a pas confirmé sa présence. Collecte automatique des documents nécessaires (CV pour bilan de compétences, attestation d'emploi, etc.).",
+        gain: "3 à 4h/semaine de secrétariat pédagogique",
+        qualiopi: "Compatible — les envois sont horodatés et archivés",
+      },
+      {
+        tache: "Suivi des apprenants pendant la formation",
+        color: "#38bdf8",
+        desc: "Rappels de présence, collecte des feuilles d'émargement numériques, satisfaction intermédiaire (à mi-parcours pour les formations longues), alertes si un apprenant décroche (absence J+2 sans justificatif).",
+        gain: "0 décrocheur non détecté",
+        qualiopi: "Compatible et valorisé — le suivi actif répond à l'indicateur 8",
+      },
+      {
+        tache: "Certificats, attestations et bilans post-formation",
+        color: "#f59e0b",
+        desc: "Envoi automatique des attestations de formation à J+1, relance pour le bilan de satisfaction à J+7 et J+30, préparation des dossiers de financement OPCO. Pour le CPF, l'agent guide les stagiaires dans la démarche sur Mon Compte Formation.",
+        gain: "100% des attestations envoyées sous 24h",
+        qualiopi: "Compatible — traçabilité complète des envois",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-white font-bold text-base">{item.tache}</h3>
+          <span class="text-xs font-bold flex-shrink-0 ml-3 px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs text-[#34d399] italic">Qualiopi : {item.qualiopi}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Qualiopi et IA : les 3 indicateurs qui bénéficient de l'automatisation</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { indicateur: "Indicateur 8 — Suivi de l'exécution et des résultats", detail: "L'IA documente automatiquement chaque interaction avec les apprenants pendant la formation. Alertes sur les absences, collecte des bilans à chaud et à froid, traçabilité des échanges. Lors d'un audit Qualiopi, vous pouvez produire l'historique complet de chaque session." },
+      { indicateur: "Indicateur 13 — Recueil des appréciations des stagiaires", detail: "L'agent envoie les questionnaires de satisfaction à J+1 (bilan à chaud) et J+30 (bilan à froid) avec relances automatiques. Le taux de réponse passe de 20-30% à 65-75% grâce aux relances. Vos indicateurs satisfaction sont plus fiables et plus représentatifs." },
+      { indicateur: "Indicateur 7 — Coordination avec les entreprises commanditaires", detail: "Pour les formations financées par un OPCO ou un plan de formation, l'agent tient informés les RH de l'entreprise commanditaire : confirmations d'inscription, attestations de présence, bilans. Vous n'oubliez plus un seul retour à un client entreprise." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.indicateur}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne doit pas faire dans un OF</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { interdit: "Évaluer les compétences des apprenants", raison: "L'évaluation des acquis est un acte pédagogique qui engage la responsabilité du formateur. L'IA peut collecter les auto-évaluations mais ne peut pas noter ou certifier." },
+      { interdit: "Orienter vers une formation sans diagnostic humain", raison: "Recommander une formation à quelqu'un sur la base d'un questionnaire automatique engage votre responsabilité. La prescription reste humaine — l'IA qualifie, le formateur conseille." },
+      { interdit: "Gérer les dossiers CPF de façon autonome", raison: "Les inscriptions via Mon Compte Formation impliquent des engagements financiers et des règles strictes (délai de rétractation, etc.). L'IA peut guider, pas agir seule sur le CPF." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-red-400 text-xs font-semibold mb-1">Interdit : {item.interdit}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.raison}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un OF de taille moyenne (300 stagiaires/an)</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Réduction no-shows formation (-50% × 15 absences/mois × 120€/jour)", gain: "+900€/mois" },
+        { item: "Temps secrétariat pédagogique économisé (6h/semaine)", gain: "+6h × 16€ × 4 sem. = +384€/mois" },
+        { item: "Taux de satisfaction collecté (de 25% à 70%) → meilleur référencement OPCO", gain: "+2 à 3 nouvelles sessions/an" },
+        { item: "Total gain mensuel estimé", gain: "+1 500 à 2 500€/mois" },
+        { item: "Coût agent IAForge", gain: "349€/mois (pack Essentiel)" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#a78bfa]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/coachs" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour coachs et formateurs &rarr;</a>
+    <a href="/blog/ia-recrutement-rh" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour le recrutement RH &rarr;</a>
+  </div>
+
+</BlogLayout>

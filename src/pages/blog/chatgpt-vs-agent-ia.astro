@@ -1,0 +1,106 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "ChatGPT vs agent IA sur-mesure : lequel choisir pour votre PME en 2026 ?",
+  description: "ChatGPT Enterprise ou un agent IA configuré pour votre métier ? Comparaison honnête sur le coût, les capacités, la confidentialité des données et le ROI réel pour les PME françaises.",
+  date: "2026-07-05",
+  readTime: "7 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "chatgpt-vs-agent-ia",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La question revient dans presque tous nos audits : \"Pourquoi ne pas juste utiliser ChatGPT ?\" C'est une question légitime. ChatGPT est puissant, accessible et de plus en plus utilisé en entreprise. Mais il existe une différence fondamentale entre un outil généraliste que vos équipes utilisent manuellement et un agent configuré pour agir de façon autonome sur vos processus métier.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comparaison directe : ChatGPT vs agent IA sur-mesure</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Critère</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">ChatGPT Enterprise</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#7c5cfc] uppercase tracking-wider text-center">Agent IA sur-mesure</div>
+      {[
+        ["Mode de fonctionnement", "Réactif — répond quand un humain lui pose une question", "Proactif — agit sur déclencheurs, sans supervision constante"],
+        ["Intégration aux outils", "Via plugins ou API (setup technique requis)", "Connecté nativement à votre agenda, CRM, logiciel métier"],
+        ["Connaissance de votre business", "À ré-expliquer à chaque conversation", "Configuré une fois avec vos tarifs, règles, produits"],
+        ["Réponse 24h/24", "Seulement si un employé est devant son écran", "Répond automatiquement aux clients à 3h du matin"],
+        ["Hébergement données", "USA (sauf Enterprise avec DPA)", "France ou UE selon votre choix"],
+        ["Prix mensuel PME", "30 à 100€ (Team) ou sur devis (Enterprise)", "149 à 349€/mois clés en main"],
+        ["Setup", "Immédiat — mais requiert formation équipe", "7 jours — l'agent tourne seul après"],
+        ["ROI mesurable", "Difficile à isoler", "KPIs configurés, ROI mesuré dès J+30"],
+      ].map(([crit, chatgpt, agent]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{crit}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{chatgpt}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] text-center">{agent}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que ChatGPT fait bien (et que l'agent ne remplace pas)</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { use: "Rédaction et reformulation de contenu", desc: "Emails, propositions commerciales, descriptions produits, comptes-rendus de réunion — ChatGPT est un assistant de rédaction exceptionnel pour vos équipes. Aucun agent sur-mesure n'est configuré pour ça." },
+      { use: "Analyse de documents et synthèse", desc: "Résumer un contrat, extraire les points clés d'un rapport, comparer deux offres fournisseurs — ce sont des tâches ponctuelles à haute valeur pour lesquelles ChatGPT excelle en mode interactif." },
+      { use: "Brainstorming et idéation", desc: "Générer des idées de campagnes marketing, explorer des angles différents sur un problème, préparer une présentation — l'utilisation interactive de ChatGPT a une vraie valeur pour ces tâches créatives." },
+      { use: "Formation interne et onboarding", desc: "Créer des quiz, des guides, des FAQ internes — ChatGPT est un excellent outil pour accélérer la production de contenu de formation sans agent dédié." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.use}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA sur-mesure fait que ChatGPT ne peut pas faire</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { use: "Répondre à vos clients pendant que vous dormez", desc: "Un client envoie un message WhatsApp à 23h pour demander un RDV. ChatGPT ne peut rien faire — personne n'est là pour lui poser la question. L'agent répond, qualifie, confirme, et vous envoie la fiche le lendemain matin." },
+      { use: "Relancer des prospects sans intervention humaine", desc: "\"Ce devis n'a pas été signé depuis 3 jours. Relance automatique.\" Personne dans votre équipe n'a besoin de se souvenir, de créer une tâche ou d'écrire l'email. L'agent s'en charge selon les règles que vous avez définies." },
+      { use: "Connaître vos règles métier sans les ré-expliquer", desc: "Votre agent sait que vous êtes fermé le mardi après-midi, que le pack Pro coûte 790€/mois, que vous intervenez dans un rayon de 30km, que vous ne prenez pas les urgences inférieures à X€. ChatGPT oublie tout à chaque conversation." },
+      { use: "Agir dans vos outils (agenda, CRM, email)", desc: "L'agent ne se contente pas de répondre — il crée le RDV dans votre agenda, met à jour la fiche CRM, envoie la confirmation par email, déclenche le rappel J-1. ChatGPT génère du texte, il n'agit pas." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.use}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La vraie question : quel problème voulez-vous résoudre ?</h2>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      { question: "\"Je veux que mon équipe travaille plus vite\"", reponse: "ChatGPT Team (30€/utilisateur/mois). Formation de 2 heures. ROI rapide sur la productivité individuelle.", recommande: "ChatGPT", color: "#34d399" },
+      { question: "\"Je perds des clients parce que je ne réponds pas assez vite\"", reponse: "Agent IA sur-mesure. Répond à vos clients 24h/24 selon vos règles. ROI mesuré sur les leads convertis.", recommande: "Agent IA", color: "#7c5cfc" },
+      { question: "\"Je veux automatiser mes relances et rappels\"", reponse: "Agent IA avec CRM intégré. Séquences automatiques, zéro intervention humaine sur les tâches répétitives.", recommande: "Agent IA", color: "#7c5cfc" },
+      { question: "\"Je veux analyser mes documents plus vite\"", reponse: "ChatGPT Enterprise avec upload de fichiers. Résumés, extractions, comparaisons en quelques secondes.", recommande: "ChatGPT", color: "#34d399" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-1">{item.question}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed mb-2">{item.reponse}</p>
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>Recommandé : {item.recommande}</span>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Peut-on utiliser les deux ?</h2>
+
+  <p>Oui — et c'est souvent la meilleure configuration. Beaucoup de nos clients utilisent ChatGPT Team pour la productivité de leurs équipes en interne, <em>et</em> un agent IAForge pour l'automatisation client externe. Les deux ne sont pas en concurrence : l'un aide vos collaborateurs à travailler mieux, l'autre travaille à leur place sur les tâches répétitives.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/choisir-modele-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">GPT-4o vs Claude vs Mistral &rarr;</a>
+    <a href="/blog/mesurer-roi-agent-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Mesurer le ROI d'un agent IA &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#38bdf8";
+
+const tasks = [
+  "Répond aux questions sur les montures, verres progressifs, lentilles disponibles en stock",
+  "Gère la prise de RDV pour les examens de vue et les essayages",
+  "Rappelle les contrôles de vue annuels et renouvellements d'ordonnance",
+  "Envoie les confirmations et rappels automatiques J-1 et H-2h",
+  "Informe sur les prises en charge mutuelle et tiers payant",
+  "Relance les clients pour les renouvellements de lentilles et contrats de maintenance",
+  "Gère les demandes de devis monture + verres avec simulation de prise en charge",
+  "Notifie les clients quand leurs équipements sont prêts à récupérer",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il renseigner sur les prises en charge mutuelles ?",
+    a: "Oui. L'agent explique les catégories de remboursement (classe A/B, 100% santé), les délais de renouvellement (2 ans pour adulte, 1 an pour enfant), et les plafonds courants selon les garanties standard. Pour les cas spécifiques, il dirige vers votre équipe qui vérifie les droits réels auprès de la mutuelle.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les demandes de stock ?",
+    a: "Vous lui fournissez une liste de vos marques, gammes de montures et types de verres disponibles. L'agent répond aux questions générales sur les produits et, pour les questions de stock précis, dirige vers votre équipe ou invite le client à venir en magasin pour essayage.",
+  },
+  {
+    q: "Peut-il envoyer des rappels pour les contrôles de vue annuels ?",
+    a: "C'est l'un des gains les plus importants. L'agent envoie automatiquement un rappel à 11 mois et 12 mois après le dernier examen de vue — SMS, WhatsApp ou email selon votre canal. Les optiques qui utilisent ce système voient +25 à +35% de fréquence de retour client.",
+  },
+  {
+    q: "Compatible avec les logiciels optique (Optix, iGestion, Winoptic) ?",
+    a: "Pour les rappels de contrôle, l'agent peut s'alimenter d'un export mensuel de votre logiciel (date de dernière consultation) sans connexion directe. Une intégration API est possible pour Optix et iGestion sur le pack Pro.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec votre catalogue de produits, vos tarifs de base, vos règles de prise en charge mutuelle et vos protocoles de rappel. Vous validez sur 40 scénarios avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour opticiens — RDV, rappels et prise en charge mutuelle automatisés | IAForge"
+  description="Agent IA pour opticien : prise de RDV automatique, rappels de contrôle de vue annuels, information mutuelle et tiers payant, relances renouvellement. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Opticiens", "item": "https://iaforge.fr/ia-pour/opticiens" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Opticiens</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour opticiens</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos clients rappelés.<br/><span class="gradient-text">Vos équipements mieux vendus.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            RDV automatiques, rappels de contrôle de vue annuels, information mutuelle et relances renouvellement — votre agent IA récupère les clients perdus de vue.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+30%", label: "de fréquence de retour client avec les rappels de contrôle automatiques", color },
+            { val: "-40%", label: "de temps passé à répondre aux questions mutuelle/tiers payant", color: "#34d399" },
+            { val: "×2", label: "de renouvellements de lentilles grâce aux relances automatiques à 11 mois", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à votre catalogue et vos règles", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre magasin</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le rappel de contrôle annuel : votre meilleur outil de fidélisation</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">La plupart des opticiens perdent 35 à 50% de leurs clients entre deux achats faute de relance. L'agent s'en charge automatiquement.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { label: "À 11 mois", desc: "Premier rappel : \"Votre dernier contrôle de vue remonte à 11 mois. Pensez à renouveler votre ordonnance avant son expiration.\" Invitation à prendre RDV.", color: "#34d399", action: "Taux d'ouverture moyen : 68%" },
+          { label: "À 12 mois", desc: "Second rappel si pas de réponse : rappel plus direct sur l'ordonnance qui expire + offre de prise en charge rapide. Propose un créneau disponible.", color, action: "Taux de conversion : 28%" },
+          { label: "À 14 mois", desc: "Dernier rappel avec offre spécifique (montures nouvelles collections, bilan de vue gratuit). Si pas de réponse, mise en veille 6 mois.", color: "#a78bfa", action: "Récupération client : +15%" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5 border" style={`border-color: ${item.color}30;`}>
+            <p class="font-bold text-sm mb-2" style={`color: ${item.color};`}>{item.label}</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed mb-3">{item.desc}</p>
+            <p class="text-white text-xs font-semibold">{item.action}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un magasin d'optique indépendant</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Questions mutuelle et tiers payant", "15-20 min par client en magasin", "Réponses automatiques 24h/24, client arrive informé"],
+            ["Rappels de contrôle annuel", "Campagne email manuelle 2-3 fois/an", "Rappels personnalisés automatiques à 11, 12 et 14 mois"],
+            ["Renouvellements de lentilles", "Client s'en souvient seul ou pas", "Séquence automatique à 10 mois + facilité commande"],
+            ["Prise de RDV hors horaires", "Messagerie vocale, 30% sans rappel", "RDV en ligne 24h/24, confirmation immédiate"],
+            ["Notification équipements prêts", "Appel manuel ou SMS non automatisé", "SMS/WhatsApp automatique dès validation"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/pharmacies', title: 'Agent IA pour pharmacies — disponibilités et click & collect', cat: 'Secteur' },
+          { href: '/ia-pour/medecins', title: 'Agent IA pour médecins — RDV et rappels automatiques', cat: 'Secteur' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique tous secteurs', cat: 'Automatisation' },
+          { href: '/blog/seo-local-ia-pme', title: 'SEO local et IA pour PME : dominer Google Maps en 2026', cat: 'SEO Local' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Arrêtez de perdre des clients entre deux achats</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse votre fréquence de retour client, vos questions récurrentes et vos processus de rappel pour vous chiffrer ce que vous pourriez récupérer.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #0284c7);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
