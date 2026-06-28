@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://iaforge.fr/sitemap-index.xml
+Sitemap: https://vulcia.fr/sitemap-index.xml

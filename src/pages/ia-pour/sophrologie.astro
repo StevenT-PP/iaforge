@@ -1,0 +1,206 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Prend les rendez-vous individuels pour les motifs courants : stress, sommeil, anxiété, préparation mentale, burn-out",
+  "Répond aux questions sur les techniques pratiquées : relaxation dynamique, visualisation, respiration consciente",
+  "Informe sur les séances collectives disponibles : ateliers gestion du stress, préparation à l'accouchement, sophrologie enfants",
+  "Collecte le motif de consultation pour préparer la première séance sans temps perdu en entretien",
+  "Gère les demandes d'intervention en entreprise : bien-être au travail, prévention burn-out, sophrologie de groupe",
+  "Informe sur la prise en charge par certaines mutuelles et les situations spécifiques (longue maladie, ALD, RQTH)",
+  "Envoie des exercices de sophrologie courts entre les séances pour ancrer la pratique des patients",
+  "Relance bienveillamment les patients inactifs depuis 60 jours avec un message de reprise personnalisé",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il répondre à des demandes sensibles (dépression, anxiété sévère, deuil) ?",
+    a: "L'agent est configuré pour détecter les signaux de détresse dans les messages (pensées suicidaires, crise de panique aiguë, détresse émotionnelle intense) et escalader immédiatement vers vous ou les ressources d'urgence (3114 pour la prévention du suicide, SAMU). Pour les demandes d'accompagnement psychologique lourd, il vous notifie en priorité et précise que la sophrologie peut compléter mais pas remplacer un suivi psychiatrique.",
+  },
+  {
+    q: "L'agent peut-il envoyer des exercices de sophrologie aux patients ?",
+    a: "Oui, si vous lui fournissez des exercices textuels (ou des liens vers vos fichiers audio). L'agent peut envoyer automatiquement un exercice de respiration ou de relaxation après chaque séance, ou un rappel de pratique quotidienne à des horaires définis. Ces envois renforcent l'ancrage et la fidélisation entre les séances.",
+  },
+  {
+    q: "L'agent est-il compatible avec Doctolib pour les sophrologues ?",
+    a: "Oui. L'agent peut coexister avec Doctolib : il répond aux questions générales et oriente vers votre page Doctolib pour la prise de RDV. Il peut aussi prendre les RDV directement si vous n'utilisez pas Doctolib, via un système de calendrier simplifié. Les deux modes sont configurables.",
+  },
+  {
+    q: "Comment gérer les demandes d'entreprise (CSE, direction RH, management) ?",
+    a: "L'agent propose un formulaire dédié aux demandes B2B : taille de l'équipe, objectif (gestion du stress, cohésion, performance), format souhaité (atelier ponctuel ou programme sur plusieurs semaines), budget indicatif. Il vous transmet le dossier qualifié pour que vous puissiez proposer un devis adapté sans passer du temps à qualifier la demande.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel pour un cabinet de sophrologie ?",
+    a: "5 à 7 jours ouvrés pour un agent avec FAQ, prise de RDV et informations sur vos services. Pour les envois d'exercices post-séance et les relances patients, prévoir 10 jours. 0€ d'installation, sans engagement.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour sophrologues — Rendez-vous automatisés, exercices envoyés et patients fidélisés | IAForge"
+  description="Agent IA pour sophrologue : prise de RDV 24h/24, information sur les techniques et séances collectives, envoi d'exercices entre séances, gestion des demandes entreprise. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://vulcia.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://vulcia.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Sophrologues", "item": "https://vulcia.fr/ia-pour/sophrologie" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Sophrologues</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour sophrologues et praticiens bien-être</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Agenda plein.<br/><span class="gradient-text">Pratique ancrée entre les séances.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Prise de RDV 24h/24, présentation des techniques, exercices envoyés automatiquement aux patients et demandes entreprise qualifiées — pendant que vous accompagnez vos clients.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+35%", label: "de nouveaux patients grâce à la prise de RDV disponible 24h/24 avec motif de consultation collecté", color },
+            { val: "+40%", label: "de fidélisation grâce aux exercices envoyés entre les séances et aux rappels de pratique quotidienne", color: "#34d399" },
+            { val: "+50%", label: "de clients entreprise qualifiés grâce au formulaire dédié B2B géré par l'agent", color: "#fbbf24" },
+            { val: "5 jours", label: "pour être opérationnel avec vos techniques, vos séances et vos tarifs", color: "#38bdf8" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet de sophrologie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Motifs de consultation et parcours types</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">L'agent identifie le motif dès le premier message et prépare la séance pour vous.</p>
+      <div class="not-prose my-6 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-white/10">
+              <th class="text-left text-[#8888aa] font-semibold pb-3 pr-6">Motif</th>
+              <th class="text-left pb-3 pr-6" style={`color: ${color};`}>Ce que l'agent collecte</th>
+              <th class="text-left pb-3" style="color: #38bdf8;">Parcours type</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5">
+            {[
+              ["Stress & anxiété", "Origine (pro/perso), intensité, durée, tentatives précédentes", "4 à 6 séances individuelles + exercices quotidiens envoyés"],
+              ["Troubles du sommeil", "Type de trouble (endormissement, réveils, qualité), durée", "3 à 5 séances + exercice de détente pré-sommeil automatisé"],
+              ["Préparation à l'accouchement", "Terme, grossesse normale/pathologique, conjoint inclus ?", "4 à 8 séances + groupe si disponible, relais sage-femme"],
+              ["Préparation mentale sportive", "Discipline, niveau (amateur/compétition), objectif précis", "3 à 6 séances + exercice de visualisation personnalisé"],
+              ["Arrêt du tabac", "Consommation quotidienne, motivations, tentatives passées", "5 séances protocole tabac + relances à J+30 et J+90"],
+              ["Demande entreprise", "Effectif, secteur, objectif (stress/cohésion/performance), format", "Devis atelier ou programme multi-semaines sur mesure"],
+            ].map(([motif, collecte, parcours]) => (
+              <tr>
+                <td class="py-3 pr-6 text-white text-xs font-medium align-top">{motif}</td>
+                <td class="py-3 pr-6 text-[#8888aa] text-xs align-top">{collecte}</td>
+                <td class="py-3 text-[#8888aa] text-xs align-top">{parcours}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/psychologues', title: 'IA pour psychologues et thérapeutes', cat: 'Secteur' },
+          { href: '/ia-pour/studios-yoga', title: 'IA pour studios yoga et bien-être', cat: 'Secteur' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA', cat: 'Guide' },
+          { href: '/blog/automatiser-onboarding-client', title: 'Automatiser l\'onboarding client', cat: 'Guide' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vous en séance. L'agent avec vos futurs patients.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes hors horaires, vos patients inactifs et votre potentiel de marché entreprise pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c5cfc);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 5 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from './Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
@@ -35,23 +35,23 @@ const jsonLd = {
   "publisher": {
     "@type": "Organization",
     "name": "IAForge",
-    "url": "https://iaforge.fr",
-    "logo": { "@type": "ImageObject", "url": "https://iaforge.fr/favicon.svg" }
+    "url": "https://vulcia.fr",
+    "logo": { "@type": "ImageObject", "url": "https://vulcia.fr/favicon.svg" }
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": `https://iaforge.fr/blog/${article.slug}`
+    "@id": `https://vulcia.fr/blog/${article.slug}`
   },
-  "url": `https://iaforge.fr/blog/${article.slug}`
+  "url": `https://vulcia.fr/blog/${article.slug}`
 };
 
 const breadcrumb = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
-    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://iaforge.fr/blog" },
-    { "@type": "ListItem", "position": 3, "name": article.title, "item": `https://iaforge.fr/blog/${article.slug}` }
+    { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://vulcia.fr" },
+    { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://vulcia.fr/blog" },
+    { "@type": "ListItem", "position": 3, "name": article.title, "item": `https://vulcia.fr/blog/${article.slug}` }
   ]
 };
 ---

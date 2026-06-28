@@ -1,0 +1,221 @@
+﻿---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f87171";
+
+const tasks = [
+  "Qualifie les demandes de réparation : gravité des dégâts, sinistre avec assurance ou réparation hors assurance",
+  "Programme les rendez-vous d'expertise et les déposes de véhicule avec confirmation automatique",
+  "Guide les clients suite à un accident : constat amiable, déclaration assurance, expertise contradictoire",
+  "Répond aux questions sur les véhicules de prêt, les véhicules de remplacement et les délais de réparation",
+  "Collecte les informations pour le chiffrage avant visite : marque, modèle, année, type de dégâts, photos",
+  "Informe sur les agréments assureur et suit les accords de prise en charge avec les compagnies partenaires",
+  "Envoie les mises à jour de réparation aux clients à chaque étape clé pour éliminer les appels de suivi",
+  "Collecte les avis clients 48h après la restitution du véhicule pour alimenter Google et les plateformes",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il donner un devis de réparation à distance ?",
+    a: "L'agent peut fournir une fourchette indicative basée sur les informations collectées et les photos transmises, mais précise que le chiffrage définitif est établi après inspection physique du véhicule. Cette étape intermédiaire qualifie le client et réduit de 40% les rendez-vous d'expertise sur des véhicules finalement non réparés chez vous.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les procédures suite à un accident ?",
+    a: "L'agent guide le client étape par étape : confirmation que le constat amiable est bien signé des deux parties, rappel du délai de déclaration (5 jours ouvrables), information sur la procédure avec votre compagnie d'assurance agréée, et prise de RDV pour expertise. Pour les accidents sans tiers identifié ou les délits de fuite, il explique la procédure spécifique.",
+  },
+  {
+    q: "L'agent peut-il interagir avec les assureurs pour le suivi des dossiers ?",
+    a: "L'agent ne communique pas directement avec les compagnies d'assurance. En revanche, il informe les clients sur l'avancement de leur dossier selon les étapes que vous lui renseignez (accord de prise en charge reçu, commande pièces, réparation en cours, contrôle qualité, véhicule prêt). Ce seul point élimine 50% des appels de suivi.",
+  },
+  {
+    q: "L'agent peut-il gérer les demandes de véhicule de prêt ou de remplacement ?",
+    a: "Oui. L'agent informe sur la disponibilité de votre flotte de prêt (selon un planning que vous mettez à jour), les conditions (permis B, assurance client), et les alternatives si votre flotte est pleine (partenariat loueur, véhicule de substitution via assurance). Il programme le prêt en même temps que le rendez-vous de dépose.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel pour une carrosserie ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, qualification des sinistres et prise de RDV. Pour les mises à jour d'avancement automatiques et la collecte d'avis post-réparation, prévoir 10 à 14 jours. 0€ d'installation, sans engagement.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour carrossiers — Sinistres guidés, clients informés à chaque étape et avis automatisés | IAForge"
+  description="Agent IA pour carrosserie automobile : qualification des sinistres, procédure assurance expliquée, mises à jour d'avancement automatiques et collecte d'avis Google. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://vulcia.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://vulcia.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Carrossiers", "item": "https://vulcia.fr/ia-pour/carrossiers" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Carrossiers</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour carrosseries automobiles</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Sinistres guidés dès le premier contact.<br/><span class="gradient-text">Clients informés à chaque étape.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Qualification des sinistres 24h/24, procédure assurance expliquée, mises à jour d'avancement automatiques et avis Google collectés — pendant que vos équipes réparent.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "d'appels de suivi pendant la réparation grâce aux mises à jour automatiques à chaque étape", color },
+            { val: "+40%", label: "de dossiers sinistre complets dès le premier contact grâce à la collecte guidée des informations", color: "#f59e0b" },
+            { val: "+65%", label: "d'avis Google collectés grâce à la demande automatique 48h après la restitution du véhicule", color: "#34d399" },
+            { val: "7 jours", label: "pour être opérationnel avec votre process sinistre, vos agréments et votre flotte de prêt", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre carrosserie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Procédure sinistre guidée pas à pas</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">L'agent guide chaque client dès son premier message, quelle que soit la situation.</p>
+      <div class="not-prose my-6 space-y-3">
+        {[
+          {
+            etape: "1",
+            titre: "Qualification de la situation",
+            desc: "Accident avec tiers ? Sinistre seul (grêle, parking, vandalisme) ? Réparation cosmétique hors assurance ? L'agent oriente immédiatement vers le bon parcours.",
+            color,
+          },
+          {
+            etape: "2",
+            titre: "Collecte des informations",
+            desc: "Marque, modèle, année, immatriculation, numéro de police d'assurance, coordonnées du tiers si applicable. Demande de photos des dégâts pour pré-chiffrage.",
+            color: "#f59e0b",
+          },
+          {
+            etape: "3",
+            titre: "Informations sur la procédure",
+            desc: "Délai de déclaration auprès de l'assureur (5 jours ouvrables), droit à l'expert contradictoire, prise en charge du véhicule de prêt selon le contrat.",
+            color: "#fbbf24",
+          },
+          {
+            etape: "4",
+            titre: "Prise de RDV et confirmation",
+            desc: "Programmation du rendez-vous d'expertise + dépose, confirmation par SMS/email, rappel 24h avant avec checklist (documents à apporter, contenu du coffre à vider).",
+            color: "#34d399",
+          },
+          {
+            etape: "5",
+            titre: "Mises à jour pendant la réparation",
+            desc: "Accord assureur reçu, commande de pièces effectuée, début de réparation, contrôle qualité, date de restitution confirmée — sans appeler vous-même chaque client.",
+            color: "#a78bfa",
+          },
+        ].map(step => (
+          <div class="glass rounded-2xl p-5 flex gap-4 items-start">
+            <div class="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black" style={`background: ${step.color}20; color: ${step.color}; border: 1px solid ${step.color}40;`}>{step.etape}</div>
+            <div>
+              <p class="text-sm font-bold mb-1" style={`color: ${step.color};`}>{step.titre}</p>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/garages', title: 'IA pour garages automobiles : atelier toujours complet', cat: 'Secteur' },
+          { href: '/ia-pour/concessionnaires', title: 'IA pour concessionnaires automobiles', cat: 'Secteur' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques avec l\'IA', cat: 'SEO Local' },
+          { href: '/blog/ia-pour-concessionnaire-auto', title: 'IA pour concessionnaire auto : guide complet', cat: 'Guide' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#f87171] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre équipe sur les véhicules. L'agent avec les clients.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos appels de suivi pendant réparation, vos dossiers sinistre incomplets et votre potentiel d'avis Google pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #dc2626);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

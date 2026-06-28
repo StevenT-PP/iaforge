@@ -1,0 +1,132 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour déménageur : qualifier les demandes et préparer les clients pour un jour J sans stress",
+  description: "Comment une entreprise de déménagement utilise un agent IA pour qualifier les demandes 24h/24, envoyer des checklists de préparation automatisées et collecter des avis Google après chaque déménagement.",
+  date: "2026-07-16",
+  readTime: "5 min",
+  category: "Artisans",
+  categoryColor: "#38bdf8",
+  slug: "ia-pour-demenageur",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un déménagement est l'une des expériences les plus stressantes pour un particulier. Les entreprises de déménagement qui gèrent le mieux ce stress avant le jour J sont celles qui génèrent le plus d'avis positifs et de recommandations. L'IA permet de tenir la main du client tout au long du processus — sans mobiliser vos chefs d'équipe.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème : 60% de l'administration avant le jour J est évitable</h2>
+
+  <p>Entre la demande de devis et le déménagement, un client appelle en moyenne 4 à 6 fois pour des questions prévisibles : "Comment emballer la télévision ?", "Est-ce que vous démontez les meubles Ikea ?", "Que faire avec le congélateur ?". Ces appels n'apportent aucune valeur à votre équipe — ils créent du stress pour vous et du doute pour le client.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La séquence de préparation automatisée</h2>
+
+  <p>L'agent envoie les bonnes informations au bon moment, sans intervention humaine :</p>
+
+  <div class="not-prose my-8 space-y-3">
+    {[
+      {
+        delai: "Dès le devis signé",
+        actions: ["Confirmation de la date et des détails de la prestation", "Lien vers votre checklist de préparation personnalisée", "Rappel de prévenir le bailleur sortant et entrant, EDF, GDF, La Poste, CAF"],
+        color: "#38bdf8",
+      },
+      {
+        delai: "J-30",
+        actions: ["Rappel de commencer l'emballage des pièces inutilisées (caves, greniers, stockages)", "Information sur les objets à déclarer spécifiquement (bijoux, art, collections)", "Conseil sur les matériaux d'emballage selon vos préférences (cartons fournis ou non)"],
+        color: "#34d399",
+      },
+      {
+        delai: "J-7",
+        actions: ["Confirmation des créneaux et de l'heure d'arrivée de l'équipe", "Rappel de vider et décongeler réfrigérateur/congélateur 48h avant", "Rappel de réserver le stationnement aux adresses de départ et d'arrivée"],
+        color: "#fbbf24",
+      },
+      {
+        delai: "J-1",
+        actions: ["Confirmation finale + nom du chef d'équipe et numéro de contact", "Derniers conseils logistiques (objets de valeur avec soi, préparation accès)", "Rappel de préparer le paiement selon le mode convenu"],
+        color: "#a78bfa",
+      },
+      {
+        delai: "J+2",
+        actions: ["Message de satisfaction et demande d'avis Google avec lien direct", "Invitation à recommander sur les plateformes (Houzz, Pages Jaunes, comparateurs)", "Proposition de garde-meubles si des cartons restent à stocker temporairement"],
+        color: "#f87171",
+      },
+    ].map(step => (
+      <div class="glass rounded-2xl p-5">
+        <p class="text-sm font-black mb-3" style={`color: ${step.color};`}>{step.delai}</p>
+        <div class="space-y-1.5">
+          {step.actions.map(action => (
+            <div class="flex items-start gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={step.color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#8888aa] text-xs">{action}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">L'effet boule de neige sur les avis Google</h2>
+
+  <p>La plupart des déménageurs ne demandent jamais d'avis. Résultat : seuls les clients mécontents prennent la peine d'en laisser un. L'agent renverse cette tendance : en demandant systématiquement un avis 48h après chaque déménagement réussi, il multiplie par 3 à 5 le nombre d'avis positifs en moins de 6 mois.</p>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Sans agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 2-3 avis Google/mois spontanés</p>
+          <p>· 80% négatifs ou mitigés</p>
+          <p>· Note moyenne : 3,8/5</p>
+          <p>· Peu visible sur Google Maps</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 8-15 avis Google/mois sollicités</p>
+          <p>· 90% positifs (demandés juste après)</p>
+          <p>· Note moyenne : <span class="text-[#38bdf8] font-semibold">4,7/5 en 6 mois</span></p>
+          <p>· Remontée naturelle sur Google Maps</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une PME de déménagement</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Situation type</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 40-80 déménagements/mois</p>
+          <p>· 30% de devis signés</p>
+          <p>· 4-6 appels/client avant le jour J</p>
+          <p>· 3 avis Google/mois spontanés</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#38bdf8] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· Taux de signature devis : 30% → 45%</p>
+          <p>· Appels réduits à 1-2/client</p>
+          <p>· 10-15 avis/mois = <span class="text-[#38bdf8] font-semibold">meilleure visibilité</span></p>
+          <p>· Coût agent : 149€/mois</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#38bdf8] font-bold text-sm">ROI estimé : +2 000-4 000€/mois · Payé en moins de 2 déménagements supplémentaires</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #38bdf8, #0284c7);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/demenageurs" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour déménageurs &rarr;</a>
+    <a href="/blog/ia-avis-google-automatique" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Avis Google automatiques &rarr;</a>
+  </div>
+
+</BlogLayout>
