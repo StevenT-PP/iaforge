@@ -34,4 +34,4 @@ jobs:
           git config user.email "actions@github.com"
           git add -A
           git commit -m "deploy"
-          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/StevenT-PP/iaforge.git HEAD:deploy
+          git push -f https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/StevenT-PP/vulcia.git HEAD:deploy
