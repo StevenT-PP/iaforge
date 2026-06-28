@@ -1,0 +1,137 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour cabinet comptable : automatiser sans risque en 2026",
+  description: "Comment un cabinet d'expertise comptable déploie un agent IA pour les tâches répétitives : accueil clients, collecte de documents, relances, FAQ. RGPD, hébergé en France.",
+  date: "2026-07-01",
+  readTime: "7 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-cabinet-comptable",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>L'expertise comptable est l'un des secteurs où l'IA apporte le plus de valeur — et où la prudence est la plus justifiée. Les cabinets gèrent des données financières sensibles, ont des obligations réglementaires strictes et une responsabilité professionnelle engagée. Voici ce qu'un agent IA peut faire concrètement, et ce qu'il ne doit absolument pas faire.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les tâches que l'IA peut automatiser sans risque</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        tache: "Accueil et qualification des prospects",
+        color: "#7c5cfc",
+        desc: "Un prospect qui demande un devis pour une mission de tenue comptable, bilan ou commissariat aux comptes est qualifié par l'agent : type d'activité, forme juridique, CA, effectif, mission souhaitée. L'associé ou le gestionnaire reçoit une fiche complète avant tout RDV.",
+        gain: "22h d'admin économisées par semaine en moyenne",
+      },
+      {
+        tache: "Collecte de pièces et relances clients",
+        color: "#34d399",
+        desc: "\"Pouvez-vous m'envoyer vos relevés bancaires de mars ?\", \"Il manque vos factures fournisseurs du T1\" — ces relances représentent 30 à 40% du temps de secrétariat. L'agent les automatise avec des rappels à J+2 et J+7 si pas de réponse.",
+        gain: "-40% de retards de collecte de pièces",
+      },
+      {
+        tache: "FAQ réglementaire générale",
+        color: "#38bdf8",
+        desc: "\"Quand dois-je déposer ma déclaration de TVA ?\", \"Quelle est la limite de la franchise en base de TVA ?\", \"Comment fonctionne le régime micro-BIC ?\" — des questions d'information générale que l'agent peut traiter sans engager la responsabilité du cabinet.",
+        gain: "0 interruption pour les questions de base",
+      },
+      {
+        tache: "Prise de RDV et gestion des agendas",
+        color: "#f59e0b",
+        desc: "RDV bilan, RDV transmission, RDV conseil fiscal, réunion d'information — l'agent gère les plannings des associés et collaborateurs, envoie les confirmations et les rappels, et collecte les informations pré-RDV.",
+        gain: "1h/jour de gestion agenda par associé",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between mb-3">
+          <p class="font-bold text-base" style={`color: ${item.color};`}>{item.tache}</p>
+          <span class="text-xs font-bold flex-shrink-0 ml-3 px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'agent ne doit JAMAIS faire</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      {
+        interdit: "Donner des conseils fiscaux personnalisés",
+        raison: "La responsabilité du cabinet est engagée dès qu'un conseil est donné. L'agent peut fournir des informations générales (\"le taux IS standard est 25%\") mais jamais un conseil adapté à la situation du client (\"vous devriez opter pour le régime X\").",
+      },
+      {
+        interdit: "Interpréter des documents financiers ou comptables",
+        raison: "Analyser un bilan, commenter une liasse fiscale ou évaluer un risque comptable nécessite l'expertise d'un professionnel. L'agent collecte — il n'analyse pas.",
+      },
+      {
+        interdit: "Accéder aux données comptables des clients",
+        raison: "Même pour \"aider\" à répondre à une question client, l'agent ne doit pas accéder aux bases de données comptables. Les données financières restent dans vos logiciels dédiés (Cegid, Sage, ACD...).",
+      },
+      {
+        interdit: "Promettre des délais ou résultats comptables",
+        raison: "\"Votre bilan sera prêt le X\" ou \"Vous récupérerez X€ de TVA\" — ces affirmations engagent le cabinet. Seul un collaborateur qualifié peut les donner.",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5 border border-red-500/20">
+        <p class="text-red-400 font-semibold text-sm mb-2">Interdit : {item.interdit}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.raison}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">RGPD et données financières : notre approche</h2>
+
+  <p>Les cabinets d'expertise comptable traitent des données particulièrement sensibles. IAForge déploie exclusivement <strong class="text-white">Mistral AI hébergé à Paris</strong> pour les cabinets comptables :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Aucune donnée financière ne transite via des serveurs hors UE",
+      "L'agent ne stocke que les données de contact et les demandes — jamais les pièces comptables",
+      "DPA (Data Processing Agreement) signé avec chaque cabinet",
+      "Conformité CNIL : consentement collecté, droit à l'effacement opérationnel",
+      "Audit de sécurité inclus dans le déploiement initial",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Compatibilité logiciels comptables</h2>
+
+  <p>L'agent ne s'intègre pas aux logiciels comptables (Cegid, Sage, ACD, Quadratus) pour des raisons de sécurité des données. Il s'intègre à votre agenda (Google Agenda, Outlook, Calendly) et à votre outil de gestion de la relation client si vous en avez un.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de 3 associés</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Qualification prospects automatisée (15 appels/semaine → 5)", gain: "+2h/semaine par associé" },
+        { item: "Relances pièces automatisées (40% de réduction des relances manuelles)", gain: "+5h/semaine secrétariat" },
+        { item: "Gestion agendas + FAQ (1h/jour par associé)", gain: "+15h/semaine sur 3 associés" },
+        { item: "Total temps récupéré", gain: "+22h/semaine" },
+        { item: "Coût agent IAForge", gain: "349€ à 790€/mois" },
+        { item: "Valeur du temps récupéré (tarif moyen 120€/h)", gain: "+10 560€/mois de capacité" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 || i === 5 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 5 ? 'text-[#7c5cfc]' : i === 4 ? 'text-red-400' : i === 3 ? 'text-[#34d399]' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/avocats" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour avocats et comptables &rarr;</a>
+    <a href="/blog/prix-agent-ia-2026" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Prix d'un agent IA en 2026 &rarr;</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

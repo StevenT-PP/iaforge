@@ -1,0 +1,152 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "SEO local et IA pour PME : dominer Google Maps en 2026",
+  description: "Comment une PME utilise l'IA pour dominer le référencement local : Google Business Profile, avis, citations et SEO Maps. Guide pratique avec résultats réels.",
+  date: "2026-07-01",
+  readTime: "8 min",
+  category: "SEO Local",
+  categoryColor: "#34d399",
+  slug: "seo-local-ia-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Pour une PME locale — restaurant, cabinet médical, artisan, commerce — Google Maps est souvent plus important que Google Search classique. Une fiche bien optimisée avec des avis récents peut générer 40 à 60% du chiffre d'affaires. L'IA automatise tout ce qui fait qu'une fiche Google Business est vivante et rankée.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 signaux qui déterminent votre position sur Google Maps</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        signal: "1. Proximité",
+        color: "#34d399",
+        poids: "Signal Google",
+        desc: "Google affiche les établissements les plus proches du lieu de recherche. Vous ne pouvez pas changer votre adresse — mais vous pouvez vous assurer que Google comprend exactement où vous êtes (NAP cohérent, catégories précises, zone de service définie).",
+        action: "Vérifier la cohérence Nom/Adresse/Téléphone sur toutes les plateformes",
+      },
+      {
+        signal: "2. Pertinence",
+        color: "#38bdf8",
+        poids: "Fort impact",
+        desc: "Google évalue si votre fiche correspond à la recherche. Les mots-clés dans votre description, vos catégories, vos posts et vos avis (les mots que vos clients utilisent naturellement) influencent directement votre positionnement.",
+        action: "Posts hebdomadaires avec mots-clés métier, réponses aux avis mentionnant les services",
+      },
+      {
+        signal: "3. Notoriété (avis et mentions)",
+        color: "#f59e0b",
+        poids: "Très fort impact",
+        desc: "Le nombre et la fraîcheur des avis Google sont les signaux les plus importants sur Maps. Un établissement avec 12 avis ce mois-ci rankera devant un concurrent avec 200 avis dont le dernier date de 8 mois.",
+        action: "Relance automatique post-visite pour générer 3 à 8 avis par mois",
+      },
+      {
+        signal: "4. Activité de la fiche",
+        color: "#a78bfa",
+        poids: "Impact modéré mais constant",
+        desc: "Google récompense les fiches actives : posts réguliers, photos récentes, réponses aux questions et aux avis. Une fiche inactive pendant 2 mois perd des positions, même avec de bons avis.",
+        action: "Posts automatiques 2x/semaine, réponse aux avis sous 4h",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <p class="font-bold text-base" style={`color: ${item.color};`}>{item.signal}</p>
+          <span class="text-xs px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.poids}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs text-white font-semibold">{item.action}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA automatise sur votre fiche Google Business</h2>
+
+  <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-3">
+    {[
+      { tache: "Posts hebdomadaires", desc: "L'agent génère 2 posts par semaine (actualité, offre, événement, conseil métier) adaptés à votre secteur et les publie automatiquement.", impact: "+25% de vues de fiche" },
+      { tache: "Réponses aux avis sous 4h", desc: "Chaque avis reçoit une réponse personnalisée qui reprend les détails spécifiques du client. Taux de réponse 100% vs 12% en moyenne pour les PME non automatisées.", impact: "+0,3 point de note moyenne" },
+      { tache: "Collecte d'avis post-visite", desc: "J+1 après une visite ou prestation, l'agent envoie un SMS ou WhatsApp avec le lien direct Google. Taux de conversion 18 à 25% selon le secteur.", impact: "+3 à 8 avis/mois" },
+      { tache: "Réponse aux questions GBP", desc: "Les questions posées sur votre fiche Google reçoivent une réponse dans l'heure — avant que quelqu'un d'autre réponde à votre place avec des informations incorrectes.", impact: "Contrôle de l'information" },
+      { tache: "Mise à jour horaires et infos", desc: "L'agent alerte en cas d'incohérence détectée entre votre fiche et votre site web, et suggère les corrections. Cohérence NAP surveillée en continu.", impact: "Pas de pénalité Maps" },
+      { tache: "Photos et visuels", desc: "Rappel mensuel pour ajouter de nouvelles photos. Les fiches avec photos récentes génèrent en moyenne 42% de demandes d'itinéraire en plus.", impact: "+42% de demandes d'itinéraire" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex items-start justify-between mb-2">
+          <p class="text-white font-semibold text-sm">{item.tache}</p>
+          <span class="text-xs text-[#34d399] flex-shrink-0 ml-2">{item.impact}</span>
+        </div>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Résultats observés à 90 jours</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Secteur", "Avis / mois avant", "Avis / mois après", "Position Maps"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Plombier Paris 15e", "0 à 1", "4 à 6", "Top 3 local pack"],
+        ["Cabinet kiné Lyon", "1 à 2", "6 à 9", "Top 3 → Top 1"],
+        ["Restaurant Bordeaux", "2 à 3", "8 à 12", "Top 5 → Top 2"],
+        ["Garage Toulouse", "0", "3 à 5", "Hors top 10 → Top 5"],
+        ["Pharmacie Nantes", "1", "5 à 7", "Top 3 maintenu"],
+      ].map(([sect, avant, apres, pos]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{sect}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400">{avant}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{apres}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#a78bfa]">{pos}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">SEO local vs SEO classique : ce qu'il faut prioriser</h2>
+
+  <p>Pour une PME locale avec un rayonnement de 30 à 50 km, le SEO Maps génère généralement plus de leads qualifiés que le SEO organique classique. Les raisons :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "L'intention d'achat est immédiate sur Maps (\"plombier urgent près de moi\")",
+      "Le local pack (top 3 Maps) s'affiche avant les résultats organiques sur mobile",
+      "Un clic sur Maps génère un appel ou une visite — pas juste une lecture d'article",
+      "La concurrence est locale, pas nationale — plus facile à battre avec de la constance",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <p>Cela dit, les deux se renforcent mutuellement. Un article de blog sur \"plombier chauffage Lyon\" qui ranke en organique amplifie la crédibilité de votre fiche Maps. Le <a href="/offres" class="text-[#34d399] hover:underline font-semibold">pack Essentiel IAForge</a> couvre les deux : SEO local via GBP + 3 articles de blog par mois.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les erreurs qui plombent votre fiche</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { err: "NAP incohérent entre Google, votre site et les annuaires", fix: "Audit NAP compris dans notre déploiement — on aligne toutes les plateformes." },
+      { err: "Catégories trop larges (\"Services professionnels\" vs \"Plombier chauffagiste\")", fix: "Choix des catégories primaires et secondaires optimales selon votre activité réelle." },
+      { err: "Aucune réponse aux avis négatifs", fix: "L'agent répond dans les 4h avec une réponse professionnelle et empathique — pas une réponse générique." },
+      { err: "Fiche jamais mise à jour (horaires, photos, posts)", fix: "Posts automatiques 2x/semaine, rappels photos mensuels, alertes d'incohérence." },
+    ].map(item => (
+      <div class="glass rounded-xl p-4">
+        <p class="text-red-400 text-xs font-semibold mb-1">Erreur : {item.err}</p>
+        <p class="text-[#8888aa] text-xs">{item.fix}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit SEO local gratuit &rarr;
+    </a>
+    <a href="/blog/google-business-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Guide Google Business IA &rarr;</a>
+    <a href="/blog/seo-ia-vs-seo-traditionnel" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">SEO IA vs SEO traditionnel &rarr;</a>
+  </div>
+
+</BlogLayout>

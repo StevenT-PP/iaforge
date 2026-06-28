@@ -1,0 +1,150 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour le support client : réduire les tickets de 60% en 2026",
+  description: "Comment déployer un agent IA pour le support client : réduction des tickets, escalade intelligente, satisfaction client mesurée. Guide pratique avec chiffres réels.",
+  date: "2026-07-01",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-support-client",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le support client est le premier cas d'usage où les PME déploient un agent IA — et pour une bonne raison : les gains sont immédiats et mesurables. En moyenne, 65 à 75% des tickets entrants sont des questions récurrentes auxquelles un agent IA peut répondre seul. Le reste — les cas complexes, émotionnels, ou hors-script — est escaladé vers un humain avec le contexte complet.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 niveaux de support que l'IA gère</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        niveau: "Niveau 1 — Réponses automatiques (65-75% des tickets)",
+        color: "#34d399",
+        exemples: [
+          "Statut de commande et localisation colis",
+          "Procédure de retour ou d'échange",
+          "Questions sur les horaires, tarifs, disponibilité",
+          "Mot de passe oublié, accès compte",
+          "Questions produit : compatibilité, taille, matière",
+        ],
+        resolution: "< 30 secondes, 24h/24, sans intervention humaine",
+      },
+      {
+        niveau: "Niveau 2 — Assistance guidée (15-20% des tickets)",
+        color: "#f59e0b",
+        exemples: [
+          "Réclamations sur une commande (mauvais produit, colis abîmé)",
+          "Demandes de geste commercial (premier contact)",
+          "Problèmes techniques nécessitant des étapes de diagnostic",
+          "Modifications de commande ou annulation",
+        ],
+        resolution: "L'agent collecte les informations et propose la solution — un humain valide si nécessaire",
+      },
+      {
+        niveau: "Niveau 3 — Escalade humaine (10-15% des tickets)",
+        color: "#f87171",
+        exemples: [
+          "Litige commercial ou juridique",
+          "Client très mécontent (détecté par l'agent)",
+          "Demandes hors politique (exception à valider)",
+          "Questions techniques pointues hors base de connaissance",
+        ],
+        resolution: "Transfert immédiat avec contexte complet — l'agent ne tente pas de gérer seul",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="font-bold text-base mb-4" style={`color: ${item.color};`}>{item.niveau}</p>
+        <ul class="space-y-1 mb-4">
+          {item.exemples.map(ex => (
+            <li class="flex items-start gap-2 text-sm text-[#8888aa]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              {ex}
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.resolution}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment construire la base de connaissance</h2>
+
+  <p>La qualité d'un agent de support dépend à 80% de sa base de connaissance. Voici comment nous la construisons pour chaque client :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { n: "1", titre: "Analyse des tickets historiques", desc: "On analyse vos 200 derniers tickets de support et extrait les 50 questions les plus fréquentes. Ces 50 questions représentent en général 70-80% du volume total." },
+      { n: "2", titre: "Rédaction des réponses de référence", desc: "Chaque réponse est rédigée avec votre ton, vos procédures exactes et vos politiques commerciales. L'agent ne dit jamais \"je ne sais pas\" — il escalade si la question dépasse sa base." },
+      { n: "3", titre: "Définition des règles d'escalade", desc: "On configure précisément les conditions de transfert humain : mots-clés d'urgence, niveau d'insatisfaction détecté, types de demandes qui nécessitent toujours un humain." },
+      { n: "4", titre: "Tests sur scénarios réels", desc: "Avant la mise en ligne, vous testez l'agent sur 40 scénarios tirés de vos vrais tickets passés. Vous validez chaque réponse — aucun client ne voit une réponse non approuvée." },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black text-white flex-shrink-0" style="background: #7c5cfc;">{item.n}</span>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.titre}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Canaux supportés et intégrations</h2>
+
+  <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+    {[
+      { canal: "Site web (chat)", outils: "Widget JS, Intercom, Crisp, Zendesk", color: "#7c5cfc" },
+      { canal: "WhatsApp Business", outils: "API WhatsApp officielle, 360dialog, Twilio", color: "#25d366" },
+      { canal: "Email", outils: "Gmail, Outlook, Zendesk Mail, Freshdesk", color: "#38bdf8" },
+      { canal: "Instagram DM", outils: "Instagram API (compte Pro)", color: "#f43f5e" },
+      { canal: "Facebook Messenger", outils: "Meta API for Business", color: "#3b82f6" },
+      { canal: "SMS", outils: "Twilio, Sinch, OVH SMS", color: "#f59e0b" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4">
+        <p class="font-bold text-sm mb-2" style={`color: ${item.color};`}>{item.canal}</p>
+        <p class="text-[#8888aa] text-xs">{item.outils}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Mesurer l'impact : les KPIs à suivre</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["KPI", "Avant (typique PME)", "Après 60 jours"].map(h => (
+        <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Taux de résolution autonome", "0%", "65 à 75%"],
+        ["Délai de première réponse", "4 à 18h", "< 30 secondes"],
+        ["Satisfaction client (CSAT)", "3,4/5 en moyenne", "4,1/5 en moyenne"],
+        ["Volume tickets humain", "100%", "25 à 35%"],
+        ["Coût par ticket", "8 à 15€", "2 à 5€"],
+        ["Disponibilité support", "Horaires ouvrés", "24h/24, 7j/7"],
+      ].map(([kpi, avant, apres]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{kpi}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400">{avant}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{apres}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qui ne change pas avec l'IA</h2>
+
+  <p>Un agent IA de support est excellent pour la rapidité et la disponibilité. Il ne remplace pas deux choses : l'empathie profonde dans les situations de détresse client, et la créativité pour trouver des solutions non-standard. Pour ces situations — rares mais importantes — le transfert humain est non-négociable et doit être fluide.</p>
+
+  <p>La règle d'or : si un client mentionne une situation difficile (deuil, urgence médicale, erreur critique qui a causé un préjudice), l'agent escalade immédiatement. Jamais il ne tente de \"gérer\" émotionnellement une situation qu'il ne peut pas vraiment comprendre.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit support gratuit &rarr;
+    </a>
+    <a href="/blog/chatbot-site-web-2026" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Chatbot vs agent IA &rarr;</a>
+    <a href="/blog/agent-ia-whatsapp" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA sur WhatsApp &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Qualifie les acheteurs : budget, secteur, surface, délai, financement obtenu",
+  "Qualifie les vendeurs : type de bien, surface, prix souhaité, délai de vente",
+  "Envoie automatiquement les biens correspondant au profil de chaque acquéreur",
+  "Programme les visites et envoie les confirmations et rappels automatiquement",
+  "Répond aux questions fréquentes : DPE, copropriété, travaux, situation locative",
+  "Relance les prospects acheteurs qui n'ont pas visité depuis 10 jours",
+  "Gère les alertes nouvelles annonces pour les acheteurs en recherche active",
+  "Collecte les mandats entrants 24h/24 et qualifie avant le RDV vendeur",
+];
+
+const faqItems = [
+  {
+    q: "Compatible avec les logiciels de transaction immobilière (Apimo, Hektor, AC3) ?",
+    a: "Oui. On s'intègre aux principaux logiciels de gestion immobilière via API. L'agent accède à votre portefeuille de biens en temps réel, envoie les fiches aux prospects et met à jour les statuts directement dans votre logiciel.",
+  },
+  {
+    q: "L'agent peut-il envoyer des alertes de nouveaux biens aux acheteurs ?",
+    a: "C'est l'une des fonctions les plus appréciées. L'agent maintient un profil de recherche pour chaque acquéreur et envoie automatiquement une alerte personnalisée (email ou WhatsApp) dès qu'un bien correspondant entre au portefeuille.",
+  },
+  {
+    q: "Comment gérer les acheteurs qui font une offre ?",
+    a: "L'agent détecte l'intention d'offre dans la conversation et transfert immédiatement à l'agent commercial concerné avec le contexte complet : historique des échanges, biens visités, budget confirmé, délai. L'agent ne négocie pas les prix.",
+  },
+  {
+    q: "Les données RGPD sont-elles conformes pour l'immobilier ?",
+    a: "Oui. L'agent collecte le consentement explicite de chaque prospect avant toute communication marketing. Les données sont hébergées en France et conformes aux obligations RGPD, incluant le droit à l'effacement et la portabilité.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec votre portefeuille de biens, vos critères de qualification, vos agents et vos procédures. Vous validez sur 40 scénarios avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour agences immobilières — Qualification leads et visites automatisées | IAForge"
+  description="Agent IA pour agence immobilière : qualification acheteurs et vendeurs, alertes biens automatiques, programmation de visites. Compatible Apimo, Hektor. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Agences immobilières", "item": "https://iaforge.fr/ia-pour/agences-immobilieres" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Agences immobilières</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour l'immobilier</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre agence qualifie<br/><span class="gradient-text">chaque lead 24h/24 sans négociateur</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Qualification acheteurs et vendeurs, alertes biens automatiques, programmation de visites — vos négociateurs se concentrent sur la relation et la signature, pas sur la qualification téléphonique.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+40%", label: "de leads qualifiés convertis en visite grâce à la relance automatique", color },
+            { val: "-3h", label: "par jour et par négociateur sur la qualification téléphonique", color: "#34d399" },
+            { val: "0 lead", label: "perdu hors horaires — qualification et envoi de biens en 60 secondes", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel, connecté à Apimo, Hektor ou AC3", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre agence</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour une agence de 4 négociateurs</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Lead entrant hors horaires", "Email sans réponse avant le lendemain", "Qualifié + biens envoyés en 60 secondes"],
+            ["Qualification acheteur", "20 min de téléphone par lead", "Fiche complète en 5 min de chat"],
+            ["Alertes nouveaux biens", "Email de newsletter hebdo", "Alerte personnalisée dans l'heure"],
+            ["Relance prospects sans visite", "Oubliée après 1 semaine", "Relance auto J+10 avec nouveau bien"],
+            ["Collecte mandats vendeurs", "Appel + RDV estimation", "Qualification 24h/24 + agenda negocio"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA : le guide complet 2026', cat: 'Automatisation' },
+          { href: '/blog/agent-ia-whatsapp', title: 'Agent IA sur WhatsApp Business : guide pratique 2026', cat: 'Automatisation' },
+          { href: '/blog/crm-ia-pme', title: 'CRM et IA pour PME : automatiser son suivi commercial', cat: 'Automatisation' },
+          { href: '/blog/prix-agent-ia-2026', title: 'Combien coûte un agent IA en 2026 ? Prix, packs et ROI', cat: 'Tarifs' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vos négociateurs ont mieux à faire que qualifier au téléphone</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos flux de leads, le temps de qualification par négociateur et ce que vous perdez sur les contacts hors horaires.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
