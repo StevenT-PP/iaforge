@@ -89,6 +89,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour écoles et instituts de langues : https://iaforge.fr/ia-pour/instituts-langues
 - IA pour épiceries indépendantes : https://iaforge.fr/ia-pour/epiceries
 - IA pour maisons de retraite et EHPAD : https://iaforge.fr/ia-pour/maisons-retraite
+- IA pour infirmiers libéraux (IDEL) : https://iaforge.fr/ia-pour/infirmiers
+- IA pour serruriers et dépanneurs : https://iaforge.fr/ia-pour/serruriers
+- IA pour déménageurs et transporteurs : https://iaforge.fr/ia-pour/demenageurs
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -139,6 +142,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA pour consultant indépendant : https://iaforge.fr/blog/ia-pour-consultant
 - Article : IA pour naturopathe : https://iaforge.fr/blog/ia-pour-naturopathe
 - Article : Intégrer son agent IA avec ses outils existants : https://iaforge.fr/blog/ia-integration-api
+- Article : IA pour serrurier : https://iaforge.fr/blog/ia-pour-serrurier
+- Article : IA pour infirmier libéral : https://iaforge.fr/blog/ia-pour-infirmier
 - Article : IA pour épicerie indépendante : https://iaforge.fr/blog/ia-pour-epicerie
 - Article : IA pour association : https://iaforge.fr/blog/ia-pour-association
 - Article : Avis Google automatiques avec l'IA : https://iaforge.fr/blog/ia-avis-google-automatique
