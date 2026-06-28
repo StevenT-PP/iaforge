@@ -1,0 +1,117 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "WhatsApp Business API pour PME : guide complet 2026",
+  description: "Comment connecter votre PME à l'API WhatsApp Business pour automatiser les réponses, les relances et les rappels. Coûts réels, limites et différences avec l'app WhatsApp Business gratuite.",
+  date: "2026-07-08",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#25d366",
+  slug: "whatsapp-business-api-pme",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Il y a deux WhatsApp Business : l'application gratuite que télécharge n'importe quelle PME, et l'API WhatsApp Business qui permet l'automatisation réelle. La confusion entre les deux est la source de la plupart des erreurs de déploiement. Voici ce que vous devez savoir avant d'investir.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">App vs API : la différence que personne n'explique clairement</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Fonctionnalité</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#25d366] uppercase tracking-wider text-center">App WhatsApp Business (gratuite)</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#7c5cfc] uppercase tracking-wider text-center">API WhatsApp Business</div>
+      {[
+        ["Réponse automatique hors horaires", "Message d'absence simple", "Agent IA complet, personnalisé"],
+        ["Envoi de messages proactifs", "Non (sauf si conversation déjà ouverte)", "Oui, via templates approuvés"],
+        ["Nombre de conversations simultanées", "1 (sur l'appareil connecté)", "Illimité"],
+        ["Connexion à un CRM", "Non", "Oui via webhook"],
+        ["Multi-agents (plusieurs personnes)", "Non (1 appareil)", "Oui"],
+        ["Utilisation sur PC sans téléphone", "Non", "Oui"],
+        ["Coût", "Gratuit", "0,03 à 0,12€/conversation"],
+        ["Délai de mise en place", "Immédiat", "3 à 7 jours (validation Meta)"],
+      ].map(([fonc, app, api]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{fonc}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#25d366] text-center">{app}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] text-center">{api}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le coût réel de l'API WhatsApp en 2026</h2>
+
+  <p>Meta a revu sa tarification en 2024. Voici ce que ça coûte concrètement :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { type: "Conversations de service (réponses à un client qui vous a écrit en premier)", cout: "Gratuit depuis juin 2024 — Meta a supprimé les frais sur les conversations service", color: "#25d366" },
+      { type: "Conversations marketing (vous initiez le contact — relances, rappels, promos)", cout: "0,04 à 0,08€ par conversation de 24h selon le pays. Pour 1 000 messages/mois : environ 60€", color: "#f59e0b" },
+      { type: "Conversations utilitaires (confirmations, rappels RDV, alertes commandes)", cout: "0,02 à 0,04€ par conversation. Pour 500 rappels RDV/mois : environ 15 à 20€", color: "#38bdf8" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="font-semibold text-sm mb-2" style={`color: ${item.color};`}>{item.type}</p>
+        <p class="text-[#8888aa] text-sm">{item.cout}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les cas d'usage les plus rentables pour les PME</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        use: "Rappels de RDV (santé, beauté, services)",
+        roi: "Un rappel WhatsApp réduit les no-shows de 50 à 60% — soit 800 à 1 500€/mois récupérés pour un cabinet médical moyen. Coût du message : 0,02€. ROI : ×400 à ×700.",
+        color: "#34d399",
+      },
+      {
+        use: "Relances de devis non signés (artisans, BTP, services)",
+        roi: "30% des devis non signés dans les 5 jours sont dus à l'oubli du client. Un message WhatsApp à J+3 relance 25% d'entre eux. Pour un artisan avec 5 000€ de devis non signés/mois : +1 250€ récupérés.",
+        color: "#f59e0b",
+      },
+      {
+        use: "Confirmation de commande et suivi (e-commerce)",
+        roi: "Le WhatsApp de confirmation de commande obtient un taux d'ouverture de 98% vs 20% pour l'email. Le taux de retour client pour réclamation chute de 40% car les informations sont vues immédiatement.",
+        color: "#a78bfa",
+      },
+      {
+        use: "SAV et support (tous secteurs)",
+        roi: "Les clients résolvent 2× plus vite leurs problèmes par WhatsApp que par email — moins de va-et-vient, plus de contexte. Résolution en < 2 heures vs < 2 jours par email.",
+        color: "#7c5cfc",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.use}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.roi}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les règles à ne pas enfreindre (sous peine de bannissement)</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { regle: "Opt-in obligatoire pour les messages marketing", detail: "Vous ne pouvez envoyer un message proactif qu'à un contact qui vous a explicitement autorisé à le contacter sur WhatsApp. Un simple formulaire de contact web suffit si la mention WhatsApp est incluse." },
+      { regle: "Utiliser des templates approuvés par Meta pour les messages initiés", detail: "Tout message que vous envoyez en premier doit utiliser un template validé par Meta. Le délai d'approbation est de 24 à 72h. Les templates refusés doivent être reformulés — Meta bannit les messages trop promotionnels." },
+      { regle: "Respecter la fenêtre de 24h pour les réponses libres", detail: "Une fois qu'un client vous écrit, vous avez 24h pour répondre en texte libre. Au-delà, vous repassez en mode template. L'agent IA doit donc traiter les demandes entrantes rapidement." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.regle}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #25d366, #128c7e);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-whatsapp" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA sur WhatsApp Business &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser ses relances &rarr;</a>
+  </div>
+
+</BlogLayout>

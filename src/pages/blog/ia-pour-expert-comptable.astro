@@ -1,0 +1,133 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour expert-comptable : récupérer 20h par semaine sans risque déontologique",
+  description: "Comment un cabinet d'expertise comptable déploie un agent IA pour automatiser l'accueil, la collecte de pièces, les relances clients et la FAQ comptable — sans jamais engager sa responsabilité professionnelle.",
+  date: "2026-07-08",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-expert-comptable",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>L'expert-comptable est l'un des professionnels qui perd le plus de temps sur des tâches qui n'ont rien de comptable : répondre au téléphone pour savoir où en est une liasse, relancer un client qui n'a pas envoyé ses relevés bancaires, expliquer pour la 15ème fois cette année ce qu'est une TVA sur encaissements. Un agent IA bien configuré récupère ces heures — sans jamais toucher aux chiffres ni engager la responsabilité professionnelle du cabinet.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La distinction déontologique fondamentale</h2>
+
+  <p>L'Ordre des experts-comptables est clair : la mission de l'expert-comptable est exclusive et protégée. Voici où l'IA peut et ne peut pas intervenir :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Tâche</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">IA peut faire</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-red-400 uppercase tracking-wider text-center">Expert-comptable uniquement</div>
+      {[
+        ["Demande de pièces comptables", "Relancer automatiquement les clients, collecter via formulaire sécurisé", "Vérifier l'exhaustivité et la conformité"],
+        ["Question sur la TVA", "Expliquer le fonctionnement général (taux, régimes)", "Conseil sur le régime adapté à la situation"],
+        ["Calendrier fiscal", "Rappeler les dates d'échéances standard", "Planification fiscale personnalisée"],
+        ["Accueil prospects", "Qualifier le type de mission, budget, taille entreprise", "Proposer une mission et rédiger la lettre de mission"],
+        ["Statut d'un dossier", "Informer selon les données que vous lui transmettez", "Interpréter les données et prendre une décision"],
+        ["Questions RH basiques", "Informer sur les congés légaux, SMIC en vigueur", "Calculer les charges sociales, établir les bulletins"],
+      ].map(([tache, peut, non]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{tache}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{peut}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400 text-center">{non}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 automatisations qui transforment un cabinet</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Collecte de pièces avec relances automatiques",
+        color: "#7c5cfc",
+        desc: "\"Pouvez-vous m'envoyer vos relevés bancaires de mars, vos factures fournisseurs et votre note de frais ?\" — ce type de collecte représente 2 à 3h par client et par mois pour un cabinet de taille moyenne. L'agent envoie la demande structurée, relance à J+2 et J+5, et notifie le collaborateur quand le dossier est complet.",
+        gain: "-2 à 3h/client/mois sur la collecte",
+      },
+      {
+        n: "2",
+        titre: "Accueil et qualification des prospects",
+        color: "#34d399",
+        desc: "Un prospect qui appelle ou remplit le formulaire du site est qualifié : type d'entreprise (SAS, EURL, SA, auto-entrepreneur), secteur d'activité, CA estimé, missions souhaitées (comptabilité seule, social, juridique, conseil). Le collaborateur reçoit une fiche structurée avant tout entretien de présentation.",
+        gain: "20 min économisées par prospect qualifié",
+      },
+      {
+        n: "3",
+        titre: "Rappels d'échéances fiscales personnalisés",
+        color: "#38bdf8",
+        desc: "TVA mensuelle ou trimestrielle, IS, liasse fiscale, DSN, déclaration sociale des indépendants — l'agent envoie automatiquement un rappel à chaque client selon ses propres échéances. Le client arrive prêt à chaque date critique, et le cabinet n'a plus à appeler 50 clients la semaine avant la liasse.",
+        gain: "0 client surpris par une échéance",
+      },
+      {
+        n: "4",
+        titre: "FAQ administrative et réglementaire de premier niveau",
+        color: "#f59e0b",
+        desc: "\"Quel est le plafond de l'auto-entrepreneur en 2026 ?\", \"Quand dois-je basculer en régime réel ?\", \"Comment fonctionne le droit à l'erreur ?\", \"Quel est le délai de prescription fiscale ?\" — des questions d'information générale, traitées automatiquement 24h/24.",
+        gain: "25 à 40 questions/semaine traitées sans collaboration humaine",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">RGPD et confidentialité : les données comptables sont sensibles</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Modèle IA Mistral AI hébergé à Paris — aucune donnée financière hors UE",
+      "L'agent ne dispose d'aucun accès aux logiciels comptables (ACD, Cegid, Sage, Quadrature)",
+      "Les pièces comptables collectées arrivent directement dans votre espace de stockage sécurisé (GED, email chiffré) — jamais stockées chez l'agent",
+      "DPA signé et conforme aux obligations déontologiques de l'expert-comptable",
+      "Mention dans vos CGV et lettre de mission de l'utilisation d'un outil d'automatisation",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de 3 associés (150 dossiers)</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Collecte de pièces automatisée (2h économisées × 150 dossiers/mois)", gain: "+300h/mois ou +18 dossiers supplémentaires traitables" },
+        { item: "Qualification prospects (20 min × 30 prospects/mois)", gain: "+10h récupérées pour les associés" },
+        { item: "FAQ et accueil téléphonique (-50% des appels entrants)", gain: "+15h/mois de travail à valeur ajoutée" },
+        { item: "Capacité à prendre 20 nouveaux dossiers sans recrutement", gain: "+20 × honoraires moyens 2 500€/an = +50 000€/an de CA" },
+        { item: "Coût agent IAForge (pack Essentiel)", gain: "-349€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#7c5cfc]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/avocats" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour avocats &rarr;</a>
+    <a href="/blog/ia-pour-cabinet-comptable" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour cabinet comptable &rarr;</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

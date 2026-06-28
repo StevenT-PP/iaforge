@@ -1,0 +1,132 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA et prospection B2B : qualifier 3× plus de leads sans recruter en 2026",
+  description: "Comment les entreprises B2B utilisent l'IA pour qualifier les leads entrants, automatiser les séquences de nurturing et préparer les rendez-vous commerciaux. Stack complet et benchmarks.",
+  date: "2026-07-08",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "ia-b2b-prospection",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>En B2B, le coût d'acquisition d'un lead qualifié est 3 à 10 fois plus élevé qu'en B2C. Un commercial passe en moyenne 20 à 30% de son temps sur des leads qui ne se convertiront jamais — mauvais budget, mauvais timing, mauvaise taille d'entreprise. L'IA ne remplace pas le commercial B2B. Elle lui fait passer 80% de son temps sur les 20% de leads qui comptent vraiment.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème central du B2B : la qualification prend trop de temps</h2>
+
+  <p>Un lead entrant en B2B passe en moyenne par ces étapes avant de parler à un commercial :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Remplissage d'un formulaire de contact (si la page le permet)",
+      "Attente d'un rappel (délai moyen : 4h à 48h selon la taille de l'équipe)",
+      "Appel de découverte 20-30 min pour qualifier la demande basique",
+      "Si qualifié : envoi de documentation et planification d'une démo ou d'un devis",
+    ].map((item, i) => (
+      <div class="flex items-start gap-3">
+        <span class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 mt-0.5" style="background: #7c5cfc;">{i+1}</span>
+        <p class="text-[#8888aa] text-sm">{item}</p>
+      </div>
+    ))}
+  </div>
+
+  <p>Le problème : un lead qui attend 4h est 8 fois moins susceptible de se convertir que celui rappelé en 5 minutes. Et l'appel de découverte de 20 min coûte au commercial le même temps qu'un lead qui va signer ou un lead à 0€ de potentiel.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA fait à la place du commercial sur la qualification</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Réponse immédiate et qualification BANT en 5 min",
+        color: "#7c5cfc",
+        desc: "Dès le remplissage du formulaire, l'agent contacte le lead (email ou WhatsApp selon le canal), remercie et pose 4 à 5 questions de qualification : taille de l'entreprise, budget indicatif, délai de projet, décideur ou influenceur, problème à résoudre. En 5 minutes, le commercial a une fiche BANT complète.",
+        gain: "Délai de qualification : de 24h à 5 min",
+      },
+      {
+        n: "2",
+        titre: "Scoring et priorisation automatique",
+        color: "#34d399",
+        desc: "Sur la base des réponses, l'agent attribue un score de priorité : lead chaud (budget + délai court + décideur identifié) → alerte immédiate au commercial. Lead tiède (budget non défini, délai > 3 mois) → séquence de nurturing automatique. Lead froid (taille hors cible, budget insuffisant) → message de requalification ou clôture.",
+        gain: "+60% du temps commercial sur leads chauds",
+      },
+      {
+        n: "3",
+        titre: "Séquences de nurturing pour les leads tièdes",
+        color: "#38bdf8",
+        desc: "Un lead tiède ne se perd pas — il entre dans une séquence automatique : envoi de cas clients pertinents selon le secteur, invitation à un webinar, partage d'une étude de cas, proposition d'un audit gratuit 3 mois plus tard. Le commercial n'a rien à faire — et le lead revient qualifié quand il est prêt.",
+        gain: "+25% de leads tièdes convertis à 90 jours",
+      },
+      {
+        n: "4",
+        titre: "Préparation des rendez-vous commerciaux",
+        color: "#f59e0b",
+        desc: "Avant chaque démo ou réunion, l'agent envoie automatiquement la confirmation, le lien de réunion, les informations pratiques, et rappelle J-1. Il compile également les informations collectées pendant la qualification sous forme de fiche de briefing pour le commercial.",
+        gain: "0 démo sans préparation commerciale",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Benchmarks : impact de l'IA sur les funnel B2B</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Étape du funnel", "Sans IA", "Avec IA", "Gain"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Délai de premier contact", "4 à 24h", "< 5 min", "×48 plus rapide"],
+        ["Taux de qualification MQL→SQL", "25 à 35%", "40 à 55%", "+50% de SQL"],
+        ["Leads tièdes convertis à 90j", "5 à 8%", "18 à 25%", "×3 à ×4"],
+        ["Temps commercial sur qualification", "25 à 30%", "8 à 12%", "-60% de temps perdu"],
+        ["Coût par lead qualifié", "100 à 300€", "35 à 90€", "-65% de CAC"],
+      ].map(([etape, sans, avec, gain]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{etape}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400">{sans}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{avec}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] font-semibold">{gain}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le stack B2B recommandé en 2026</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Apollo.io ou Kaspr — sourcing de leads outbound et enrichissement de données",
+      "La Growth Machine ou Lemlist — séquences email et LinkedIn pour l'outbound",
+      "Agent IAForge — qualification inbound 24h/24 et nurturing automatique",
+      "HubSpot ou Pipedrive — CRM avec scoring et pipeline de suivi",
+      "Calendly ou HubSpot Meetings — prise de RDV en self-service pour les leads qualifiés",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/prospection-commerciale-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Prospection commerciale IA &rarr;</a>
+    <a href="/blog/crm-ia-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">CRM et IA pour PME &rarr;</a>
+  </div>
+
+</BlogLayout>

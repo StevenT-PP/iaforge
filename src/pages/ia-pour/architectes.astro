@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Qualifie les demandes de projet : type (construction, rénovation, extension), budget, délai, localisation",
+  "Gère la prise de RDV pour les premières consultations et visites de site",
+  "Envoie les devis de mission et relance les prospects non répondants à J+3 et J+7",
+  "Répond aux questions sur les démarches administratives : permis de construire, déclaration préalable",
+  "Collecte les documents nécessaires à l'établissement du contrat de maîtrise d'œuvre",
+  "Notifie les clients sur l'avancement des dossiers administratifs (dépôt PC, recours, autorisation)",
+  "Relance les prospects qui ont demandé une étude de faisabilité sans recontacter",
+  "Gère les demandes de projets publics et appels d'offres : constitution des dossiers de candidature",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il évaluer la faisabilité d'un projet ?",
+    a: "Non. L'évaluation de faisabilité est un acte professionnel qui engage votre responsabilité. L'agent collecte les informations nécessaires (surface, terrain, PLU, budget) et prépare la fiche pour votre analyse. Il peut répondre à des questions générales sur les réglementations courantes (bande de recul, hauteur maximale standard), mais toute étude spécifique reste de votre ressort.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les délais administratifs ?",
+    a: "L'agent peut être configuré avec les délais d'instruction standard (2 mois pour une déclaration préalable, 3 mois pour un permis de construire, délais spécifiques en secteur protégé) et informer les clients de façon générale. Pour le suivi de leur dossier spécifique, il notifie selon l'avancement que vous lui communiquez.",
+  },
+  {
+    q: "L'agent peut-il m'aider sur les appels d'offres et marchés publics ?",
+    a: "L'agent peut surveiller les plateformes de publication (BOAMP, e-marchés publics) selon des critères que vous définissez (localisation, type de marché, montant), alerter votre équipe et collecter les documents de candidature. La rédaction des mémoires techniques reste humaine.",
+  },
+  {
+    q: "Compatible avec les logiciels de gestion de cabinet (ArchiOffice, Archicad, Domus) ?",
+    a: "L'agent s'intègre à votre agenda et à votre CRM via API ou export. Pour ArchiOffice, une synchronisation des projets est possible pour le suivi client. La partie BIM et conception reste hors du périmètre de l'agent.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent standard (qualification prospects, FAQ réglementaire, relances). Vous définissez les types de projets que vous acceptez, vos zones géographiques et vos honoraires indicatifs pour les projets standards.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour architectes — Qualification prospects et suivi administratif automatisés | IAForge"
+  description="Agent IA pour architecte : qualification des projets 24h/24, relances prospects, suivi permis de construire, FAQ réglementaire. -50% de temps administratif. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Architectes", "item": "https://iaforge.fr/ia-pour/architectes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Architectes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour architectes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos projets qualifiés.<br/><span class="gradient-text">Votre créativité préservée.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Qualification des demandes 24h/24, suivi administratif automatisé, relances prospects — pendant que vous concevez, l'agent gère.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "de temps administratif — qualification, relances et FAQ en automatique", color },
+            { val: "+30%", label: "de projets qualifiés traités grâce aux réponses hors horaires", color: "#34d399" },
+            { val: "0 prospect", label: "perdu faute de relance — séquence automatique J+3 et J+7", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à vos types de projets et zones", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Qualification des projets : la fiche que vous recevez avant chaque RDV</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Chaque demande de consultation arrive avec toutes les informations nécessaires — vous arrivez au premier RDV en sachant déjà si le projet est dans votre périmètre.</p>
+      <div class="glass rounded-2xl p-6">
+        <div class="grid grid-cols-2 gap-6">
+          {[
+            { section: "Le projet", items: ["Type (construction neuve, rénovation, extension, intérieur)", "Surface approximative et type de bâtiment", "Localisation et contraintes connues (secteur protégé, copropriété)", "Délai souhaité de démarrage"] },
+            { section: "Le client", items: ["Particulier ou professionnel", "Budget indicatif (fourchette)", "Maîtrise d'ouvrage ou MO assistée souhaitée", "Projet vu avec d'autres cabinets ?"] },
+          ].map(col => (
+            <div>
+              <p class="text-xs font-bold uppercase tracking-wider mb-3" style={`color: ${color};`}>{col.section}</p>
+              <div class="space-y-2">
+                {col.items.map(item => (
+                  <div class="flex items-start gap-2">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+                    <p class="text-[#8888aa] text-xs">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un cabinet de 3 architectes</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Demandes de renseignements hors horaires", "Email sans réponse avant le lendemain", "Réponse + fiche de qualification immédiate"],
+            ["Qualification des prospects", "30 min d'appel pour savoir si le projet convient", "Fiche complète en 10 min avant tout contact"],
+            ["Relances après première consultation", "Oubliées entre deux projets", "Séquence auto J+3 et J+7 avec suivi"],
+            ["FAQ réglementaire (permis, délais)", "20 min d'explication répétée", "Réponses automatiques sur les points généraux"],
+            ["Suivi avancement dossiers clients", "Email manuel sur chaque étape", "Notification automatique à chaque changement d'état"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/avocats', title: 'Agent IA pour avocats — dossiers qualifiés avant le premier RDV', cat: 'Secteur' },
+          { href: '/blog/mesurer-roi-agent-ia', title: 'Comment mesurer le ROI d\'un agent IA : méthode et KPIs concrets', cat: 'Guide' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA : le guide complet', cat: 'Automatisation' },
+          { href: '/blog/crm-ia-pme', title: 'CRM et IA pour PME : automatiser son suivi commercial', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Concentrez-vous sur l'architecture, pas sur l'administratif</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes non qualifiées, vos relances manquées et votre charge administrative pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

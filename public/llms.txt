@@ -1,6 +1,6 @@
 # IAForge — Agence IA & SEO pour PME françaises
 # URL : https://iaforge.fr
-# Dernière mise à jour : 2026-06
+# Dernière mise à jour : 2026-07
 
 > IAForge est une agence française spécialisée dans le déploiement d'agents IA sur-mesure, le SEO automatisé et les sites web haute performance pour les TPE et PME. Basée en France, données hébergées en France.
 
@@ -31,7 +31,7 @@ Sites statiques construits avec Astro, score PageSpeed 98+, livraison en 3 semai
 - Pour les secteurs sensibles (santé, juridique) : Mistral AI hébergé à Paris uniquement
 
 ## Secteurs couverts
-Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restaurants, hôtels, artisans BTP, plombiers, électriciens, e-commerce, agences immobilières, coachs, formateurs, RH, pharmacies, vétérinaires, garages, agences marketing, SaaS B2B, PME multi-sites.
+Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restaurants, hôtels, artisans BTP, plombiers, électriciens, e-commerce, agences immobilières, coachs, formateurs, RH, pharmacies, vétérinaires, garages, agences marketing, SaaS B2B, PME multi-sites, architectes, studios yoga et bien-être, opticiens, psychologues, coiffeurs, auto-écoles, cliniques, agences de voyage.
 
 ## Pages clés
 - Accueil : https://iaforge.fr
@@ -63,6 +63,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour électriciens : https://iaforge.fr/ia-pour/electriciens
 - IA pour psychologues et thérapeutes : https://iaforge.fr/ia-pour/psychologues
 - IA pour opticiens : https://iaforge.fr/ia-pour/opticiens
+- IA pour architectes : https://iaforge.fr/ia-pour/architectes
+- IA pour studios yoga et bien-être : https://iaforge.fr/ia-pour/studios-yoga
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -97,6 +99,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA pour commerce de détail : https://iaforge.fr/blog/ia-retail-magasin
 - Article : IA pour startup SaaS : https://iaforge.fr/blog/ia-pour-startup-saas
 - Article : IA pour la gestion locative : https://iaforge.fr/blog/ia-gestion-locative
+- Article : IA et prospection B2B : https://iaforge.fr/blog/ia-b2b-prospection
+- Article : WhatsApp Business API pour PME : https://iaforge.fr/blog/agent-ia-whatsapp-business
+- Article : Agent IA pour expert-comptable : https://iaforge.fr/blog/ia-pour-expert-comptable
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact
