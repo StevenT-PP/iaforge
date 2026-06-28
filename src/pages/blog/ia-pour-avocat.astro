@@ -1,0 +1,162 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour avocat : automatiser sans compromettre le secret professionnel",
+  description: "Comment un cabinet d'avocats déploie un agent IA pour qualifier les affaires, gérer les RDV et collecter les pièces — sans jamais toucher au contenu des dossiers. Guide 2026.",
+  date: "2026-07-03",
+  readTime: "8 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-avocat",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le secret professionnel de l'avocat est absolu. C'est aussi ce qui rend le déploiement de l'IA dans les cabinets d'avocats plus délicat qu'ailleurs — et plus rentable quand c'est bien fait. Un avocat peut récupérer 15 à 22 heures de tâches administratives par semaine sans jamais exposer le contenu d'un dossier à un système IA.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La frontière claire : administrative vs juridique</h2>
+
+  <p>Tout repose sur cette distinction. L'agent IA ne touche jamais au contenu juridique — il gère tout ce qui l'entoure :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Tâche</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">IA peut faire</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-red-400 uppercase tracking-wider text-center">IA ne fait jamais</div>
+      {[
+        ["Réception d'une demande prospect", "Qualifier le type d'affaire, le budget, l'urgence", "Évaluer le bien-fondé juridique"],
+        ["Prise de RDV", "Gérer l'agenda, envoyer confirmations", "Orienter vers un avocat spécialisé sans validation humaine"],
+        ["Collecte de pièces", "Demander et relancer les documents requis", "Analyser le contenu des documents"],
+        ["Devis honoraires", "Envoyer les grilles tarifaires standard", "Calculer les honoraires d'une affaire spécifique"],
+        ["FAQ juridique générale", "Expliquer les procédures standard (délais, juridictions)", "Donner un avis sur une situation particulière"],
+        ["Suivi administratif", "Relancer les pièces manquantes, rappeler les RDV", "Commenter l'avancement d'une procédure"],
+      ].map(([tache, peut, jamais]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{tache}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{peut}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400 text-center">{jamais}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 automatisations qui changent un cabinet</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Qualification des dossiers entrants",
+        color: "#7c5cfc",
+        desc: "Un prospect qui appelle ou envoie un email est qualifié par l'agent : type d'affaire (droit de la famille, droit du travail, droit des affaires, pénal...), niveau d'urgence, budget, adversaire identifié. L'avocat reçoit une fiche complète avant tout RDV — il ne perd plus 20 minutes à recueillir des informations basiques.",
+        temps: "Économie : 20 min/appel × 15 appels/semaine = 5h/semaine",
+      },
+      {
+        n: "2",
+        titre: "Collecte des pièces avec relances",
+        color: "#34d399",
+        desc: "\"Pouvez-vous m'envoyer votre contrat de travail, vos bulletins de salaire des 3 derniers mois et la lettre de licenciement ?\" — ce type de collecte représente 30 à 40% du temps de secrétariat. L'agent demande, relance à J+2 et J+5, et notifie l'avocat quand le dossier est complet.",
+        temps: "Économie : 3 à 4h/semaine de relances manuelles",
+      },
+      {
+        n: "3",
+        titre: "Information sur les procédures standard",
+        color: "#38bdf8",
+        desc: "\"Quel est le délai de prescription pour un licenciement abusif ?\", \"Comment fonctionne la médiation familiale ?\", \"Quels sont les délais d'appel ?\" — des questions d'information générale auxquelles l'agent répond 24h/24 sans engager la responsabilité du cabinet.",
+        temps: "30 à 50 questions/semaine traitées automatiquement",
+      },
+      {
+        n: "4",
+        titre: "Gestion des agendas et convocations",
+        color: "#f59e0b",
+        desc: "RDV de consultation, de signature, audiences (rappel la veille), délais procéduraux (alerte 7 jours avant une échéance) — l'agent synchronise les agendas de tous les avocats et envoie les rappels automatiquement.",
+        temps: "1h/jour de gestion agenda par collaborateur",
+      },
+      {
+        n: "5",
+        titre: "Devis honoraires standardisés",
+        color: "#a78bfa",
+        desc: "Pour les actes à tarif fixe (consultation, rédaction contrat standard, procédure non contentieuse), l'agent envoie le devis immédiatement. Pour les affaires complexes, il collecte les informations et prépare la fiche pour que l'avocat puisse chiffrer en 10 minutes au lieu de 30.",
+        temps: "-50% du temps de rédaction de devis",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.temps}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Secret professionnel et RGPD : architecture sécurisée</h2>
+
+  <p>Pour les cabinets d'avocats, IAForge déploie une architecture spécifique qui garantit l'étanchéité entre l'agent IA et les dossiers :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Modèle IA exclusivement Mistral AI hébergé à Paris — aucune donnée hors UE",
+      "L'agent ne dispose d'aucun accès aux logiciels de gestion de dossiers (Secib, Jarvis, Clio)",
+      "Les pièces collectées transitent via formulaire sécurisé et arrivent dans votre boîte mail — jamais stockées chez l'agent",
+      "DPA (Data Processing Agreement) signé et conforme aux obligations déontologiques de l'avocat",
+      "Mention obligatoire dans les CGV et la politique de confidentialité du cabinet",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par spécialité : ce qui change concrètement</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { spec: "Droit de la famille (divorce, garde)", gain: "Qualification émotion/urgence, collecte pièces patrimoniales, RDV médiation", color: "#f59e0b" },
+      { spec: "Droit du travail (licenciement, harcèlement)", gain: "Collecte contrat + bulletins + courriers, FAQ délais prud'hommes", color: "#34d399" },
+      { spec: "Droit des affaires (création, litige commercial)", gain: "Qualification type de structure, collecte K-bis et statuts, devis actes standards", color: "#38bdf8" },
+      { spec: "Droit pénal", gain: "Urgence garde à vue : protocole de réponse immédiate 24h/24", color: "#f87171" },
+      { spec: "Droit immobilier", gain: "Qualification acte (vente, bail, copropriété), collecte titres de propriété", color: "#a78bfa" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={`background: ${item.color};`}></div>
+        <div>
+          <p class="text-white font-semibold text-xs mb-1">{item.spec}</p>
+          <p class="text-[#8888aa] text-xs leading-relaxed">{item.gain}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de 3 avocats</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Qualification prospects (5h/sem. économisées)", gain: "+5h × 200€/h = +1 000€/sem." },
+        { item: "Relances pièces (3h/sem. secrétariat)", gain: "+3h de secrétariat redirectionnées" },
+        { item: "FAQ et informations générales (30 q./sem.)", gain: "0 interruption avocat" },
+        { item: "Total mensuel (valeur temps récupéré)", gain: "+4 000 à 6 000€/mois" },
+        { item: "Coût agent IAForge", gain: "349€/mois (pack Essentiel)" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 3 || i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class={`text-sm ${i === 3 ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 3 ? 'text-[#7c5cfc]' : i === 4 ? 'text-red-400' : 'text-white'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/ia-pour/avocats" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Page secteur avocats &rarr;</a>
+    <a href="/blog/ia-securite-rgpd-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA et RGPD &rarr;</a>
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+  </div>
+
+</BlogLayout>

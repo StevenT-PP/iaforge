@@ -54,6 +54,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour salles de sport : https://iaforge.fr/ia-pour/salles-sport
 - IA pour agences immobilières : https://iaforge.fr/ia-pour/agences-immobilieres
 - IA pour notaires : https://iaforge.fr/ia-pour/notaires
+- IA pour dentistes : https://iaforge.fr/ia-pour/dentistes
+- IA pour plombiers et chauffagistes : https://iaforge.fr/ia-pour/plombiers
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -74,6 +76,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : Agent IA pour cabinet comptable : https://iaforge.fr/blog/ia-pour-cabinet-comptable
 - Article : IA et RGPD pour les PME : https://iaforge.fr/blog/ia-securite-rgpd-pme
 - Article : Réduire les no-shows avec l'IA : https://iaforge.fr/blog/reduire-no-shows-ia
+- Article : IA pour le recrutement RH : https://iaforge.fr/blog/ia-recrutement-rh
+- Article : Agent IA pour avocat : https://iaforge.fr/blog/ia-pour-avocat
+- Article : Mesurer le ROI d'un agent IA : https://iaforge.fr/blog/mesurer-roi-agent-ia
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

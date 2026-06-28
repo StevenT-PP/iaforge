@@ -1,0 +1,171 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Comment mesurer le ROI d'un agent IA : méthode et KPIs concrets",
+  description: "Quelle méthode pour calculer le ROI réel d'un agent IA en PME ? Les bons KPIs, les pièges à éviter et un modèle de calcul complet avec exemples sectoriels.",
+  date: "2026-07-03",
+  readTime: "7 min",
+  category: "Agents IA",
+  categoryColor: "#34d399",
+  slug: "mesurer-roi-agent-ia",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>\"Est-ce que votre agent IA va me rapporter de l'argent ?\" — c'est la question centrale. Et la réponse honnête est : ça dépend de ce que vous mesurez. La plupart des PME font l'erreur de regarder des métriques vanity (nombre de conversations, taux de réponse) plutôt que les métriques business qui comptent vraiment.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 types de gains à mesurer</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        type: "Gains directs (faciles à mesurer)",
+        color: "#34d399",
+        items: [
+          { kpi: "CA récupéré hors horaires", methode: "Compter les leads et devis signés générés via l'agent × votre panier moyen" },
+          { kpi: "Taux de conversion lead → devis", methode: "Comparer avant/après sur le même canal (site web, WhatsApp)" },
+          { kpi: "Taux de signature devis", methode: "Comparer avant/après introduction des relances automatiques" },
+          { kpi: "Réduction des no-shows", methode: "Compter les créneaux perdus avant/après × valeur d'un créneau" },
+        ],
+      },
+      {
+        type: "Gains indirects (importants mais moins visibles)",
+        color: "#f59e0b",
+        items: [
+          { kpi: "Temps humain récupéré", methode: "Heures/semaine économisées × coût horaire de la personne concernée" },
+          { kpi: "Avis Google supplémentaires", methode: "Nombre d'avis/mois avant/après × impact sur le trafic local (estimer)" },
+          { kpi: "Satisfaction client (CSAT)", methode: "Enquête NPS ou CSAT avant/après — délai de réponse = principal driver" },
+          { kpi: "Qualité des leads entrants", methode: "Comparer le taux de qualification des leads avant/après l'agent" },
+        ],
+      },
+      {
+        type: "Gains de capacité (long terme)",
+        color: "#7c5cfc",
+        items: [
+          { kpi: "Scaling sans recrutement", methode: "Volume de demandes traitées sans augmenter les effectifs" },
+          { kpi: "Disponibilité étendue", methode: "Horaires de service couverts : de 9h-18h à 24h/24" },
+          { kpi: "Données et insights", methode: "Qualité et quantité des données collectées sur les prospects" },
+        ],
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="font-bold text-base mb-4" style={`color: ${item.color};`}>{item.type}</p>
+        <div class="space-y-3">
+          {item.items.map(i => (
+            <div class="flex items-start gap-3">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <div>
+                <p class="text-white text-xs font-semibold">{i.kpi}</p>
+                <p class="text-[#8888aa] text-xs">{i.methode}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le modèle de calcul ROI complet</h2>
+
+  <p>Voici le modèle que nous utilisons pour chaque client avant et après déploiement :</p>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <p class="text-[#8888aa] text-xs uppercase font-bold tracking-wider mb-5">Exemple : cabinet médical, 3 médecins</p>
+    <div class="space-y-4">
+      <div>
+        <p class="text-[#34d399] text-xs font-bold uppercase tracking-wider mb-2">Gains directs</p>
+        <div class="space-y-2">
+          {[
+            ["Consultations récupérées hors horaires (5/sem.)", "5 × 30€ × 4 sem.", "+600€/mois"],
+            ["Réduction no-shows (-50% de 8 no-shows/sem.)", "4 × 30€ × 4 sem.", "+480€/mois"],
+          ].map(([item, calc, gain]) => (
+            <div class="flex justify-between items-start gap-4 text-xs">
+              <p class="text-[#8888aa]">{item}</p>
+              <p class="text-[#8888aa] flex-shrink-0">{calc}</p>
+              <p class="text-white font-semibold flex-shrink-0">{gain}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <p class="text-[#f59e0b] text-xs font-bold uppercase tracking-wider mb-2">Gains indirects</p>
+        <div class="space-y-2">
+          {[
+            ["Temps secrétariat récupéré (1h/jour)", "20 jours × 1h × 18€/h", "+360€/mois"],
+            ["Rappels bilans annuels (+10 patients/mois)", "10 × 30€", "+300€/mois"],
+          ].map(([item, calc, gain]) => (
+            <div class="flex justify-between items-start gap-4 text-xs">
+              <p class="text-[#8888aa]">{item}</p>
+              <p class="text-[#8888aa] flex-shrink-0">{calc}</p>
+              <p class="text-white font-semibold flex-shrink-0">{gain}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="border-t border-white/10 pt-4 space-y-2">
+        {[
+          ["Total gains mensuels", "", "+1 740€/mois"],
+          ["Coût agent IAForge", "", "-149€/mois"],
+          ["ROI net mensuel", "", "+1 591€/mois"],
+          ["ROI annuel", "", "+19 092€/an"],
+        ].map(([item, _, gain]) => (
+          <div class="flex justify-between items-start gap-4">
+            <p class={`text-sm ${item.startsWith('ROI') ? 'text-white font-bold' : 'text-[#8888aa]'}`}>{item}</p>
+            <p class={`text-sm font-bold flex-shrink-0 ${item === 'ROI net mensuel' ? 'text-[#34d399]' : item === 'ROI annuel' ? 'text-[#34d399]' : item.includes('Coût') ? 'text-red-400' : 'text-white'}`}>{gain}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les benchmarks par secteur à 90 jours</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Secteur", "Gain direct moy.", "Temps récupéré", "ROI à 90j"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Médecin / Kiné", "+800 à 1 500€/mois", "1 à 2h/jour", "×8 à ×12"],
+        ["Artisan / BTP", "+2 000 à 5 000€/mois", "4 à 6h/semaine", "×10 à ×20"],
+        ["Restaurant", "+1 500 à 3 000€/mois", "2 à 4h/jour", "×6 à ×12"],
+        ["E-commerce", "+5 000 à 15 000€/mois", "Variable", "×15 à ×40"],
+        ["Avocat / Notaire", "+2 000 à 5 000€/mois", "15 à 22h/semaine", "×8 à ×15"],
+        ["Garage", "+1 200 à 2 500€/mois", "3 à 5h/jour", "×6 à ×12"],
+      ].map(([sect, direct, temps, roi]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{sect}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{direct}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{temps}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#a78bfa] font-bold">{roi}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 pièges qui faussent le calcul de ROI</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { piege: "Compter le chiffre d'affaires total comme gain", correct: "Ne compter que le CA additionnel (ce qui n'aurait pas existé sans l'agent). Si vous faisiez déjà 80% de conversions sur les leads entrants horaires, le gain n'est que sur les 20% hors horaires." },
+      { piege: "Ignorer le temps de configuration et de supervision", correct: "Les 2 premières semaines demandent 2 à 3 heures de votre temps (configuration, tests, corrections). Comptez-les dans votre calcul de ROI sur les 3 premiers mois." },
+      { piege: "Mesurer trop tôt", correct: "Les gains sur les avis Google, le SEO local et la réputation se mesurent à 3 mois minimum. Sur les 30 premiers jours, ne mesurer que les gains directs (leads, devis, no-shows)." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-red-400 text-xs font-semibold mb-1">Piège : {item.piege}</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed">{item.correct}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/calculateur-roi" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Calculer mon ROI personnalisé &rarr;
+    </a>
+    <a href="/blog/agent-ia-pme-roi" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour PME : quel ROI réaliste ? &rarr;</a>
+    <a href="/blog/prix-agent-ia-2026" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Prix d'un agent IA en 2026 &rarr;</a>
+  </div>
+
+</BlogLayout>

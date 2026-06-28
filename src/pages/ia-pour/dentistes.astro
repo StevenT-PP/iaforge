@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#38bdf8";
+
+const tasks = [
+  "Prend les rendez-vous consultation, détartrage, urgence 24h/24",
+  "Qualifie les urgences dentaires : douleur, traumatisme, abcès, prothèse cassée",
+  "Envoie les rappels de RDV à J-2 et J-1 pour réduire les no-shows",
+  "Rappelle les patients pour leur bilan annuel (12 mois après la dernière visite)",
+  "Répond aux questions fréquentes : remboursement CPAM/mutuelle, prix, délais",
+  "Informe sur les actes : implants, facettes, orthodontie, blanchiment",
+  "Collecte les informations médicales avant la première consultation",
+  "Gère les listes d'attente et notifie en cas de désistement",
+];
+
+const faqItems = [
+  {
+    q: "Compatible avec Doctolib, Veasy ou les logiciels cabinet (Logosw, Julie) ?",
+    a: "Oui. L'agent se connecte à Doctolib, Veasy, Planity et la plupart des logiciels de gestion dentaire pour synchroniser le planning en temps réel. Les rendez-vous créés par l'agent apparaissent directement dans votre agenda sans double saisie.",
+  },
+  {
+    q: "Comment l'agent gère-t-il les urgences dentaires ?",
+    a: "L'agent est configuré pour détecter les signes d'urgence : douleur intense, abcès, traumatisme, saignement. Il propose immédiatement un créneau d'urgence dans votre planning ou, hors horaires, oriente vers le service de garde dentaire le plus proche.",
+  },
+  {
+    q: "L'agent peut-il donner des informations sur les tarifs et remboursements ?",
+    a: "Oui pour les informations générales : tarifs des actes courants, taux de remboursement CPAM, différence secteur 1/2/3. Il ne peut pas calculer le reste à charge exact d'un patient (qui dépend de sa mutuelle spécifique) — il l'oriente vers votre secrétariat pour ce calcul.",
+  },
+  {
+    q: "Les données de santé dentaire sont-elles protégées ?",
+    a: "Absolument. On utilise Mistral AI hébergé à Paris pour tous les cabinets dentaires. Aucune donnée ne quitte le territoire français. L'agent ne stocke jamais les antécédents médicaux, traitements ou informations cliniques — uniquement les coordonnées et les créneaux.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec vos actes proposés, vos tarifs de référence, vos créneaux et vos procédures d'urgence. Vous validez sur 40 scénarios test avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour dentistes — Prise de RDV 24h/24 et -55% de no-shows | IAForge"
+  description="Agent IA pour cabinet dentaire : prise de RDV 24h/24, rappels anti no-show, rappels bilans annuels, urgences qualifiées. RGPD, hébergé en France. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Dentistes", "item": "https://iaforge.fr/ia-pour/dentistes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Dentistes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour dentistes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre cabinet dentaire<br/><span class="gradient-text">disponible 24h/24 pour vos patients</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            RDV automatiques, rappels bilans annuels, qualification des urgences et relances anti no-show — votre agent IA remplit l'agenda pendant que vous soignez.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "de no-shows grâce aux rappels automatiques SMS à J-2 et J-1", color },
+            { val: "+30%", label: "de bilans annuels réalisés grâce aux rappels de suivi automatiques", color: "#34d399" },
+            { val: "0 urgence", label: "perdue hors horaires — orientation immédiate vers le bon créneau", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, connecté à Doctolib, Veasy ou votre logiciel", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- RAPPEL BILAN -->
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le rappel de bilan annuel : le levier oublié</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10 max-w-2xl mx-auto">En moyenne, 35% des patients d'un cabinet dentaire ne viennent pas à leur bilan annuel par oubli. L'agent envoie un rappel automatique 11 mois après chaque visite de bilan.</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { timing: "11 mois après le dernier bilan", msg: "\"Bonjour Marie, votre dernier bilan remonte à il y a presque un an. Souhaitez-vous prendre RDV pour votre bilan annuel ? Je vous propose quelques créneaux disponibles.\"", color },
+          { timing: "Si pas de réponse à J+7", msg: "\"Bonjour Marie, nous n'avons pas eu de réponse à notre précédent message. N'hésitez pas à prendre RDV quand vous le souhaitez — voici le lien direct vers notre agenda en ligne.\"", color: "#a78bfa" },
+          { timing: "Résultat observé", msg: "+30% de bilans annuels réalisés. Pour un cabinet de 800 patients actifs, ça représente environ 15 à 20 consultations supplémentaires par mois — soit 900 à 1 200€ de CA récupéré.", color: "#34d399" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5">
+            <p class="font-bold text-xs mb-3 uppercase tracking-wider" style={`color: ${item.color};`}>{item.timing}</p>
+            <p class="text-[#9090b0] text-xs italic leading-relaxed">{item.msg}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un cabinet de 2 chirurgiens-dentistes</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Demandes RDV hors horaires", "Email sans réponse avant 9h", "RDV pris automatiquement 24h/24"],
+            ["No-shows / semaine", "6 à 12 créneaux perdus", "2 à 5 créneaux perdus (-55%)"],
+            ["Rappels bilans annuels", "Jamais — le patient doit y penser", "Automatique à 11 mois, +30% réalisés"],
+            ["Urgences hors horaires", "Messagerie ou attente du lendemain", "Orientation immédiate garde ou créneau"],
+            ["FAQ remboursements / tarifs", "30+ appels/semaine par secrétaire", "Réponse instantanée 24h/24"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto glass rounded-2xl p-8">
+      <div class="flex items-start gap-5">
+        <div class="text-3xl flex-shrink-0">🔒</div>
+        <div>
+          <h2 class="text-xl font-black text-white mb-3">Données de santé : hébergement France</h2>
+          <p class="text-[#8888aa] text-sm leading-relaxed mb-4">Les cabinets dentaires traitent des données de santé soumises aux obligations HDS. IAForge utilise exclusivement <strong class="text-white">Mistral AI hébergé à Paris</strong>. L'agent traite les créneaux et les coordonnées — jamais les données cliniques, antécédents ou traitements.</p>
+          <ul class="space-y-2">
+            {["Conformité CNIL et HDS", "Pas de stockage de données médicales", "Chiffrement bout-en-bout", "DPA fourni avec chaque contrat"].map(item => (
+              <li class="flex items-center gap-2 text-sm text-[#8888aa]">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique pour tous les secteurs', cat: 'Automatisation' },
+          { href: '/blog/automatiser-prise-rdv', title: 'Comment automatiser sa prise de RDV avec un agent IA (guide complet)', cat: 'Automatisation' },
+          { href: '/blog/ia-securite-rgpd-pme', title: 'IA et RGPD pour les PME : ce qu\'il faut vraiment savoir en 2026', cat: 'Technique' },
+          { href: '/blog/prix-agent-ia-2026', title: 'Combien coûte un agent IA en 2026 ? Prix, packs et ROI expliqués', cat: 'Tarifs' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Remplissez votre agenda sans y penser</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos no-shows actuels, vos rappels de bilans manqués et vos pertes hors horaires pour vous chiffrer le gain exact.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #0284c7);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Données hébergées en France · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,130 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour le recrutement RH : automatiser sans déshumaniser en 2026",
+  description: "Comment les PME et cabinets RH utilisent l'IA pour automatiser le tri des CVs, la qualification des candidats et le suivi des candidatures. Guide pratique et limites éthiques.",
+  date: "2026-07-02",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#a78bfa",
+  slug: "ia-recrutement-rh",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le recrutement est l'une des fonctions où l'IA offre les gains de productivité les plus importants — et aussi l'une où les risques éthiques et légaux sont les plus élevés. En 2026, la bonne approche n'est pas de remplacer le recruteur par l'IA, mais de lui retirer les tâches chronophages à faible valeur pour qu'il se concentre sur ce que l'IA ne peut pas faire : sentir un candidat, évaluer une culture fit, prendre une décision nuancée.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA automatise sans risque dans le recrutement</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        tache: "Tri et présélection des candidatures",
+        color: "#a78bfa",
+        desc: "Pour un poste qui reçoit 200 candidatures, l'IA extrait les informations structurées de chaque CV (expérience, compétences, formation, localisation) et les classe selon les critères objectifs du poste. Le recruteur ne passe plus 4 heures à lire des CVs — il en lit 20 présélectionnés.",
+        gain: "-75% de temps de présélection",
+        limite: "L'IA trie sur des critères, pas sur du potentiel. La décision finale reste humaine.",
+      },
+      {
+        tache: "Communication automatique avec les candidats",
+        color: "#34d399",
+        desc: "Accusé de réception immédiat, invitation à un entretien vidéo ou téléphonique, relance si pas de réponse sous 48h, notification de refus avec message personnalisé selon le profil — tout ça sans que le recruteur intervienne. L'expérience candidat s'améliore drastiquement.",
+        gain: "100% des candidats notifiés sous 24h",
+        limite: "Les refus doivent être envoyés avec soin — un message générique nuit à la marque employeur.",
+      },
+      {
+        tache: "Qualification téléphonique / vidéo automatisée",
+        color: "#38bdf8",
+        desc: "L'agent conduit un premier entretien de qualification : disponibilité, prétentions salariales, mobilité, questions de compréhension du poste. Il génère un résumé structuré que le recruteur consulte avant l'entretien approfondi.",
+        gain: "1h de qualification par candidat → 15 min pour le recruteur",
+        limite: "L'entretien de qualification IA doit être annoncé explicitement au candidat (RGPD et éthique).",
+      },
+      {
+        tache: "Suivi des candidatures et relances",
+        color: "#f59e0b",
+        desc: "Pipeline de recrutement dans le CRM, alertes sur les candidats sans réponse depuis X jours, rappels de prise de décision pour les recruteurs, coordination avec les managers qui tardent à donner leur feedback.",
+        gain: "0 candidat oublié dans le pipeline",
+        limite: "Nécessite un ATS (Applicant Tracking System) connecté.",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="text-white font-bold text-base">{item.tache}</h3>
+          <span class="text-xs font-bold flex-shrink-0 ml-3 px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs text-[#9090b0] italic">{item.limite}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les obligations légales en 2026</h2>
+
+  <p>La loi française et le RGPD imposent des règles strictes pour l'IA en recrutement :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { regle: "Transparence obligatoire", detail: "Tout candidat doit être informé si une IA intervient dans le processus de sélection. Cette obligation est inscrite dans le RGPD (article 22) et renforcée par le AI Act européen entré en vigueur en 2025." },
+      { regle: "Droit à l'explication", detail: "Un candidat refusé après un tri automatisé peut demander une explication. Votre processus IA doit être explicable : quels critères ont été utilisés, pourquoi ce candidat a été écarté." },
+      { regle: "Interdiction de discrimination algorithmique", detail: "L'IA ne peut pas utiliser des critères illicites (âge, sexe, origine, situation familiale) même indirectement. Attention aux biais dans les données d'entraînement — un modèle entraîné sur vos recrutements passés peut reproduire des biais existants." },
+      { regle: "Conservation des données", detail: "Les données des candidats non retenus doivent être supprimées après 2 ans (ou moins selon votre politique). L'IA doit respecter ces délais de conservation." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.regle}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comparatif des outils IA pour le recrutement</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Outil", "Usage principal", "Prix", "Recommandé pour"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Manatal", "ATS + IA tri CV", "À partir de 15€/mois", "PME < 50 recrutements/an"],
+        ["Lever + IA", "ATS complet + scoring", "Sur devis", "ETI, cabinets RH"],
+        ["Easyrecrue / Softy", "Entretiens vidéo différés", "À partir de 300€/mois", "Volume élevé"],
+        ["Agent IA IAForge", "Qualification + suivi", "149€ à 349€/mois", "PME sans ATS dédié"],
+        ["ChatGPT + Zapier", "Rédaction offres, tri basique", "50 à 100€/mois", "Expérimentation"],
+      ].map(([outil, usage, prix, reco]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{outil}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{usage}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{prix}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{reco}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne peut pas remplacer</h2>
+
+  <p>Trois éléments du recrutement restent définitivement humains en 2026 :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { element: "L'évaluation du culture fit", desc: "Savoir si une personne va bien s'intégrer dans une équipe spécifique avec une dynamique spécifique nécessite une lecture humaine fine. Aucun modèle IA actuel ne peut évaluer ça de façon fiable." },
+      { element: "La décision finale", desc: "L'IA présélectionne et qualifie — mais la décision de recruter appartient au manager et au RH. Externaliser cette décision à un algorithme est une faute éthique et un risque légal." },
+      { element: "La négociation et l'onboarding", desc: "La discussion sur la rémunération, les conditions, les perspectives — et les premières semaines d'intégration — nécessitent une présence humaine. C'est là que se joue la fidélisation à long terme." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.element}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/crm-ia-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">CRM et IA pour PME &rarr;</a>
+    <a href="/blog/ia-securite-rgpd-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA et RGPD &rarr;</a>
+  </div>
+
+</BlogLayout>
