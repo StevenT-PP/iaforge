@@ -1,0 +1,127 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Automatiser son SAV avec l'IA : réduire les tickets de 70% en 2026",
+  description: "Comment automatiser son service après-vente avec un agent IA : base de connaissance, niveaux d'escalade, métriques à suivre. 65-75% des demandes résolues sans intervention humaine.",
+  date: "2026-07-09",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "automatiser-service-apres-vente",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Le SAV est le poste qui coûte le plus cher à maintenir et qui génère le moins de valeur perçue — jusqu'à ce qu'il fonctionne mal. Une résolution en 2 minutes laisse une meilleure impression qu'un produit qui n'a pas eu de problème. L'IA ne résout pas les problèmes complexes à votre place. Elle traite les 65 à 75% de demandes qui ne nécessitent aucune compétence particulière — et libère votre équipe pour les 25 à 35% qui en ont vraiment besoin.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 niveaux d'un SAV automatisé</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        niveau: "Niveau 1 — Résolution automatique (65-75% des demandes)",
+        color: "#34d399",
+        exemples: ["Suivi de commande : statut, numéro de tracking, délai estimé", "Retours et remboursements : procédure standard, génération de bon de retour", "FAQ produit : mode d'emploi, compatibilité, caractéristiques techniques", "Mot de passe oublié, accès compte, factures téléchargeables"],
+        temps: "Résolution < 5 minutes, sans intervention humaine",
+      },
+      {
+        niveau: "Niveau 2 — Assistance humaine guidée par l'IA (20-25% des demandes)",
+        color: "#f59e0b",
+        exemples: ["Réclamation client insatisfait nécessitant un geste commercial", "Problème technique produit non documenté dans la base de connaissance", "Litige avec un transporteur ou un délai anormal", "Demande de personnalisation ou de cas particulier hors catalogue"],
+        temps: "L'agent collecte et classe l'information, l'humain traite en 10 min au lieu de 30",
+      },
+      {
+        niveau: "Niveau 3 — Escalade directe (5-10% des demandes)",
+        color: "#f87171",
+        exemples: ["Mise en demeure ou menace juridique", "Problème de sécurité ou de danger pour l'utilisateur", "Client VIP ou grand compte identifié", "Fraude ou tentative d'escroquerie suspectée"],
+        temps: "Transfert immédiat au responsable désigné avec contexte complet",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-xs font-bold uppercase tracking-wider mb-3" style={`color: ${item.color};`}>{item.niveau}</p>
+        <ul class="space-y-1 mb-4">
+          {item.exemples.map(ex => (
+            <li class="flex items-start gap-2 text-sm text-[#8888aa]">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              {ex}
+            </li>
+          ))}
+        </ul>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.temps}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Construire une base de connaissance qui fonctionne</h2>
+
+  <p>L'efficacité d'un agent SAV dépend à 80% de la qualité de sa base de connaissance. Une base incomplète produit des réponses incorrectes qui dégradent l'expérience client. Voici comment la construire méthodiquement :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { etape: "1. Exporter 6 mois de tickets SAV", detail: "Depuis Zendesk, Freshdesk, Gmail ou votre outil de ticketing. Identifier les 20 types de demandes qui représentent 80% du volume (loi de Pareto)." },
+      { etape: "2. Rédiger les réponses de référence", detail: "Pour chaque type de demande, une réponse complète, validée par votre équipe. L'agent utilisera ces réponses comme base — pas des approximations générées." },
+      { etape: "3. Documenter les cas particuliers", detail: "Chaque exception, chaque produit discontinué, chaque politique spéciale. L'agent doit savoir ce qui est hors-norme autant que ce qui est standard." },
+      { etape: "4. Définir les règles d'escalade", detail: "Quels mots-clés, quels signaux, quels types de demandes déclenchent un transfert humain. Ces règles sont configurées une fois et ajustées selon les retours d'expérience." },
+      { etape: "5. Mettre à jour mensuellement", detail: "Nouveaux produits, nouvelles politiques, nouvelles FAQ. La base de connaissance est vivante — un agent non mis à jour donne des informations incorrectes." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.etape}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les KPIs d'un SAV automatisé à suivre</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["KPI", "Définition", "Cible SAV IA", "Signal d'alerte"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Taux de résolution N1", "% demandes résolues sans humain", "> 65%", "< 50% = base de connaissance insuffisante"],
+        ["CSAT automatisé", "Note satisfaction post-résolution IA", "> 4,0/5", "< 3,5 = l'agent répond à côté"],
+        ["Taux d'escalade", "% demandes transférées à un humain", "25-35%", "> 50% = trop de cas non documentés"],
+        ["Temps de résolution moyen", "Du ticket à la clôture", "< 15 min N1, < 4h N2", "> 2h N1 = blocage dans le workflow"],
+        ["Taux de réouverture", "% tickets rouverts après clôture", "< 8%", "> 15% = résolution incomplète"],
+      ].map(([kpi, def, cible, alerte]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{kpi}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{def}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{cible}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#f59e0b]">{alerte}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI d'un SAV automatisé pour une PME e-commerce (500 commandes/mois)</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Volume SAV actuel : 80 tickets/mois × 20 min/ticket", gain: "26h/mois de traitement" },
+        { item: "Avec IA : 70% traités automatiquement (56 tickets)", gain: "-18h/mois, soit 1 ETP à mi-temps" },
+        { item: "CSAT passe de 3,8 à 4,4/5 (résolution < 5 min)", gain: "+18% de clients qui recommandent" },
+        { item: "Taux de retour client après SAV positif", gain: "+12% de rachats dans les 60 jours" },
+        { item: "Coût agent IAForge (pack Essentiel)", gain: "-349€/mois" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-sm text-[#8888aa]">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 4 ? 'text-red-400' : 'text-[#7c5cfc]'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-support-client" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA pour le support client &rarr;</a>
+    <a href="/blog/ia-ecommerce-shopify" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour e-commerce Shopify &rarr;</a>
+  </div>
+
+</BlogLayout>

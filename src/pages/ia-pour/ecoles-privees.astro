@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Répond aux questions sur les programmes, pédagogies et niveaux d'enseignement 24h/24",
+  "Gère les demandes de préinscription et collecte les dossiers des familles",
+  "Rappelle les journées portes ouvertes, journées d'immersion et événements d'orientation",
+  "Relance les familles dont les dossiers d'inscription sont incomplets",
+  "Informe sur les frais de scolarité, modalités de paiement et bourses disponibles",
+  "Planifie les visites de l'établissement et entretiens de sélection",
+  "Notifie les familles des informations pratiques, fermetures et événements scolaires",
+  "Collecte les formulaires sanitaires, autorisations parentales et fiches allergènes",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il accéder aux notes et bulletins des élèves ?",
+    a: "Non. L'agent n'a accès à aucun ENT, espace numérique de travail, ni aux données scolaires des élèves. Il traite exclusivement les communications administratives : inscriptions, informations pratiques, événements et questions générales sur l'établissement.",
+  },
+  {
+    q: "Compatible avec Pronote et les logiciels de gestion scolaire ?",
+    a: "L'agent peut envoyer des notifications liées à des événements Pronote (convocations, fermetures, informations administratives) sans accès direct aux données Pronote. Pour les ENT privés ou les logiciels de gestion scolaire (Charlemagne, FAST), une intégration via export ou webhook est possible.",
+  },
+  {
+    q: "Comment gérer les familles internationales ou multilingues ?",
+    a: "L'agent peut être configuré en français et en anglais pour les établissements bilingues ou internationaux. Pour les écoles accueillant des familles d'autres nationalités, des langues supplémentaires sont disponibles sur demande.",
+  },
+  {
+    q: "L'agent peut-il aider pendant les périodes de recrutement (janvier à mai) ?",
+    a: "C'est là qu'il est le plus utile. Pendant les pics de demandes de préinscription, l'agent gère les réponses 24h/24, qualifie les dossiers, planifie les visites et relance les familles sans saturer votre secrétariat. La période de rush devient gérable.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent d'accueil et de gestion des préinscriptions. On configure l'agent avec vos programmes, niveaux, calendrier scolaire, procédure d'inscription et documents à collecter.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour écoles privées — Préinscriptions et communication parents automatisées | IAForge"
+  description="Agent IA pour école privée : réponses 24h/24 sur les programmes, gestion des préinscriptions, relances dossiers incomplets, rappels portes ouvertes — sans accès aux données scolaires. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Écoles privées", "item": "https://iaforge.fr/ia-pour/ecoles-privees" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Écoles privées</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour écoles et établissements privés</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Vos familles accueillies.<br/><span class="gradient-text">Vos dossiers complets.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Réponses 24h/24 sur les programmes, gestion des préinscriptions, relances familles et rappels d'événements — pendant que votre équipe se consacre à l'éducatif.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-60%", label: "d'appels et d'emails répétitifs pendant les périodes de préinscription", color },
+            { val: "+35%", label: "de taux de transformation des journées portes ouvertes grâce aux rappels automatiques", color: "#34d399" },
+            { val: "0 dossier", label: "incomplet non relancé — suivi automatique jusqu'à la constitution complète", color: "#38bdf8" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à vos programmes et procédures d'inscription", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre établissement</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le tunnel de préinscription automatisé</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">De la première question à la constitution du dossier complet — l'agent accompagne chaque famille sans intervention humaine.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { step: "Étape 1", label: "Premier contact", msg: "Réponse immédiate à la demande d'information : présentation des filières, niveaux, pédagogie, frais indicatifs et prochaine journée portes ouvertes.", color },
+          { step: "Étape 2", label: "Qualification", msg: "Niveau actuel de l'enfant, profil scolaire, attentes des parents, délai d'entrée souhaitée. Fiche transmise au responsable des admissions.", color: "#38bdf8" },
+          { step: "Étape 3", label: "Visite ou entretien", msg: "Planification de la visite ou de l'entretien de sélection selon le calendrier de l'établissement. Rappel J-2 automatique.", color: "#34d399" },
+          { step: "Étape 4", label: "Dossier complet", msg: "Collecte des pièces du dossier (bulletins, justificatifs). Relance automatique à J+3 et J+7 si documents manquants. Notification à l'admission quand le dossier est complet.", color: "#fbbf24" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5">
+            <div class="text-xs font-bold mb-1" style={`color: ${item.color};`}>{item.step}</div>
+            <p class="text-white font-bold text-sm mb-2">{item.label}</p>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{item.msg}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un établissement de 300 élèves</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Demandes de renseignements hors horaires", "Email sans réponse avant le lendemain", "Réponse complète et qualification immédiate"],
+            ["Période de préinscription (jan-mai)", "Secrétariat saturé, familles en attente", "Agent gère les flux, secrétariat supervise"],
+            ["Dossiers incomplets", "Relance manuelle ou oubliée", "Séquence automatique J+3, J+7, J+14"],
+            ["Rappels journées portes ouvertes", "Email envoyé une fois, taux d'ouverture 25%", "Séquence email + SMS, rappel J-1, +35% de présents"],
+            ["FAQ frais de scolarité et bourses", "20 min d'explication répétée", "Réponse automatique avec les informations à jour"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/ia-pour/coachs', title: 'Agent IA pour coachs et formateurs', cat: 'Secteur' },
+          { href: '/blog/ia-pour-formation-professionnelle', title: 'IA pour organisme de formation : automatiser sans perdre Qualiopi', cat: 'Guide' },
+          { href: '/blog/automatiser-onboarding-client', title: 'Automatiser l\'onboarding avec l\'IA : de la signature à la première valeur', cat: 'Automatisation' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Vos familles répondues. Vos dossiers complets.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos flux d'inscription, votre taux de transformation des portes ouvertes et vos dossiers abandonnés pour vous chiffrer ce que vous récupéreriez chaque année scolaire.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

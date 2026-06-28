@@ -1,0 +1,131 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour association : automatiser sans perdre l'humain en 2026",
+  description: "Comment une association utilise l'IA pour gérer les adhésions, communications aux membres, collecte de dons et coordination des bénévoles — sans perdre le lien communautaire.",
+  date: "2026-07-09",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#34d399",
+  slug: "ia-pour-association",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une association est un paradoxe : elle gère des volumes d'information comparables à une PME — adhérents, bénévoles, dons, événements, communications — avec des équipes souvent bénévoles et des ressources limitées. L'IA ne remplace pas l'engagement humain d'une association. Elle récupère les heures passées sur les tâches répétitives pour les consacrer à ce qui compte : la mission.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA peut et ne peut pas faire pour une association</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Tâche</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">IA peut faire</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider text-center">Reste humain</div>
+      {[
+        ["Adhésion et renouvellement", "Envoyer les formulaires, relancer, confirmer l'adhésion", "Accueillir le nouveau membre, créer le lien"],
+        ["Communication aux membres", "Newsletter automatique, rappels d'événements, actualités", "Éditorial, ton, valeurs, décisions de communication"],
+        ["Collecte de dons", "Page de don personnalisée, remerciements automatiques, reçus fiscaux", "Campagnes de sensibilisation, relation donateurs majeurs"],
+        ["Bénévoles", "Inscription aux créneaux, rappels, confirmation, feedback post-mission", "Recrutement, formation, motivation, reconnaissance"],
+        ["Questions fréquentes", "FAQ membres, informations pratiques, statuts", "Conseil, orientation, situations complexes"],
+        ["Événements", "Inscriptions, rappels J-2, liste de présence, feedback", "Animation, accueil, prise de décision sur site"],
+      ].map(([tache, peut, reste]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{tache}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{peut}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa] text-center">{reste}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 automatisations prioritaires pour les associations</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Adhésions et renouvellements automatisés",
+        color: "#34d399",
+        desc: "Le renouvellement d'adhésion est la première source de perte de membres dans les associations. L'agent envoie un rappel à 30 jours, 15 jours et 7 jours avant l'échéance. Pour les nouveaux adhérents, il envoie une séquence de bienvenue : confirmation, présentation des activités, agenda des prochains événements. Le bureau ne gère plus les relances — seulement les cas particuliers.",
+        gain: "+40% de taux de renouvellement à l'échéance",
+      },
+      {
+        n: "2",
+        titre: "Communication et newsletter automatique",
+        color: "#7c5cfc",
+        desc: "L'agent peut être configuré pour envoyer une newsletter mensuelle construite à partir d'un template, des actualités que vous lui communiquez, et du calendrier des prochains événements. Les membres reçoivent une communication régulière même quand le bureau est débordé. La fréquence et le contenu restent sous votre contrôle — l'agent gère la distribution.",
+        gain: "Communication mensuelle garantie sans effort",
+      },
+      {
+        n: "3",
+        titre: "Collecte de dons et reçus fiscaux",
+        color: "#f59e0b",
+        desc: "Pour les associations reconnues d'utilité publique ou éligibles aux reçus fiscaux (Cerfa 11580), l'agent envoie automatiquement le reçu après chaque don, un message de remerciement personnalisé, et un bilan annuel récapitulatif en décembre. Les donateurs réguliers reçoivent une relance en fin d'année pour les dons de dernière minute. Résultat : moins d'oublis, plus de fidélisation des donateurs.",
+        gain: "+25% de dons récurrents grâce aux relances de fin d'année",
+      },
+      {
+        n: "4",
+        titre: "Coordination des créneaux bénévoles",
+        color: "#38bdf8",
+        desc: "\"Qui peut venir samedi matin ?\" est l'une des questions les plus chronophages d'une association. L'agent envoie la liste des créneaux disponibles, collecte les disponibilités, confirme les inscriptions et rappelle J-1. En cas de désistement, il notifie automatiquement les bénévoles sur liste d'attente. Le coordinateur reçoit la liste des présents confirmés, pas une liste de messages à trier.",
+        gain: "-3h/semaine de coordination bénévole",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une association de 250 membres</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl p-6">
+    <div class="space-y-3">
+      {[
+        { item: "Renouvellements automatisés (+40% de taux)", gain: "+30 adhésions supplémentaires conservées × 50€ = +1 500€/an" },
+        { item: "Collecte de dons en fin d'année (+25%)", gain: "+500 à 2 000€ selon la base de donateurs" },
+        { item: "Temps bénévoles coordinateurs récupéré (-3h/sem × 48 sem)", gain: "+144h libérées pour la mission" },
+        { item: "Communication régulière → engagement membres amélioré", gain: "-30% de churn membres silencieux" },
+        { item: "Coût agent IAForge (pack Solo)", gain: "-149€/mois = -1 788€/an" },
+      ].map((row, i) => (
+        <div class={`flex justify-between items-start gap-4 py-2 ${i === 4 ? 'border-t border-white/10 pt-3' : ''}`}>
+          <p class="text-sm text-[#8888aa]">{row.item}</p>
+          <p class={`text-sm font-semibold flex-shrink-0 ${i === 4 ? 'text-red-400' : 'text-[#34d399]'}`}>{row.gain}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les associations qui en bénéficient le plus</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Associations sportives (clubs, ligues) : gestion des adhésions saisonnières et créneaux d'entraînement",
+      "Associations culturelles (théâtre, musique, arts) : billetterie événements, inscription ateliers, newsletter",
+      "Associations caritatives et humanitaires : collecte de dons, reçus fiscaux, coordination bénévoles terrain",
+      "Associations de parents d'élèves (FCPE, APE) : communication familles, organisation événements scolaires",
+      "Associations professionnelles et syndicales : adhésions, événements networking, publications réglementaires",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/automatiser-onboarding-client" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser l'onboarding &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Automatiser les relances &rarr;</a>
+  </div>
+
+</BlogLayout>

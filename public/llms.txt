@@ -65,6 +65,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour opticiens : https://iaforge.fr/ia-pour/opticiens
 - IA pour architectes : https://iaforge.fr/ia-pour/architectes
 - IA pour studios yoga et bien-être : https://iaforge.fr/ia-pour/studios-yoga
+- IA pour courtiers en assurance : https://iaforge.fr/ia-pour/assurances
+- IA pour écoles privées : https://iaforge.fr/ia-pour/ecoles-privees
+- IA pour traiteurs et événementiel : https://iaforge.fr/ia-pour/traiteurs
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -102,6 +105,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA et prospection B2B : https://iaforge.fr/blog/ia-b2b-prospection
 - Article : WhatsApp Business API pour PME : https://iaforge.fr/blog/agent-ia-whatsapp-business
 - Article : Agent IA pour expert-comptable : https://iaforge.fr/blog/ia-pour-expert-comptable
+- Article : IA pour association : https://iaforge.fr/blog/ia-pour-association
+- Article : Avis Google automatiques avec l'IA : https://iaforge.fr/blog/ia-avis-google-automatique
+- Article : Automatiser son SAV avec l'IA : https://iaforge.fr/blog/automatiser-service-apres-vente
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact
