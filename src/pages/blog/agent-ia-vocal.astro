@@ -1,0 +1,113 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA vocal : décrocher le téléphone à votre place en 2026",
+  description: "Les agents IA vocaux peuvent répondre aux appels téléphoniques, qualifier les demandes et prendre des rendez-vous sans intervention humaine. État de l'art, cas d'usage et limites en 2026.",
+  date: "2026-07-06",
+  readTime: "7 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-vocal",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>En 2026, les agents IA vocaux ont franchi un seuil. Il n'y a pas si longtemps, une voix synthétique se repérait instantanément — débit robotique, pauses artificielles, incapacité à gérer une interruption. Les modèles actuels (ElevenLabs, Vapi, Retell AI) produisent une voix naturelle qui passe le test de Turing dans 80% des appels de routine. Pour les PME qui reçoivent 30 à 100 appels par jour, c'est un changement de catégorie.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que fait concrètement un agent vocal en 2026</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Réception d'appel entrant et qualification",
+        color: "#7c5cfc",
+        desc: "L'agent décroche, se présente, et pose les questions nécessaires pour qualifier la demande. Pour un cabinet médical : \"Bonjour, cabinet du Dr Martin. C'est pour un rendez-vous ou une urgence ?\" Il gère les interruptions, les demandes de répétition et les hésitations naturellement.",
+        use: "Médecins, kiné, dentistes, avocats",
+      },
+      {
+        n: "2",
+        titre: "Prise de rendez-vous par téléphone",
+        color: "#34d399",
+        desc: "L'agent consulte l'agenda en temps réel et propose des créneaux disponibles. Le client répond oralement, l'agent confirme, crée l'entrée dans l'agenda et envoie une confirmation SMS ou email. Tout se passe comme avec un vrai secrétaire.",
+        use: "Tous secteurs avec gestion d'agenda",
+      },
+      {
+        n: "3",
+        titre: "Gestion des appels hors horaires",
+        color: "#38bdf8",
+        desc: "Après 18h ou le week-end, l'agent prend le relais. Il qualifie l'urgence, note les informations et envoie un résumé structuré pour le lendemain matin. Pour les urgences avérées, il déclenche le protocole d'astreinte défini.",
+        use: "Plombiers, électriciens, médecins, garages",
+      },
+      {
+        n: "4",
+        titre: "Appels sortants de rappel et relance",
+        color: "#f59e0b",
+        desc: "L'agent peut passer des appels sortants : rappel de rendez-vous la veille, relance d'un devis non signé, rappel de contrôle annuel. Il laisse un message vocal personnalisé si personne ne répond. Le taux de rappel est 2× supérieur aux SMS pour les + de 50 ans.",
+        use: "Santé, artisans, immobilier",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>Cas d'usage : {item.use}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les limites réelles des agents vocaux en 2026</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { limite: "La latence", detail: "Entre la fin de votre phrase et la réponse de l'agent, il y a 600ms à 1,2 secondes selon le modèle et la connexion. Sur un appel court et factuel, ça passe. Sur une conversation longue avec beaucoup d'aller-retours émotionnels, c'est perceptible." },
+      { limite: "Les accents et argots régionaux", detail: "Un agent configuré en français standard comprend mal un accent marseillais prononcé ou des expressions régionales. Les modèles s'améliorent, mais les erreurs de compréhension restent plus fréquentes qu'avec un humain local." },
+      { limite: "Les conversations à haute charge émotionnelle", detail: "Un client en colère, une personne en détresse, une négociation compliquée — l'agent vocal ne gère pas l'émotion. Il peut détecter une élévation de voix et escalader vers un humain, mais il ne doit pas rester en ligne dans ces situations." },
+      { limite: "La transparence obligatoire", detail: "En France, la CNIL et les usages professionnels imposent d'informer l'interlocuteur qu'il parle à une IA si celui-ci le demande. L'agent doit répondre honnêtement. Les configurations qui font passer l'IA pour un humain sont contraires à l'éthique et potentiellement illégales." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.limite}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.detail}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Agent vocal vs agent texte : lequel choisir ?</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">Critère</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#7c5cfc] uppercase tracking-wider text-center">Agent vocal</div>
+      <div class="p-4 border-b border-white/5 text-xs font-bold text-[#34d399] uppercase tracking-wider text-center">Agent texte (chat/WhatsApp)</div>
+      {[
+        ["Public cible", "+ de 50 ans, clientèle B2B traditionnelle", "Moins de 45 ans, clientèle digitale"],
+        ["Coût par interaction", "0,05 à 0,15€/minute", "0,01 à 0,03€/message"],
+        ["Capacité de traitement", "1 appel à la fois par ligne", "Illimité simultanément"],
+        ["Trace écrite", "Non (sauf transcription)", "Oui — historique complet"],
+        ["Richesse de l'échange", "Plus naturel pour questions complexes", "Meilleur pour partager des fichiers, liens, images"],
+        ["Setup", "Plus complexe, 2 à 3 semaines", "7 jours"],
+      ].map(([crit, vocal, texte]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{crit}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#7c5cfc] text-center">{vocal}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] text-center">{texte}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p>Notre recommandation pour 95% des PME françaises : <strong class="text-white">commencer par un agent texte</strong> (site web + WhatsApp) et ajouter le canal vocal à 3 à 6 mois si votre clientèle est majoritairement téléphonique. L'agent texte se déploie plus vite, coûte moins cher à opérer et produit une trace consultable pour l'amélioration continue.</p>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/agent-ia-whatsapp" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA sur WhatsApp &rarr;</a>
+    <a href="/blog/chatbot-site-web-2026" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Chatbot IA pour site web &rarr;</a>
+  </div>
+
+</BlogLayout>

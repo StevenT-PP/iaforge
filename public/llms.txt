@@ -56,6 +56,8 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour notaires : https://iaforge.fr/ia-pour/notaires
 - IA pour dentistes : https://iaforge.fr/ia-pour/dentistes
 - IA pour plombiers et chauffagistes : https://iaforge.fr/ia-pour/plombiers
+- IA pour salons de coiffure : https://iaforge.fr/ia-pour/coiffeurs
+- IA pour auto-écoles : https://iaforge.fr/ia-pour/auto-ecoles
 - IA pour électriciens : https://iaforge.fr/ia-pour/electriciens
 - IA pour psychologues et thérapeutes : https://iaforge.fr/ia-pour/psychologues
 - IA pour opticiens : https://iaforge.fr/ia-pour/opticiens
@@ -87,6 +89,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : ChatGPT vs agent IA sur-mesure : https://iaforge.fr/blog/chatgpt-vs-agent-ia
 - Article : Agent IA pour salon de coiffure : https://iaforge.fr/blog/ia-pour-coiffeur
 - Article : IA pour organisme de formation : https://iaforge.fr/blog/ia-pour-formation-professionnelle
+- Article : Automatiser l'onboarding client : https://iaforge.fr/blog/automatiser-onboarding-client
+- Article : IA pour agence marketing : https://iaforge.fr/blog/ia-pour-agence-marketing
+- Article : Agent IA vocal en 2026 : https://iaforge.fr/blog/agent-ia-vocal
 - Audit gratuit : https://iaforge.fr/contact
 
 ## Contact

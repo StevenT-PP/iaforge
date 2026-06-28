@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#f59e0b";
+
+const tasks = [
+  "Gère les réservations 24h/24 avec sélection du coiffeur et du service",
+  "Rappelle les RDV à J-2 (SMS) et J-1 (WhatsApp) pour réduire les no-shows",
+  "Notifie la liste d'attente en cas d'annulation de dernière minute",
+  "Envoie des rappels de revisit automatiques à 6 semaines (coloration) et 8 semaines (coupe)",
+  "Répond aux questions sur les tarifs, les services et les disponibilités",
+  "Relance les clients inactifs depuis plus de 3 mois",
+  "Gère les demandes de consultation coloration avant premier RDV",
+  "Collecte les retours clients après chaque visite",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il gérer plusieurs coiffeurs avec des agendas distincts ?",
+    a: "Oui. Chaque coiffeur peut avoir son propre agenda et ses propres spécialités (coloration, coupe femme, barbier). L'agent connaît la disponibilité de chaque coiffeur et peut orienter le client vers le plus adapté à sa demande ou son préféré.",
+  },
+  {
+    q: "Compatible avec Planity, Booksy ou Kiute ?",
+    a: "Planity et Booksy sont intégrés en natif via leurs API. Pour Kiute (ex-Wavy) et Shortcuts, l'intégration se fait via export/import ou webhook. Pour les salons qui gèrent les RDV par téléphone uniquement, l'agent s'intègre à votre Google Calendar.",
+  },
+  {
+    q: "L'agent peut-il présenter les services et conseiller sur les soins ?",
+    a: "L'agent peut présenter votre gamme de services avec leurs tarifs et durées approximatives. Pour les conseils personnalisés (quelle coloration choisir selon le type de cheveux), il dirige vers une consultation avec votre équipe — il ne se substitue pas à l'expertise du coiffeur.",
+  },
+  {
+    q: "Comment gérer les annulations de dernière minute ?",
+    a: "L'agent maintient une liste d'attente qualifiée. En cas d'annulation reçue moins de 4h avant le RDV, il contacte automatiquement les clients en attente dans l'ordre et leur propose le créneau libéré. Le taux de récupération des créneaux annulés atteint 60 à 70%.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés. On configure l'agent avec votre liste de services, vos coiffeurs, vos tarifs, vos horaires et vos règles de rappel. Vous validez sur les scénarios clés avant la mise en ligne.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour salon de coiffure — Réservations et fidélisation 24h/24 | IAForge"
+  description="Agent IA pour coiffeur : réservations 24h/24 par coiffeur et service, rappels anti no-show, rappels de revisit automatiques à 6-8 semaines. -55% de no-shows. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Coiffeurs", "item": "https://iaforge.fr/ia-pour/coiffeurs" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Salons de coiffure</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour coiffeurs</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Plus de no-shows.<br/><span class="gradient-text">Plus de clients fidèles.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Réservations 24h/24, rappels automatiques et revisit à 8 semaines — votre agent IA remplit votre agenda et garde vos clients sans que vous leviez le téléphone.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-55%", label: "de no-shows grâce aux rappels J-2 SMS et J-1 WhatsApp", color },
+            { val: "+35%", label: "de fréquence de retour avec les rappels de revisit à 8 semaines", color: "#34d399" },
+            { val: "40-50%", label: "des nouvelles réservations prises hors horaires d'ouverture", color: "#a78bfa" },
+            { val: "7 jours", label: "pour être opérationnel, configuré à vos coiffeurs et services", color: "#fbbf24" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre salon</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">La séquence de fidélisation automatique</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Un client qui revient régulièrement vaut 3 à 5 fois un nouveau client à acquérir. L'agent maintient ce lien automatiquement.</p>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {[
+          { step: "J+1", action: "Message de remerciement + demande d'avis Google", color: "#34d399" },
+          { step: "6 sem.", action: "Rappel coloration : \"Votre couleur commence à s'estomper — envie de renouveler ?\"", color },
+          { step: "8 sem.", action: "Rappel coupe : \"Cela fait 2 mois depuis votre dernière visite chez [Prénom coiffeur]\"", color: "#a78bfa" },
+          { step: "3 mois", action: "Relance client inactif avec offre de fidélité si disponible", color: "#38bdf8" },
+        ].map(item => (
+          <div class="glass rounded-2xl p-5 text-center">
+            <div class="text-2xl font-black mb-3" style={`color: ${item.color};`}>{item.step}</div>
+            <p class="text-[#8888aa] text-xs leading-relaxed">{item.action}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Avant / après pour un salon de 3 coiffeurs</h2>
+      <div class="glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-3">
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-[#8888aa] uppercase tracking-wider">Situation</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold text-red-400 uppercase tracking-wider text-center">Sans agent</div>
+          <div class="p-4 border-b border-white/5 text-xs font-semibold uppercase tracking-wider text-center" style={`color: ${color};`}>Avec agent IAForge</div>
+          {[
+            ["Réservations hors horaires", "Messagerie vocale — 30% perdus", "RDV en ligne 24h/24, confirmé immédiatement"],
+            ["No-shows (12-18% des RDV)", "Créneau perdu sans préavis", "Rappels multi-canaux + liste d'attente auto"],
+            ["Retour client spontané", "Client s'en souvient seul — souvent pas", "Rappel à 6-8 semaines personnalisé"],
+            ["Clients inactifs (3 mois+)", "Perdus définitivement", "Relance automatique avec message chaleureux"],
+            ["Avis Google", "Rarement demandés, peu d'avis", "Demande systématique J+1, +40% d'avis/mois"],
+          ].map(([sit, sans, avec]) => (
+            <>
+              <div class="p-4 border-b border-white/5 text-xs text-white">{sit}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-red-400 text-center">{sans}</div>
+              <div class="p-4 border-b border-white/5 text-xs text-center font-medium" style={`color: ${color};`}>{avec}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-pour-coiffeur', title: 'Agent IA pour salon de coiffure : réservations et fidélisation automatisées', cat: 'Guide' },
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : guide pratique tous secteurs', cat: 'Automatisation' },
+          { href: '/blog/seo-local-ia-pme', title: 'SEO local et IA pour PME : dominer Google Maps en 2026', cat: 'SEO Local' },
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA : le guide complet 2026', cat: 'Automatisation' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre agenda toujours plein, vos clients toujours fidèles</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos no-shows, votre fréquence de retour client et vos créneaux perdus pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #d97706);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

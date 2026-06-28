@@ -1,0 +1,134 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Automatiser l'onboarding client avec l'IA : de la signature à la première valeur",
+  description: "Comment automatiser l'onboarding client avec un agent IA : collecte de données, accueil personnalisé, formation produit et suivi à 30 jours. Réduire le churn dès les premières semaines.",
+  date: "2026-07-06",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#38bdf8",
+  slug: "automatiser-onboarding-client",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Les 30 premiers jours d'un nouveau client sont les plus critiques pour la fidélisation. C'est là que se joue l'adoption du produit ou service, la satisfaction initiale et la décision de renouveler. Et c'est aussi là où la plupart des entreprises sont les moins organisées — parce que l'onboarding est souvent traité manuellement, email par email, par une personne qui jongle entre 20 nouveaux clients simultanément.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La séquence d'onboarding automatisée en 5 étapes</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "J+0",
+        titre: "Accueil immédiat après signature",
+        color: "#38bdf8",
+        desc: "Dès la signature du contrat ou le paiement confirmé, l'agent envoie un message d'accueil personnalisé avec le nom du client, le résumé de ce qui a été souscrit, et les 3 premières choses à faire. Ce premier message arrive dans les 5 minutes — pas le lendemain matin.",
+        impact: "Taux de satisfaction initial +25%",
+      },
+      {
+        n: "J+1",
+        titre: "Collecte des informations nécessaires",
+        color: "#34d399",
+        desc: "L'agent envoie un questionnaire structuré pour collecter tout ce dont vous avez besoin pour démarrer : accès à donner, informations entreprise, préférences de communication, objectifs principaux. Relance automatique si pas de réponse sous 24h.",
+        impact: "Dossier complet en 48h dans 85% des cas",
+      },
+      {
+        n: "J+3",
+        titre: "Vérification de la prise en main",
+        color: "#a78bfa",
+        desc: "\"Avez-vous eu l'occasion de [utiliser la fonctionnalité clé] ?\" — l'agent vérifie que le client a bien fait les premières étapes. Si non, il propose une aide (tutoriel, prise en main, call). Si oui, il recueille les premières impressions et anticipe les questions.",
+        impact: "Détection précoce des blocages",
+      },
+      {
+        n: "J+7",
+        titre: "Premier bilan et satisfaction",
+        color: "#f59e0b",
+        desc: "Questionnaire de satisfaction à J+7 : note sur 10, premiers résultats obtenus, blocages éventuels, demandes d'amélioration. Ce feedback précoce permet d'intervenir avant que le client ne décroche silencieusement.",
+        impact: "Churn précoce réduit de 30 à 40%",
+      },
+      {
+        n: "J+30",
+        titre: "Bilan à 1 mois et upsell",
+        color: "#7c5cfc",
+        desc: "Bilan complet à 30 jours : résultats obtenus vs objectifs initiaux, satisfaction globale, besoins non couverts. C'est le moment naturel pour proposer une montée en gamme ou un service complémentaire — le client a prouvé sa valeur et l'agent a prouvé son efficacité.",
+        impact: "+20% de taux d'upsell à J+30",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="px-3 py-1 rounded-full text-xs font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <h3 class="text-white font-bold text-base">{item.titre}</h3>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.impact}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Par type de business : adapter la séquence</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { type: "SaaS / logiciel", adaptation: "Focus sur l'activation des fonctionnalités clés. L'agent envoie des \"tips\" progressifs (une feature par jour les 7 premiers jours) et détecte les clients qui n'ont pas encore atteint leur premier succès (\"aha moment\").", color: "#38bdf8" },
+      { type: "Service professionnel (agence, conseil)", adaptation: "Collecte des informations projet en J+1 (brief, objectifs, contraintes). Présentation de l'équipe dédiée. Premier point d'étape à J+7 pour valider l'orientation des travaux.", color: "#7c5cfc" },
+      { type: "Formation (en ligne ou présentielle)", adaptation: "Accès à la plateforme, vérification de la connexion, rappel du premier cours, questionnaire de niveau. Relances si l'élève n'a pas commencé au J+3.", color: "#a78bfa" },
+      { type: "Produit physique (e-commerce B2B)", adaptation: "Confirmation de livraison, guide d'installation ou d'utilisation, retour satisfaction J+7. Pour les produits avec maintenance, séquence de rappel de premier entretien.", color: "#f59e0b" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-3">
+        <div class="w-2 h-2 rounded-full flex-shrink-0 mt-2" style={`background: ${item.color};`}></div>
+        <div>
+          <p class="text-white font-semibold text-xs mb-1">{item.type}</p>
+          <p class="text-[#8888aa] text-xs leading-relaxed">{item.adaptation}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 3 erreurs d'onboarding qui font décrocher les clients</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { erreur: "Un seul email de bienvenue générique", consequence: "Le client ne sait pas quoi faire en premier. Il procrastine. À J+7, il a oublié qu'il a souscrit. À J+30, il cherche à se désabonner.", fix: "Séquence progressive J+0, J+1, J+3, J+7, J+30 avec actions claires à chaque étape." },
+      { erreur: "Collecter trop d'informations d'un coup", consequence: "Un formulaire de 20 questions en J+0 décourage. Taux de complétion < 40%.", fix: "Diviser en petits lots : 3 questions le J+1, 3 autres le J+3. Le taux de complétion dépasse 85%." },
+      { erreur: "Ne pas détecter les clients en difficulté", consequence: "Un client qui ne prend pas en main le produit dans les 7 premiers jours a 3 fois plus de risque de churner dans les 3 mois suivants.", fix: "Alertes automatiques si le client n'a pas réalisé l'action clé à J+5 — intervention humaine immédiate." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-red-400 text-xs font-semibold mb-1">Erreur : {item.erreur}</p>
+        <p class="text-[#8888aa] text-xs mb-2">Conséquence : {item.consequence}</p>
+        <p class="text-[#34d399] text-xs font-semibold">Fix : {item.fix}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Impact mesuré sur le churn à 90 jours</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Type d'onboarding", "Churn J+90", "LTV client"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Aucun onboarding (email de bienvenue générique)", "25 à 40%", "×1"],
+        ["Onboarding manuel (suivi by humain)", "12 à 18%", "×2,5"],
+        ["Onboarding automatisé IA (séquence complète)", "6 à 10%", "×4 à ×5"],
+      ].map(([type, churn, ltv]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{type}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-red-400">{churn}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399] font-bold">{ltv}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #38bdf8, #0284c7);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/crm-ia-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">CRM et IA pour PME &rarr;</a>
+    <a href="/blog/agent-ia-support-client" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Agent IA support client &rarr;</a>
+  </div>
+
+</BlogLayout>

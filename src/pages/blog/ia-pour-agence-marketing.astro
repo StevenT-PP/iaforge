@@ -1,0 +1,125 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour agence marketing : automatiser la production et le reporting en 2026",
+  description: "Comment une agence marketing utilise l'IA pour automatiser la production de contenu, le reporting client, la qualification de prospects et la gestion des campagnes. Gains réels et limites.",
+  date: "2026-07-06",
+  readTime: "9 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-agence-marketing",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Les agences marketing sont à la fois les meilleures vendeuses de l'IA (\"notre IA va booster votre ROI\") et souvent les moins bien équipées en interne pour l'utiliser. En 2026, les agences qui gagnent des clients ne sont pas celles qui font de l'IA un argument de vente — ce sont celles qui l'utilisent pour livrer plus vite, mieux et moins cher. Voici ce que ça donne concrètement.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 automatisations prioritaires pour une agence marketing</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Production de contenu SEO à grande échelle",
+        color: "#7c5cfc",
+        desc: "Briefs d'articles générés automatiquement depuis les données de recherche, premier jet rédigé par IA, révision humaine, publication schedulée. Le coût de production par article passe de 250-500€ à 80-120€. La qualité reste humaine sur la touche finale — la vitesse est multipliée par 4.",
+        gain: "×4 de volume de contenu à budget constant",
+        limite: "La validation humaine est non-négociable sur les sujets techniques ou sensibles.",
+      },
+      {
+        n: "2",
+        titre: "Reporting automatisé multi-clients",
+        color: "#34d399",
+        desc: "Agrégation automatique des données GA4, Search Console, Meta Ads, LinkedIn Ads et Google Ads. Génération automatique du rapport mensuel avec comparaison M-1, identification des anomalies et points d'attention. Le rapport est prêt le 1er de chaque mois sans intervention de l'équipe.",
+        gain: "8h économisées par client et par mois",
+        limite: "L'analyse des causes et les recommandations stratégiques restent humaines.",
+      },
+      {
+        n: "3",
+        titre: "Qualification des prospects entrants",
+        color: "#38bdf8",
+        desc: "Un prospect qui remplit votre formulaire de contact est qualifié automatiquement : secteur, budget estimé, objectif (notoriété, leads, e-commerce), présence digitale actuelle. Le commercial reçoit une fiche avec le potentiel estimé et les 3 questions clés à poser en rendez-vous.",
+        gain: "-45 min de qualification par prospect",
+        limite: "La décision de signer ou non reste commerciale.",
+      },
+      {
+        n: "4",
+        titre: "Suivi de campagne et alertes d'anomalie",
+        color: "#f59e0b",
+        desc: "L'agent surveille vos campagnes Ads en temps réel : CPC qui dépasse le seuil, CTR qui chute sous X%, budget qui s'épuise prématurément. Il vous alerte par SMS ou Slack et suggère l'action corrective. Fini les campagnes qui tournent 2 semaines avec un problème non détecté.",
+        gain: "0 anomalie non détectée sous 4h",
+        limite: "Les décisions d'optimisation d'enchères importantes restent entre les mains du media buyer.",
+      },
+      {
+        n: "5",
+        titre: "Onboarding client et collecte de briefs",
+        color: "#a78bfa",
+        desc: "À la signature d'un nouveau contrat, l'agent déclenche automatiquement la collecte du brief : accès plateformes, charte graphique, personas, objectifs, contraintes. Tout est structuré et centralisé avant même la première réunion de lancement.",
+        gain: "Première réunion de lancement 2× plus efficace",
+        limite: "Aucune.",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center gap-3 mb-3">
+          <span class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white flex-shrink-0" style={`background: ${item.color};`}>{item.n}</span>
+          <div class="flex-1">
+            <h3 class="text-white font-bold text-base">{item.titre}</h3>
+          </div>
+          <span class="text-xs font-bold flex-shrink-0 ml-2 px-2 py-1 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.gain}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-2">{item.desc}</p>
+        <p class="text-xs text-[#9090b0] italic">Limite : {item.limite}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le stack IA recommandé pour une agence en 2026</h2>
+
+  <div class="not-prose my-8 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-4">
+      {["Outil", "Usage", "Prix", "Valeur"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["ChatGPT Team", "Rédaction, briefs, reformulation quotidienne équipe", "30€/user/mois", "Productivité individuelle ×2 à ×3"],
+        ["Claude Sonnet", "Analyse longue, copywriting technique, révision", "20€/user/mois", "Qualité rédactionnelle supérieure"],
+        ["Semrush + IA", "Recherche mots-clés, audit technique, briefs SEO", "130€/mois", "Gain 5h/semaine en recherche"],
+        ["n8n ou Make", "Automatisation reporting, collecte données, alertes", "20 à 50€/mois", "8h économisées/client/mois"],
+        ["Agent IAForge", "Qualification prospects, onboarding, suivi client", "149 à 349€/mois", "Commercial × 1,5 en capacité"],
+      ].map(([outil, usage, prix, valeur]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{outil}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{usage}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{prix}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{valeur}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne peut pas remplacer dans une agence</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { element: "La stratégie", desc: "Choisir sur quels canaux investir, définir le positionnement, identifier les opportunités de marché — l'IA peut analyser les données, pas prendre des décisions stratégiques engageantes." },
+      { element: "La relation client", desc: "Les clients d'agence paient pour une relation de confiance avec un interlocuteur qui comprend leur business. L'IA peut automatiser les points de contact répétitifs, mais le strategic account management reste humain." },
+      { element: "La créativité différenciante", desc: "L'IA produit du contenu moyen à grande vitesse. Le contenu qui se démarque — l'angle inattendu, le concept de campagne original, l'insight culturel — vient de cerveaux humains." },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2">{item.element}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b3fdb);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/no-code-automatisation-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">No-code et IA &rarr;</a>
+    <a href="/blog/prospection-commerciale-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Prospection commerciale IA &rarr;</a>
+  </div>
+
+</BlogLayout>
