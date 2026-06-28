@@ -1,0 +1,112 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour épicerie indépendante : click & collect et fidélisation contre les grandes surfaces",
+  description: "Comment une épicerie de quartier ou un commerce alimentaire indépendant utilise un agent IA pour le click & collect, les abonnements paniers et la fidélisation — son atout face aux supermarchés.",
+  date: "2026-07-15",
+  readTime: "6 min",
+  category: "Commerce",
+  categoryColor: "#34d399",
+  slug: "ia-pour-epicerie",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une épicerie indépendante ne peut pas concurrencer un supermarché sur les prix ou sur l'étendue des références. Mais elle peut les surclasser sur le service, la proximité et la personnalisation — trois domaines où l'IA peut démultiplier la capacité d'une petite équipe sans ajouter de charge de travail.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le paradoxe de l'épicerie de proximité</h2>
+
+  <p>Les clients d'une épicerie indépendante lui restent fidèles parce qu'ils apprécient le service personnalisé — le commerçant qui connaît leurs habitudes, qui prévient quand les fraises de la région arrivent, qui garde de côté le dernier pot de confiture artisanale. Le problème : ces interactions prennent du temps, et quand la boutique est pleine, certains clients sont ignorés. L'IA peut décharger toute la partie administrative de cette relation pour que le commerçant se concentre sur l'essentiel.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">3 cas d'usage concrets</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        titre: "Click & collect et commandes à distance",
+        desc: "Un client envoie sa liste de courses à l'agent (\"Je voudrais 6 oeufs, du fromage de chèvre, 500g de tomates cerises et votre pain de campagne si vous en avez\"). L'agent confirme la disponibilité, précise ce qui est en rupture et propose des alternatives, fixe l'heure de retrait. La commande est prête quand le client arrive.",
+        impact: "+30-40% de commandes en dehors des heures de pointe",
+        color: "#34d399",
+      },
+      {
+        titre: "Abonnements et paniers hebdomadaires",
+        desc: "Les clients récurrents peuvent s'abonner à un panier hebdomadaire — légumes de saison, pain, fromages, fruits. L'agent gère les confirmations chaque semaine, les modifications ponctuelles (\"Je suis absent la semaine prochaine\"), les ajouts de dernière minute. Revenus récurrents sans effort commercial.",
+        impact: "+25% de fidélisation sur les clients abonnés",
+        color: "#38bdf8",
+      },
+      {
+        titre: "Notifications de produits et arrivages",
+        desc: "Quand les fraises locales arrivent, quand le fromager partenaire livre les tommes de la semaine, quand une promotion flash a lieu — l'agent notifie automatiquement les clients intéressés. Les commerçants qui font ça manuellement voient leurs ventes doubler sur ces produits. L'agent le fait sans effort supplémentaire.",
+        impact: "×2 de ventes sur les arrivages notifiés",
+        color: "#fbbf24",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-white font-bold text-base mb-3" style={`color: ${item.color};`}>{item.titre}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <div class="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.impact}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Comment vous différencier par la connaissance client</h2>
+
+  <p>L'IA permet de mémoriser les préférences des clients à une échelle impossible manuellement. Avec un agent bien configuré, voici ce qui devient possible :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Rappeler à Mme Martin que les prunes de son producteur favori viennent d'arriver — elle en commandait chaque année",
+      "Notifier automatiquement les clients végétariens quand de nouvelles références sans viande sont disponibles",
+      "Alerter les clients allergiques au gluten quand un nouveau produit certifié sans gluten entre en rayon",
+      "Remercier automatiquement les clients après leur 10ème commande avec un avantage fidélité",
+      "Rappeler les anniversaires des clients fidèles pour leur proposer un panier cadeau",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une épicerie de quartier</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Situation type</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· CA mensuel : 20 000-35 000€</p>
+          <p>· 150-200 clients réguliers</p>
+          <p>· 0 système de click & collect actuel</p>
+          <p>· 2h/jour au téléphone pour commandes et questions</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#34d399] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· +15% de commandes en ligne capturées</p>
+          <p>· 20 abonnements paniers à 50€/sem = <span class="text-[#34d399] font-semibold">+4 000€/mois</span></p>
+          <p>· Appels réduits à 30 min/jour</p>
+          <p>· Coût agent : 149€/mois</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#34d399] font-bold text-sm">ROI estimé : +4 000-6 000€/mois · Payé en moins d'une journée</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/epiceries" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour épiceries &rarr;</a>
+    <a href="/blog/ia-retail-magasin" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour commerces &rarr;</a>
+  </div>
+
+</BlogLayout>

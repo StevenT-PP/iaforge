@@ -1,0 +1,207 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#34d399";
+
+const tasks = [
+  "Répond aux questions sur les produits disponibles, horaires et services 24h/24",
+  "Informe sur les promotions de la semaine et les arrivages de produits frais",
+  "Gère les commandes de click & collect et les paniers drive pour les clients fidèles",
+  "Programme les livraisons à domicile et informe sur les délais et zones couvertes",
+  "Répond aux questions sur les allergènes, l'origine et la composition des produits",
+  "Gère les abonnements de paniers bio ou légumes de saison pour les clients réguliers",
+  "Informe sur les producteurs locaux référencés et leurs engagements",
+  "Collecte les retours clients et les demandes de produits à référencer",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il vérifier la disponibilité d'un produit en temps réel ?",
+    a: "Oui, si votre logiciel de caisse ou de gestion des stocks expose une API (Lightspeed, Litepos, WinPOS, ou export quotidien depuis votre outil). L'agent répond en temps réel \"Ce produit est disponible en rayon\" ou \"Ce produit n'est plus disponible cette semaine — il revient vendredi\". Pour les épiceries sans logiciel intégré, l'agent peut informer sur la disponibilité habituelle des produits.",
+  },
+  {
+    q: "L'agent peut-il gérer les commandes de click & collect ?",
+    a: "Oui. L'agent collecte la commande (liste de produits, créneau de retrait souhaité, nom du client) et la transmet automatiquement à votre équipe. Il envoie une confirmation au client et un récapitulatif à votre équipe. Pour les épiceries avec e-commerce existant, l'agent peut rediriger directement vers le panier en ligne.",
+  },
+  {
+    q: "L'agent peut-il répondre sur l'origine des produits et les producteurs locaux ?",
+    a: "Oui. Si vous référencez des producteurs locaux (AMAP, circuit court, agriculture raisonnée), l'agent peut présenter chaque producteur partenaire avec ses engagements. C'est un atout différenciant fort pour les épiceries indépendantes face aux supermarchés — et l'agent le met en valeur.",
+  },
+  {
+    q: "Comment gérer les abonnements paniers légumes ou paniers bio ?",
+    a: "L'agent collecte les préférences (taille du panier, fréquence, allergies, composition préférée), enregistre l'abonnement et envoie les rappels hebdomadaires ou bihebdomadaires. Pour les paniers AMAP, il peut informer sur les prochains jours de distribution.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, produits disponibles et prise de commandes. Pour l'intégration avec votre logiciel de caisse (stocks en temps réel), prévoir 14-21 jours selon votre outil.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour épiceries indépendantes — Commandes, click & collect et produits locaux | IAForge"
+  description="Agent IA pour épicerie : disponibilité produits, click & collect, livraison à domicile, promotions et abonnements paniers — face aux grandes surfaces avec le service que les chaînes ne peuvent pas offrir. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Épiceries indépendantes", "item": "https://iaforge.fr/ia-pour/epiceries" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Épiceries indépendantes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour épiceries indépendantes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Le service que les chaînes<br/><span class="gradient-text">ne peuvent pas offrir.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Disponibilité produits, click & collect, paniers abonnement, promotions de la semaine et producteurs locaux présentés 24h/24 — votre atout différenciant face aux supermarchés.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+30%", label: "de commandes click & collect grâce à la prise de commande 24h/24 en dehors des heures d'ouverture", color },
+            { val: "+25%", label: "de fidélisation grâce aux abonnements paniers et aux rappels de promotions personnalisés", color: "#38bdf8" },
+            { val: "-45%", label: "d'appels pour les questions de disponibilité, horaires et commandes récurrentes", color: "#fbbf24" },
+            { val: "7 jours", label: "pour être opérationnel avec votre catalogue, horaires et service click & collect", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre épicerie</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Votre avantage concurrentiel vs. les grandes surfaces</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">Les supermarchés ne peuvent pas faire ça. Vous, si.</p>
+      <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          {
+            titre: "Ce qu'une grande surface fait",
+            items: ["Prix bas sur les volumes", "Disponibilité de masse", "Application mobile générique", "Service client centralisé et impersonnel", "Aucune connaissance de vos clients individuels"],
+            color: "#f87171",
+            icon: "×",
+          },
+          {
+            titre: "Ce que votre épicerie + IA fait",
+            items: ["Rappel personnalisé quand les produits favoris d'un client arrivent", "Réponse en 2 min sur la disponibilité d'un produit spécifique", "Information sur le producteur et son histoire", "Service après-achat humain + IA pour les questions rapides", "Abonnement panier adapté aux goûts et aux allergies"],
+            color,
+            icon: "✓",
+          },
+        ].map(col => (
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm font-bold mb-4" style={`color: ${col.color};`}>{col.titre}</p>
+            <div class="space-y-2">
+              {col.items.map(item => (
+                <div class="flex items-start gap-2">
+                  <span class="text-xs flex-shrink-0 mt-0.5 font-bold" style={`color: ${col.color};`}>{col.icon}</span>
+                  <p class="text-[#8888aa] text-xs leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/ia-retail-magasin', title: 'IA pour commerce de détail : automatiser sans perdre le contact humain', cat: 'Guide' },
+          { href: '/ia-pour/boulangers', title: 'IA pour boulangeries et pâtisseries', cat: 'Secteur' },
+          { href: '/ia-pour/fleuristes', title: 'IA pour fleuristes : commandes et rappels d\'occasions', cat: 'Secteur' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Avis Google automatiques avec l\'IA', cat: 'SEO Local' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#34d399] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre équipe dans les rayons. L'agent sur le téléphone.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes hors horaires, vos commandes manquées et votre potentiel abonnement panier pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #059669);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
