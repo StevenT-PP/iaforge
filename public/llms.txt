@@ -78,6 +78,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour services à domicile : https://iaforge.fr/ia-pour/services-domicile
 - IA pour nutritionnistes et diététiciens : https://iaforge.fr/ia-pour/nutritionnistes
 - IA pour podologues : https://iaforge.fr/ia-pour/podologues
+- IA pour concessionnaires automobiles : https://iaforge.fr/ia-pour/concessionnaires
+- IA pour photographes et vidéastes : https://iaforge.fr/ia-pour/photographes
+- IA pour piscines et centres aquatiques : https://iaforge.fr/ia-pour/centres-aquatiques
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -115,6 +118,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA et prospection B2B : https://iaforge.fr/blog/ia-b2b-prospection
 - Article : WhatsApp Business API pour PME : https://iaforge.fr/blog/agent-ia-whatsapp-business
 - Article : Agent IA pour expert-comptable : https://iaforge.fr/blog/ia-pour-expert-comptable
+- Article : IA pour décorateur d'intérieur et architecte d'intérieur : https://iaforge.fr/blog/ia-pour-decorateur-interieur
+- Article : IA pour photographe : https://iaforge.fr/blog/ia-pour-photographe
+- Article : IA pour concessionnaire automobile : https://iaforge.fr/blog/ia-pour-concessionnaire-auto
 - Article : Agent IA pour le secteur public : https://iaforge.fr/blog/agent-ia-secteur-public
 - Article : IA pour consultant indépendant : https://iaforge.fr/blog/ia-pour-consultant
 - Article : IA pour naturopathe : https://iaforge.fr/blog/ia-pour-naturopathe

@@ -1,0 +1,138 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour concessionnaire automobile : qualifier les prospects et remplir le planning atelier",
+  description: "Comment une concession automobile déploie un agent IA pour qualifier les prospects neuf/occasion, programmer les essais et automatiser les relances devis. ROI et intégration DMS.",
+  date: "2026-07-12",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "ia-pour-concessionnaire-auto",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Une concession automobile moderne fait face à un paradoxe : des prospects qui arrivent de partout (site web, Leboncoin, La Centrale, réseaux sociaux, téléphone) mais des conseillers commerciaux surchargés qui ne peuvent pas répondre à tout en moins de 2 heures. Les études le montrent : un prospect automobile contacte en moyenne 3 concessions. Celle qui répond en premier a 70% de chances de décrocher l'essai. L'IA change ce rapport de force.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème des leads non qualifiés</h2>
+
+  <p>Dans une concession classique, 60-70% des demandes entrantes ne se concrétisent jamais en vente — pas parce que les prospects ne sont pas intéressés, mais parce qu'ils sont mal orientés, mal relancés ou contactés trop tard. Un conseiller qui passe 3 heures à rappeler 15 personnes dont 10 voulaient juste "un prix pour voir" aurait mieux occupé son temps à convertir les 5 réels acheteurs.</p>
+
+  <p>L'agent IA résout ce problème en amont : il qualifie chaque lead en moins de 5 minutes, identifie les acheteurs sérieux, et transmet au conseiller un dossier pré-rempli avec le projet du client.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Deux flux distincts : commercial et atelier</h2>
+
+  <div class="not-prose my-8 grid grid-cols-1 md:grid-cols-2 gap-6">
+    {[
+      {
+        titre: "Flux commercial (VN/VO)",
+        color: "#f59e0b",
+        etapes: [
+          "Demande entrante (formulaire, chat, téléphone)",
+          "Qualification : neuf/occasion, budget, reprise, délai",
+          "Présentation des modèles disponibles selon critères",
+          "Prise de RDV essai routier",
+          "Relance J+3 si pas de réponse au devis",
+          "Relance J+7 puis J+21",
+          "Collecte avis Google après livraison",
+        ],
+      },
+      {
+        titre: "Flux atelier (SAV & entretien)",
+        color: "#34d399",
+        etapes: [
+          "Demande RDV entretien (révision, CT, réparation)",
+          "Qualification : urgence ou rendez-vous planifiable ?",
+          "Proposition de créneaux disponibles",
+          "Confirmation et rappel J-1 et matin de l'intervention",
+          "Notification fin d'intervention + devis complémentaires",
+          "Collecte avis après intervention",
+          "Rappel révision suivante à 1 an ou X km",
+        ],
+      },
+    ].map(flux => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-sm font-bold mb-4" style={`color: ${flux.color};`}>{flux.titre}</p>
+        <div class="space-y-2">
+          {flux.etapes.map((e, i) => (
+            <div class="flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0" style={`background: ${flux.color}20; color: ${flux.color}; border: 1px solid ${flux.color}40;`}>{i + 1}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed pt-0.5">{e}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Intégration avec votre DMS : les données qui changent tout</h2>
+
+  <p>Sans intégration DMS, l'agent peut qualifier et orienter — mais il ne peut pas répondre "Oui, nous avons une Peugeot 308 bleue boîte auto à 24 900€ disponible immédiatement." Avec l'intégration, il le peut. Et c'est cette précision qui fait la différence dans la conversion.</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { donnée: "Stock VN/VO en temps réel", valeur: "L'agent répond avec des modèles précis, des prix exacts et la disponibilité immédiate — pas une réponse générique", color: "#f59e0b" },
+      { donnée: "Agenda des conseillers commerciaux", valeur: "Prise de RDV essai directement dans l'agenda du bon conseiller, sans double saisie", color: "#34d399" },
+      { donnée: "Planning atelier", valeur: "Créneaux atelier proposés en temps réel — le client choisit, le RDV est créé automatiquement", color: "#38bdf8" },
+      { donnée: "Historique client", valeur: "Le conseiller sait avant d'appeler que ce client a acheté une Clio en 2021 et revient pour un renouvellement", color: "#a78bfa" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex gap-4 items-start">
+        <div class="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={`background: ${item.color};`}></div>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.donnée}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.valeur}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour une concession de taille moyenne</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Métrique", "Avant agent IA", "Après agent IA (90j)"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Délai de réponse moyen à une demande", "3h42 (hors heures ouverture)", "< 2 min (24h/24)"],
+        ["Taux de leads non recontactés", "23%", "< 2%"],
+        ["RDV essai programmés / leads entrants", "18%", "31%"],
+        ["Taux de closing devis VN", "12%", "19%"],
+        ["RDV atelier annulés sans prévenir", "15%", "6%"],
+      ].map(([m, av, ap]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white">{m}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{av}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#f59e0b] font-semibold">{ap}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les erreurs à éviter</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Déployer l'agent sans intégration DMS et lui faire répondre avec des infos de stock génériques — les prospects détectent immédiatement que l'agent ne sait pas vraiment si le véhicule est disponible",
+      "Confondre qualification et vente — l'agent qualifie et oriente, il ne remplace pas le coup de téléphone du conseiller pour les projets sérieux",
+      "Laisser l'agent répondre sur les données financières précises (taux de LOA, mensualité calculée) sans base légale adaptée — risque IOBSP",
+      "Oublier de relancer les devis atelier — 30% des devis complémentaires non signés en atelier sont récupérables avec une simple relance à J+5",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/concessionnaires" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour concessions &rarr;</a>
+    <a href="/ia-pour/garages" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour garages &rarr;</a>
+  </div>
+
+</BlogLayout>

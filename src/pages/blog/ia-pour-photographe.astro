@@ -1,0 +1,127 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour photographe : automatiser les devis, relances et livraison des galeries",
+  description: "Comment un photographe de mariage ou portrait utilise un agent IA pour qualifier les prospects, relancer les devis et automatiser le suivi jusqu'à la livraison des galeries. Guide 2026.",
+  date: "2026-07-12",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#a78bfa",
+  slug: "ia-pour-photographe",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un photographe professionnel perd en moyenne 8 à 12 heures par semaine sur des tâches qui n'ont rien à voir avec la photographie : répondre aux demandes de renseignements, envoyer des devis, relancer les prospects silencieux, confirmer les séances, envoyer les galeries. L'IA ne remplace pas votre oeil — elle élimine tout ce qui vous empêche de l'exercer.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème numéro 1 : les devis envoyés dans le vide</h2>
+
+  <p>La plupart des photographes envoient un devis et attendent. S'ils n'ont pas de réponse en 3 jours, ils hésitent à relancer par peur d'être intrusifs. Le résultat : 60% des devis ne font jamais l'objet d'une relance, et 40-50% des prospects qui ne répondent pas auraient pu convertir avec un simple message de suivi.</p>
+
+  <p>L'agent IA résout ce problème : il relance automatiquement à J+3, J+7 et J+21 avec des messages différents et non-intrusifs. Le photographe n'a pas à y penser. Les prospects qui ne répondaient pas finissent par revenir.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 automatisations qui libèrent le plus de temps</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Réponse immédiate aux demandes de renseignements",
+        detail: "Dès qu'un prospect envoie un message (formulaire, Instagram, email), l'agent répond en moins de 5 minutes avec les informations clés : tarifs selon la prestation, galeries exemples pertinentes, disponibilités indicatives. Le prospect n'attend pas 24-48h.",
+        temps: "3-4h économisées/semaine",
+        color: "#a78bfa",
+      },
+      {
+        n: "2",
+        titre: "Qualification des projets avant l'entretien",
+        detail: "L'agent pose les 5 questions essentielles (type de prestation, date, lieu, effectif, budget indicatif) avant même que vous parliez au prospect. Vous arrivez à l'entretien avec un dossier complet — plus de 30 premières minutes à recueillir des infos basiques.",
+        temps: "2h économisées/semaine",
+        color: "#34d399",
+      },
+      {
+        n: "3",
+        titre: "Relance automatique des devis",
+        detail: "À J+3 : message bienveillant demandant si le devis correspond bien. À J+7 : message avec une galerie supplémentaire pertinente. À J+21 : message final avec une mention de disponibilité limitée (si vraie). Taux de closing qui passe de 20% à 35% en moyenne.",
+        temps: "+15% de CA sans nouveaux prospects",
+        color: "#38bdf8",
+      },
+      {
+        n: "4",
+        titre: "Rappels pré-séance et informations pratiques",
+        detail: "J-7 et J-1 avant chaque séance : rappel automatique avec les informations pratiques (lieu de RDV, conseils tenues, check-list pour les mariages). Réduction des retards et des questions de dernière minute qui vous interrompent la veille.",
+        temps: "1h économisée/semaine",
+        color: "#fbbf24",
+      },
+      {
+        n: "5",
+        titre: "Livraison et collecte de témoignages",
+        detail: "Notification automatique de mise en ligne de la galerie avec les instructions d'accès. 10 jours après : l'agent demande un témoignage et propose de le rédiger sur la base d'un court questionnaire. Vous récupérez 3-5× plus de témoignages qu'en relançant manuellement.",
+        temps: "×4 de témoignages collectés",
+        color: "#f87171",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex gap-4 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.n}</div>
+          <p class="text-white font-bold text-base leading-tight pt-1">{item.titre}</p>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.detail}</p>
+        <div class="flex items-center gap-2">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.temps}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne peut pas faire pour vous</h2>
+
+  <div class="not-prose my-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      { titre: "L'agent gère", items: ["Les questions tarifaires répétitives", "Les relances devis (J+3, J+7, J+21)", "Les rappels pré-séance", "La notification de livraison galerie", "La collecte des témoignages", "Les disponibilités et prise de RDV entretien"], color: "#a78bfa" },
+      { titre: "Vous seul pouvez", items: ["Construire la relation de confiance avec les mariés", "Adapter votre approche créative à chaque projet", "Diriger les sujets pendant la séance", "Sélectionner et retoucher les meilleures photos", "Donner votre avis sur les tenues et les lieux", "Créer l'émotion que les clients paieront cher pour avoir"], color: "#34d399" },
+    ].map(col => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-sm font-bold mb-4" style={`color: ${col.color};`}>{col.titre}</p>
+        <div class="space-y-2">
+          {col.items.map(item => (
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={`background: ${col.color};`}></div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Stack pour un photographe solo ou duo</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { outil: "Agent IA (IAForge)", role: "Réponse immédiate, qualification, relances, rappels, collecte témoignages", cout: "149€/mois", color: "#a78bfa" },
+      { outil: "Calendly ou Cal.com", role: "Prise de RDV entretien découverte — l'agent envoie le lien après qualification", cout: "0-12€/mois", color: "#34d399" },
+      { outil: "Pixieset ou Smugmug", role: "Galeries clients — l'agent envoie le lien de livraison automatiquement", cout: "9-20€/mois", color: "#38bdf8" },
+      { outil: "DocuSign ou PandaDoc", role: "Contrats à signer — déclenchés automatiquement après accord", cout: "15-25€/mois", color: "#fbbf24" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-center justify-between gap-4">
+        <div class="flex-1">
+          <p class="text-white font-semibold text-sm">{item.outil}</p>
+          <p class="text-[#8888aa] text-xs mt-0.5">{item.role}</p>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded-full flex-shrink-0" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.cout}</span>
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #a78bfa, #7c3aed);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/photographes" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour photographes &rarr;</a>
+    <a href="/blog/automatiser-relances-clients" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Relances clients &rarr;</a>
+  </div>
+
+</BlogLayout>

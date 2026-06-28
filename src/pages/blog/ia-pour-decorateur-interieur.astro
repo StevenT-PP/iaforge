@@ -1,0 +1,110 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour architecte d'intérieur et décorateur : qualifier les projets et automatiser le suivi",
+  description: "Comment un cabinet d'architecture d'intérieur ou un décorateur indépendant utilise un agent IA pour qualifier les projets, relancer les devis et automatiser le suivi client. Guide pratique 2026.",
+  date: "2026-07-12",
+  readTime: "7 min",
+  category: "Automatisation",
+  categoryColor: "#f59e0b",
+  slug: "ia-pour-decorateur-interieur",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un décorateur d'intérieur ou architecte d'intérieur passe souvent 30 à 40% de son temps de travail sur des activités commerciales non rémunérées : répondre aux prospects, envoyer des devis, relancer sans réponse, qualifier des projets qui n'aboutiront jamais. L'IA ne fait pas le travail créatif — mais elle peut faire disparaître ce 30-40% de temps perdu.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La réalité des projets déco : 80% des demandes ne sont pas qualifiées</h2>
+
+  <p>Dans la décoration d'intérieur, la grande majorité des demandes entrantes viennent de personnes qui ont une idée vague, pas de budget défini, et souvent aucune idée de ce qu'un architecte d'intérieur coûte réellement. Sans qualification, vous passez du temps à préparer une visite et un devis pour un projet qui ne se fera pas — ou qui se fera avec quelqu'un d'autre pour la moitié du prix.</p>
+
+  <p>L'agent IA filtre ces demandes avant qu'elles arrivent dans votre agenda : il pose les questions de qualification, élimine les projets hors-budget, et vous transmet uniquement les dossiers sérieux.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 5 questions de qualification pour un projet déco</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { q: "Quel est le type de projet ?", logique: "Rénovation complète, décoration d'une pièce, home staging avant vente, aménagement bureau/commerce — chaque type a un budget et une durée différents. Oriente le devis.", color: "#f59e0b" },
+      { q: "Quelle est la surface concernée ?", logique: "Indicateur proxy du budget. Un appartement de 30m² et un loft de 200m² n'ont pas la même complexité ni le même investissement attendu.", color: "#34d399" },
+      { q: "Quel est votre budget travaux et décoration ?", logique: "La question qui filtre 50% des demandes non sérieuses. Ceux qui répondent avec une fourchette sont prêts à investir. Les autres cherchent des miracles.", color: "#38bdf8" },
+      { q: "Dans quel délai souhaitez-vous commencer ?", logique: "Distingue les projets immédiats (visite à programmer cette semaine) des projets à 1 an (nurturing long terme). Vous priorisez votre temps en conséquence.", color: "#a78bfa" },
+      { q: "Avez-vous des exemples de styles qui vous inspirent ?", logique: "Révèle si le prospect a une vision et une intention réelle, ou si le projet est encore très flou. Un prospect avec des références Pinterest a un projet plus mature.", color: "#fbbf24" },
+    ].map(item => (
+      <div class="glass rounded-xl p-4">
+        <p class="text-white font-semibold text-sm mb-1">"{item.q}"</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed"><span class="font-semibold" style={`color: ${item.color};`}>Logique :</span> {item.logique}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Automatisations spécifiques à la décoration d'intérieur</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        titre: "Collecte automatique des photos avant visite",
+        desc: "L'agent envoie une demande de photos 48h avant la visite conseil : état actuel des pièces, angles différents, luminosité. Vous arrivez à la première visite avec une vision du projet plutôt que de découvrir tout sur place. Gain : 30-45 min par visite.",
+        color: "#f59e0b",
+      },
+      {
+        titre: "Suivi de devis avec relance contextuelle",
+        desc: "Si un prospect ne répond pas au devis, l'agent relance à J+4 avec un message centré sur une réalisation similaire : \"Pour un projet similaire dans le 16e, voici les résultats avant/après.\" Cette approche par la preuve est plus efficace qu'une relance générique.",
+        color: "#34d399",
+      },
+      {
+        titre: "Notification d'avancement chantier",
+        desc: "Si vous gérez le suivi des travaux, l'agent peut envoyer des mises à jour automatiques aux clients (photos de chantier, étapes clés, prochaines interventions) sans que vous ayez à rédiger chaque update manuellement.",
+        color: "#38bdf8",
+      },
+      {
+        titre: "Programme fournisseurs et délais de livraison",
+        desc: "L'agent peut relancer automatiquement les fournisseurs pour les confirmations de délai et alerter le client si un délai se décale. Zéro email manuel pour coordonner la logistique de fin de chantier.",
+        color: "#a78bfa",
+      },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-2" style={`color: ${item.color};`}>{item.titre}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un décorateur indépendant</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Situation type</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 3-5 projets simultanés à 5 000-15 000€ chacun</p>
+          <p>· 15 demandes entrantes par mois</p>
+          <p>· 3 devis envoyés, 1 signé (33% de closing)</p>
+          <p>· 10h/semaine d'administratif et commercial</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#f59e0b] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-1 text-xs text-[#8888aa]">
+          <p>· 5 prospects pré-qualifiés → 2 devis envoyés</p>
+          <p>· Taux de closing : 50% (+1 projet supplémentaire)</p>
+          <p>· Gain mensuel : <span class="text-[#f59e0b] font-semibold">+5 000 à 15 000€</span></p>
+          <p>· Admin réduit à 2h → <span class="text-[#f59e0b] font-semibold">8h récupérées</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#f59e0b] font-bold text-sm">1 projet supplémentaire par mois couvert le coût de l'agent × 30 fois</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/architectes" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour architectes &rarr;</a>
+    <a href="/blog/ia-pour-consultant" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour consultants &rarr;</a>
+  </div>
+
+</BlogLayout>

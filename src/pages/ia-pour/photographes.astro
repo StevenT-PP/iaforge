@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#a78bfa";
+
+const tasks = [
+  "Répond aux demandes de devis 24h/24 et collecte les informations clés (type de prestation, date, lieu, nombre de personnes)",
+  "Qualifie les prospects : mariage, portrait, événementiel entreprise, immobilier, produit",
+  "Programme les entretiens de découverte et les séances d'engagement avec les fiancés",
+  "Relance automatiquement les prospects ayant demandé un devis sans donner suite à J+3, J+7 et J+21",
+  "Envoie les contrats et factures d'acompte automatiquement après signature du devis",
+  "Rappelle les clients à J-7 et J-1 avant chaque séance photo avec les informations pratiques",
+  "Gère les demandes de galeries en ligne : envoi des liens, délais de livraison, procédures de sélection",
+  "Collecte les avis Google et les témoignages après livraison des photos",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il présenter mon portfolio selon la demande ?",
+    a: "Oui. L'agent connaît vos différentes galeries (mariage, portrait, entreprise, immobilier) et envoie les liens pertinents selon la demande du prospect. Si quelqu'un demande des exemples de mariage en plein air, l'agent envoie directement les albums correspondants plutôt que votre portfolio général.",
+  },
+  {
+    q: "Comment gérer les demandes de disponibilité pour les mariages ?",
+    a: "L'agent vérifie votre calendrier (Google Calendar ou Calendly) et répond immédiatement sur les dates disponibles. Pour les mariages, il peut aussi indiquer si la date est 'à confirmer' (vous avez un option dessus) ou 'prise' — sans exposer les détails de votre planning.",
+  },
+  {
+    q: "L'agent peut-il envoyer les contrats et gérer les acomptes ?",
+    a: "Oui, en intégration avec des outils comme DocuSign, HelloSign ou PandaDoc pour les contrats, et Stripe ou Sumup pour les paiements d'acompte. Après validation du devis, l'agent envoie automatiquement le contrat à signer et le lien de paiement. Une fois signé et payé, la date est bloquée dans votre agenda.",
+  },
+  {
+    q: "L'agent peut-il répondre sur les délais de livraison et la procédure de sélection ?",
+    a: "Oui. L'agent connaît vos délais (par exemple : 4 semaines pour un mariage, 2 semaines pour un portrait) et la procédure de sélection (accès à la galerie privée, nombre de photos incluses, options retouches supplémentaires). Il répond aux questions de suivi sans que vous ayez à relancer manuellement.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, prise de RDV et qualification des demandes. Pour l'intégration contrats/paiements, prévoir 14 jours selon vos outils.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour photographes — Devis, disponibilités et suivi clients automatisés | IAForge"
+  description="Agent IA pour photographe : qualification des demandes, présentation du portfolio, prise de RDV, relances devis et livraison des galeries — pendant que vous shootez. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Photographes", "item": "https://iaforge.fr/ia-pour/photographes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Photographes & Vidéastes</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour photographes et vidéastes</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre agenda rempli.<br/><span class="gradient-text">Vous derrière l'objectif.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Qualification des demandes, présentation du portfolio, prise de RDV, relances devis et suivi livraison — l'agent gère tout le flux commercial pour que vous vous concentriez sur votre art.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "+40%", label: "de taux de closing sur les devis grâce aux relances automatiques à J+3 et J+7", color },
+            { val: "-60%", label: "d'emails de suivi à envoyer manuellement (disponibilités, contrats, livraisons)", color: "#34d399" },
+            { val: "+25%", label: "de témoignages collectés après livraison des galeries", color: "#fbbf24" },
+            { val: "7 jours", label: "pour être opérationnel avec votre portfolio, vos tarifs et votre agenda", color: "#38bdf8" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre activité photo</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Le cycle de vie d'un client mariage — automatisé</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">De la première demande à la galerie livrée, l'agent gère chaque étape de la relation commerciale.</p>
+      <div class="not-prose my-6 space-y-3">
+        {[
+          { etape: "Demande entrante", timing: "J0 — Réponse en < 5 min", desc: "L'agent répond, demande la date, le lieu, le type de mariage et l'effectif. Envoie les liens vers vos galeries mariage et vos tarifs. Propose un entretien découverte.", color },
+          { etape: "Entretien découverte", timing: "J3 à J10", desc: "L'agent programme un appel ou une visio de 30 min avec vous et les futurs mariés. Rappel automatique J-1 et 1h avant.", color: "#34d399" },
+          { etape: "Envoi du devis", timing: "Après entretien", desc: "Vous envoyez le devis personnalisé. L'agent relance à J+3 si pas de réponse, puis à J+7 et J+21 avec un message différent à chaque fois.", color: "#38bdf8" },
+          { etape: "Signature et acompte", timing: "À la décision", desc: "L'agent envoie le contrat (DocuSign/HelloSign) et le lien de paiement d'acompte. La date est bloquée dans votre agenda dès réception.", color: "#fbbf24" },
+          { etape: "Rappels pré-mariage", timing: "J-30 et J-7", desc: "L'agent envoie les informations pratiques (programme de la journée, contacts, check-list photos importantes) et répond aux questions de dernière minute.", color: "#a78bfa" },
+          { etape: "Livraison et témoignage", timing: "J+28 à J+42", desc: "Notification de mise en ligne de la galerie privée. 10 jours après, l'agent demande un avis Google et un témoignage pour votre site.", color: "#f87171" },
+        ].map(item => (
+          <div class="glass rounded-xl p-5 flex gap-4 items-start">
+            <div class="flex-shrink-0 px-2 py-1 rounded-lg text-xs font-bold whitespace-nowrap" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.timing}</div>
+            <div>
+              <p class="text-white font-semibold text-sm mb-1">{item.etape}</p>
+              <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/automatiser-relances-clients', title: 'Automatiser ses relances clients avec l\'IA', cat: 'Automatisation' },
+          { href: '/blog/ia-avis-google-automatique', title: 'Collecter des avis Google automatiquement avec l\'IA', cat: 'SEO Local' },
+          { href: '/ia-pour/traiteurs', title: 'IA pour traiteurs et événementiel', cat: 'Secteur' },
+          { href: '/blog/chatbot-site-web-2026', title: 'Chatbot IA pour site web : le guide 2026', cat: 'Agents IA' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#a78bfa] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre agenda rempli. Vos mariés sereins. Vous concentré.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos demandes sans suite, vos devis non relancés et vos témoignages manqués pour vous chiffrer ce que vous perdez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #7c3aed);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
