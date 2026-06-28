@@ -1,0 +1,148 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "Agent IA pour le secteur public : collectivités, mairies et organismes publics",
+  description: "Comment les collectivités territoriales et organismes publics déploient des agents IA pour l'accueil numérique, les demandes de documents et l'information citoyenne. Contraintes juridiques et exemples concrets.",
+  date: "2026-07-11",
+  readTime: "9 min",
+  category: "Agents IA",
+  categoryColor: "#7c5cfc",
+  slug: "agent-ia-secteur-public",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Les collectivités publiques font face à une pression croissante : hausse des demandes citoyennes, réduction des effectifs, exigences d'accessibilité numérique (RGAA). Les agents IA offrent une réponse partielle mais concrète — à condition de respecter un cadre juridique spécifique que le secteur privé n'a pas.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Cas d'usage validés dans le secteur public</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        cas: "Information citoyenne générale",
+        exemples: ["Horaires de la mairie et des services annexes", "Procédures pour les demandes de documents (carte d'identité, passeport, extrait d'acte)", "Information sur les aides sociales disponibles", "Calendrier des marchés, événements culturels et déchetteries"],
+        risque: "Faible",
+        couleur: "#34d399",
+      },
+      {
+        cas: "Orientation vers les bons services",
+        exemples: ["\"Je veux signaler un problème de voirie\" → redirection vers le formulaire dédié", "\"Ma poubelle n'a pas été collectée\" → protocole de réclamation", "\"Je cherche à m'inscrire sur les listes électorales\" → lien + démarche guidée", "Orientation vers le CCAS, la CAF ou la préfecture selon le besoin"],
+        risque: "Faible",
+        couleur: "#38bdf8",
+      },
+      {
+        cas: "Collecte de demandes structurées",
+        exemples: ["Demandes de subventions associations : collecte du dossier initial", "Signalement de problèmes (éclairage public, dégradation)", "Pré-inscription pour les services municipaux (périscolaire, cantine)", "Demande de salle municipale : disponibilité et conditions"],
+        risque: "Moyen — données personnelles à traiter avec PIA",
+        couleur: "#fbbf24",
+      },
+      {
+        cas: "Accueil numérique multilingue",
+        exemples: ["Réponse aux usagers non-francophones (arabe, anglais, espagnol, portugais)", "Information sur les services d'interprétariat disponibles", "Accès aux démarches en langue étrangère pour les primo-arrivants"],
+        risque: "Faible si limité à l'information générale",
+        couleur: "#a78bfa",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-center justify-between mb-3">
+          <p class="text-white font-bold text-base">{item.cas}</p>
+          <span class="text-xs px-2 py-0.5 rounded-full" style={`color: ${item.couleur}; background: ${item.couleur}15; border: 1px solid ${item.couleur}30;`}>Risque : {item.risque}</span>
+        </div>
+        <div class="space-y-1">
+          {item.exemples.map(ex => (
+            <div class="flex items-start gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.couleur} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#8888aa] text-xs">{ex}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le cadre juridique spécifique au secteur public</h2>
+
+  <p>Le déploiement d'un agent IA dans une collectivité publique n'est pas soumis aux mêmes règles que dans le privé. Plusieurs textes s'appliquent en sus du RGPD :</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { texte: "Loi CADA (Commission d'Accès aux Documents Administratifs)", impact: "Les réponses de l'agent doivent être conformes aux droits d'accès aux documents administratifs. L'agent ne peut pas refuser de fournir des informations que la collectivité est tenue de rendre publiques.", color: "#fbbf24" },
+      { texte: "RGAA (Référentiel Général d'Amélioration de l'Accessibilité)", impact: "Le widget de chat doit être accessible aux personnes handicapées (contraste, navigation clavier, compatibilité lecteurs d'écran). Obligation légale pour les services publics numériques.", color: "#38bdf8" },
+      { texte: "Loi pour une République Numérique (2016)", impact: "Obligation d'information transparente sur l'utilisation d'un algorithme dans les décisions administratives. L'agent doit se présenter comme un outil automatisé.", color: "#a78bfa" },
+      { texte: "EU AI Act — systèmes à risque limité", impact: "Les chatbots doivent informer les utilisateurs qu'ils interagissent avec un système d'IA. Obligation depuis août 2025.", color: "#f87171" },
+      { texte: "RGPD + Privacy Impact Assessment (PIA)", impact: "Obligatoire si l'agent traite des données personnelles des citoyens (y compris l'IP, les messages). L'analyse doit être documentée et transmissible à la CNIL si demandé.", color: "#34d399" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-sm font-bold mb-2" style={`color: ${item.color};`}>{item.texte}</p>
+        <p class="text-[#8888aa] text-sm leading-relaxed">{item.impact}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce qu'un agent IA ne peut PAS faire dans le public</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Prendre des décisions administratives (attribution de subvention, acceptation ou refus d'une demande) — même pour assister, cela nécessite une mention légale spécifique",
+      "Accéder aux dossiers individuels des citoyens sans un cadre légal précis et un DPO impliqué",
+      "Donner des conseils juridiques ou des interprétations de la loi applicables à une situation individuelle",
+      "Remplacer un agent d'accueil pour les situations nécessitant une adaptation individuelle ou une médiation",
+      "Traiter des données sensibles (situations sociales, santé, statut administratif) sans cadre RGPD renforcé",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Exemple concret : la mairie de taille moyenne (15 000-50 000 habitants)</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-4">Déploiement type — 3 agents spécialisés</p>
+    <div class="space-y-4">
+      {[
+        { agent: "Agent Accueil Général", canaux: "Site web + borne tactile hall de mairie", scope: "Horaires, services, orientation, FAQ citoyenne générale", escalade: "Transfert vers agent humain ou formulaire en ligne" },
+        { agent: "Agent Signalements", canaux: "Site web + application mobile", scope: "Signalement voirie, espaces verts, éclairage public — collecte structurée et création ticket", escalade: "Email automatique au service technique concerné" },
+        { agent: "Agent Services Scolaires", canaux: "Espace famille en ligne", scope: "Inscriptions cantine, périscolaire, activités extra-scolaires, calendriers", escalade: "Formulaire complet transmis au service éducation" },
+      ].map(a => (
+        <div class="border border-white/10 rounded-xl p-4">
+          <p class="text-white font-semibold text-sm mb-2" style="color: #7c5cfc;">{a.agent}</p>
+          <div class="grid grid-cols-3 gap-3 text-xs">
+            <div><p class="text-[#8888aa] font-semibold mb-1">Canaux</p><p class="text-[#8888aa]">{a.canaux}</p></div>
+            <div><p class="text-[#8888aa] font-semibold mb-1">Périmètre</p><p class="text-[#8888aa]">{a.scope}</p></div>
+            <div><p class="text-[#8888aa] font-semibold mb-1">Escalade</p><p class="text-[#8888aa]">{a.escalade}</p></div>
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="text-xs text-[#8888aa] mt-4 pt-4 border-t border-white/10">Résultat attendu : -40% d'appels entrants sur les questions standard · +30% de satisfaction usager sur la réactivité</p>
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Financement et dispositifs disponibles</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "France 2030 — volet numérique des services publics : subventions pour les collectivités innovantes",
+      "DSIL (Dotation de Soutien à l'Investissement Local) : certains projets numériques éligibles selon préfecture",
+      "Programme Incub'IA de l'ANCT (Agence Nationale de la Cohésion des Territoires) : accompagnement IA pour collectivités",
+      "Mutualisations via les syndicats informatiques intercommunaux : portage collectif pour réduire les coûts unitaires",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7c5cfc" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b21b6);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/reglementation-ia-europe" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">EU AI Act &rarr;</a>
+    <a href="/blog/ia-securite-rgpd-pme" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA et RGPD &rarr;</a>
+  </div>
+
+</BlogLayout>

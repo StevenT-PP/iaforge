@@ -1,0 +1,134 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour consultant indépendant : qualifier les prospects et automatiser le suivi commercial",
+  description: "Comment un consultant freelance ou une petite structure de conseil utilise un agent IA pour qualifier les prospects, relancer les devis et automatiser le suivi commercial sans perdre le lien humain.",
+  date: "2026-07-11",
+  readTime: "8 min",
+  category: "Automatisation",
+  categoryColor: "#7c5cfc",
+  slug: "ia-pour-consultant",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>Un consultant indépendant a deux ennemis de sa croissance : le temps perdu à répondre à des prospects qui ne convertiront jamais, et les opportunités sérieuses mal suivies qui lui glissent entre les doigts. L'IA ne fait pas la mission à votre place — mais elle peut transformer votre pipeline commercial en le rendant systématique, sans que vous ayez à y penser.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le problème du consultant : trop de temps entre les missions</h2>
+
+  <p>La plupart des consultants freelances fonctionnent en mode alterné : mission intensive → recherche de la prochaine mission → mission intensive. Le problème vient du creux entre les deux. Quand vous êtes en mission à 100%, vous n'avez pas le temps de nourrir votre pipeline. Quand vous cherchez, vous répondez à tout le monde — même aux prospects qui n'ont pas de budget.</p>
+
+  <p>Un agent IA bien configuré permet de maintenir un pipeline actif même en pleine mission, et de filtrer les prospects pour vous concentrer sur ceux qui ont vraiment une intention d'achat.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les 4 automatisations qui changent tout</h2>
+
+  <div class="not-prose my-8 space-y-4">
+    {[
+      {
+        n: "1",
+        titre: "Qualification automatique des demandes entrantes",
+        desc: "Dès qu'un prospect remplit votre formulaire de contact ou vous écrit, l'agent lui pose 4-5 questions de qualification : secteur, taille d'entreprise, problématique principale, budget approximatif, délai souhaité. Vous ne recevez que les réponses qualifiées.",
+        gain: "3-4h économisées/semaine en échanges email avec des prospects hors-cible",
+        color: "#7c5cfc",
+      },
+      {
+        n: "2",
+        titre: "Relance automatique des devis sans suite",
+        desc: "80% des devis envoyés ne reçoivent jamais de réponse — pas parce que le prospect n'est pas intéressé, mais parce qu'il a oublié ou a eu d'autres priorités. L'agent relance à J+3, J+7 et J+21 avec des messages différenciés. Le taux de signature remonte de 15 à 35%.",
+        gain: "+20% de taux de closing sur les devis déjà envoyés",
+        color: "#34d399",
+      },
+      {
+        n: "3",
+        titre: "Nurturing des prospects froids",
+        desc: "Un prospect qui a demandé votre tarif mais a dit 'ce n'est pas le bon moment' n'est pas perdu. L'agent le recontacte à 3 mois et 6 mois avec un message pertinent (article, cas client, nouvelle offre). 15-25% de ces prospects finissent par devenir clients.",
+        gain: "Pipeline d'opportunités longues durée sans effort manuel",
+        color: "#38bdf8",
+      },
+      {
+        n: "4",
+        titre: "Collecte de témoignages et références",
+        desc: "J+7 après la fin d'une mission, l'agent contacte le client pour demander un témoignage et propose de le rédiger sur la base d'un court questionnaire. Vous récupérez des témoignages structurés sans avoir à relancer manuellement chaque client.",
+        gain: "3-5× plus de témoignages collectés vs. la relance manuelle",
+        color: "#fbbf24",
+      },
+    ].map(item => (
+      <div class="glass rounded-2xl p-6">
+        <div class="flex items-start gap-4 mb-3">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black flex-shrink-0" style={`background: ${item.color}20; color: ${item.color}; border: 1px solid ${item.color}40;`}>{item.n}</div>
+          <p class="text-white font-bold text-base leading-tight">{item.titre}</p>
+        </div>
+        <p class="text-[#8888aa] text-sm leading-relaxed mb-3">{item.desc}</p>
+        <div class="flex items-center gap-2">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+          <p class="text-xs font-semibold" style={`color: ${item.color};`}>{item.gain}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Les questions de qualification à poser</h2>
+
+  <p>La qualification est l'étape la plus critique. Voici les 5 questions qui permettent de distinguer un prospect sérieux d'une curiosité :</p>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      { q: "Quelle est votre principale problématique en ce moment ?", pourquoi: "Identifie si le besoin correspond à votre expertise. Un réponse vague = prospect peu engagé." },
+      { q: "Quel est votre horizon pour démarrer ce projet ?", pourquoi: "Distingue l'urgent du 'dans 18 mois'. Vous pouvez nourrir les longs sans y investir du temps maintenant." },
+      { q: "Avez-vous déjà travaillé avec un consultant sur ce sujet ?", pourquoi: "Si oui, pourquoi cherchent-ils quelqu'un de nouveau ? Si non, sont-ils prêts à l'investissement que cela implique ?" },
+      { q: "Quelle est la taille de votre équipe / entreprise ?", pourquoi: "Permet d'estimer la complexité de la mission et d'ajuster votre positionnement tarifaire." },
+      { q: "Quel budget avez-vous alloué à ce projet ?", pourquoi: "La question qui fait fuir les touristes. Ceux qui répondent ont une vraie intention d'achat." },
+    ].map(item => (
+      <div class="glass rounded-xl p-4">
+        <p class="text-white font-semibold text-sm mb-1">"{item.q}"</p>
+        <p class="text-[#8888aa] text-xs leading-relaxed"><span class="text-[#7c5cfc] font-semibold">Pourquoi :</span> {item.pourquoi}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Stack pour un consultant solo</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { outil: "Agent IA (IAForge)", role: "Qualification, relances, collecte témoignages, FAQ prestations", cout: "149€/mois", color: "#7c5cfc" },
+      { outil: "Calendly ou Cal.com", role: "Prise de RDV discovery — l'agent envoie le lien après qualification", cout: "0-12€/mois", color: "#34d399" },
+      { outil: "HubSpot Free ou Pipedrive", role: "CRM pour suivre les opportunités et les relances dans le temps", cout: "0-15€/mois", color: "#38bdf8" },
+      { outil: "Notion ou Google Docs", role: "Base de connaissance de l'agent (offres, cas clients, témoignages)", cout: "0-8€/mois", color: "#fbbf24" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-white font-semibold text-sm">{item.outil}</p>
+          <span class="text-xs px-2 py-0.5 rounded-full" style={`color: ${item.color}; background: ${item.color}15; border: 1px solid ${item.color}30;`}>{item.cout}</span>
+        </div>
+        <p class="text-[#8888aa] text-sm">{item.role}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que l'IA ne peut pas faire pour vous</h2>
+
+  <div class="not-prose my-6 space-y-2">
+    {[
+      "Vendre votre expertise — la proposition de valeur d'un consultant est unique et non-automatisable",
+      "Conduire le premier appel discovery — c'est là que se joue la relation de confiance",
+      "Rédiger votre offre commerciale sur-mesure — elle doit refléter votre compréhension fine du contexte client",
+      "Livrer la mission — tout le reste, oui ; ça, non",
+    ].map(item => (
+      <div class="flex items-start gap-2 text-sm text-[#8888aa]">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2.5" class="flex-shrink-0 mt-0.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        {item}
+      </div>
+    ))}
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #7c5cfc, #5b21b6);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/blog/ia-pipeline-commercial" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Pipeline commercial IA &rarr;</a>
+    <a href="/blog/prospection-commerciale-ia" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Prospection commerciale &rarr;</a>
+  </div>
+
+</BlogLayout>

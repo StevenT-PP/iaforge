@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#34d399";
+
+const tasks = [
+  "Répond aux questions sur les prestations, méthodes et tarifs 24h/24",
+  "Qualifie les nouvelles demandes : objectif (perte de poids, sport, pathologie, grossesse), historique médical pertinent",
+  "Programme les bilans nutritionnels initiaux et relance les prospects non convertis",
+  "Envoie les rappels de consultation et les formulaires pré-bilan à compléter en amont",
+  "Suit les patients en suivi long terme : rappel de consultation à 1 mois, 3 mois, 6 mois",
+  "Informe sur les remboursements possibles (mutuelles, prévention, longue maladie)",
+  "Collecte les journaux alimentaires et transmet au praticien avant la séance",
+  "Répond aux questions courantes sur les compléments alimentaires et les plans alimentaires types",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il donner des conseils nutritionnels aux patients ?",
+    a: "Non, et c'est voulu. L'agent n'émet jamais de recommandations nutritionnelles individuelles — c'est exclusivement votre rôle de professionnel de santé ou de nutritionniste diplômé. L'agent gère l'administratif (prises de RDV, rappels, FAQ sur les prestations) et prépare vos consultations. Il oriente systématiquement les questions médicales vers vous.",
+  },
+  {
+    q: "Compatible avec les logiciels de cabinet (Clickdoc, Maiia, Doctolib) ?",
+    a: "Oui. L'agent s'intègre avec Doctolib, Maiia et Clickdoc pour lire les disponibilités et créer les RDV. Il peut également fonctionner avec un calendrier Google Calendar si vous utilisez un système de prise de RDV propriétaire.",
+  },
+  {
+    q: "L'agent peut-il collecter le journal alimentaire avant la séance ?",
+    a: "Oui. L'agent envoie automatiquement un formulaire structuré (Google Forms, Notion, ou outil propriétaire) 48h avant la consultation. Le patient remplit ses habitudes alimentaires, ses allergies et ses objectifs. Vous recevez un résumé avant la séance — sans avoir à relancer manuellement.",
+  },
+  {
+    q: "Comment gérer les patients en suivi longue durée ?",
+    a: "L'agent programme des rappels automatiques selon votre protocole de suivi (J+30, J+90, J+180). Si le patient ne reprend pas RDV, l'agent envoie un message de relance bienveillant. Les patients en pathologie chronique (diabète, TCA, insuffisance rénale) sont flaggés pour un suivi prioritaire.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, prise de RDV, informations sur les prestations et rappels. Pour l'intégration avec votre logiciel de cabinet et la collecte de journaux alimentaires automatisée, prévoir 14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour nutritionnistes et diététiciens — RDV et suivi patients automatisés | IAForge"
+  description="Agent IA pour nutritionniste : prise de RDV, rappels, collecte journaux alimentaires et suivi long terme automatisés — sans jamais remplacer le conseil diététique. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Nutritionnistes & Diététiciens", "item": "https://iaforge.fr/ia-pour/nutritionnistes" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Nutritionnistes & Diététiciens</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour nutritionnistes et diététiciens</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Votre agenda géré.<br/><span class="gradient-text">Vos patients préparés.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Prise de RDV, collecte de journaux alimentaires, rappels de suivi à 1-3-6 mois — l'agent gère le flux administratif pour que chaque consultation soit concentrée sur le fond.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "d'appels entrants pour la prise de RDV et les questions tarifaires", color },
+            { val: "+40%", label: "de taux de suivi à 3 mois grâce aux rappels automatiques de consultation", color: "#38bdf8" },
+            { val: "-45%", label: "de no-shows grâce aux rappels J-1 et à la collecte du journal pré-séance", color: "#fbbf24" },
+            { val: "7 jours", label: "pour être opérationnel avec vos prestations, tarifs et prise de RDV", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Ce que l'agent fait vs. ce qui reste votre expertise</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">La frontière est non-négociable. L'agent gère l'administratif, vous gérez la santé.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          {
+            titre: "Ce que l'agent gère",
+            items: [
+              "\"Je voudrais prendre rendez-vous pour un bilan nutritionnel\" → créneau proposé et confirmé",
+              "\"Quels sont vos tarifs pour un suivi à 3 mois ?\" → grille tarifaire envoyée",
+              "\"Ma mutuelle rembourse-t-elle les consultations ?\" → information générale + orientation",
+              "Rappels de consultation automatiques à 48h, 24h et 2h avant",
+              "Envoi du journal alimentaire à compléter 48h avant la séance",
+            ],
+            color,
+          },
+          {
+            titre: "Ce qui reste votre expertise",
+            items: [
+              "L'analyse du journal alimentaire et le diagnostic nutritionnel",
+              "L'élaboration du plan alimentaire personnalisé",
+              "Les recommandations sur les compléments alimentaires pour ce patient",
+              "Le suivi des pathologies associées (diabète, TCA, IRC, grossesse)",
+              "La relation thérapeutique et l'accompagnement motivationnel",
+            ],
+            color: "#38bdf8",
+          },
+        ].map(col => (
+          <div class="glass rounded-2xl p-6">
+            <p class="text-sm font-bold mb-4" style={`color: ${col.color};`}>{col.titre}</p>
+            <div class="space-y-2">
+              {col.items.map(item => (
+                <div class="flex items-start gap-2">
+                  <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={`background: ${col.color};`}></div>
+                  <p class="text-[#8888aa] text-xs leading-relaxed">{item}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : méthode et résultats', cat: 'Automatisation' },
+          { href: '/blog/ia-pour-kinesitherapeute', title: 'IA pour kinésithérapeute : RDV et séries automatisés', cat: 'Santé' },
+          { href: '/ia-pour/psychologues', title: 'IA pour psychologues et thérapeutes', cat: 'Secteur' },
+          { href: '/blog/ia-securite-rgpd-pme', title: 'IA et RGPD : ce que les PME doivent savoir', cat: 'RGPD' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#34d399] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre cabinet concentré sur la santé. L'agent sur l'administratif.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos no-shows, vos relances manuelles et votre taux de suivi à 3 mois pour vous chiffrer ce que vous récupéreriez chaque semaine.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #059669);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · RGPD conforme · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

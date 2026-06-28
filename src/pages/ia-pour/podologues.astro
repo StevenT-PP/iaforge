@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+
+const color = "#38bdf8";
+
+const tasks = [
+  "Répond aux demandes de RDV 24h/24 et propose des créneaux selon votre agenda",
+  "Qualifie les urgences podologiques : plaie diabétique, ongle incarné aigu, douleur aiguë",
+  "Rappelle les patients à J-1 et J-2h pour réduire les annulations de dernière minute",
+  "Programme les rappels de soins réguliers à 2, 3 ou 6 mois selon le protocole patient",
+  "Relance les patients inactifs depuis plus de 6 mois avec un message bienveillant",
+  "Informe sur les remboursements Sécurité Sociale et mutuelles pour les soins podologiques",
+  "Répond aux questions sur les pathologies courantes (ongles, cors, verrues plantaires, pieds diabétiques)",
+  "Collecte les informations médicales pertinentes avant le premier rendez-vous",
+];
+
+const faqItems = [
+  {
+    q: "L'agent peut-il distinguer une urgence podologique d'une consultation classique ?",
+    a: "Oui. L'agent est configuré avec une liste de signes d'alerte (plaie ouverte chez un patient diabétique, infection visible, douleur aiguë intense, suspicion d'ongle incarné avec pus) qui déclenchent un protocole d'urgence : créneau prioritaire proposé dans les 24-48h, ou redirection vers les urgences si nécessaire. Les consultations classiques (cors, callosités, bilan annuel) suivent le circuit standard.",
+  },
+  {
+    q: "Compatible avec les logiciels de cabinet podologique (Podo Pro, Winpodo, Doctolib) ?",
+    a: "L'agent s'intègre avec Doctolib pour la prise de RDV. Pour les logiciels métier spécialisés (Podo Pro, Winpodo), l'intégration dépend de l'exposition d'une API. Dans ce cas, l'agent peut fonctionner en parallèle pour la prise de RDV et vous alerter des nouveaux patients à saisir manuellement.",
+  },
+  {
+    q: "Comment gérer les patients diabétiques avec un suivi podologique renforcé ?",
+    a: "Les patients diabétiques peuvent être identifiés à la première consultation. L'agent les bascule sur un protocole de rappel renforcé (bilan podologique annuel remboursé Sécurité Sociale pour les diabétiques classés grade 2 et 3) et les relance automatiquement 10 mois après leur dernier bilan.",
+  },
+  {
+    q: "L'agent peut-il expliquer les remboursements pour la podologie ?",
+    a: "Oui. L'agent connaît les conditions de remboursement en vigueur : soins de podologie remboursés pour les diabétiques grade 2 et 3 (avec ordonnance médicale), non remboursés pour les soins courants sans pathologie. Il informe sur les mutuelles et encourage les patients à vérifier leurs garanties avant la consultation.",
+  },
+  {
+    q: "En combien de temps est-il opérationnel ?",
+    a: "7 jours ouvrés pour un agent avec FAQ, prise de RDV, qualification des urgences et rappels. Pour l'intégration avec votre logiciel de planning et les protocoles de suivi différenciés par patient, prévoir 14 jours.",
+  },
+];
+---
+
+<Layout
+  title="Agent IA pour podologues — RDV, urgences et rappels patients automatisés | IAForge"
+  description="Agent IA pour podologue : prise de RDV 24h/24, qualification des urgences podologiques, rappels de soins et suivi patients diabétiques — RGPD conforme. Dès 149€/mois."
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
+  })} />
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://iaforge.fr" },
+      { "@type": "ListItem", "position": 2, "name": "Agent IA par secteur", "item": "https://iaforge.fr/ia-pour" },
+      { "@type": "ListItem", "position": 3, "name": "Podologues", "item": "https://iaforge.fr/ia-pour/podologues" }
+    ]
+  })} />
+
+  <Nav />
+
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <nav class="flex items-center gap-2 text-xs text-[#8888aa] mb-6">
+            <a href="/" class="hover:text-white transition-colors">Accueil</a>
+            <span>/</span>
+            <a href="/ia-pour" class="hover:text-white transition-colors">Agent IA par secteur</a>
+            <span>/</span>
+            <span style={`color: ${color};`}>Podologues</span>
+          </nav>
+          <p class="text-xs font-bold uppercase tracking-widest mb-4" style={`color: ${color};`}>IA pour podologues</p>
+          <h1 class="text-4xl md:text-5xl font-black text-white leading-tight mb-6">
+            Agenda plein.<br/><span class="gradient-text">Urgences triées. Patients suivis.</span>
+          </h1>
+          <p class="text-[#8888aa] text-lg leading-relaxed mb-8">
+            Prise de RDV 24h/24, qualification des urgences podologiques, rappels de soins réguliers et suivi des patients diabétiques — pendant que vous êtes en salle de soins.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/contact" class="btn-primary inline-flex items-center gap-2">Audit gratuit &rarr;</a>
+            <a href="/calculateur-roi" class="px-6 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">Calculer mon ROI</a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          {[
+            { val: "-50%", label: "d'appels entrants pour la prise de RDV et les questions de remboursement", color },
+            { val: "-45%", label: "de no-shows grâce aux rappels automatiques J-1 et J-2h", color: "#34d399" },
+            { val: "+30%", label: "de patients diabétiques revenus pour leur bilan annuel obligatoire", color: "#fbbf24" },
+            { val: "7 jours", label: "pour être opérationnel avec votre agenda et vos protocoles de soins", color: "#a78bfa" },
+          ].map(s => (
+            <div class="glass rounded-2xl p-5 text-center">
+              <div class="text-3xl font-black mb-2" style={`color: ${s.color};`}>{s.val}</div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{s.label}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ce que l'agent fait pour votre cabinet</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {tasks.map(task => (
+          <div class="glass rounded-xl p-4 flex items-start gap-3">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={color} stroke-width="2.5" class="flex-shrink-0 mt-0.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span class="text-[#8888aa] text-sm">{task}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-3">Protocoles de suivi par profil patient</h2>
+      <p class="text-[#8888aa] text-center text-sm mb-10">L'agent adapte la fréquence de rappel selon le profil — sans que vous ayez à y penser.</p>
+      <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+        <div class="grid grid-cols-4">
+          {["Profil patient", "Fréquence de soins", "Rappel automatique", "Protocole urgence"].map(h => (
+            <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+          ))}
+          {[
+            ["Patient standard", "1-2 fois/an", "J-330 après dernier soin", "Non"],
+            ["Patient sportif", "Tous les 2-3 mois", "J-60 après dernier soin", "Blessure : créneau sous 48h"],
+            ["Senior (75+)", "Tous les 2-3 mois", "J-60 avec message adapté", "Chute ou plaie : orientation urgences"],
+            ["Diabétique grade 1", "1 fois/an (bilan)", "J-300 + rappel remboursement SS", "Plaie : créneau sous 24h"],
+            ["Diabétique grade 2-3", "Selon protocole médecin", "Rappel coordonné avec ordonnance", "Plaie ouverte : urgences médicales"],
+          ].map(([p, f, r, u]) => (
+            <>
+              <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{p}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{f}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{r}</div>
+              <div class="p-3 border-b border-white/5 text-xs text-[#34d399]">{u}</div>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Questions fréquentes</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => (
+          <details class="glass rounded-xl group">
+            <summary class="px-6 py-4 cursor-pointer text-white font-semibold text-sm flex items-center justify-between">
+              {item.q}
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="flex-shrink-0 ml-4 group-open:rotate-180 transition-transform"><path d="M6 9l6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-5 pt-1">
+              <p class="text-[#9090b0] text-sm leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-black text-white text-center mb-10">Ressources complémentaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          { href: '/blog/reduire-no-shows-ia', title: 'Réduire les no-shows avec l\'IA : méthode et résultats', cat: 'Automatisation' },
+          { href: '/blog/ia-pour-kinesitherapeute', title: 'IA pour kinésithérapeute : RDV et séries automatisés', cat: 'Santé' },
+          { href: '/ia-pour/osteopathes', title: 'IA pour ostéopathes : agenda plein, liste d\'attente gérée', cat: 'Secteur' },
+          { href: '/blog/ia-securite-rgpd-pme', title: 'IA et RGPD : ce que les PME doivent savoir', cat: 'RGPD' },
+        ].map(a => (
+          <a href={a.href} class="glass rounded-xl p-5 hover:bg-white/[0.06] transition-all group">
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full mb-3 inline-block" style={`color: ${color}; background: ${color}15; border: 1px solid ${color}30;`}>{a.cat}</span>
+            <p class="text-white text-sm font-semibold leading-snug group-hover:text-[#38bdf8] transition-colors">{a.title} &rarr;</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6" style="background: var(--bg-2, #0d0d1a);">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="text-3xl font-black text-white mb-4">Votre cabinet en soins. L'agent en accueil.</h2>
+      <p class="text-[#8888aa] mb-8 leading-relaxed">Audit gratuit 30 min. On analyse vos no-shows, vos patients perdus de vue et vos bilans diabétiques non réalisés pour vous chiffrer ce que vous récupéreriez chaque mois.</p>
+      <a href="/contact" class="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-white font-bold transition-all hover:opacity-90" style={`background: linear-gradient(135deg, ${color}, #0284c7);`}>
+        Demander l'audit gratuit &rarr;
+      </a>
+      <p class="text-xs text-[#8888aa] mt-4">0€ d'installation · Sans engagement · RGPD conforme · Opérationnel en 7 jours</p>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>

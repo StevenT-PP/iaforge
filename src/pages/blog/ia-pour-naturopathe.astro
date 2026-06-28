@@ -1,0 +1,168 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+const meta = {
+  title: "IA pour naturopathe : automatiser les RDV sans perdre l'approche holistique",
+  description: "Comment un cabinet de naturopathie déploie un agent IA pour les prises de RDV, les rappels et le suivi sans jamais empiéter sur le conseil naturel. Guide pratique 2026.",
+  date: "2026-07-11",
+  readTime: "7 min",
+  category: "Santé",
+  categoryColor: "#34d399",
+  slug: "ia-pour-naturopathe",
+};
+---
+
+<BlogLayout article={meta}>
+
+  <p>La naturopathie repose sur une relation de confiance longue durée, des consultations approfondies et un suivi personnalisé. L'IA n'a rien à faire dans le conseil — mais elle peut gérer tout ce qui l'entoure : prise de RDV, rappels, collecte d'informations pré-consultation, relances de suivi. Voici comment l'intégrer sans trahir votre approche.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Ce que vous perdez réellement à gérer vous-même l'administratif</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl overflow-hidden">
+    <div class="grid grid-cols-3">
+      {["Tâche", "Temps moyen/semaine", "Impact sur les consultations"].map(h => (
+        <div class="p-3 border-b border-white/5 text-xs font-bold text-[#8888aa] uppercase tracking-wider">{h}</div>
+      ))}
+      {[
+        ["Réponse aux demandes de RDV (email, SMS, appels)", "3-4h", "Interruptions pendant les consultations"],
+        ["Envoi des rappels de consultation", "1-2h", "Oubli fréquent → no-shows à 25-30%"],
+        ["Relances des patients perdus de vue", "1-2h", "Rarement fait → revenu perdu"],
+        ["Réponses aux questions tarifaires et pratiques", "2-3h", "Même questions posées 10x/semaine"],
+        ["Collecte d'informations pré-consultation", "Pendant la séance", "30% du temps de consultation perdus"],
+      ].map(([t, tm, i]) => (
+        <>
+          <div class="p-3 border-b border-white/5 text-xs text-white font-medium">{t}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#fbbf24]">{tm}</div>
+          <div class="p-3 border-b border-white/5 text-xs text-[#8888aa]">{i}</div>
+        </>
+      ))}
+    </div>
+  </div>
+
+  <p>Total : 7 à 11 heures par semaine sur des tâches qui n'ont aucune valeur clinique. Un agent IA bien configuré réduit ce chiffre à moins d'une heure.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">La frontière IA / praticien en naturopathie</h2>
+
+  <div class="not-prose my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      {
+        titre: "Ce que l'agent fait",
+        color: "#34d399",
+        items: [
+          "Répond aux questions sur les prestations et les méthodes pratiquées",
+          "Propose des créneaux disponibles et confirme les RDV",
+          "Envoie un questionnaire pré-consultation (hygiène de vie, alimentation, objectifs)",
+          "Rappelle le RDV J-1 et J-2h avec les informations pratiques",
+          "Relance les patients inactifs depuis 3-6 mois avec un message bienveillant",
+          "Informe sur les compléments et les approches de manière générique",
+        ],
+      },
+      {
+        titre: "Ce qui reste votre expertise",
+        color: "#38bdf8",
+        items: [
+          "L'anamnèse approfondie et l'évaluation vitalogénique",
+          "La prescription de plantes, d'huiles essentielles et de compléments",
+          "Les techniques manuelles (réflexologie, massage, etc.)",
+          "L'accompagnement émotionnel et le soutien motivationnel",
+          "L'adaptation du programme naturopathique à chaque individu",
+          "La relation thérapeutique et le suivi longitudinal",
+        ],
+      },
+    ].map(col => (
+      <div class="glass rounded-2xl p-6">
+        <p class="text-sm font-bold mb-4" style={`color: ${col.color};`}>{col.titre}</p>
+        <div class="space-y-2">
+          {col.items.map(item => (
+            <div class="flex items-start gap-2">
+              <div class="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-2" style={`background: ${col.color};`}></div>
+              <p class="text-[#8888aa] text-xs leading-relaxed">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Le questionnaire pré-consultation : votre gain de temps le plus immédiat</h2>
+
+  <p>La plupart des naturopathes passent 20-30 minutes de consultation à collecter des informations de base (alimentation, sommeil, stress, antécédents). Un questionnaire automatique envoyé 48h avant le RDV permet de récupérer ces données à l'avance — et de concentrer la séance sur l'analyse et l'accompagnement.</p>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { section: "Hygiène de vie", questions: ["Rythme de sommeil (heures, qualité, réveils nocturnes)", "Niveau d'activité physique (type, fréquence, durée)", "Exposition au soleil et à la nature", "Gestion du stress (niveau 1-10, sources principales)"], color: "#34d399" },
+      { section: "Alimentation", questions: ["Régime alimentaire (omnivore, végétarien, vegan, restrictions)", "Qualité de l'alimentation perçue (1-10)", "Hydratation quotidienne", "Allergies et intolérances connues"], color: "#38bdf8" },
+      { section: "Objectifs de la consultation", questions: ["Motif principal de la consultation (en quelques mots)", "Depuis combien de temps ce problème est-il présent ?", "Démarches déjà entreprises (médecin, autres praticiens)", "Attentes pour cette première consultation"], color: "#fbbf24" },
+    ].map(item => (
+      <div class="glass rounded-xl p-5">
+        <p class="text-white font-semibold text-sm mb-3" style={`color: ${item.color};`}>{item.section}</p>
+        <div class="space-y-1">
+          {item.questions.map(q => (
+            <div class="flex items-start gap-2">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={item.color} stroke-width="2.5" class="flex-shrink-0 mt-1"><polyline points="20 6 9 17 4 12"/></svg>
+              <p class="text-[#8888aa] text-xs">{q}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <p>Le praticien reçoit un résumé structuré avant la séance. La première consultation peut alors commencer directement sur l'analyse, pas sur la collecte.</p>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">Séquence de suivi post-consultation</h2>
+
+  <div class="not-prose my-6 space-y-3">
+    {[
+      { timing: "J+3", action: "Message de prise de nouvelles", desc: "L'agent demande comment s'est passée la semaine depuis la consultation, si des questions se sont posées sur le programme recommandé." },
+      { timing: "J+30", action: "Rappel de suivi", desc: "Proposition d'une consultation de suivi à 1 mois pour évaluer les premiers résultats du programme naturopathique." },
+      { timing: "J+90", action: "Bilan trimestriel", desc: "Message personnalisé pour proposer un bilan à 3 mois — moment clé pour ajuster le programme et maintenir la relation." },
+      { timing: "J+180", action: "Relance si inactif", desc: "Si le patient n'est pas revenu, l'agent envoie un message bienveillant rappelant l'importance du suivi régulier." },
+    ].map(item => (
+      <div class="glass rounded-xl p-4 flex items-start gap-4">
+        <div class="flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-bold" style="background: #34d39920; color: #34d399; border: 1px solid #34d39940;">{item.timing}</div>
+        <div>
+          <p class="text-white font-semibold text-sm mb-1">{item.action}</p>
+          <p class="text-[#8888aa] text-sm leading-relaxed">{item.desc}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="text-2xl font-black text-white mt-12 mb-4">ROI pour un cabinet de naturopathie solo</h2>
+
+  <div class="not-prose my-6 glass rounded-2xl p-6">
+    <div class="grid grid-cols-2 gap-6">
+      <div>
+        <p class="text-xs font-bold text-[#8888aa] uppercase tracking-wider mb-3">Situation type</p>
+        <div class="space-y-2 text-sm text-[#8888aa]">
+          <p>· 20 consultations/semaine à 70€</p>
+          <p>· No-show rate : 20% (4 consultations/sem.)</p>
+          <p>· 10% de patients perdus de vue à 6 mois</p>
+          <p>· 8h/semaine d'administratif actuel</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold text-[#34d399] uppercase tracking-wider mb-3">Avec l'agent IA</p>
+        <div class="space-y-2 text-sm text-[#8888aa]">
+          <p>· No-shows réduits à 8% → <span class="text-[#34d399] font-semibold">+168€/semaine</span></p>
+          <p>· Patients relancés → <span class="text-[#34d399] font-semibold">+2 RDV/mois</span></p>
+          <p>· Admin réduit à 1h → <span class="text-[#34d399] font-semibold">7h récupérées</span></p>
+          <p>· Coût agent : 149€/mois</p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-4 border-t border-white/10 text-center">
+      <p class="text-[#34d399] font-bold">ROI estimé : +500€/mois net · Payé en 10 jours</p>
+    </div>
+  </div>
+
+  <div class="not-prose my-8 flex flex-wrap gap-4">
+    <a href="/contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-bold transition-all hover:opacity-90 text-sm" style="background: linear-gradient(135deg, #34d399, #059669);">
+      Audit gratuit &rarr;
+    </a>
+    <a href="/ia-pour/psychologues" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour thérapeutes &rarr;</a>
+    <a href="/blog/ia-pour-kinesitherapeute" class="px-5 py-3 rounded-xl glass text-white text-sm font-semibold hover:bg-white/10 transition-all">IA pour kinés &rarr;</a>
+  </div>
+
+</BlogLayout>

@@ -75,6 +75,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - IA pour sages-femmes : https://iaforge.fr/ia-pour/sages-femmes
 - IA pour chambres d'hôtes et gîtes : https://iaforge.fr/ia-pour/chambres-hotes
 - IA pour librairies et papeteries : https://iaforge.fr/ia-pour/librairies
+- IA pour services à domicile : https://iaforge.fr/ia-pour/services-domicile
+- IA pour nutritionnistes et diététiciens : https://iaforge.fr/ia-pour/nutritionnistes
+- IA pour podologues : https://iaforge.fr/ia-pour/podologues
 - Offres & Tarifs : https://iaforge.fr/offres
 - À propos : https://iaforge.fr/a-propos
 - Blog : https://iaforge.fr/blog
@@ -112,6 +115,9 @@ Médecins, dentistes, kinésithérapeutes, avocats, comptables, notaires, restau
 - Article : IA et prospection B2B : https://iaforge.fr/blog/ia-b2b-prospection
 - Article : WhatsApp Business API pour PME : https://iaforge.fr/blog/agent-ia-whatsapp-business
 - Article : Agent IA pour expert-comptable : https://iaforge.fr/blog/ia-pour-expert-comptable
+- Article : Agent IA pour le secteur public : https://iaforge.fr/blog/agent-ia-secteur-public
+- Article : IA pour consultant indépendant : https://iaforge.fr/blog/ia-pour-consultant
+- Article : IA pour naturopathe : https://iaforge.fr/blog/ia-pour-naturopathe
 - Article : Intégrer son agent IA avec ses outils existants : https://iaforge.fr/blog/ia-integration-api
 - Article : IA pour association : https://iaforge.fr/blog/ia-pour-association
 - Article : Avis Google automatiques avec l'IA : https://iaforge.fr/blog/ia-avis-google-automatique
